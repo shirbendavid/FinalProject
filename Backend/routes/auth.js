@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const DButils = require("./utils/DButils");
-//const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 
 router.post("/Registration", async (req, res, next) => {
   try {
@@ -11,7 +11,7 @@ router.post("/Registration", async (req, res, next) => {
     const users = await DButils.execQuery("SELECT email FROM users");
     if (users.length > 0) {
       if (users.find((x) => x.email === req.body.email))
-        throw { status: 409, message: "Username taken" };
+        throw { status: 409, message: "Email taken" };
     }
     // add the new username
 
