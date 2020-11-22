@@ -1,23 +1,24 @@
-const sql = require("mssql");
+ const sql = require("mssql");
 
 const config = {
-  server: "localhost\ISE-NODEJS-W10",
-  database: "DB_Project",
-}
+  user: "coil_user",
+  password: 'coil_user',
+  server: 'localhost',
+  database: 'DB_Project',
+  port: 1433
+};
+sql.connect(config, function (err){
+  if(err){
+    console.log(err)
+  }
+})
 
-// const pool = new sql.ConnectionPool(config);
-// const poolConnect = pool
-//   .connect()
-//   .then(() => console.log("new connection pool Created"))
-//   .catch((err) => console.log(err));
-
-// exports.execQuery = async function (query) {
-//   await poolConnect;
-//   try {
-//     var result = await pool.request().query(query);
-//     return result.recordset;
-//   } catch (err) {
-//     console.error("SQL error", err);
-//     throw err;
-//   }
-// };
+exports.execQuery = async function (query) {
+  try {
+    var result = await sql.query(query);
+    return result.recordset;
+  } catch (err) {
+    console.error("SQL error", err);
+    throw err;
+  }
+};
