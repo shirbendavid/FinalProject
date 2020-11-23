@@ -3,6 +3,7 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const session = require("client-sessions");
 
 var authRouter = require("./routes/auth");
 var usersRouter = require("./routes/users");
@@ -18,6 +19,21 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+//#setting cookies configuration
+app.use(
+  session({
+    cookieName: "session", // the cookie key name
+    secret: 'blargadeeblargblarg', // the encryption key
+    duration: 30 * 60 * 1000, // expired after 30 sec
+    activeDuration: 0, // if expiresIn < activeDuration,
+    //the session will be extended by activeDuration milliseconds
+    cookie: {
+      httpOnly: false,
+      // ephemeral: true, //when true, cookie expires when the browser closes
+    },
+  })
+);
 
 app.use("/", authRouter);
 app.use("/users", usersRouter);
