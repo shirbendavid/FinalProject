@@ -75,6 +75,23 @@
             </b-form-group>
 
             <b-form-group
+              id="input-group-country"
+              label-cols-sm="3"
+              label="Country"
+              label-for="country"
+            >
+              <b-form-select
+                id="country"
+                v-model="$v.form.country.$model"
+                :options="countries"
+                :state="validateState('country')"
+              ></b-form-select>
+              <b-form-invalid-feedback>
+                Country is required
+              </b-form-invalid-feedback>
+            </b-form-group>
+
+            <b-form-group
               id="input-group-Password"
               label-cols-sm="3"
               label="Password"
@@ -125,7 +142,6 @@
             </b-form-group>
 
             <b-form-group
-            
               id="input-group-email"
               label-cols-sm="3"
               label="Email"
@@ -142,6 +158,24 @@
               </b-form-invalid-feedback>
               <b-form-invalid-feedback v-if="!$v.form.email.email">
                 Email is not a properly formatted email address
+              </b-form-invalid-feedback>
+            </b-form-group>
+
+            <b-form-group
+              id="input-group-image"
+              label-cols-sm="3"
+              label="Profile Picture (URL)"
+              label-for="image"
+              description="*Is not a required field, there is a default image for a new account."
+            >
+              <b-form-input
+                id="image"
+                type="text"
+                v-model="$v.form.image.$model"
+                :state="validateState('image')"
+              ></b-form-input>
+              <b-form-invalid-feedback v-if="!$v.form.image.url">
+                profile picture is only URL
               </b-form-invalid-feedback>
             </b-form-group>
 
@@ -187,7 +221,7 @@
 </template>
 
 <script>
-
+// import countries from '../assets/countries'
 import {
   required,
   minLength,
@@ -196,22 +230,27 @@ import {
   sameAs,
   email,
   url,
-  regex,
+  // regex,
   helpers,
 } from 'vuelidate/lib/validators'
 const containsNumber = helpers.regex('containsNumber ', /[0-9]/)
 const containsSpecial = helpers.regex('containsSpecial ', /[#?!@$%^&*-]/)
 export default {
-  name: 'Register',
+  name: 'register',
   data() {
     return {
       form: {
         username: '',
+        firstName: '',
+        lastName: '',
+        country: null,
         password: '',
         confirmedPassword: '',
         email: '',
+        image: '',
         submitError: undefined,
       },
+      // countries: [{ value: null, text: '', disabled: true }],
       errors: [],
       validated: false,
     }
@@ -223,11 +262,20 @@ export default {
         length: (u) => minLength(3)(u) && maxLength(8)(u),
         alpha,
       },
+      firstName: {
+        required,
+      },
+      lastName: {
+        required,
+      },
+      country: {
+        required,
+      },
       password: {
         required,
         length: (p) => minLength(5)(p) && maxLength(10)(p),
         containsNumber,
-
+        containsSpecial,
       },
       confirmedPassword: {
         required,
@@ -236,6 +284,9 @@ export default {
       email: {
         required,
         email,
+      },
+      image: {
+        url,
       },
     },
   },
@@ -255,14 +306,18 @@ export default {
           'https://res.cloudinary.com/dfhrbnvty/image/upload/v1591787513/propile_anfsci.jpg'
       }
       try {
-        const response = await this.axios.post(
-          this.$root.store.base_url + '/Register',
-          {
-            username: this.form.username,
-            email: this.form.email,
-            password: this.form.password,
-          },
-        )
+        // const response = await this.axios.post(
+        //   this.$root.store.base_url + '/register',
+        //   {
+        //     username: this.form.username,
+        //     firstname: this.form.firstName,
+        //     lastname: this.form.lastName,
+        //     country: this.form.country,
+        //     email: this.form.email,
+        //     image: this.form.image,
+        //     password: this.form.password,
+        //   },
+        // )
         this.$router.push('/login')
         // console.log(response);
       } catch (err) {
@@ -282,9 +337,13 @@ export default {
     onReset() {
       this.form = {
         username: '',
+        firstName: '',
+        lastName: '',
+        country: null,
         password: '',
         confirmedPassword: '',
         email: '',
+        image: '',
       }
       this.$nextTick(() => {
         this.$v.$reset()
@@ -303,28 +362,35 @@ html {
   margin: 0;
   height: 100%;
 }
+
 input {
   border: none;
 }
+
 button:focus {
   outline: none;
 }
+
 ::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.65);
 }
+
 ::-webkit-input-placeholder .input-line:focus + ::input-placeholder {
   color: #fff;
 }
+
 .highlight {
   color: rgba(255, 255, 255, 0.8);
   font-weight: 400;
   cursor: pointer;
   transition: color 0.2s ease;
 }
+
 .highlight:hover {
   color: #fff;
   transition: color 0.2s ease;
 }
+
 .spacing {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -336,12 +402,14 @@ button:focus {
   margin-top: 10px;
   color: rgba(255, 255, 255, 0.65);
 }
+
 .input-line:focus {
   outline: none;
   border-color: #fff;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
+
 .ghost-round {
   cursor: pointer;
   background: none;
@@ -361,12 +429,14 @@ button:focus {
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
+
 .ghost-round:hover {
   background: rgba(255, 255, 255, 0.15);
   color: #fff;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
+
 .input-line {
   background: none;
   margin-bottom: 10px;
@@ -382,12 +452,15 @@ button:focus {
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
+
 .full-width {
   width: 100%;
 }
+
 .input-fields {
   margin-top: 25px;
 }
+
 .content {
   padding-left: 25px;
   padding-right: 25px;
@@ -400,6 +473,7 @@ button:focus {
   flex-flow: column;
   z-index: 5;
 }
+
 .welcome {
   font-weight: 200;
   margin-top: 75px;
@@ -409,6 +483,7 @@ button:focus {
   letter-spacing: 0px;
   letter-spacing: 0.05rem;
 }
+
 .subtitle {
   text-align: center;
   line-height: 1em;
@@ -416,11 +491,13 @@ button:focus {
   letter-spacing: 0px;
   letter-spacing: 0.02rem;
 }
+
 .menu {
   background: rgba(0, 0, 0, 0.2);
   width: 100%;
   height: 50px;
 }
+
 .window {
   z-index: 100;
   color: #fff;
@@ -441,6 +518,7 @@ button:focus {
   background: url('https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823')
     top left no-repeat;
 }
+
 .overlay {
   background: -webkit-linear-gradient(#bec6d6, #bab0c0);
   background: linear-gradient(#ced3dd, #a196aa);
@@ -452,6 +530,7 @@ button:focus {
   z-index: 1;
   border-radius: 15px;
 }
+
 .bold-line {
   background: #e7e7e7;
   position: absolute;
@@ -466,6 +545,7 @@ button:focus {
     left no-repeat;
   background-size: cover;
 }
+
 @media (max-width: 600px) {
   .window {
     width: 100%;

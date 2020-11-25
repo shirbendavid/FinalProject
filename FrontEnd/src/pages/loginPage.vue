@@ -14,19 +14,19 @@
           <br />
           <b-form @submit.prevent="onLogin">
             <b-form-group
-              id="input-group-email"
+              id="input-group-Username"
               label-cols-sm="3"
-              label="Email"
-              label-for="email"
+              label="User Name"
+              label-for="Username"
             >
               <b-form-input
-                id="Email"
-                v-model="$v.form.email.$model"
+                id="Username"
+                v-model="$v.form.username.$model"
                 type="text"
-                :state="validateState('email')"
+                :state="validateState('username')"
               ></b-form-input>
               <b-form-invalid-feedback>
-                Email is required
+                Username is required
               </b-form-invalid-feedback>
             </b-form-group>
 
@@ -84,7 +84,7 @@ export default {
   data() {
     return {
       form: {
-        email: '',
+        username: '',
         password: '',
         submitError: undefined,
       },
@@ -92,7 +92,7 @@ export default {
   },
   validations: {
     form: {
-      email: {
+      username: {
         required,
       },
       password: {
@@ -107,21 +107,33 @@ export default {
     },
     async Login() {
       try {
-        const response = await this.axios.post(
-          this.$root.store.base_url + '/Login',
-          {
-            email: this.form.email,
-            password: this.form.password,
-            // withCredentials: true,
-          },
-        )
+        // const response = await this.axios.post(
+        //   this.$root.store.base_url + '/Login',
+        //   {
+        //     username: this.form.username,
+        //     password: this.form.password,
+        //     // withCredentials: true,
+        //   },
+        // )
         // console.log(response);
         // this.$root.loggedIn = true;
         console.log(this.$root.store.login)
-        this.$root.store.login(this.form.email)
+        this.$root.store.login(this.form.username)
+
         const favoriteRecipes = await this.axios.get(
           this.$root.store.base_url + '/user/myFavorites',
         )
+        //save favorite recipes
+        console.log(favoriteRecipes)
+        this.$root.store.addFavoriteRecipes(favoriteRecipes.data)
+        console.log(this.$root.store.favoriteRecipes)
+        //save profile picture
+        const picture = await this.axios.get(
+          this.$root.store.base_url + '/user/getPorfilePicture',
+        )
+        console.log(picture.data)
+        this.$root.store.addProfilePicture(picture.data)
+
         window.location = 'pages/MainPage'
       } catch (err) {
         console.log(err.response)
@@ -136,6 +148,7 @@ export default {
         return
       }
       // console.log("login method go");
+
       this.Login()
     },
   },
@@ -145,34 +158,42 @@ export default {
 .container {
   max-width: 500px;
 }
+
 @import url(https://fonts.googleapis.com/css?family=Raleway);
 body,
 html {
   margin: 0;
   height: 100%;
 }
+
 input {
   border: none;
 }
+
 button:focus {
   outline: none;
 }
+
 ::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.65);
 }
+
 ::-webkit-input-placeholder .input-line:focus + ::input-placeholder {
   color: #fff;
 }
+
 .highlight {
   color: rgba(255, 255, 255, 0.8);
   font-weight: 400;
   cursor: pointer;
   transition: color 0.2s ease;
 }
+
 .highlight:hover {
   color: #fff;
   transition: color 0.2s ease;
 }
+
 .spacing {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
@@ -184,12 +205,14 @@ button:focus {
   margin-top: 10px;
   color: rgba(255, 255, 255, 0.65);
 }
+
 .input-line:focus {
   outline: none;
   border-color: #fff;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
+
 .ghost-round {
   cursor: pointer;
   background: none;
@@ -209,12 +232,14 @@ button:focus {
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
+
 .ghost-round:hover {
   background: rgba(255, 255, 255, 0.15);
   color: #fff;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
+
 .input-line {
   background: none;
   margin-bottom: 10px;
@@ -230,12 +255,15 @@ button:focus {
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
+
 .full-width {
   width: 100%;
 }
+
 .input-fields {
   margin-top: 25px;
 }
+
 /*.container {
   display: -webkit-box;
   display: -webkit-flex;
@@ -252,6 +280,7 @@ button:focus {
   background: #eee;
   height: 100%;
 }*/
+
 .content {
   padding-left: 25px;
   padding-right: 25px;
@@ -264,6 +293,7 @@ button:focus {
   flex-flow: column;
   z-index: 5;
 }
+
 .welcome {
   font-weight: 200;
   margin-top: 75px;
@@ -273,6 +303,7 @@ button:focus {
   letter-spacing: 0px;
   letter-spacing: 0.05rem;
 }
+
 .subtitle {
   text-align: center;
   line-height: 1em;
@@ -280,11 +311,13 @@ button:focus {
   letter-spacing: 0px;
   letter-spacing: 0.02rem;
 }
+
 .menu {
   background: rgba(0, 0, 0, 0.2);
   width: 100%;
   height: 50px;
 }
+
 .window {
   z-index: 100;
   color: #fff;
@@ -305,6 +338,7 @@ button:focus {
   background: url('https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823')
     top left no-repeat;
 }
+
 .overlay {
   background: -webkit-linear-gradient(#bec6d6, #6b656e);
   background: linear-gradient(#ced3dd, #746c7a);
@@ -316,6 +350,7 @@ button:focus {
   z-index: 1;
   border-radius: 15px;
 }
+
 .bold-line {
   background: #e7e7e7;
   position: absolute;
@@ -330,6 +365,7 @@ button:focus {
     left no-repeat;
   background-size: cover;
 }
+
 @media (max-width: 600px) {
   .window {
     width: 100%;
