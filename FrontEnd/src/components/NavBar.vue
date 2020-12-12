@@ -5,11 +5,11 @@
     </router-link> -->
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <!-- <router-link class="nav" tag="b-nav-item" :to="{ name: 'main' }">
+        <router-link class="nav" tag="b-nav-item" :to="{ name: 'main' }">
           Home
         </router-link>
 
-        <router-link class="nav" tag="b-nav-item" :to="{ name: 'search' }">
+        <!-- <router-link class="nav" tag="b-nav-item" :to="{ name: 'search' }">
           Search
         </router-link>
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'about' }">
@@ -19,7 +19,7 @@
 
       <b-navbar-nav
         class="ml-auto"
-        v-if="!$root.store.username && !this.$cookies.get('session')"
+        v-if="!$root.store.email && !this.$cookies.get('session')"
       >
         <b-nav-text>Hello Guset!</b-nav-text>
         <p class="h3 mb-2">
@@ -34,37 +34,10 @@
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto" v-else>
         <b-nav-text>Welcome</b-nav-text>
-        <img
-          :src="this.$root.store.profilePicture[0].image"
-          height="45"
-          alt=""
-          center
-        />
         <b-nav-item-dropdown right>
           <template v-slot:button-content>
-            <em>{{ $root.store.username }}</em>
+            <em>{{ $root.store.email }}</em>
           </template>
-          <router-link
-            class="nav"
-            tag="b-dropdown-item"
-            :to="{ name: 'favoritesRecipes' }"
-          >
-            My Favorites Recipes
-          </router-link>
-          <router-link
-            class="nav"
-            tag="b-dropdown-item"
-            :to="{ name: 'personalRecipes' }"
-          >
-            My Parsonal Recipes
-          </router-link>
-          <router-link
-            class="nav"
-            tag="b-dropdown-item"
-            :to="{ name: 'famliyRecipes' }"
-          >
-            My Famliy Recipes
-          </router-link>
         </b-nav-item-dropdown>
         <button class="button" tag="b-nav-item" @click="Logout()">
           Logout
@@ -92,7 +65,8 @@ export default {
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css?family=Special+Elite');
 .navbar {
-  background-color: #ced3dde3;
+  background: -webkit-linear-gradient(#ccd2df, #6b656e);
+  background: linear-gradient(#e9c9b5c5, #f3c48ec7);
   // position: fixed; /* Set the navbar to fixed position */
   // width: 100%; /* Full width */
   float: inline-start;
@@ -114,7 +88,7 @@ export default {
 }
 
 .button {
-  background-color: #bac0cee3;
+  background-color: #e9c9b5c5;
   // border: 1px solid rgba(250, 248, 245, 0.911);
   // border-radius: 25px;
   border: none;

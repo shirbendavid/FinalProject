@@ -14,19 +14,19 @@
           <br />
           <b-form @submit.prevent="onLogin">
             <b-form-group
-              id="input-group-Username"
+              id="input-group-email"
               label-cols-sm="3"
-              label="User Name"
-              label-for="Username"
+              label="E-email"
+              label-for="email"
             >
               <b-form-input
-                id="Username"
-                v-model="$v.form.username.$model"
+                id="email"
+                v-model="$v.form.email.$model"
                 type="text"
-                :state="validateState('username')"
+                :state="validateState('email')"
               ></b-form-input>
               <b-form-invalid-feedback>
-                Username is required
+                email is required
               </b-form-invalid-feedback>
             </b-form-group>
 
@@ -84,7 +84,7 @@ export default {
   data() {
     return {
       form: {
-        username: '',
+        email: '',
         password: '',
         submitError: undefined,
       },
@@ -92,7 +92,7 @@ export default {
   },
   validations: {
     form: {
-      username: {
+      email: {
         required,
       },
       password: {
@@ -107,37 +107,25 @@ export default {
     },
     async Login() {
       try {
-        // const response = await this.axios.post(
-        //   this.$root.store.base_url + '/Login',
-        //   {
-        //     username: this.form.username,
-        //     password: this.form.password,
-        //     // withCredentials: true,
-        //   },
-        // )
-        // console.log(response);
-        // this.$root.loggedIn = true;
+        const response = await this.axios.post(
+            this.$root.store.base_url +'/Login',
+          {
+            email: this.form.email,
+            password: this.form.password,
+            // withCredentials: true,
+          },
+        )
+        console.log(response);
+        this.$root.loggedIn = true;
         console.log(this.$root.store.login)
-        this.$root.store.login(this.form.username)
-
-        const favoriteRecipes = await this.axios.get(
-          this.$root.store.base_url + '/user/myFavorites',
-        )
-        //save favorite recipes
-        console.log(favoriteRecipes)
-        this.$root.store.addFavoriteRecipes(favoriteRecipes.data)
-        console.log(this.$root.store.favoriteRecipes)
-        //save profile picture
-        const picture = await this.axios.get(
-          this.$root.store.base_url + '/user/getPorfilePicture',
-        )
-        console.log(picture.data)
-        this.$root.store.addProfilePicture(picture.data)
+        this.$root.store.login(this.form.email)
 
         window.location = 'pages/MainPage'
       } catch (err) {
         console.log(err.response)
-        this.form.submitError = err.response.data.message
+        // this.form.submitError = err.response.data.message
+        this.form.submitError = err.response.data
+        console.log(err.response.data)
       }
     },
     onLogin() {
@@ -218,7 +206,7 @@ button:focus {
   background: none;
   border: 1px solid rgba(255, 255, 255, 0.65);
   border-radius: 25px;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(10, 10, 10, 0.65);
   -webkit-align-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end;
@@ -264,23 +252,6 @@ button:focus {
   margin-top: 25px;
 }
 
-/*.container {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  background: #eee;
-  height: 100%;
-}*/
-
 .content {
   padding-left: 25px;
   padding-right: 25px;
@@ -302,6 +273,7 @@ button:focus {
   font-size: 2.5rem;
   letter-spacing: 0px;
   letter-spacing: 0.05rem;
+  color: black;
 }
 
 .subtitle {
@@ -310,6 +282,7 @@ button:focus {
   font-weight: 100;
   letter-spacing: 0px;
   letter-spacing: 0.02rem;
+  color: rgb(34, 34, 34);
 }
 
 .menu {
@@ -320,7 +293,7 @@ button:focus {
 
 .window {
   z-index: 100;
-  color: #fff;
+  color: rgb(51, 51, 51);
   font-family: Raleway;
   position: relative;
   display: -webkit-box;
@@ -340,8 +313,8 @@ button:focus {
 }
 
 .overlay {
-  background: -webkit-linear-gradient(#bec6d6, #6b656e);
-  background: linear-gradient(#ced3dd, #746c7a);
+  background: -webkit-linear-gradient(#ccd2df, #6b656e);
+  background: linear-gradient(#e9c9b5c5, #f3c48ec7);
   opacity: 0.95;
   filter: alpha(opacity=85);
   height: 100%;

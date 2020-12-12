@@ -10,7 +10,7 @@
           <div class="subtitle">
             We're almost done.
             <br />
-            Before using our services you need to create an account.
+            You need to create an account.
           </div>
           <br />
           <br />
@@ -18,28 +18,25 @@
 
           <b-form @submit.prevent="onRegister" @reset.prevent="onReset">
             <b-form-group
-              id="input-group-username"
+              id="input-group-email"
               label-cols-sm="3"
-              label="User Name"
-              label-for="username"
+              label="Email"
+              label-for="email"
             >
               <b-form-input
-                id="username"
-                v-model="$v.form.username.$model"
-                type="text"
-                :state="validateState('username')"
+                id="email"
+                type="email"
+                v-model="$v.form.email.$model"
+                :state="validateState('email')"
               ></b-form-input>
-              <b-form-invalid-feedback v-if="!$v.form.username.required">
-                Username is required
+              <b-form-invalid-feedback v-if="!$v.form.email.required">
+                Email address is required
               </b-form-invalid-feedback>
-              <b-form-invalid-feedback v-else-if="!$v.form.username.length">
-                Username length should be between 3-8 characters long
-              </b-form-invalid-feedback>
-              <b-form-invalid-feedback v-if="!$v.form.username.alpha">
-                Username must contain only letters
+              <b-form-invalid-feedback v-if="!$v.form.email.email">
+                Email is not a properly formatted email address
               </b-form-invalid-feedback>
             </b-form-group>
-
+            
             <b-form-group
               id="input-group-firstName"
               label-cols-sm="3"
@@ -75,19 +72,36 @@
             </b-form-group>
 
             <b-form-group
-              id="input-group-country"
+              id="input-group-gender"
               label-cols-sm="3"
-              label="Country"
-              label-for="country"
+              label="Gender"
+              label-for="gender"
             >
               <b-form-select
-                id="country"
-                v-model="$v.form.country.$model"
-                :options="countries"
-                :state="validateState('country')"
+                id="gender"
+                v-model="$v.form.gender.$model"
+                :options="genders"
+                :state="validateState('gender')"
               ></b-form-select>
-              <b-form-invalid-feedback>
-                Country is required
+              <b-form-invalid-feedback v-if="!$v.form.gender.required">
+                gender is required
+              </b-form-invalid-feedback>
+            </b-form-group>
+
+            <b-form-group
+              id="input-group-age"
+              label-cols-sm="3"
+              label="Age"
+              label-for="age"
+            >
+              <b-form-input
+                id="age"
+                v-model="$v.form.age.$model"
+                type="text"
+                :state="validateState('age')"
+              ></b-form-input>
+              <b-form-invalid-feedback v-if="!$v.form.age.required">
+                age is required
               </b-form-invalid-feedback>
             </b-form-group>
 
@@ -141,44 +155,6 @@
               </b-form-invalid-feedback>
             </b-form-group>
 
-            <b-form-group
-              id="input-group-email"
-              label-cols-sm="3"
-              label="Email"
-              label-for="email"
-            >
-              <b-form-input
-                id="email"
-                type="email"
-                v-model="$v.form.email.$model"
-                :state="validateState('email')"
-              ></b-form-input>
-              <b-form-invalid-feedback v-if="!$v.form.email.required">
-                Email address is required
-              </b-form-invalid-feedback>
-              <b-form-invalid-feedback v-if="!$v.form.email.email">
-                Email is not a properly formatted email address
-              </b-form-invalid-feedback>
-            </b-form-group>
-
-            <b-form-group
-              id="input-group-image"
-              label-cols-sm="3"
-              label="Profile Picture (URL)"
-              label-for="image"
-              description="*Is not a required field, there is a default image for a new account."
-            >
-              <b-form-input
-                id="image"
-                type="text"
-                v-model="$v.form.image.$model"
-                :state="validateState('image')"
-              ></b-form-input>
-              <b-form-invalid-feedback v-if="!$v.form.image.url">
-                profile picture is only URL
-              </b-form-invalid-feedback>
-            </b-form-group>
-
             <button
               type="submit"
               variant="primary"
@@ -226,10 +202,8 @@ import {
   required,
   minLength,
   maxLength,
-  alpha,
   sameAs,
   email,
-  url,
   // regex,
   helpers,
 } from 'vuelidate/lib/validators'
@@ -240,35 +214,35 @@ export default {
   data() {
     return {
       form: {
-        username: '',
         firstName: '',
         lastName: '',
-        country: null,
         password: '',
         confirmedPassword: '',
+        gender: null,
+        age: '',
         email: '',
-        image: '',
         submitError: undefined,
       },
       // countries: [{ value: null, text: '', disabled: true }],
+      genders: [
+        { value: null,  text: '' , disabled: true },
+        { value: 'female',  text: 'female' , disabled: false },
+        { value: 'male',  text: 'male' , disabled: false }
+        ],
       errors: [],
       validated: false,
     }
   },
   validations: {
     form: {
-      username: {
+      email: {
         required,
-        length: (u) => minLength(3)(u) && maxLength(8)(u),
-        alpha,
+        email,
       },
       firstName: {
         required,
       },
       lastName: {
-        required,
-      },
-      country: {
         required,
       },
       password: {
@@ -281,13 +255,12 @@ export default {
         required,
         sameAsPassword: sameAs('password'),
       },
-      email: {
+      gender: {
         required,
-        email,
       },
-      image: {
-        url,
-      },
+        age: {
+        required,
+      }
     },
   },
   mounted() {
@@ -301,28 +274,25 @@ export default {
       return $dirty ? !$error : null
     },
     async Register() {
-      if (this.form.image == '') {
-        this.form.image =
-          'https://res.cloudinary.com/dfhrbnvty/image/upload/v1591787513/propile_anfsci.jpg'
-      }
       try {
-        // const response = await this.axios.post(
-        //   this.$root.store.base_url + '/register',
-        //   {
-        //     username: this.form.username,
-        //     firstname: this.form.firstName,
-        //     lastname: this.form.lastName,
-        //     country: this.form.country,
-        //     email: this.form.email,
-        //     image: this.form.image,
-        //     password: this.form.password,
-        //   },
-        // )
-        this.$router.push('/login')
-        // console.log(response);
+        const response = await this.axios.post(
+          this.$root.store.base_url + '/Registration',
+          {
+            email: this.form.email,
+            firstname: this.form.firstName,
+            lastname: this.form.lastName,
+            gender: this.form.gender,
+            age: this.form.age,
+            password: this.form.password,
+          },
+        )
+        console.log(response);
+        this.$router.push('/Login')
+
       } catch (err) {
         console.log(err.response)
-        this.form.submitError = err.response.data.message
+        // this.form.submitError = err.response.data.message
+        this.form.submitError = err.response.data
       }
     },
     onRegister() {
@@ -336,14 +306,13 @@ export default {
     },
     onReset() {
       this.form = {
-        username: '',
+        email: '',
         firstName: '',
         lastName: '',
-        country: null,
+        gender: null,
+        age: '',
         password: '',
-        confirmedPassword: '',
-        email: '',
-        image: '',
+        confirmedPassword: ''
       }
       this.$nextTick(() => {
         this.$v.$reset()
@@ -415,7 +384,7 @@ button:focus {
   background: none;
   border: 1px solid rgba(255, 255, 255, 0.65);
   border-radius: 25px;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(10, 10, 10, 0.65);
   -webkit-align-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end;
@@ -482,6 +451,7 @@ button:focus {
   font-size: 2.5rem;
   letter-spacing: 0px;
   letter-spacing: 0.05rem;
+  color: black;
 }
 
 .subtitle {
@@ -490,6 +460,7 @@ button:focus {
   font-weight: 100;
   letter-spacing: 0px;
   letter-spacing: 0.02rem;
+  color: rgb(34, 34, 34);
 }
 
 .menu {
@@ -500,7 +471,7 @@ button:focus {
 
 .window {
   z-index: 100;
-  color: #fff;
+  color: rgb(51, 51, 51);
   font-family: Raleway;
   position: relative;
   display: -webkit-box;
@@ -520,8 +491,8 @@ button:focus {
 }
 
 .overlay {
-  background: -webkit-linear-gradient(#bec6d6, #bab0c0);
-  background: linear-gradient(#ced3dd, #a196aa);
+  background: -webkit-linear-gradient(#ccd2df, #6b656e);
+  background: linear-gradient(#e9c9b5c5, #f3c48ec7);
   opacity: 0.95;
   filter: alpha(opacity=85);
   height: 100%;

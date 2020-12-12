@@ -81,57 +81,27 @@ Vue.config.productionTip = false;
 const shared_data = {
   // base_url: "http://assigmeent3-2-lironshir.herokuapp.com",
   base_url: "http://localhost:3000",
-  username: localStorage.username,
-  profilePicture: localStorage.profilePicture
-    ? JSON.parse(localStorage.profilePicture)
-    : [],
-  favoriteRecipes: localStorage.favoriteRecipes
-    ? JSON.parse(localStorage.favoriteRecipes)
-    : [],
-  viewedRecipes: localStorage.viewedRecipes
-    ? JSON.parse(localStorage.viewedRecipes)
-    : [],
-  searchRecipes: localStorage.searchRecipes ? localStorage.searchRecipes : [],
-  addFavoriteRecipes(favoriteRecipes) {
-    localStorage.setItem("favoriteRecipes", JSON.stringify(favoriteRecipes));
-    this.favoriteRecipes = favoriteRecipes;
-  },
-  addViewedRecipes(viewedRecipes) {
-    localStorage.setItem("viewedRecipes", JSON.stringify(viewedRecipes));
-    this.viewedRecipes = viewedRecipes;
-  },
-  addProfilePicture(profilePicture) {
-    localStorage.setItem("profilePicture", JSON.stringify(profilePicture));
-    this.profilePicture = profilePicture;
-  },
-  addSearchRecipes(searchRecipes) {
-    localStorage.setItem("searchRecipes", JSON.stringify(searchRecipes));
-    this.searchRecipes = searchRecipes;
-  },
-  login(username) {
-    localStorage.setItem("username", username);
-    this.username = username;
-    console.log("login", this.username);
+  email: localStorage.email,
+  login(email) {
+    localStorage.setItem("email", email);
+    this.email = email;
+    console.log("login", this.email);
   },
   logout() {
     console.log("logout");
-    localStorage.removeItem("username");
-    localStorage.removeItem("favoriteRecipes");
-    localStorage.removeItem("viewedRecipes");
-    localStorage.removeItem("profilePicture");
-    //localStorage.removeItem("searchRecipes");
+    localStorage.removeItem("email");
     Vue.$cookies.remove("session");
-    this.username = undefined;
+    this.email = undefined;
   },
 };
 console.log(shared_data);
 
 router.beforeEach((to, from, next) => {
   // if session expired or localStorage was deleted
-  if (shared_data.username === undefined || !Vue.$cookies.get("session")) {
+  if (shared_data.email === undefined || !Vue.$cookies.get("session")) {
     if (
-      (shared_data.username === undefined && Vue.$cookies.get("session")) ||
-      (shared_data.username !== undefined && !Vue.$cookies.get("session"))
+      (shared_data.email === undefined && Vue.$cookies.get("session")) ||
+      (shared_data.email !== undefined && !Vue.$cookies.get("session"))
     ) {
       shared_data.logout();
     }

@@ -9,7 +9,6 @@ router.post("/Registration", async (req, res, next) => {
     // valid parameters
     // username exists
     const users = await DButils.execQuery("SELECT email FROM users");
-    console.log("users:" + users.length);
    if (users.length > 0) {
       if (users.find((x) => x.email === req.body.email))
         throw { status: 409, message: "Email taken" };
@@ -22,7 +21,7 @@ router.post("/Registration", async (req, res, next) => {
 
     DButils.execQuery(
       `INSERT INTO users VALUES (default, '${req.body.email}', '${hash_password}', '${req.body.firstname}', '${req.body.lastname}', 
-      '${req.body.age}', '${req.body.sex}')`
+      '${req.body.age}', '${req.body.gender}')`
     );
     res.status(201).send({ message: "user created", success: true });
   } catch (error) {

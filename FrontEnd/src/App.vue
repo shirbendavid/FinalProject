@@ -3,7 +3,6 @@
     <NavBar />
     <br />
     <router-view />
-    Main Pageee
     <br />
   </div>
 </template>

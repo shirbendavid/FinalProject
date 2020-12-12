@@ -4,6 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const session = require("client-sessions");
+const cors = require("cors");
 
 var authRouter = require("./routes/auth");
 var usersRouter = require("./routes/users");
@@ -19,7 +20,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
+//#setting cors
+const corsConfig = {
+  origin: true,
+  credentials: true,
+};
+app.use(cors(corsConfig));
+app.options("*", cors(corsConfig));
 //#setting cookies configuration
 app.use(
   session({
