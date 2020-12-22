@@ -167,14 +167,14 @@
             <b-button
               type="reset"
               variant="danger"
-              style="border-radius: 25px;"
+              style="border-radius: 25px;  background-color: #d85416;"
             >
               Reset
             </b-button>
 
             <div class="mt-2">
               You have an account already?
-              <router-link to="login"><b>Log in here</b></router-link>
+              <router-link to="login" style="color: #d85416; font-size: 19px;" ><b>Log in here</b></router-link>
               <br />
               <br />
               <br />
@@ -455,6 +455,7 @@ button:focus {
 }
 
 .subtitle {
+  font-size: 20px;
   text-align: center;
   line-height: 1em;
   font-weight: 100;
@@ -485,14 +486,14 @@ button:focus {
   box-sizing: border-box;
   //height: 860px;
   // width: 500px;
-  background: #fff;
+  background: rgb(100, 22, 22);
   background: url('https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823')
     top left no-repeat;
 }
 
 .overlay {
   background: -webkit-linear-gradient(#ccd2df, #6b656e);
-  background: linear-gradient(#e9c9b5c5, #f3c48ec7);
+  background: linear-gradient(#f3c8b4, #f1b396);
   opacity: 0.95;
   filter: alpha(opacity=85);
   height: 100%;

@@ -30,6 +30,7 @@ router.post("/Registration", async (req, res, next) => {
 });
 
 router.post("/Login", async (req, res, next) => {
+ 
   try {
     // check that username exists
     const users = await DButils.execQuery("SELECT email FROM users");
@@ -51,6 +52,12 @@ router.post("/Login", async (req, res, next) => {
 
     // return cookie
     res.status(200).send({ message: "login succeeded", success: true });
+
+ 
+   
+
+
+
   } catch (error) {
     next(error);
   }

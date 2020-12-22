@@ -79,7 +79,6 @@ Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 
 const shared_data = {
-  // base_url: "http://assigmeent3-2-lironshir.herokuapp.com",
   base_url: "http://localhost:3000",
   email: localStorage.email,
   login(email) {

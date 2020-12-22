@@ -1,5 +1,8 @@
 import Main from './pages/mainPage'
 import NotFound from './pages/NotFoundPage'
+import Observation from './pages/observationPage'
+// import NotFound from './pages/NotFoundPage'
+
 
 const routes = [
   {
@@ -16,6 +19,16 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('./pages/loginPage'),
+  },
+  {
+    path: '/observation',
+    name: 'observation',
+    component: Observation,
+  },
+  {
+    path: '/ranking',
+    name: 'ranking',
+    component: () => import('./pages/rankImagePage'),
   },
 //   {
 //     path: '/search',
