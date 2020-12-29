@@ -36,7 +36,7 @@
                 Email is not a properly formatted email address
               </b-form-invalid-feedback>
             </b-form-group>
-            
+
             <b-form-group
               id="input-group-firstName"
               label-cols-sm="3"
@@ -174,7 +174,9 @@
 
             <div class="mt-2">
               You have an account already?
-              <router-link to="login" style="color: #d85416; font-size: 19px;" ><b>Log in here</b></router-link>
+              <router-link to="login" style="color: #d85416; font-size: 19px;"
+                ><b>Log in here</b></router-link
+              >
               <br />
               <br />
               <br />
@@ -206,32 +208,32 @@ import {
   email,
   // regex,
   helpers,
-} from 'vuelidate/lib/validators'
-const containsNumber = helpers.regex('containsNumber ', /[0-9]/)
-const containsSpecial = helpers.regex('containsSpecial ', /[#?!@$%^&*-]/)
+} from "vuelidate/lib/validators";
+const containsNumber = helpers.regex("containsNumber ", /[0-9]/);
+const containsSpecial = helpers.regex("containsSpecial ", /[#?!@$%^&*-]/);
 export default {
-  name: 'register',
+  name: "register",
   data() {
     return {
       form: {
-        firstName: '',
-        lastName: '',
-        password: '',
-        confirmedPassword: '',
+        firstName: "",
+        lastName: "",
+        password: "",
+        confirmedPassword: "",
         gender: null,
-        age: '',
-        email: '',
+        age: "",
+        email: "",
         submitError: undefined,
       },
       // countries: [{ value: null, text: '', disabled: true }],
       genders: [
-        { value: null,  text: '' , disabled: true },
-        { value: 'female',  text: 'female' , disabled: false },
-        { value: 'male',  text: 'male' , disabled: false }
-        ],
+        { value: null, text: "", disabled: true },
+        { value: "female", text: "female", disabled: false },
+        { value: "male", text: "male", disabled: false },
+      ],
       errors: [],
       validated: false,
-    }
+    };
   },
   validations: {
     form: {
@@ -253,14 +255,14 @@ export default {
       },
       confirmedPassword: {
         required,
-        sameAsPassword: sameAs('password'),
+        sameAsPassword: sameAs("password"),
       },
       gender: {
         required,
       },
-        age: {
+      age: {
         required,
-      }
+      },
     },
   },
   mounted() {
@@ -270,13 +272,13 @@ export default {
   },
   methods: {
     validateState(param) {
-      const { $dirty, $error } = this.$v.form[param]
-      return $dirty ? !$error : null
+      const { $dirty, $error } = this.$v.form[param];
+      return $dirty ? !$error : null;
     },
     async Register() {
       try {
         const response = await this.axios.post(
-          this.$root.store.base_url + '/Registration',
+          this.$root.store.base_url + "/Registration",
           {
             email: this.form.email,
             firstname: this.form.firstName,
@@ -284,42 +286,41 @@ export default {
             gender: this.form.gender,
             age: this.form.age,
             password: this.form.password,
-          },
-        )
+          }
+        );
         console.log(response);
-        this.$router.push('/Login')
-
+        this.$router.push("/Login");
       } catch (err) {
-        console.log(err.response)
+        console.log(err.response);
         // this.form.submitError = err.response.data.message
-        this.form.submitError = err.response.data
+        this.form.submitError = err.response.data;
       }
     },
     onRegister() {
       // console.log("register method called");
-      this.$v.form.$touch()
+      this.$v.form.$touch();
       if (this.$v.form.$anyError) {
-        return
+        return;
       }
       // console.log("register method go");
-      this.Register()
+      this.Register();
     },
     onReset() {
       this.form = {
-        email: '',
-        firstName: '',
-        lastName: '',
+        email: "",
+        firstName: "",
+        lastName: "",
         gender: null,
-        age: '',
-        password: '',
-        confirmedPassword: ''
-      }
+        age: "",
+        password: "",
+        confirmedPassword: "",
+      };
       this.$nextTick(() => {
-        this.$v.$reset()
-      })
+        this.$v.$reset();
+      });
     },
   },
-}
+};
 </script>
 <style lang="scss" scoped>
 .container {
@@ -487,13 +488,13 @@ button:focus {
   //height: 860px;
   // width: 500px;
   background: rgb(100, 22, 22);
-  background: url('https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823')
+  background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
     top left no-repeat;
 }
 
 .overlay {
   background: -webkit-linear-gradient(#ccd2df, #6b656e);
-  background: linear-gradient(#f3c8b4, #f1b396);
+  background: linear-gradient(#e9c9b5c5, #f3c48ec7);
   opacity: 0.95;
   filter: alpha(opacity=85);
   height: 100%;
@@ -513,7 +514,7 @@ button:focus {
   height: 100%;
   z-index: 1;
   opacity: 0.1;
-  background: url('https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823')
+  background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
     left no-repeat;
   background-size: cover;
 }

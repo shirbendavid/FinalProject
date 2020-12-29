@@ -57,7 +57,11 @@
             </button>
             <div class="mt-2">
               Do not have an account yet?
-              <router-link to="register">Register in here</router-link>
+              <router-link
+                to="register"
+                style="color: #d85416; font-size: 19px;"
+                ><b>Register in here</b></router-link
+              >
             </div>
             <br />
             <br />
@@ -78,17 +82,17 @@
 </template>
 
 <script>
-import { required } from 'vuelidate/lib/validators'
+import { required } from "vuelidate/lib/validators";
 export default {
-  name: 'Login',
+  name: "Login",
   data() {
     return {
       form: {
-        email: '',
-        password: '',
+        email: "",
+        password: "",
         submitError: undefined,
       },
-    }
+    };
   },
   validations: {
     form: {
@@ -102,45 +106,45 @@ export default {
   },
   methods: {
     validateState(param) {
-      const { $dirty, $error } = this.$v.form[param]
-      return $dirty ? !$error : null
+      const { $dirty, $error } = this.$v.form[param];
+      return $dirty ? !$error : null;
     },
     async Login() {
       try {
         const response = await this.axios.post(
-            this.$root.store.base_url +'/Login',
+          this.$root.store.base_url + "/Login",
           {
             email: this.form.email,
             password: this.form.password,
             // withCredentials: true,
-          },
-        )
+          }
+        );
         console.log(response);
         this.$root.loggedIn = true;
-        console.log(this.$root.store.login)
-        this.$root.store.login(this.form.email)
+        console.log(this.$root.store.login);
+        this.$root.store.login(this.form.email);
 
-        window.location = 'pages/MainPage'
+        window.location = "pages/MainPage";
       } catch (err) {
-        console.log(err.response)
+        console.log(err.response);
         // this.form.submitError = err.response.data.message
-        this.form.submitError = err.response.data
-        console.log(err.response.data)
+        this.form.submitError = err.response.data;
+        console.log(err.response.data);
       }
     },
     onLogin() {
       // console.log("login method called");
-      this.form.submitError = undefined
-      this.$v.form.$touch()
+      this.form.submitError = undefined;
+      this.$v.form.$touch();
       if (this.$v.form.$anyError) {
-        return
+        return;
       }
       // console.log("login method go");
 
-      this.Login()
+      this.Login();
     },
   },
-}
+};
 </script>
 <style lang="scss" scoped>
 .container {
@@ -308,7 +312,7 @@ button:focus {
   //height: 860px;
   // width: 500px;
   background: #fff;
-  background: url('https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823')
+  background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
     top left no-repeat;
 }
 
@@ -334,7 +338,7 @@ button:focus {
   height: 100%;
   z-index: 1;
   opacity: 0.1;
-  background: url('https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823')
+  background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
     left no-repeat;
   background-size: cover;
 }
