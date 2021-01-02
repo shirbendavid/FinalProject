@@ -4,10 +4,9 @@
       <br />
       <h1 class="title">This is Game !!! !</h1>
       
-        <h4 class="title"> Now try to remember which images you liked the most ! </h4>
+        <h4 class="title"> Now try to remember which images you liked the most : </h4>
         <br />
-        <br />
-        <br />
+
 
         <div class="grid__row content centered">
             <vue-select-image :dataImages="dataImages"
@@ -19,7 +18,7 @@
                 ref="multi-select-image"
                 :activeClass="'--active'">
             </vue-select-image>
-         
+         <br/>
           <div>
           <h5>Mutiple Image Selected :
             <span v-for="(imgSelected, index) in imageMultipleSelected" :key="index">
@@ -32,21 +31,43 @@
           <b-row>
             <b-col>
               <b-button
-                style="border-radius: 5px; font-family: Special Elite; width: 50%; font-size: 24px; 
+                style="border-radius: 5px; font-family: Special Elite; width: 75%; font-size: 24px; 
                  background-color: #ff751a;"
                 @click="onUnselectImages">
                 Reset Selection
               </b-button>
             </b-col>
+
             <b-col>
               <b-button
-                style="border-radius: 5px; font-family: Special Elite; font-size: 24px; width: 80%;
+                style="border-radius: 5px; font-family: Special Elite; width: 95%; font-size: 24px; 
+                 background-color: #ff751a;"
+                @click="check">
+                Check my answers ;)
+              </b-button>
+            </b-col>
+
+    <b-col>
+        <span v-if="this.currentScreenNum < numOfScreens" >
+             <b-button
+                style="border-radius: 5px; font-family: Special Elite; font-size: 24px; width: 75%;
+                background-color: #ff751a"
+                @click="goToNextImages">
+                Keep playing !
+              </b-button>
+        </span>
+
+        <span v-else>
+            <b-button
+                style="border-radius: 5px; font-family: Special Elite; font-size: 24px; width: 75%;
                 background-color: #ff751a"
                 @click="onSelectImage">
                 Submit
-              </b-button>
-            </b-col>
+              </b-button>        
+        </span>
+         </b-col>   
           </b-row>
+          <br/>
         </div>
     </div>
   </b-container>
@@ -69,6 +90,9 @@ export default {
       subtitle: 'Vue 2.x component for selecting image from list',
       imageMultipleSelected: [],
       limit: 5,
+
+      numOfScreens: 3, //////////// ################ chhanngeeeee #####
+      currentScreenNum: 1,
 
       dataImages:
       [{
@@ -145,6 +169,46 @@ export default {
         // this.imageMultipleSelected = [];
         while ( this.imageMultipleSelected.length > 0 )
             this.imageMultipleSelected.pop();
+    },
+
+    check: function () {
+        console.log("to checkkk, from DB !!");
+        alert(" you didn't complete check function !!! ");
+    },
+
+    goToNextImages: function() {
+        this.currentScreenNum++;
+
+        console.log('this is next pageee');
+        // this.imageMultipleSelected = [];
+        while ( this.dataImages.length > 0 ){
+            this.dataImages.pop();
+            this.imageMultipleSelected.pop();
+        }
+
+        this.dataImages.push({
+            id: '8',
+            src: 'https://unsplash.it/190?random',
+            alt: 'Alt Image 8',
+        });
+
+        this.dataImages.push({
+            id: '5',
+            src: 'https://unsplash.it/191?random',
+            alt: 'Alt Image 5'
+        });
+            
+        this.dataImages.push({
+            id: '6',
+            src: 'https://unsplash.it/192?random',
+            alt: 'Alt Image 6'
+        });
+
+        this.dataImages.push({
+            id: '7',
+            src: 'https://unsplash.it/193?random',
+            alt: 'Alt Image 7',
+        });
     },
   }
 }
