@@ -27,6 +27,8 @@
               ></b-form-radio-group>
             </b-form-group>
           </b-row> -->
+
+           <br />
           <b-row>
             <div class="stars">
               <b-input-group>

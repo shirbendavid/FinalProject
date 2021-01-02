@@ -3,6 +3,12 @@ import App from "./App.vue";
 import VueAxios from "vue-axios";
 import axios from "axios";
 
+
+import VueSelectImage from 'vue-select-image';
+Vue.use(VueSelectImage);
+
+require('vue-select-image/dist/vue-select-image.css');
+
 import routes from "./routes";
 import VueRouter from "vue-router";
 Vue.use(VueRouter);

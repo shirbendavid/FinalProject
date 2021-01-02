@@ -30,6 +30,11 @@ const routes = [
     name: 'ranking',
     component: () => import('./pages/rankImagePage'),
   },
+  {
+    path: '/game',
+    name: 'game',
+    component: () => import('./pages/gamePage'),
+  },
 
   {
     path: '/upload',

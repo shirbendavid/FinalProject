@@ -12,6 +12,10 @@
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'observation' }">
           Observation
         </router-link>
+
+          <router-link class="nav" tag="b-nav-item" :to="{ name: 'game' }">
+          Play !
+        </router-link>
         <!-- <router-link class="nav" tag="b-nav-item" :to="{ name: 'search' }">
           Search
         </router-link>
