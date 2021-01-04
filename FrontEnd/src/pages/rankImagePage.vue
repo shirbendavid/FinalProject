@@ -100,29 +100,28 @@ export default {
   //     }
   //   },
   // },
-  // async created() {
+  async created() {
   //  get image from server
-  //   try {
-  //     let response;
-  //     // try {
-  //     //   response = await this.axios.get(
-  //     //     this.$root.store.base_url +
-  //     //       "/images/show/" +
-  //     //       this.$route.params.imageId
-  //     //   );
-  //     //   console.log(response);
-  //     //   if (response.status !== 200) this.$router.replace("/NotFound");
-  //     // } catch (error) {
-  //     //   console.log("error.response.status", error.response.status);
-  //     //   this.$router.replace("/NotFound");
-  //     //   return;
-  //     // }
+    try {
+      let response;
+      try {
+        response = await this.axios.get(
+          this.$root.store.base_url +
+            "/images/getImageToRate"
+        );
+        console.log(response);
+        if (response.status !== 200) this.$router.replace("/NotFound");
+      } catch (error) {
+        console.log("error.response.status", error.response.status);
+        this.$router.replace("/NotFound");
+        return;
+      }
 
-  //     // this.image = response.data[0];
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // },
+      this.image = response.data[0];
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
 </script>
 

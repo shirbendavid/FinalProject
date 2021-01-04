@@ -26,11 +26,11 @@ var knex = require('knex')({
 //     useNullAsDefault: true
 // });
 
-app.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
     res.send('Hello vro!')
 })
 
-app.post('/upload', async (req, res) => {
+router.post('/upload', async (req, res) => {
     const {name, data} = req.files.pic;
     if (name && data) {
         await knex.insert({name: name, img: data}).into('img');
@@ -40,7 +40,7 @@ app.post('/upload', async (req, res) => {
     }
 })
 
-app.get('/img/:id', async (req, res) => {
+router.get('/img/:id', async (req, res) => {
     const id = req.params.id;
     const img = await knex('img').where({id: id}).first();
     if (img) {
@@ -52,7 +52,7 @@ app.get('/img/:id', async (req, res) => {
     }
 })
 
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
+router.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
 
 
 // this function returns 3 random recipes who have instructions!
@@ -102,3 +102,6 @@ app.listen(port, () => console.log(`Example app listening at http://localhost:${
 //         });
 // });
 
+
+
+module.exports = router;

@@ -1,5 +1,7 @@
 var createError = require("http-errors");
 var express = require("express");
+//var multer = require('multer');
+//var fileUpload = require('express-fileupload');
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
@@ -8,7 +10,7 @@ const cors = require("cors");
 
 var authRouter = require("./routes/auth");
 var usersRouter = require("./routes/users");
-
+//var upload = multer({dest:"C:/Users/User"+'/uploads/images'});
 var app = express();
 const port = process.env.PORT || "3000";
 // view engine setup
@@ -44,11 +46,21 @@ app.use(
 
 app.use("/", authRouter);
 app.use("/users", usersRouter);
+app.use("/images", imagesRouter);
+
 
 /* GET home page. */
 app.get("/", function (req, res, next) {
   res.render("index", { title: "Project" });
 });
+
+// upload image
+// app.post('/upload', upload.array('photo'), (req, res) => {
+//   if(req.file) {
+//       res.json(req.file);
+//   }
+//   else throw 'error';
+// });
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

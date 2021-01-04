@@ -1,5 +1,5 @@
 CREATE TABLE [dbo].[images](
-	[image_id] [UNIQUEIDENTIFIER] PRIMARY KEY NOT NULL default NEWID(),
+	[image_id] [integer] PRIMARY KEY NOT NULL IDENTITY(0,1),
 	[category] [varchar](50) NOT NULL, 
     [img] [varbinary](max) NOT NULL,
 )
@@ -8,7 +8,7 @@ CREATE TABLE [dbo].[images](
 
 
 INSERT INTO [dbo].[images] values
-(default, 'animals', (SELECT * FROM OPENROWSET(BULK N'C:\Users\User\Downloads\AABOgXJ.jpg', SINGLE_BLOB) as T1) );
+( 'animals', (SELECT * FROM OPENROWSET(BULK N'C:\Users\User\Downloads\AABOgXJ.jpg', SINGLE_BLOB) as T1) );
 
 -- another option::
 INSERT INTO [dbo].[SaveFiles] (Name, Files)
