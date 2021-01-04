@@ -10,6 +10,7 @@ const cors = require("cors");
 
 var authRouter = require("./routes/auth");
 var usersRouter = require("./routes/users");
+var imagesRouter = require("./routes/images");
 //var upload = multer({dest:"C:/Users/User"+'/uploads/images'});
 var app = express();
 const port = process.env.PORT || "3000";
@@ -33,7 +34,7 @@ app.options("*", cors(corsConfig));
 app.use(
   session({
     cookieName: "session", // the cookie key name
-    secret: 'blargadeeblargblarg', // the encryption key
+    secret: "blargadeeblargblarg", // the encryption key
     duration: 30 * 60 * 1000, // expired after 30 sec
     activeDuration: 0, // if expiresIn < activeDuration,
     //the session will be extended by activeDuration milliseconds
@@ -47,7 +48,6 @@ app.use(
 app.use("/", authRouter);
 app.use("/users", usersRouter);
 app.use("/images", imagesRouter);
-
 
 /* GET home page. */
 app.get("/", function (req, res, next) {
