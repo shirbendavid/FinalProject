@@ -2,9 +2,9 @@
   <b-container class="container">
     <div id="app" class="VueSelectImage">
       <br />
-      <h1 class="title">This is Game !!! !</h1>
+      <h1 class="title">Game Time</h1>
       
-        <h4 class="title"> Now try to remember which images you liked the most : </h4>
+        <h4 class="title">Let's see if you can recognition your favorite images </h4>
         <br />
 
 
@@ -230,6 +230,8 @@ export default {
   color: black;
   font-family: Special Elite;
   width: 80%;
+  text-align: center;
+
 }
 
 #app {

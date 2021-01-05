@@ -57,6 +57,34 @@ router.post("/Login", async (req, res, next) => {
   }
 });
 
+router.post("/LoginAdmin", async (req, res, next) => {
+ 
+  try {
+    // check that username exists
+    const admins = await DButils.execQuery("SELECT email FROM admins");
+    if (!admins.find((x) => x.email === req.body.email))
+      throw { status: 401, message: "Username or Password incorrect" };
+
+    // check that the password is correct
+    const admin = (
+      await DButils.execQuery(
+        `SELECT * FROM admins WHERE email = '${req.body.email}'`
+      )
+    )[0];
+
+    if (!(req.body.password, admin.password)) {
+      throw { status: 401, message: "Username or Password incorrect" };
+    }
+    // Set cookie
+    req.session.admin_id = admin.admin_id;
+
+    // return cookie
+    res.status(200).send({ message: "login succeeded", success: true });
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.post("/Logout", function (req, res) {
   req.session.reset(); // reset the session info --> send cookie when  req.session == undefined!!
   res.send({ success: true, message: "logout succeeded" });

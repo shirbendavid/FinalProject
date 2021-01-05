@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NavBar />
+    <NavBar  v-if="!isNotManage"/>
     <br />
     <router-view />
     <br />
@@ -15,6 +15,11 @@ export default {
     NavBar,
   },
   name: "App",
+  computed: {
+    isNotManage() {
+      return this.$route.name === 'management'
+  }
+}
 };
 </script>
 

@@ -55,14 +55,6 @@
             >
               Login
             </button>
-            <div class="mt-2">
-              Do not have an account yet?
-              <router-link
-                to="register"
-                style="color: #d85416; font-size: 19px;"
-                ><b>Register in here</b></router-link
-              >
-            </div>
             <br />
             <br />
           </b-form>
@@ -84,7 +76,7 @@
 <script>
 import { required } from "vuelidate/lib/validators";
 export default {
-  name: "Login",
+  name: "LoginManage",
   data() {
     return {
       form: {
@@ -112,7 +104,7 @@ export default {
     async Login() {
       try {
         const response = await this.axios.post(
-          this.$root.store.base_url + "/Login",
+          this.$root.store.base_url + "/LoginAdmin",
           {
             email: this.form.email,
             password: this.form.password,
@@ -122,9 +114,9 @@ export default {
         console.log(response);
         this.$root.loggedIn = true;
         console.log(this.$root.store.login);
-        this.$root.store.login(this.form.email);
+        this.$root.store.loginAdmin(this.form.email);
+        // location.reload();
 
-        this.$router.push("/observation");
       } catch (err) {
         console.log(err.response);
         // this.form.submitError = err.response.data.message

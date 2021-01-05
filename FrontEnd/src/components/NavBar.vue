@@ -1,27 +1,13 @@
 <template>
   <b-navbar class="navbar">
-    <!-- <router-link tag="b-navbar-brand" :to="{ name: 'main' }">
-      <img src="../assets/logo.png" style="width: 50px;" />
-    </router-link> -->
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'main' }">
           Home
         </router-link>
-
-        <router-link class="nav" tag="b-nav-item" :to="{ name: 'observation' }">
-          Observation
-        </router-link>
-
-          <router-link class="nav" tag="b-nav-item" :to="{ name: 'game' }">
-          Play !
-        </router-link>
-        <!-- <router-link class="nav" tag="b-nav-item" :to="{ name: 'search' }">
-          Search
-        </router-link>
-        <router-link class="nav" tag="b-nav-item" :to="{ name: 'about' }">
-          About
-        </router-link> -->
+      <router-link class="nav" tag="b-nav-item" :to="{ name: 'management' }">
+        <b-icon icon="gear-fill" aria-hidden="true"></b-icon> Management portal
+      </router-link>
       </b-navbar-nav>
 
       <b-navbar-nav
@@ -39,13 +25,21 @@
           Login
         </router-link>
       </b-navbar-nav>
-      <b-navbar-nav class="ml-auto" v-else>
-        <b-nav-text>Welcome</b-nav-text>
-        <b-nav-item-dropdown right>
+      <b-navbar-nav class="ml-auto" v-else-if="!$root.store.emailAdmin">
+        <b-nav-text><b>Welcome</b></b-nav-text>
+        <br/>
+        <router-link class="nav" tag="b-nav-item" :to="{ name: 'observation' }">
+          Rate
+        </router-link>
+
+          <router-link class="nav" tag="b-nav-item" :to="{ name: 'game' }">
+          Game
+        </router-link>
+        <!-- <b-nav-item-dropdown right>
           <template v-slot:button-content>
             <em>{{ $root.store.email }}</em>
           </template>
-        </b-nav-item-dropdown>
+        </b-nav-item-dropdown> -->
         <button class="button" tag="b-nav-item" @click="Logout()">
           Logout
         </button>

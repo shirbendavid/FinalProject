@@ -96,6 +96,11 @@ const shared_data = {
     this.email = email;
     console.log("login", this.email);
   },
+  loginAdmin(email) {
+    localStorage.setItem("emailAdmin", email);
+    this.emailAdmin = email;
+    console.log("login admin", this.emailAdmin);
+  },
   logout() {
     console.log("logout");
     localStorage.removeItem("email");
@@ -109,7 +114,7 @@ router.beforeEach((to, from, next) => {
   // if session expired or localStorage was deleted
   if (shared_data.email === undefined || !Vue.$cookies.get("session")) {
     if (
-      (shared_data.email === undefined && Vue.$cookies.get("session")) ||
+      (shared_data.email === undefined && shared_data.emailAdmin === undefined && Vue.$cookies.get("session")) ||
       (shared_data.email !== undefined && !Vue.$cookies.get("session"))
     ) {
       shared_data.logout();

@@ -1,8 +1,5 @@
 import Main from './pages/mainPage'
 import NotFound from './pages/NotFoundPage'
-import Observation from './pages/observationPage'
-// import NotFound from './pages/NotFoundPage'
-
 
 const routes = [
   {
@@ -23,7 +20,7 @@ const routes = [
   {
     path: '/observation',
     name: 'observation',
-    component: Observation,
+    component:  () => import('./pages/observationPage'),
   },
   {
     path: '/ranking',
@@ -41,18 +38,11 @@ const routes = [
     name: 'upload',
     component: () => import('./pages/uploadPage'),
   },
-//   {
-//     path: '/search',
-//     name: 'search',
-//     component: () => import('./pages/SearchPage'),
-//   },
- 
-//   {
-//     path: '/about',
-//     name: 'about',
-//     component: () => import('./pages/AboutPage'),
-//   },
-
+  {
+    path: '/management',
+    name: 'management',
+    component: () => import('./management/pages/ManagementPage'),
+  },
   {
     path: '*',
     name: 'notFound',
