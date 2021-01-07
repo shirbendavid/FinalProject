@@ -18,14 +18,13 @@
                 ref="multi-select-image"
                 :activeClass="'--active'">
             </vue-select-image>
-         <br/>
-          <div>
+          <!-- <div>
           <h5>Mutiple Image Selected :
             <span v-for="(imgSelected, index) in imageMultipleSelected" :key="index">
               <span>id = {{ imgSelected.id }}, </span>
             </span>
           </h5>
-        </div>
+        </div> -->
           <br />
 
           <b-row>
@@ -67,7 +66,6 @@
         </span>
          </b-col>   
           </b-row>
-          <br/>
         </div>
     </div>
   </b-container>
