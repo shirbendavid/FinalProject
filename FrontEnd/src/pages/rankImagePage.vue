@@ -72,8 +72,7 @@
 export default {
   data() {
     return {
-      image:
-        "https://pix10.agoda.net/hotelImages/301716/-1/fe9724d8fb4da3dd4590353bd771a276.jpg?s=1024x768",
+      image: "",
       // selected: "0",
       // options: [
       //   { text: "0", value: "0" },
@@ -91,23 +90,31 @@ export default {
       value: 0,
     };
   },
-  // methods: {
-  //   async saveImageRate() {
-  //     //add rate image to DB for this user
-  //     try {
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   },
-  // },
-  // async created() {
-  // //  get image from server
+  methods: {
+    async saveImageRate() {
+      //add rate image to DB for this user
+      // try {
+      //   response = await this.axios.get(
+      //     this.$root.store.base_url +
+      //       "/users/saveRate/" +this.value
+      //   );
+      //   console.log(response);
+      //   if (response.status !== 200) this.$router.replace("/NotFound");
+      //   console.log(response);
+      // } catch (error) {
+      //   console.log(error);
+      // }
+    },
+  },
+  async created() {
+  //  get image from server
   //   try {
+    if(this.$root.store.email)
   //     let response;
   //     try {
   //       response = await this.axios.get(
   //         this.$root.store.base_url +
-  //           "/images/getImageToRate"
+  //           "/users/getImageToRate"
   //       );
   //       console.log(response);
   //       if (response.status !== 200) this.$router.replace("/NotFound");
@@ -117,11 +124,16 @@ export default {
   //       return;
   //     }
 
-  //     this.image = response.data[0];
+      // this.image = response.data[0];
+      this.image = "https://pix10.agoda.net/hotelImages/301716/-1/fe9724d8fb4da3dd4590353bd771a276.jpg?s=1024x768";
+      else{
+        this.$router.push("/login");
+      }
+
   //   } catch (error) {
   //     console.log(error);
   //   }
-  // },
+  },
 };
 </script>
 
