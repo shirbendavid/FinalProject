@@ -50,7 +50,7 @@
         <img src='https://pix10.agoda.net/hotelImages/301716/-1/fe9724d8fb4da3dd4590353bd771a276.jpg?s=1024x768' class="center" width="300" height="300" />
         </b-col>
         <b-col>
-            <img src='https://pix10.agoda.net/hotelImages/301716/-1/fe9724d8fb4da3dd4590353bd771a276.jpg?s=1024x768' class="center" width="300" height="300" />
+            <img :src="image" class="center" width="300" height="300" />
             <!-- <login-page></login-page> -->
         </b-col>
         <b-col>
@@ -64,7 +64,41 @@
     </b-container>
   </div>
 </template>
+<script>
+export default {
+    data() {
+        return {
+            image: ''
+        }
+    },
+    async created() {
+         if(this.$root.store.email){
+            let response;
+            try {
+                response = await this.axios.get(
+                this.$root.store.base_url +
+                    "/images/getImagesToObser"
+                );
+                console.log(response);
+                if (response.status !== 200) this.$router.replace("/NotFound");
+            } catch (error) {
+                console.log("error.response.status", error.response.status);
+                this.$router.replace("/NotFound");
+                return;
+            }
 
+            const images = response.data;
+            console.log(images);
+            this.image = images[0];
+            console.log(this.image);
+            // this.image = "https://pix10.agoda.net/hotelImages/301716/-1/fe9724d8fb4da3dd4590353bd771a276.jpg?s=1024x768";
+         }
+        else{
+            this.$router.push("/login");
+        }
+    },
+}
+</script>
 <style lang="scss" scoped>
 .container {
   max-width: 500px;
