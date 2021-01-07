@@ -1,0 +1,19 @@
+F:\Youtube Channel\Dotnet Mob\C# Save Image to Sql Server\Save Image to Sql Server\Save Image to Sql Server\bin\Debug\Save Image to Sql Server.exe.config
+F:\Youtube Channel\Dotnet Mob\C# Save Image to Sql Server\Save Image to Sql Server\Save Image to Sql Server\bin\Debug\Save Image to Sql Server.exe
+F:\Youtube Channel\Dotnet Mob\C# Save Image to Sql Server\Save Image to Sql Server\Save Image to Sql Server\bin\Debug\Save Image to Sql Server.pdb
+F:\Youtube Channel\Dotnet Mob\C# Save Image to Sql Server\Save Image to Sql Server\Save Image to Sql Server\obj\Debug\Save Image to Sql Server.csprojResolveAssemblyReference.cache
+F:\Youtube Channel\Dotnet Mob\C# Save Image to Sql Server\Save Image to Sql Server\Save Image to Sql Server\obj\Debug\Save_Image_to_Sql_Server.frmMain.resources
+F:\Youtube Channel\Dotnet Mob\C# Save Image to Sql Server\Save Image to Sql Server\Save Image to Sql Server\obj\Debug\Save_Image_to_Sql_Server.Properties.Resources.resources
+F:\Youtube Channel\Dotnet Mob\C# Save Image to Sql Server\Save Image to Sql Server\Save Image to Sql Server\obj\Debug\Save Image to Sql Server.csproj.GenerateResource.Cache
+F:\Youtube Channel\Dotnet Mob\C# Save Image to Sql Server\Save Image to Sql Server\Save Image to Sql Server\obj\Debug\Save Image to Sql Server.exe
+F:\Youtube Channel\Dotnet Mob\C# Save Image to Sql Server\Save Image to Sql Server\Save Image to Sql Server\obj\Debug\Save Image to Sql Server.pdb
+C:\Users\User\source\repos\uploadImages\Save Image to Sql Server\bin\Debug\Save Image to Sql Server.exe.config
+C:\Users\User\source\repos\uploadImages\Save Image to Sql Server\bin\Debug\Save Image to Sql Server.exe
+C:\Users\User\source\repos\uploadImages\Save Image to Sql Server\bin\Debug\Save Image to Sql Server.pdb
+C:\Users\User\source\repos\uploadImages\Save Image to Sql Server\obj\Debug\Save Image to Sql Server.csprojAssemblyReference.cache
+C:\Users\User\source\repos\uploadImages\Save Image to Sql Server\obj\Debug\Save_Image_to_Sql_Server.frmMain.resources
+C:\Users\User\source\repos\uploadImages\Save Image to Sql Server\obj\Debug\Save_Image_to_Sql_Server.Properties.Resources.resources
+C:\Users\User\source\repos\uploadImages\Save Image to Sql Server\obj\Debug\Save Image to Sql Server.csproj.GenerateResource.cache
+C:\Users\User\source\repos\uploadImages\Save Image to Sql Server\obj\Debug\Save Image to Sql Server.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\uploadImages\Save Image to Sql Server\obj\Debug\Save Image to Sql Server.exe
+C:\Users\User\source\repos\uploadImages\Save Image to Sql Server\obj\Debug\Save Image to Sql Server.pdb
