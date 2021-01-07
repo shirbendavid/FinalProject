@@ -1,17 +1,17 @@
  const sql = require("mssql");
 
-// const config = {
-//   user: "coil_user",
-//   password: 'coil_user',
-//   server: 'localhost',
-//   database: 'DB_Project',
-//   port: 1433
-// };
-// sql.connect(config, function (err){
-//   if(err){
-//     console.log(err)
-//   }
-// })
+const config = {
+  user: "coil_user",
+  password: 'coil_user',
+  server: 'localhost',
+  database: 'DB_Project',
+  port: 1433
+};
+sql.connect(config, function (err){
+  if(err){
+    console.log(err)
+  }
+})
 
 exports.execQuery = async function (query) {
   try {

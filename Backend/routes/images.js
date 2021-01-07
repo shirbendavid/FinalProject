@@ -2,18 +2,18 @@ const express = require("express");
 const router = express.Router();
 // const axios = require("axios");
 
-// const bodyParser = require("body-parser");
-// var knex = require("knex")({
-//   client: "mssql",
-//   connection: {
-//     user: "coil_user",
-//     password: "coil_user",
-//     server: "localhost",
-//     database: "DB_Project",
-//     port: 1433,
-//   },
-//   useNullAsDefault: true,
-// });
+const bodyParser = require("body-parser");
+var knex = require("knex")({
+  client: "mssql",
+  connection: {
+    user: "coil_user",
+    password: "coil_user",
+    server: "localhost",
+    database: "DB_Project",
+    port: 1433,
+  },
+  useNullAsDefault: true,
+});
 
 // const knex = require('mssql')({
 //     client: 'sqlite3',
