@@ -17,29 +17,26 @@
 
         <b-row>
         <b-col>
-            <!-- <RandomRecipePreviewList class="RandomRecipes center" /> -->
-        <img src='https://pix10.agoda.net/hotelImages/301716/-1/fe9724d8fb4da3dd4590353bd771a276.jpg?s=1024x768' class="center" width="300" height="300" />
+            <img :src="image1" class="center" width="300" height="300" />
         </b-col>
         <b-col>
-            <img src='https://pix10.agoda.net/hotelImages/301716/-1/fe9724d8fb4da3dd4590353bd771a276.jpg?s=1024x768' class="center" width="300" height="300" />
-            <!-- <login-page></login-page> -->
+            <img :src="image2" class="center" width="300" height="300" />
         </b-col>
         <b-col>
-            <img src='https://pix10.agoda.net/hotelImages/301716/-1/fe9724d8fb4da3dd4590353bd771a276.jpg?s=1024x768' class="center" width="300" height="300" />
+            <img :src="image3" class="center" width="300" height="300" />
         </b-col>
         </b-row>
         <br/>
         <b-row>
         <b-col>
-            <!-- <RandomRecipePreviewList class="RandomRecipes center" /> -->
-        <img src='https://pix10.agoda.net/hotelImages/301716/-1/fe9724d8fb4da3dd4590353bd771a276.jpg?s=1024x768' class="center" width="300" height="300" />
+        <img :src="image4" class="center" width="300" height="300" />
         </b-col>
         <b-col>
-            <img src='https://pix10.agoda.net/hotelImages/301716/-1/fe9724d8fb4da3dd4590353bd771a276.jpg?s=1024x768' class="center" width="300" height="300" />
+            <img :src="image5" class="center" width="300" height="300" />
             <!-- <login-page></login-page> -->
         </b-col>
         <b-col>
-            <img src='https://pix10.agoda.net/hotelImages/301716/-1/fe9724d8fb4da3dd4590353bd771a276.jpg?s=1024x768' class="center" width="300" height="300" />
+            <img :src="image6" class="center" width="300" height="300" />
         </b-col>
         </b-row>
         <br/>
@@ -47,14 +44,14 @@
         <b-row>
         <b-col>
             <!-- <RandomRecipePreviewList class="RandomRecipes center" /> -->
-        <img src='https://pix10.agoda.net/hotelImages/301716/-1/fe9724d8fb4da3dd4590353bd771a276.jpg?s=1024x768' class="center" width="300" height="300" />
+        <img :src="image7" class="center" width="300" height="300" />
         </b-col>
         <b-col>
-            <img :src="image" class="center" width="300" height="300" />
+            <img :src="image8" class="center" width="300" height="300" />
             <!-- <login-page></login-page> -->
         </b-col>
         <b-col>
-            <img src='https://pix10.agoda.net/hotelImages/301716/-1/fe9724d8fb4da3dd4590353bd771a276.jpg?s=1024x768' class="center" width="300" height="300" />
+            <img :src="image9" class="center" width="300" height="300" />
         </b-col>
         </b-row>
         <br/>
@@ -68,7 +65,15 @@
 export default {
     data() {
         return {
-            image: ''
+            image1: '',
+            image2: '',
+            image3: '',
+            image4: '',
+            image5: '',
+            image6: '',
+            image7: '',
+            image8: '',
+            image9: ''
         }
     },
     async created() {
@@ -87,11 +92,18 @@ export default {
                 return;
             }
 
-            const images = response.data;
+            const images = response.data[0];
             console.log(images);
-            this.image = images[0];
+            this.image1 = images[0].image;
+            this.image2 = images[1].image;
+            this.image3 = images[2].image;
+            this.image4 = images[3].image;
+            this.image5 = images[4].image;
+            this.image6 = images[5].image;
+            this.image7 = images[6].image;
+            this.image8 = images[7].image;
+            this.image9 = images[8].image;
             console.log(this.image);
-            // this.image = "https://pix10.agoda.net/hotelImages/301716/-1/fe9724d8fb4da3dd4590353bd771a276.jpg?s=1024x768";
          }
         else{
             this.$router.push("/login");

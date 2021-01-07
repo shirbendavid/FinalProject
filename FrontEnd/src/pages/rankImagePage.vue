@@ -108,31 +108,26 @@ export default {
   },
   async created() {
   //  get image from server
-  //   try {
-    if(this.$root.store.email)
-  //     let response;
-  //     try {
-  //       response = await this.axios.get(
-  //         this.$root.store.base_url +
-  //           "/users/getImageToRate"
-  //       );
-  //       console.log(response);
-  //       if (response.status !== 200) this.$router.replace("/NotFound");
-  //     } catch (error) {
-  //       console.log("error.response.status", error.response.status);
-  //       this.$router.replace("/NotFound");
-  //       return;
-  //     }
+    if(this.$root.store.email){
+      let response;
+      try {
+        response = await this.axios.get(
+          this.$root.store.base_url +
+            "/users/getImageToRate"
+        );
+        console.log(response);
+        if (response.status !== 200) this.$router.replace("/NotFound");
+      } catch (error) {
+        console.log("error.response.status", error.response.status);
+        this.$router.replace("/NotFound");
+        return;
+      }
 
-      // this.image = response.data[0];
-      this.image = "https://pix10.agoda.net/hotelImages/301716/-1/fe9724d8fb4da3dd4590353bd771a276.jpg?s=1024x768";
+      this.image = response.data[0].image;
+    }
       else{
         this.$router.push("/login");
       }
-
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
   },
 };
 </script>
