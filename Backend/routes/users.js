@@ -23,14 +23,24 @@ router.use(async function (req, res, next) {
 router.get('/getImageToRate', (req, res) => {
 userUtils.getRandomImageToRate(req.user_id).then((info_array) => {
   if (info_array.length == 0)
-    res.status(205).send({ message: "No recipes found", success: true });
+    res.status(205).send({ message: "No image found", success: true });
   else res.send(info_array);
 })
 .catch((error) => {
   console.log(error);
   res.sendStatus(500);
 });
-
 });
+
+router.get('/saveRate/image/:image_id/rate/:valueRate', (req, res) => {
+  const {image_id, valueRate} = req.params;
+  params = {};
+  params.image_id = image_id;
+  params.valueRate = valueRate;
+  console.log(params);
+  userUtils.saveRate(req.user_id, params);
+  res.sendStatus(200);
+  });
+  
 
 module.exports = router;

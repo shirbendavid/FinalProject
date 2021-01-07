@@ -117,22 +117,22 @@ export default {
         },
         {
             id: '5',
-            src: 'https://unsplash.it/201?random',
+            src: 'https://unsplash.it/190?random',
             alt: 'Alt Image 5'
         },
         {
             id: '6',
-            src: 'https://unsplash.it/202?random',
+            src: 'https://unsplash.it/196?random',
             alt: 'Alt Image 6'
         },
         {
             id: '7',
-            src: 'https://unsplash.it/203?random',
+            src: 'https://unsplash.it/197?random',
             alt: 'Alt Image 7',
         },
         {
             id: '8',
-            src: 'https://unsplash.it/200?random',
+            src: 'https://unsplash.it/194?random',
             alt: 'Alt Image 8',
         },
     ],
@@ -211,6 +211,7 @@ export default {
         });
     },
   }
+  
 }
 </script>
 

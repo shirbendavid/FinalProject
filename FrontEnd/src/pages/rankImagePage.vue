@@ -16,18 +16,6 @@
               <img :src="image" class="center" />
             </b-col>
           </b-row>
-          <!-- <b-row>
-            <b-form-group v-slot="{ ariaDescribedby }">
-              <b-form-radio-group
-                v-model="selected"
-                :options="options"
-                :aria-describedby="ariaDescribedby"
-                name="radio-inline"
-                size="sm"
-              ></b-form-radio-group>
-            </b-form-group>
-          </b-row> -->
-
            <br />
           <b-row>
             <div class="stars">
@@ -55,6 +43,7 @@
           </b-row>
           <br />
           <button
+            v-on:click="saveImageRate"
             type="submit"
             variant="primary"
             style="width: 10%"
@@ -72,43 +61,46 @@
 export default {
   data() {
     return {
-      image: "",
-      // selected: "0",
-      // options: [
-      //   { text: "0", value: "0" },
-      //   { text: "1", value: "1" },
-      //   { text: "2", value: "2" },
-      //   { text: "3", value: "3" },
-      //   { text: "4", value: "4" },
-      //   { text: "5", value: "5" },
-      //   { text: "6", value: "6" },
-      //   { text: "7", value: "7" },
-      //   { text: "8", value: "8" },
-      //   { text: "9", value: "9" },
-      //   { text: "10", value: "10" },
-      // ],
       value: 0,
+      image: "",
+      image_id: ""
     };
   },
   methods: {
     async saveImageRate() {
-      //add rate image to DB for this user
-      // try {
-      //   response = await this.axios.get(
-      //     this.$root.store.base_url +
-      //       "/users/saveRate/" +this.value
-      //   );
-      //   console.log(response);
-      //   if (response.status !== 200) this.$router.replace("/NotFound");
-      //   console.log(response);
-      // } catch (error) {
-      //   console.log(error);
-      // }
+      // add rate image to DB for this user
+      try {
+        let response = await this.axios.get(
+          this.$root.store.base_url +
+            "/users/saveRate/image/"+this.image_id+"/rate/" +this.value
+        );
+        console.log(response);
+        if (response.status !== 200) this.$router.replace("/NotFound");
+        else {
+          this.value =0;
+      try {
+        response = await this.axios.get(
+          this.$root.store.base_url +
+            "/users/getImageToRate"
+        );
+        console.log(response);
+        if (response.status !== 200) this.$router.replace("/NotFound");
+      } catch (error) {
+        console.log("error.response.status", error.response.status);
+        this.$router.replace("/NotFound");
+        return;
+      }
+      this.image_id = response.data[0].imageID;
+      this.image = response.data[0].image;
+        }
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
   async created() {
   //  get image from server
-    if(this.$root.store.email){
+      if(this.$root.store.email){
       let response;
       try {
         response = await this.axios.get(
@@ -122,7 +114,7 @@ export default {
         this.$router.replace("/NotFound");
         return;
       }
-
+      this.image_id = response.data[0].imageID;
       this.image = response.data[0].image;
     }
       else{
