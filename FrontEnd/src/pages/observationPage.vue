@@ -92,18 +92,17 @@ export default {
                 return;
             }
 
-            const images = response.data[0];
+            const images = response.data;
             console.log(images);
-            this.image1 = images[0].image;
-            this.image2 = images[1].image;
-            this.image3 = images[2].image;
-            this.image4 = images[3].image;
-            this.image5 = images[4].image;
-            this.image6 = images[5].image;
-            this.image7 = images[6].image;
-            this.image8 = images[7].image;
-            this.image9 = images[8].image;
-            console.log(this.image);
+            this.image1 = images[0][0].image;
+            this.image2 = images[1][0].image;
+            this.image3 = images[2][0].image;
+            this.image4 = images[3][0].image;
+            this.image5 = images[4][0].image;
+            this.image6 = images[5][0].image;
+            this.image7 = images[6][0].image;
+            this.image8 = images[7][0].image;
+            this.image9 = images[8][0].image;
          }
         else{
             this.$router.push("/login");
