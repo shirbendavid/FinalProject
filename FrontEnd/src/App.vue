@@ -1,9 +1,8 @@
+
 <template>
   <div id="app">
-    <NavBar  v-if="!isNotManage"/>
-    <br />
+        <NavBar  v-if="!isNotManage"/>
     <router-view />
-    <br />
   </div>
 </template>
 
@@ -32,6 +31,8 @@ export default {
 @import "@/scss/form-style.scss";
 @import url(https://fonts.googleapis.com/css?family=Raleway);
 
+@media all and (max-width: 480px) {
+
 #app {
   font-family: Raleway;
   -webkit-font-smoothing: antialiased;
@@ -54,5 +55,7 @@ export default {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
 }
 </style>
