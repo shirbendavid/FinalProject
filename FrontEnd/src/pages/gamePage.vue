@@ -4,8 +4,8 @@
       <br />
       <h1 class="title">Game Time</h1>
       
-        <h4 class="title">Let's see if you can recognition your favorite images </h4>
-        <br />
+        <!-- <h4 class="title">Let's see if you can recognition your favorite images </h4> -->
+        <!-- <br /> -->
 
 
         <div class="grid__row content centered">
@@ -15,18 +15,20 @@
                 @onselectmultipleimage="onSelectMultipleImage"
                 @onreachlimit="onReachLimit"
                 :limit="limit" 
+                :h="210"
+                :w="210"
                 ref="multi-select-image"
                 :activeClass="'--active'">
             </vue-select-image>
          <br/>
-          <div>
+          <!-- <div>
           <h5>Mutiple Image Selected :
             <span v-for="(imgSelected, index) in imageMultipleSelected" :key="index">
               <span>id = {{ imgSelected.id }}, </span>
             </span>
           </h5>
-        </div>
-          <br />
+        </div> 
+          <br /> -->
 
           <b-row>
             <b-col>
@@ -107,32 +109,32 @@ export default {
         },
         {
             id: '3',
-            src: 'https://unsplash.it/202?random',
+            src: 'https://unsplash.it/185?random',
             alt: 'Alt Image 3',
         },
         {
             id: '4',
-            src: 'https://unsplash.it/203?random',
+            src: 'https://unsplash.it/209?random',
             alt: 'Alt Image 4',
         },
         {
             id: '5',
-            src: 'https://unsplash.it/190?random',
+            src: 'https://unsplash.it/204?random',
             alt: 'Alt Image 5'
         },
         {
             id: '6',
-            src: 'https://unsplash.it/196?random',
+            src: 'https://unsplash.it/210?random',
             alt: 'Alt Image 6'
         },
         {
             id: '7',
-            src: 'https://unsplash.it/197?random',
+            src: 'https://unsplash.it/206?random',
             alt: 'Alt Image 7',
         },
         {
             id: '8',
-            src: 'https://unsplash.it/194?random',
+            src: 'https://unsplash.it/207?random',
             alt: 'Alt Image 8',
         },
     ],
