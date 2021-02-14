@@ -10,54 +10,79 @@
         <br />
         start rating the photos
         <br />
-        0 - do not like, 10 - very like
+        1 - don't like, 10 - very like
         </h5>
         <h2 class="title">Good Luck!</h2>
         <br />
 
         <b-row>
-        <b-col>
-            <img :src="image1" class="center" width="300" height="300" />
+        <b-col class="pa-3">
+            <img :src="image1" class="center" width="246"/>
         </b-col>
-        <b-col>
-            <img :src="image2" class="center" width="300" height="300" />
+        <b-col class="pa-3">
+            <img :src="image2" class="center" width="246"/>
         </b-col>
-        <b-col>
-            <img :src="image3" class="center" width="300" height="300" />
+        <b-col class="pa-3">
+            <img :src="image3" class="center" width="246"/>
+        </b-col>
+        <b-col class="pa-3">
+            <img :src="image4" class="center" width="246"/>
         </b-col>
         </b-row>
         <br/>
         <b-row>
-        <b-col>
-        <img :src="image4" class="center" width="300" height="300" />
+        <b-col class="pa-3">
+            <img :src="image5" class="center" width="246"/>
         </b-col>
-        <b-col>
-            <img :src="image5" class="center" width="300" height="300" />
-            <!-- <login-page></login-page> -->
+        <b-col class="pa-3">
+            <img :src="image6" class="center" width="246"/>
         </b-col>
-        <b-col>
-            <img :src="image6" class="center" width="300" height="300" />
+        <b-col class="pa-3">
+            <img :src="image7" class="center" width="246"/>
+        </b-col>
+        <b-col class="pa-3">
+            <img :src="image8" class="center" width="246"/>
         </b-col>
         </b-row>
         <br/>
-
         <b-row>
-        <b-col>
-            <!-- <RandomRecipePreviewList class="RandomRecipes center" /> -->
-        <img :src="image7" class="center" width="300" height="300" />
+        <b-col class="pa-3">
+            <img :src="image9" class="center" width="246"/>
         </b-col>
-        <b-col>
-            <img :src="image8" class="center" width="300" height="300" />
-            <!-- <login-page></login-page> -->
+        <b-col class="pa-3">
+            <img :src="image10" class="center" width="246"/>
         </b-col>
-        <b-col>
-            <img :src="image9" class="center" width="300" height="300" />
+        <b-col class="pa-3">
+            <img :src="image11" class="center" width="246"/>
+        </b-col>
+        <b-col class="pa-3">
+            <img :src="image12" class="center" width="246"/>
         </b-col>
         </b-row>
         <br/>
-    <div class="mycontainer">
-        <router-link to="/ranking" tag="button">Start Rating</router-link>
-    </div>
+        <b-row>
+        <b-col class="pa-3">
+            <img :src="image13" class="center" width="246"/>
+        </b-col>
+        <b-col class="pa-3">
+            <img :src="image14" class="center" width="246"/>
+        </b-col>
+        <b-col class="pa-3">
+            <img :src="image15" class="center" width="246"/>
+        </b-col>
+        <b-col class="pa-3">
+            <img :src="image16" class="center" width="246"/>
+        </b-col>
+        </b-row>
+        <br/>
+        <router-link to="/ranking">
+            <b-button
+              color="primary"
+              size="lg"
+            >
+              Start Rating
+            </b-button>
+        </router-link>
     </b-container>
   </div>
 </template>
@@ -73,11 +98,18 @@ export default {
             image6: '',
             image7: '',
             image8: '',
-            image9: ''
+            image9: '',
+            image10: '',
+            image11: '',
+            image12: '',
+            image13: '',
+            image14: '',
+            image15: '',
+            image16: '',
         }
     },
     async created() {
-         if(this.$root.store.email){
+         /*if(this.$root.store.email){
             let response;
             try {
                 response = await this.axios.get(
@@ -103,48 +135,32 @@ export default {
             this.image7 = images[6][0].image;
             this.image8 = images[7][0].image;
             this.image9 = images[8][0].image;
-         }
+        /* }
         else{
             this.$router.push("/login");
-        }
+        }*/
+            this.image1 = "https://res.cloudinary.com/dfhrbnvty/image/upload/v1610026250/Final_Project/BBX8tmG_h6il1d.jpg"
+            this.image2 = "https://res.cloudinary.com/dfhrbnvty/image/upload/v1610026488/Final_Project/BBVAosS_icugql.jpg";
+            this.image3 = "https://res.cloudinary.com/dfhrbnvty/image/upload/v1610026249/Final_Project/BBZe1rZ_xwpt1j.jpg";
+            this.image4 = "https://res.cloudinary.com/dfhrbnvty/image/upload/v1610026249/Final_Project/BBGLr2l_fbwmz2.jpg";
+            this.image5 = "https://res.cloudinary.com/dfhrbnvty/image/upload/v1610026249/Final_Project/BBBLiMK_g38u4w.jpg";
+            this.image6 = "https://res.cloudinary.com/dfhrbnvty/image/upload/v1610026249/Final_Project/AAHu3Hd_khok4o.jpg";
+            this.image7 = "https://res.cloudinary.com/dfhrbnvty/image/upload/v1610026249/Final_Project/AAHujfr_wjhnnm.jpg";
+            this.image8 = "https://res.cloudinary.com/dfhrbnvty/image/upload/v1610026249/Final_Project/AAHuaVF_aix8nx.jpg";
+            this.image9 = "https://res.cloudinary.com/dfhrbnvty/image/upload/v1610026249/Final_Project/AAHukvt_lt0dt1.jpg";
+            this.image10 = "https://res.cloudinary.com/dfhrbnvty/image/upload/v1610026249/Final_Project/AAHu8zK_dhh5yc.jpg";
+            this.image11 = "https://res.cloudinary.com/dfhrbnvty/image/upload/v1610026249/Final_Project/AAHtU6t_imutx2.jpg";
+            this.image12 = "https://res.cloudinary.com/dfhrbnvty/image/upload/v1610026248/Final_Project/AAgE7Wg_tncvx0.jpg";
+            this.image13 = "https://res.cloudinary.com/dfhrbnvty/image/upload/v1610026248/Final_Project/AABRDtp_x3azka.jpg";
+            this.image14 = "https://res.cloudinary.com/dfhrbnvty/image/upload/v1610026248/Final_Project/AABOrwR_wkppga.jpg";
+            this.image15 = "https://res.cloudinary.com/dfhrbnvty/image/upload/v1610026248/Final_Project/AAHtU5Z_eutosi.jpg";
+            this.image16 = "https://res.cloudinary.com/dfhrbnvty/image/upload/v1610026248/Final_Project/AABRDra_i0kpij.jpg";
     },
 }
 </script>
 <style lang="scss" scoped>
-.container {
-  max-width: 500px;
-}
 
-.mycontainer {
-    // align-items: center;
-    // align-self: center;
-    // text-align: center;
-    // display: flex;
-    //   margin: 0 auto;
-//        display: flex;
-  justify-content: center;
-  position: relative;
-//   top: 50%;
-//   display: flex;
-//   align-items: center;
-}
 
-body,
-html {
-  margin: 0;
-  height: 100%;
-}
-
-// input {
-//   border: none;
-// }
-
-// .button {
-// //   outline: none;
-// align-content: center;
-// align-items: center;
-  
-// }
 
 
 

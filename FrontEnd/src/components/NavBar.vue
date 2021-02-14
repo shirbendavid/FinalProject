@@ -5,9 +5,10 @@
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'main' }">
           Home
         </router-link>
-      <router-link class="nav" tag="b-nav-item" :to="{ name: 'management' }">
-        <b-icon icon="gear-fill" aria-hidden="true"></b-icon> Management portal
-      </router-link>
+        <router-link class="nav" tag="b-nav-item" :to="{ name: 'management' }">
+          <b-icon icon="gear-fill" aria-hidden="true"></b-icon> Management
+          portal
+        </router-link>
       </b-navbar-nav>
 
       <b-navbar-nav
@@ -25,14 +26,15 @@
           Login
         </router-link>
       </b-navbar-nav>
-      <b-navbar-nav class="ml-auto" v-else-if="!$root.store.emailAdmin">
+      <!--<b-navbar-nav class="ml-auto" v-else-if="!$root.store.emailAdmin">-->
+      <b-navbar-nav class="ml-auto">
         <b-nav-text><b>Welcome</b></b-nav-text>
-        <br/>
+        <br />
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'observation' }">
           Rate
         </router-link>
 
-          <router-link class="nav" tag="b-nav-item" :to="{ name: 'game' }">
+        <router-link class="nav" tag="b-nav-item" :to="{ name: 'game' }">
           Game
         </router-link>
         <!-- <b-nav-item-dropdown right>
@@ -52,19 +54,19 @@
 export default {
   methods: {
     Logout() {
-      this.$root.store.logout()
-      this.$root.toast('Logout', 'User logged out successfully', 'success')
+      this.$root.store.logout();
+      this.$root.toast("Logout", "User logged out successfully", "success");
 
-      this.$router.push('/').catch(() => {
-        this.$forceUpdate()
-      })
+      this.$router.push("/").catch(() => {
+        this.$forceUpdate();
+      });
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css?family=Special+Elite');
+@import url("https://fonts.googleapis.com/css?family=Special+Elite");
 .navbar {
   background: -webkit-linear-gradient(#ccd2df, #6b656e);
   background: linear-gradient(#e9c9b5c5, #f3c48ec7);
