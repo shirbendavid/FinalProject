@@ -2,7 +2,9 @@
 <template>
   <div id="app">
         <NavBar  v-if="!isNotManage"/>
-    <router-view />
+            <br/>
+   <router-view />
+   <br/>
   </div>
 </template>
 

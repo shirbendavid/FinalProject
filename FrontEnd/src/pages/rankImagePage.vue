@@ -5,7 +5,7 @@
         <h1>Rate this image</h1>
       </b-row>
       <b-row class="title">
-        <h5><b>Remember:</b> 1 - don't like, 10 - very like</h5>
+        <h4><b>How much do you like this photo?</b> </h4>
       </b-row>
     </div>
     <div class="image-body">
@@ -19,7 +19,7 @@
           <br />
           <b-row>
             <b-col>
-              <b-form-radio-group
+              <!-- <b-form-radio-group
                 v-model="value"
                 :options="options"
                 class="mb-3"
@@ -28,15 +28,62 @@
                 size="20%"
                 color="#ff8800"
               ></b-form-radio-group>
+              <br/> -->
+
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1" aria-label="..." v-model="value">
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2" aria-label="..." v-model="value">
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3" aria-label="..." v-model="value">
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="4" aria-label="..." v-model="value">
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="5" aria-label="..." v-model="value">
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="6" aria-label="..." v-model="value">
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio7" value="7" aria-label="..." v-model="value">
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio8" value="8" aria-label="..." v-model="value">
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio9" value="9" aria-label="..." v-model="value">
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio10" value="10" aria-label="..." v-model="value">
+</div>
+<br/>
+<label1>Not at all</label1>
+<label class="form-check-label" for="inlineRadio1">1</label>
+<label class="form-check-label" for="inlineRadio2">2</label>
+<label class="form-check-label" for="inlineRadio3">3</label>
+<label class="form-check-label" for="inlineRadio4">4</label>
+<label class="form-check-label" for="inlineRadio5">5</label>
+<label class="form-check-label" for="inlineRadio6">6</label>
+<label class="form-check-label" for="inlineRadio7">7</label>
+<label class="form-check-label" for="inlineRadio8">8</label>
+<label class="form-check-label" for="inlineRadio9">9</label>
+<label class="form-check-label" for="inlineRadio10">10</label>
+<label1>Very much</label1>
             </b-col>
           </b-row>
           <b-row>
             <b-col cols="12" md="10">
+              <br/>
               <b-input-group-prepend>
-                <b-button @click="value = 0">Clear Rate</b-button>
+                <b-button @click="value = 0">Clear Rating</b-button>
               </b-input-group-prepend>
             </b-col>
             <b-col cols="6" md="2">
+              <br/>
               <button
                 v-on:click="saveImageRate"
                 type="submit"
@@ -61,18 +108,6 @@ export default {
       value: 0,
       image: "",
       image_id: "",
-      options: [
-        { item: "1", name: "1" },
-        { item: "2", name: "2" },
-        { item: "3", name: "3" },
-        { item: "4", name: "4" },
-        { item: "5", name: "5" },
-        { item: "6", name: "6" },
-        { item: "7", name: "7" },
-        { item: "8", name: "8" },
-        { item: "9", name: "9" },
-        { item: "10", name: "10" },
-      ],
     };
   },
   methods: {
@@ -130,8 +165,7 @@ export default {
       else{
         this.$router.push("/login");
       }*/
-    this.image =
-      "https://res.cloudinary.com/dfhrbnvty/image/upload/v1610026248/Final_Project/AABRDtp_x3azka.jpg";
+    this.image = require('../assets/image1.jpg');
   },
 };
 </script>
@@ -146,8 +180,27 @@ export default {
   color: black;
   font-size: 16px;
   width: 50%;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+input[type=radio]{
+  border:1px;
+  width: 18px;
+  height: 18px;
+}
+
+label{
+  padding: 15px;
+  font-size: smaller;
+  line-height: 10%;
+
+}
+label1{
+  font-size:small;
+opacity: 0.5;
+}
+.form-check-inline{
+  padding-right: 4.5px;
 }
 
 .title {
