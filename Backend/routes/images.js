@@ -4,7 +4,7 @@ const DButils = require("./utils/DButils");
 const imageUtils = require("./utils/imageUtils");
 
 router.get('/getImagesToObser', (req, res) => {
-  imageUtils.getImages()
+  imageUtils.getImages(res)
   .then((info_array) => {
     if (info_array.length == 0)
       res.status(205).send({ message: "No images found", success: true });
