@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+
+  <div class="container" scrollable fullscreen hide-overlay>
     <div class="image-header mt-3 mb-4">
       <b-row class="title">
         <h1>Rate this image</h1>
@@ -84,14 +85,13 @@
             </b-col>
             <b-col cols="6" md="2">
               <br/>
-              <button
+              <b-button
                 v-on:click="saveImageRate"
                 type="submit"
-                variant="primary"
-                class="ghost-round full-width"
+              
               >
                 NEXT
-              </button>
+              </b-button>
             </b-col>
           </b-row>
           <br />
@@ -99,6 +99,7 @@
       </div>
     </div>
   </div>
+ 
 </template>
 
 <script>
@@ -172,6 +173,8 @@ export default {
 
 <style scoped>
 @import url(https://fonts.googleapis.com/css?family=Special+Elite);
+
+
 .container {
   background-color: rgba(255, 255, 255, 0.89);
   border: 5px outset#f3c48ec7;
@@ -182,7 +185,12 @@ export default {
   width: 50%;
   padding-left: 20px;
   padding-right: 20px;
+  overflow: hidden;
+  height: 50%;
+
 }
+
+
 input[type=radio]{
   border:1px;
   width: 18px;
@@ -208,6 +216,7 @@ opacity: 0.5;
   font-family: Special Elite;
   width: 80%;
 }
+
 
 .center {
   border: 1px solid #595b5f;

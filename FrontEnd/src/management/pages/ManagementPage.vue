@@ -1,6 +1,10 @@
 <template>
 <div class="container">
-    <router-link to="/" tag="button">Back To Home</router-link>
+   <router-link to="/" >
+  <b-button>Back To Home
+      </b-button>
+   </router-link>
+  
 <br/>
 <br/>
   <div v-if="!$root.store.emailAdmin && !this.$cookies.get('session')">

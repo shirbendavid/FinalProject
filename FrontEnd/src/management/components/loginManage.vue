@@ -1,16 +1,13 @@
 <template>
   <div class="container">
     <br />
-    <br />
     <div class="bold-line"></div>
     <div class="container">
       <div class="window">
         <div class="overlay"></div>
         <div class="content">
           <div class="welcome">Welcome!</div>
-          <div class="subtitle">Log into your account.</div>
-          <br />
-          <br />
+          <div class="subtitle">Log into the management portal.</div>
           <br />
           <b-form @submit.prevent="onLogin">
             <b-form-group
@@ -309,8 +306,8 @@ button:focus {
 }
 
 .overlay {
-  background: -webkit-linear-gradient(#ccd2df, #6b656e);
-  background: linear-gradient(#e9c9b5c5, #f3c48ec7);
+  background: -webkit-linear-gradient(#d2d4da, #6b656e);
+  background: linear-gradient(#8a8888c5, #31302fc7);
   opacity: 0.95;
   filter: alpha(opacity=85);
   height: 100%;
