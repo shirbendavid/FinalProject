@@ -19,4 +19,21 @@ router.get('/getImagesToObser', (req, res) => {
   });  
 });
 
+router.get('/getImagesForGame', (req, res) => {
+  imageUtils.getGameImages(res)
+  .then((info_array) => {
+    if (info_array.length == 0)
+      res.status(205).send({ message: "No images found", success: true });
+    else{
+      console.log(info_array);
+      res.status(200).send(info_array);
+    } 
+  })
+  .catch((error) => {
+    console.log(error);
+    res.sendStatus(500);
+  });  
+});
+
+
 module.exports = router;

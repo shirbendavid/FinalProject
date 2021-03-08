@@ -98,7 +98,7 @@ export default {
 
       dataImages:
       [{
-            id: '1',
+            id: '${images[0].id}',
             src: 'https://unsplash.it/200?random',
             alt: 'Alt Image 1'
         },
@@ -137,7 +137,41 @@ export default {
             src: 'https://unsplash.it/207?random',
             alt: 'Alt Image 8',
         },
+
     ],
+    async created() {
+        /*if(this.$root.store.email){
+            let response;
+            try {
+                response = await this.axios.get(
+                this.$root.store.base_url +
+                    "/images/getImagesForGame"
+                );
+                console.log(response);
+                if (response.status !== 200) this.$router.replace("/NotFound");
+            } catch (error) {
+                console.log("error.response.status", error.response.status);
+                this.$router.replace("/NotFound");
+                return;
+            }
+
+            const images = response.data;
+            console.log(images);
+            this.image1 = images[0][0].image
+            this.image2 = images[1][0].image;
+            this.image3 = images[2][0].image;
+            this.image4 = images[3][0].image;
+            this.image5 = images[4][0].image;
+            this.image6 = images[5][0].image;
+            this.image7 = images[6][0].image;
+            this.image8 = images[7][0].image;
+            this.image9 = images[8][0].image;
+         }
+        else{
+            this.$router.push("/login");
+        }
+        */
+    },
       initialSelected: [],
     //     {
     //       id: '2',
@@ -175,7 +209,21 @@ export default {
 
     check: function () {
         console.log("to checkkk, from DB !!");
-        alert(" you didn't complete check function !!! ");
+        //const numMiss= 0;
+        
+       /* while ( this.imageMultipleSelected.length > 0 ){
+            const currSelected= this.imageMultipleSelected.pop();
+            const i=0;
+            while(i<images.length){
+              if(images[i].id==currSelected.id )
+                if(images[i].rate==="low")
+                  numMiss++;
+                break;
+              i++;
+            }
+        }
+        alert(" you have "+ numMiss+" mistakes");
+      */
     },
 
     goToNextImages: function() {

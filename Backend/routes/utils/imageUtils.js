@@ -14,6 +14,7 @@ async function getImages(){
     for(let number of nums.values()){
         images.push(await DButils.execQuery(`SElECT image FROM imagesURL WHERE imageID='${number}'`));
     }*/
+
     images.push("C:/Users/User/Desktop/Image_Preference_Project/Animals/AABO99I.jpg");
     const buffer = fs.readFileSync(images[0], 'utf8');
     console.log(buffer);
@@ -27,4 +28,34 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
   }
 
+async function getGameImages(){
+    const gameHighRateImages= [];
+    /*const nums = new Set();
+    const minRate= 6;
+    while(nums.size !== 9) {
+      nums.add(getRandomInt(1,31));
+    }
+    const gameLowRateImages= [];
+    for(let number of nums.values()){
+        gameHighRateImages.push(await DButils.execQuery(`SElECT imageRate FROM userRating WHERE rate>'${minRate}'`));
+        gameLowRateImages.push(await DButils.execQuery(`SElECT imageRate FROM userRating WHERE rate<='${minRate}'`));
+
+    }
+    const imagesGame= new Set();
+    for(let imageID of gameHighRateImages.values()){
+      imagesGame.push({ image: await DButils.execQuery(`SElECT image FROM imagesURL WHERE imageID='${imageID}'`), id: imageID, rate: "high"});
+    }
+    for(let imageID of gameLowRateImages.values()){
+      imagesGame.push({ image: await DButils.execQuery(`SElECT image FROM imagesURL WHERE imageID='${imageID}'`), id: imageID, rate: "low"});
+    }*/
+
+    imagesGame.push("C:/Users/User/Desktop/Image_Preference_Project/Animals/AABO99I.jpg");
+    const buffer = fs.readFileSync(imagesGame[0].image, 'utf8');
+    console.log(buffer);
+    fs.writeFileSync("../FrontEnd/src/assets/image1.jpg", buffer);
+    return imagesGame;
+}
+  
+
 exports.getImages = getImages;
+exports.getGameImages= getGameImages;
