@@ -1,24 +1,22 @@
 const DButils = require("./DButils");
 const fs = require("fs");
-const fetch = require('node-fetch');
-const { Buffer } = require("buffer");
 
-
-async function getImages(){
+async function getImages(amount){
     const images= [];
-    /*const nums = new Set();
-    while(nums.size !== 9) {
-      nums.add(getRandomInt(1,31));
+    const nums = new Set();
+    while(nums.size != amount) {
+      nums.add(getRandomInt(19,140));
     }
-    const images= [];
+    let i = 1;
     for(let number of nums.values()){
-        images.push(await DButils.execQuery(`SElECT image FROM imagesURL WHERE imageID='${number}'`));
-    }*/
-
-    images.push("C:/Users/User/Desktop/Image_Preference_Project/Animals/AABO99I.jpg");
-    const buffer = fs.readFileSync(images[0], 'utf8');
-    console.log(buffer);
-    fs.writeFileSync("../FrontEnd/src/assets/image1.jpg", buffer);
+      dataImage = await DButils.execQuery(`SELECT image FROM images WHERE imageID='${number}'`);  
+      fileNameToSave = "../FrontEnd/src/assets/image"+i+".jpg";
+      fileNameForFront = "image"+i;
+      fs.writeFileSync(fileNameToSave, dataImage[0].image)
+      images.push(fileNameForFront);
+      i+=1;
+    }
+   
     return images;
 }
 

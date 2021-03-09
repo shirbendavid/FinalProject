@@ -14,7 +14,7 @@
         <div class="flex-item">
           <b-row>
             <b-col class="foreword">
-              <img :src="image" class="center" />
+              <img :src="require('../assets/'+image+'.jpg')" class="center" />
             </b-col>
           </b-row>
           <br />
@@ -137,8 +137,8 @@ export default {
             this.$router.replace("/NotFound");
             return;
           }
-          this.image_id = response.data[0].imageID;
-          this.image = response.data[0].image;
+          this.image_id = response.data.imageID;
+          this.image = response.data.image;
         }
       } catch (error) {
         console.log(error);
@@ -147,7 +147,7 @@ export default {
   },
   async created() {
     //  get image from server
-    /*if(this.$root.store.email){
+    if(this.$root.store.email){
     let response;
     try {
       response = await this.axios.get(
@@ -160,13 +160,12 @@ export default {
       this.$router.replace("/NotFound");
       return;
     }
-    this.image_id = response.data[0].imageID;
-    this.image = response.data[0].image;
+    this.image_id = response.data.imageID;
+    this.image = response.data.image;
     }
       else{
         this.$router.push("/login");
-      }*/
-    this.image = require('../assets/image1.jpg');
+      }
   },
 };
 </script>

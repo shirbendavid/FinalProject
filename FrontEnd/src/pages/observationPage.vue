@@ -24,61 +24,61 @@
 
         <b-row>
         <b-col class="pa-3">
-            <img :src="image1" class="center" width="246"/>
+            <img :src="require('../assets/'+image1+'.jpg')" class="center" width="246"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image2" class="center" width="246"/>
+            <img :src="require('../assets/'+image2+'.jpg')" class="center" width="246"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image3" class="center" width="246"/>
+            <img :src="require('../assets/'+image3+'.jpg')" class="center" width="246"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image4" class="center" width="246"/>
-        </b-col>
-        </b-row>
-        <br/>
-        <b-row>
-        <b-col class="pa-3">
-            <img :src="image5" class="center" width="246"/>
-        </b-col>
-        <b-col class="pa-3">
-            <img :src="image6" class="center" width="246"/>
-        </b-col>
-        <b-col class="pa-3">
-            <img :src="image7" class="center" width="246"/>
-        </b-col>
-        <b-col class="pa-3">
-            <img :src="image8" class="center" width="246"/>
+            <img :src="require('../assets/'+image4+'.jpg')" class="center" width="246"/>
         </b-col>
         </b-row>
         <br/>
         <b-row>
         <b-col class="pa-3">
-            <img :src="image9" class="center" width="246"/>
+            <img :src="require('../assets/'+image5+'.jpg')" class="center" width="246"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image10" class="center" width="246"/>
+            <img :src="require('../assets/'+image6+'.jpg')" class="center" width="246"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image11" class="center" width="246"/>
+            <img :src="require('../assets/'+image7+'.jpg')" class="center" width="246"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image12" class="center" width="246"/>
+            <img :src="require('../assets/'+image8+'.jpg')" class="center" width="246"/>
         </b-col>
         </b-row>
         <br/>
         <b-row>
         <b-col class="pa-3">
-            <img :src="image13" class="center" width="246"/>
+            <img :src="require('../assets/'+image9+'.jpg')" class="center" width="246"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image14" class="center" width="246"/>
+            <img :src="require('../assets/'+image10+'.jpg')" class="center" width="246"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image15" class="center" width="246"/>
+            <img :src="require('../assets/'+image11+'.jpg')" class="center" width="246"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image16" class="center" width="246"/>
+            <img :src="require('../assets/'+image12+'.jpg')" class="center" width="246"/>
+        </b-col>
+        </b-row>
+        <br/>
+        <b-row>
+        <b-col class="pa-3">
+            <img :src="require('../assets/'+image13+'.jpg')" class="center" width="246"/>
+        </b-col>
+        <b-col class="pa-3">
+            <img :src="require('../assets/'+image14+'.jpg')" class="center" width="246"/>
+        </b-col>
+        <b-col class="pa-3">
+            <img :src="require('../assets/'+image15+'.jpg')" class="center" width="246"/>
+        </b-col>
+        <b-col class="pa-3">
+            <img :src="require('../assets/'+image16+'.jpg')" class="center" width="246"/>
         </b-col>
         </b-row>
         <br/>
@@ -123,12 +123,12 @@ export default {
         }
     },
     async created() {
-        /*if(this.$root.store.email){
+        if(this.$root.store.email){
             let response;
             try {
                 response = await this.axios.get(
                 this.$root.store.base_url +
-                    "/images/getImagesToObser"
+                    "/images/getImages/amount/"+16
                 );
                 console.log(response);
                 if (response.status !== 200) this.$router.replace("/NotFound");
@@ -139,37 +139,26 @@ export default {
             }
 
             const images = response.data;
-            console.log(images);
-            this.image1 = images[0][0].image
-            this.image2 = images[1][0].image;
-            this.image3 = images[2][0].image;
-            this.image4 = images[3][0].image;
-            this.image5 = images[4][0].image;
-            this.image6 = images[5][0].image;
-            this.image7 = images[6][0].image;
-            this.image8 = images[7][0].image;
-            this.image9 = images[8][0].image;
+            this.image1 = images[0];
+            this.image2 = images[1];
+            this.image3 = images[2];
+            this.image4 = images[3];
+            this.image5 = images[4];
+            this.image6 = images[5];
+            this.image7 = images[6];
+            this.image8 = images[7];
+            this.image9 = images[8];
+            this.image10 = images[9];
+            this.image11 = images[10];
+            this.image12 = images[11];
+            this.image13 = images[12];
+            this.image14 = images[13];
+            this.image15 = images[14];
+            this.image16 = images[15];
          }
         else{
             this.$router.push("/login");
         }
-        */
-            this.image1 = require('../assets/image1.jpg');
-            this.image2 = require('../assets/image2.jpg');
-            this.image3 = require('../assets/image3.jpg');
-            this.image4 = require('../assets/image4.jpg');
-            this.image5 = require('../assets/image5.jpg');
-            this.image6 = require('../assets/image6.jpg');
-            this.image7 = require('../assets/image7.jpg');
-            this.image8 = require('../assets/image8.jpg');
-            this.image9 = require('../assets/image9.jpg');
-            this.image10 = require('../assets/image10.jpg');
-            this.image11 = require('../assets/image11.jpg');
-            this.image12 = require('../assets/image12.jpg');
-            this.image13 = require('../assets/image13.jpg');
-            this.image14 = require('../assets/image14.jpg');
-            this.image15 = require('../assets/image15.jpg');
-            this.image16 = require('../assets/image16.jpg');
     },
 }
 </script>

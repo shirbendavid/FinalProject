@@ -15,8 +15,7 @@
                 @onselectmultipleimage="onSelectMultipleImage"
                 @onreachlimit="onReachLimit"
                 :limit="limit" 
-                :h="210"
-                :w="210"
+                :w="246"
                 ref="multi-select-image"
                 :activeClass="'--active'">
             </vue-select-image>
@@ -99,47 +98,48 @@ export default {
       dataImages:
       [{
             id: '${images[0].id}',
-            src: 'https://unsplash.it/200?random',
+            src: require('../assets/image1.jpg'),
             alt: 'Alt Image 1'
         },
         {
             id: '2',
-            src: 'https://unsplash.it/201?random',
+            src: require('../assets/image2.jpg'),
             alt: 'Alt Image 2'
         },
         {
             id: '3',
-            src: 'https://unsplash.it/185?random',
+            src: require('../assets/image3.jpg'),
             alt: 'Alt Image 3',
         },
         {
             id: '4',
-            src: 'https://unsplash.it/209?random',
+            src: require('../assets/image4.jpg'),
             alt: 'Alt Image 4',
         },
         {
             id: '5',
-            src: 'https://unsplash.it/204?random',
+            src: require('../assets/image5.jpg'),
             alt: 'Alt Image 5'
         },
         {
             id: '6',
-            src: 'https://unsplash.it/210?random',
+            src: require('../assets/image6.jpg'),
             alt: 'Alt Image 6'
         },
         {
             id: '7',
-            src: 'https://unsplash.it/206?random',
+            src: require('../assets/image7.jpg'),
             alt: 'Alt Image 7',
         },
         {
             id: '8',
-            src: 'https://unsplash.it/207?random',
+            src: require('../assets/image8.jpg'),
             alt: 'Alt Image 8',
         },
 
     ],
     async created() {
+    console.log(this.dataImages[0]);
         /*if(this.$root.store.email){
             let response;
             try {
@@ -223,7 +223,7 @@ export default {
             }
         }
         alert(" you have "+ numMiss+" mistakes");
-      */
+    */
     },
 
     goToNextImages: function() {
@@ -238,29 +238,30 @@ export default {
 
         this.dataImages.push({
             id: '8',
-            src: 'https://unsplash.it/190?random',
+            src: require('../assets/image9.jpg'),
             alt: 'Alt Image 8',
         });
 
         this.dataImages.push({
             id: '5',
-            src: 'https://unsplash.it/191?random',
+            src: require('../assets/image10.jpg'),
             alt: 'Alt Image 5'
         });
             
         this.dataImages.push({
             id: '6',
-            src: 'https://unsplash.it/192?random',
+            src: require('../assets/image11.jpg'),
             alt: 'Alt Image 6'
         });
 
         this.dataImages.push({
             id: '7',
-            src: 'https://unsplash.it/193?random',
+            src: require('../assets/image12.jpg'),
             alt: 'Alt Image 7',
         });
     },
-  }
+  },
+
   
 }
 </script>
