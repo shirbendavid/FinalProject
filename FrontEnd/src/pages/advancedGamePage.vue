@@ -2,10 +2,10 @@
   <b-container class="container">
     <div id="app" class="VueSelectImage">
       <br />
-      <h1 class="title">Game Time</h1>
+      <h1 class="title">Advanced Game</h1>
       
-        <!-- <h4 class="title">Let's see if you can recognition your favorite images </h4> -->
-        <!-- <br /> -->
+        <h5 class="title">Let's see if you can recognition other's favorite images </h5> 
+        <br />
 
 
         <div class="grid__row content centered">

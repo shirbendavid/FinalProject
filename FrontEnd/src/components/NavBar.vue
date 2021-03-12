@@ -37,6 +37,9 @@
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'game' }">
           Game
         </router-link>
+        <router-link class="nav" tag="b-nav-item" :to="{ name: 'advanced' }">
+          advancedGame
+        </router-link>
         <!-- <b-nav-item-dropdown right>
           <template v-slot:button-content>
             <em>{{ $root.store.email }}</em>
