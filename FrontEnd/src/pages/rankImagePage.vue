@@ -17,6 +17,7 @@
               <img :src="require('../assets/'+image+'.jpg')" class="center" />
             </b-col>
           </b-row>
+          
           <br />
           <b-row>
             <b-col>
