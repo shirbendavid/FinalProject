@@ -24,16 +24,16 @@
 
         <b-row>
         <b-col class="pa-3">
-            <img :src="require('../assets/'+image1+'.jpg')" class="center" width="246"/>
+            <b-img :src="require('../assets/'+image1+'.jpg')" class="center" width="246" aspect-ratio="1.4" contain></b-img>
         </b-col>
         <b-col class="pa-3">
-            <img :src="require('../assets/'+image2+'.jpg')" class="center" width="246"/>
+            <b-img :src="require('../assets/'+image2+'.jpg')" class="center" width="246" aspect-ratio="1.4" contain></b-img>
         </b-col>
         <b-col class="pa-3">
-            <img :src="require('../assets/'+image3+'.jpg')" class="center" width="246"/>
+            <b-img :src="require('../assets/'+image3+'.jpg')" class="center" width="246" aspect-ratio="1.4" contain/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="require('../assets/'+image4+'.jpg')" class="center" width="246"/>
+            <b-img :src="require('../assets/'+image4+'.jpg')" class="center" width="246" aspect-ratio="1.4" contain/>
         </b-col>
         </b-row>
         <br/>

@@ -1,10 +1,8 @@
 <template>
 
-  <div class="container" scrollable fullscreen hide-overlay>
-    <div class="image-header mt-3 mb-4">
-      <b-row class="title">
-        <h1>Rate this image</h1>
-      </b-row>
+  <div class="container" >
+    <!-- style="height: calc(100vh - 100px)" -->
+    <div class="image-header ma-2">
       <b-row class="title">
         <h4><b>How much do you like this photo?</b> </h4>
       </b-row>
@@ -17,9 +15,8 @@
               <img :src="require('../assets/'+image+'.jpg')" class="center" />
             </b-col>
           </b-row>
-          <br />
-          <b-row>
-            <b-col>
+          <!-- <b-row>
+            <b-col> -->
               <!-- <b-form-radio-group
                 v-model="value"
                 :options="options"
@@ -29,39 +26,72 @@
                 size="20%"
                 color="#ff8800"
               ></b-form-radio-group>
+    
               <br/> -->
+   <div class="scale">
+             
+<b-row>
+  <!-- <b-col>
+    <br>
+<label1>Not at all</label1>
+  </b-col> -->
+  <b-col>
+<!-- <div class="form-check form-check-inline"> -->
+  <input class="form-check form-check-inline " type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1" aria-label="..." v-model="value">
+  <br>
+  <label class="form-check-label" for="inlineRadio1">1</label>
+</b-col>
+<b-col>
+  <input class=" form-check form-check-inline" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2" aria-label="..." v-model="value">
+  <br>
+  <label class="form-check-label" for="inlineRadio2">2</label>
+</b-col>
+<b-col>
+  <input class=" form-check form-check-inline" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3" aria-label="..." v-model="value">
+  <br>
+  <label class="form-check-label" for="inlineRadio3">3</label>
+</b-col>
+<b-col>
+  <input class=" form-check form-check-inline" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="4" aria-label="..." v-model="value">
+  <br>
+  <label class="form-check-label" for="inlineRadio4">4</label>
+</b-col>
+<b-col>
+  <input class=" form-check form-check-inline" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="5" aria-label="..." v-model="value">
+<br>
+ <label class="form-check-label" for="inlineRadio5">5</label>
+</b-col>
+<b-col>
+  <input class=" form-check form-check-inline" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="6" aria-label="..." v-model="value">
+ <br>
+ <label class="form-check-label" for="inlineRadio6">6</label>
+ </b-col>
+<b-col> 
+  <input class=" form-check form-check-inline" type="radio" name="inlineRadioOptions" id="inlineRadio7" value="7" aria-label="..." v-model="value">
+<br>
+<label class="form-check-label" for="inlineRadio7">7</label>
+</b-col>
+<b-col>
+  <input class=" form-check form-check-inline" type="radio" name="inlineRadioOptions" id="inlineRadio8" value="8" aria-label="..." v-model="value">
+<br>
+<label class="form-check-label" for="inlineRadio8">8</label>
+</b-col>
+<b-col>
+  <input class=" form-check form-check-inline" type="radio" name="inlineRadioOptions" id="inlineRadio9" value="9" aria-label="..." v-model="value">
+<br>
+<label class="form-check-label" for="inlineRadio9">9</label>
+</b-col>
+<b-col>
+  <input class="f form-check form-check-inline" type="radio" name="inlineRadioOptions" id="inlineRadio10" value="10" aria-label="..." v-model="value">
+<br>
+<label class="form-check-label" for="inlineRadio10">10</label>
+</b-col>
+</b-row>
+</div>
 
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1" aria-label="..." v-model="value">
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2" aria-label="..." v-model="value">
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3" aria-label="..." v-model="value">
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="4" aria-label="..." v-model="value">
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="5" aria-label="..." v-model="value">
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="6" aria-label="..." v-model="value">
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio7" value="7" aria-label="..." v-model="value">
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio8" value="8" aria-label="..." v-model="value">
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio9" value="9" aria-label="..." v-model="value">
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio10" value="10" aria-label="..." v-model="value">
-</div>
-<br/>
+<!-- <br>
+<b-row>
+
 <label1>Not at all</label1>
 <label class="form-check-label" for="inlineRadio1">1</label>
 <label class="form-check-label" for="inlineRadio2">2</label>
@@ -74,8 +104,9 @@
 <label class="form-check-label" for="inlineRadio9">9</label>
 <label class="form-check-label" for="inlineRadio10">10</label>
 <label1>Very much</label1>
-            </b-col>
-          </b-row>
+  </b-row> -->
+            <!-- </b-col>
+          </b-row> -->
           <b-row>
             <b-col cols="12" md="10">
               <br/>
@@ -92,13 +123,29 @@
               >
                 NEXT
               </b-button>
+
+      <v-rating
+        v-model="rating"
+        length="10"
+        readonly
+      >
+        <template v-slot:item="props">
+          <v-icon
+            large
+            :color="props.isFilled ? 'purple darken-4' : ''"
+            v-text="`mdi-numeric-${props.index}-box`"
+          ></v-icon>
+        </template>
+      </v-rating>
+
             </b-col>
           </b-row>
           <br />
         </div>
       </div>
     </div>
-  </div>
+        </div>
+
  
 </template>
 
@@ -176,45 +223,46 @@ export default {
 
 .container {
   background-color: rgba(255, 255, 255, 0.89);
-  border: 5px outset#f3c48ec7;
-  border-radius: 25px;
+  /* border: 5px outset#f3c48ec7;
+  border-radius: 25px; */
   opacity: 95%;
   color: black;
   font-size: 16px;
-  width: 50%;
+  width:45%;
   padding-left: 20px;
   padding-right: 20px;
   overflow: hidden;
-  height: 50%;
+  /* height: 50%; */
 
 }
 
 
 input[type=radio]{
   border:1px;
-  width: 18px;
-  height: 18px;
+  width: 13px;
+  height:13px;
 }
 
 label{
-  padding: 15px;
+  /* padding: 10px; */
   font-size: smaller;
-  line-height: 10%;
+  line-height: 8%;
 
 }
 label1{
   font-size:small;
 opacity: 0.5;
 }
-.form-check-inline{
-  padding-right: 4.5px;
-}
+/* .form-check-inline{
+  padding-right: 3px;
+} */
 
 .title {
   color: black;
   font-family: Special Elite;
   width: 80%;
 }
+
 
 
 .center {

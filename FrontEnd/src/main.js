@@ -37,6 +37,7 @@ import {
   IconsPlugin,
   FormRatingPlugin,
   InputGroupPlugin,
+  ImagePlugin,
 } from "bootstrap-vue";
 [
   FormGroupPlugin,
@@ -53,6 +54,7 @@ import {
   IconsPlugin,
   FormRatingPlugin,
   InputGroupPlugin,
+  ImagePlugin,
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 axios.defaults.withCredentials = true;
