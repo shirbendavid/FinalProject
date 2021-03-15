@@ -15,10 +15,13 @@
     "ks-vue-fullpage": "^1.2.8",
     "node-sass": "^5.0.0",
     "sass-loader": "^10.1.0",
+    "v-image": "^2.0.2",
+    "v-rating": "^1.1.2",
     "vue": "^2.6.12",
     "vue-axios": "^3.2.0",
     "vue-carousel-3d": "^1.0.1",
     "vue-cookies": "^1.7.4",
+    "vue-icon": "^2.2.0",
     "vue-router": "^3.4.9",
     "vue-select-image": "^1.9.0",
     "vuelidate": "^0.7.6"
