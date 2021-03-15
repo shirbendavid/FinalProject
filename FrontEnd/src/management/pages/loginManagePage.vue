@@ -112,7 +112,7 @@ export default {
         this.$root.loggedIn = true;
         console.log(this.$root.store.login);
         this.$root.store.loginAdmin(this.form.email);
-        // location.reload();
+        this.$router.push("/management");
 
       } catch (err) {
         console.log(err.response);

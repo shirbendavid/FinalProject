@@ -5,7 +5,7 @@
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'main' }">
           Home
         </router-link>
-        <router-link class="nav" tag="b-nav-item" :to="{ name: 'management' }">
+        <router-link class="nav" tag="b-nav-item" :to="{ name: 'loginManagement' }">
           <b-icon icon="gear-fill" aria-hidden="true"></b-icon> Management
           portal
         </router-link>
@@ -45,7 +45,7 @@
             <em>{{ $root.store.email }}</em>
           </template>
         </b-nav-item-dropdown> -->
-        <button class="button" tag="b-nav-item" @click="Logout()">
+        <button  v-if="$root.store.email && this.$cookies.get('session')" class="button" tag="b-nav-item" @click="Logout()">
           Logout
         </button>
       </b-navbar-nav>

@@ -3,7 +3,6 @@ import App from "./App.vue";
 import VueAxios from "vue-axios";
 import axios from "axios";
 
-
 import VueSelectImage from 'vue-select-image';
 Vue.use(VueSelectImage);
 
@@ -106,6 +105,7 @@ const shared_data = {
   logout() {
     console.log("logout");
     localStorage.removeItem("email");
+    localStorage.removeItem("emailAdmin");
     Vue.$cookies.remove("session");
     this.email = undefined;
   },

@@ -44,6 +44,11 @@ const routes = [
     component: () => import('./pages/uploadPage'),
   },
   {
+    path: '/loginManagement',
+    name: 'loginManagement',
+    component: () => import('./management/pages/loginManagePage'),
+  },
+  {
     path: '/management',
     name: 'management',
     component: () => import('./management/pages/ManagementPage'),

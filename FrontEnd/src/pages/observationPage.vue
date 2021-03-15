@@ -1,9 +1,13 @@
 
 <template>
   <div class="container">
-    <h1 class="title">Sample images</h1>
-    <b-container>
-        <h5 class="title">
+        <transition name="fade">
+        <div class="popup-modal" v-if="isVisible">
+            <div class="window">
+                <slot>   
+        <h1 class="title">Sample images</h1>
+
+         <h5 class="title">
 
         Please take a look at the images on the screen. They are representative of the images in our database.
         <br />
@@ -20,6 +24,15 @@
         Your liking of most images will likely not be extreme, so use the in-between points on the scale to denote your liking.    
         </h5>
         <h2 class="title">Good Luck!</h2>
+                <button  class="button" tag="b-nav-item" @click="close()">
+          CLOSE
+        </button>
+        </slot>
+            </div>
+        </div>
+    </transition>
+    <b-container>
+
         <br />
 
         <b-row>
@@ -94,7 +107,8 @@
           </div>              
         </router-link>
 
-        <br/><br/>
+        <br><br>
+        <br><br>
 
 
   </div>
@@ -120,7 +134,19 @@ export default {
             image14: '',
             image15: '',
             image16: '',
+            isVisible: true,
+
         }
+    },
+
+    methods: {
+        open() {
+            this.isVisible = true
+        },
+
+        close() {
+            this.isVisible = false
+        },
     },
     async created() {
         if(this.$root.store.email){
@@ -164,10 +190,42 @@ export default {
 </script>
 <style lang="scss" scoped>
 .button{
-float: right;
-    margin-right:10px;
+    float: right;
+    margin-right:45%;
+
+}
+/* css class for the transition */
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s;
+}
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
 }
 
+.popup-modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+.window {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+}
 </style>
 
 

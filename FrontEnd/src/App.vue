@@ -1,10 +1,8 @@
 
 <template>
   <div id="app">
-        <NavBar  v-if="!isNotManage"/>
-            <br/>
-   <router-view />
-   <br/>
+    <NavBar  v-if="!isNotManage"/>
+    <router-view />
   </div>
 </template>
 
@@ -58,6 +56,5 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
-
 }
 </style>

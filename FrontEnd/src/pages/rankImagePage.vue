@@ -1,6 +1,6 @@
 <template>
 
-  <div class="container" >
+  <div class="container"  >
     <!-- style="height: calc(100vh - 100px)" -->
     <div class="image-header ma-2">
       <b-row class="title">
@@ -85,24 +85,23 @@
 </b-col>
 </b-row>
 </div>
-          <b-row>
+          <b-row class="buttons">
             <b-col cols="12" md="10">
-              <br/>
+              <!-- <br/> -->
               <b-input-group-prepend>
                 <b-button @click="value = 0">Clear Rating</b-button>
               </b-input-group-prepend>
             </b-col>
             <b-col cols="6" md="2">
-              <br/>
+              <!-- <br/> -->
               <b-button
                 v-on:click="saveImageRate"
-                type="submit"
-              
+                type="submit" 
               >
                 NEXT
               </b-button>
 
-      <v-rating
+      <!-- <v-rating
         v-model="rating"
         length="10"
         readonly
@@ -114,11 +113,10 @@
             v-text="`mdi-numeric-${props.index}-box`"
           ></b-icon>
         </template>
-      </v-rating>
+      </v-rating> -->
 
             </b-col>
           </b-row>
-          <br />
         </div>
       </div>
     </div>
@@ -131,7 +129,7 @@
 export default {
   data() {
     return {
-      value: 0,
+      value: 1,
       image: "",
       image_id: "",
     };
@@ -150,7 +148,7 @@ export default {
         console.log(response);
         if (response.status !== 200) this.$router.replace("/NotFound");
         else {
-          this.value = 0;
+          this.value = 1;
           try {
             response = await this.axios.get(
               this.$root.store.base_url + "/users/getImageToRate"
@@ -171,7 +169,6 @@ export default {
     },
   },
   async created() {
-
     //  get image from server
     if(this.$root.store.email){
     let response;
@@ -199,7 +196,6 @@ export default {
 <style scoped>
 @import url(https://fonts.googleapis.com/css?family=Special+Elite);
 
-
 .container {
   background-color: rgba(255, 255, 255, 0.89);
   /* border: 5px outset#f3c48ec7;
@@ -226,18 +222,20 @@ label{
   /* padding: 10px; */
   font-size: smaller;
   line-height: 8%;
-
 }
+
 label1{
   font-size:small;
-opacity: 0.5;
+  opacity: 0.5;
   padding-left: 4%;
 }
+
 label2{
   font-size:small;
-opacity: 0.5;
+  opacity: 0.5;
   padding-left: 70%;
 }
+
 /* .form-check-inline{
   padding-right: 3px;
 } */
@@ -251,7 +249,6 @@ opacity: 0.5;
 .scale{
     width: 100%;
     border: 1px solid #595b5f;
-
 }
 
 .center {
@@ -298,10 +295,16 @@ opacity: 0.5;
   font-size: 20px;
   text-align: center;
 }
+
 .wrapper {
   display: flex;
 }
+
 .wrapped {
   width: 50%;
+}
+
+.buttons{
+  padding-top: 4px;
 }
 </style>
