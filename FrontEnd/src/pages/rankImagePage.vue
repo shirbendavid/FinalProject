@@ -11,7 +11,7 @@
       <div class="flex-container">
         <div class="flex-item">
           <b-row>
-            <b-col class="foreword">
+            <b-col class="forewordimage">
               <img :src="require('../assets/'+image+'.jpg')" class="center" />
             </b-col>
           </b-row>
@@ -25,88 +25,66 @@
                 text-field="name"
                 size="20%"
                 color="#ff8800"
-              ></b-form-radio-group>
+              ></b-form-radio-group>-->
     
-              <br/> -->
-   <div class="scale">
-             
+<div class="scale">       
+  <b-row >
+    
+ <label1>Not at all</label1><label2>Very much</label2>
+    </b-row>    
 <b-row>
-  <!-- <b-col>
-    <br>
-<label1>Not at all</label1>
-  </b-col> -->
-  <b-col>
-<!-- <div class="form-check form-check-inline"> -->
-  <input class="form-check form-check-inline " type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1" aria-label="..." v-model="value">
+  <b-col class="foreword">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1" aria-label="..." v-model="value">
   <br>
-  <label class="form-check-label" for="inlineRadio1">1</label>
+  <label for="inlineRadio1">1</label>
 </b-col>
-<b-col>
-  <input class=" form-check form-check-inline" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2" aria-label="..." v-model="value">
+<b-col class="foreword">
+  <input  type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2" aria-label="..." v-model="value">
   <br>
-  <label class="form-check-label" for="inlineRadio2">2</label>
+  <label  for="inlineRadio2">2</label>
 </b-col>
-<b-col>
-  <input class=" form-check form-check-inline" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3" aria-label="..." v-model="value">
+<b-col class="foreword">
+  <input  type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3" aria-label="..." v-model="value">
   <br>
-  <label class="form-check-label" for="inlineRadio3">3</label>
+  <label  for="inlineRadio3">3</label>
 </b-col>
-<b-col>
-  <input class=" form-check form-check-inline" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="4" aria-label="..." v-model="value">
+<b-col class="foreword">
+  <input  type="radio" name="inlineRadioOptions" id="inlineRadio4" value="4" aria-label="..." v-model="value">
   <br>
-  <label class="form-check-label" for="inlineRadio4">4</label>
+  <label  for="inlineRadio4">4</label>
 </b-col>
-<b-col>
-  <input class=" form-check form-check-inline" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="5" aria-label="..." v-model="value">
+<b-col class="foreword">
+  <input  type="radio" name="inlineRadioOptions" id="inlineRadio5" value="5" aria-label="..." v-model="value">
 <br>
- <label class="form-check-label" for="inlineRadio5">5</label>
+ <label  for="inlineRadio5">5</label>
 </b-col>
-<b-col>
-  <input class=" form-check form-check-inline" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="6" aria-label="..." v-model="value">
+<b-col class="foreword">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio6" value="6" aria-label="..." v-model="value">
  <br>
- <label class="form-check-label" for="inlineRadio6">6</label>
+ <label  for="inlineRadio6">6</label>
  </b-col>
-<b-col> 
-  <input class=" form-check form-check-inline" type="radio" name="inlineRadioOptions" id="inlineRadio7" value="7" aria-label="..." v-model="value">
+<b-col class="foreword"> 
+  <input  type="radio" name="inlineRadioOptions" id="inlineRadio7" value="7" aria-label="..." v-model="value">
 <br>
-<label class="form-check-label" for="inlineRadio7">7</label>
+<label for="inlineRadio7">7</label>
 </b-col>
-<b-col>
-  <input class=" form-check form-check-inline" type="radio" name="inlineRadioOptions" id="inlineRadio8" value="8" aria-label="..." v-model="value">
+<b-col class="foreword">
+  <input  type="radio" name="inlineRadioOptions" id="inlineRadio8" value="8" aria-label="..." v-model="value">
 <br>
-<label class="form-check-label" for="inlineRadio8">8</label>
+<label for="inlineRadio8">8</label>
 </b-col>
-<b-col>
-  <input class=" form-check form-check-inline" type="radio" name="inlineRadioOptions" id="inlineRadio9" value="9" aria-label="..." v-model="value">
+<b-col class="foreword">
+  <input  type="radio" name="inlineRadioOptions" id="inlineRadio9" value="9" aria-label="..." v-model="value">
 <br>
-<label class="form-check-label" for="inlineRadio9">9</label>
+<label  for="inlineRadio9">9</label>
 </b-col>
-<b-col>
-  <input class="f form-check form-check-inline" type="radio" name="inlineRadioOptions" id="inlineRadio10" value="10" aria-label="..." v-model="value">
+<b-col class="foreword">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio10" value="10" aria-label="..." v-model="value">
 <br>
-<label class="form-check-label" for="inlineRadio10">10</label>
+<label for="inlineRadio10">10</label>
 </b-col>
 </b-row>
 </div>
-
-<!-- <br>
-<b-row>
-
-<label1>Not at all</label1>
-<label class="form-check-label" for="inlineRadio1">1</label>
-<label class="form-check-label" for="inlineRadio2">2</label>
-<label class="form-check-label" for="inlineRadio3">3</label>
-<label class="form-check-label" for="inlineRadio4">4</label>
-<label class="form-check-label" for="inlineRadio5">5</label>
-<label class="form-check-label" for="inlineRadio6">6</label>
-<label class="form-check-label" for="inlineRadio7">7</label>
-<label class="form-check-label" for="inlineRadio8">8</label>
-<label class="form-check-label" for="inlineRadio9">9</label>
-<label class="form-check-label" for="inlineRadio10">10</label>
-<label1>Very much</label1>
-  </b-row> -->
-            <!-- </b-col>
-          </b-row> -->
           <b-row>
             <b-col cols="12" md="10">
               <br/>
@@ -130,11 +108,11 @@
         readonly
       >
         <template v-slot:item="props">
-          <v-icon
+          <b-icon
             large
             :color="props.isFilled ? 'purple darken-4' : ''"
             v-text="`mdi-numeric-${props.index}-box`"
-          ></v-icon>
+          ></b-icon>
         </template>
       </v-rating>
 
@@ -193,6 +171,7 @@ export default {
     },
   },
   async created() {
+
     //  get image from server
     if(this.$root.store.email){
     let response;
@@ -236,12 +215,12 @@ export default {
 
 }
 
-
+/* 
 input[type=radio]{
   border:1px;
-  width: 13px;
+  width: 10px;
   height:13px;
-}
+} */
 
 label{
   /* padding: 10px; */
@@ -252,6 +231,12 @@ label{
 label1{
   font-size:small;
 opacity: 0.5;
+  padding-left: 4%;
+}
+label2{
+  font-size:small;
+opacity: 0.5;
+  padding-left: 70%;
 }
 /* .form-check-inline{
   padding-right: 3px;
@@ -263,11 +248,15 @@ opacity: 0.5;
   width: 80%;
 }
 
+.scale{
+    width: 100%;
+    border: 1px solid #595b5f;
 
+}
 
 .center {
   border: 1px solid #595b5f;
-  width: 200%;
+  width: 208%;
 }
 
 .favorite_icon:hover {
@@ -276,11 +265,19 @@ opacity: 0.5;
 }
 
 .foreword {
+  column-count: 1;
+  margin: 0 auto;
+  -moz-column-count: 1;
+  -webkit-column-count: 1;
+}
+
+.forewordimage {
   column-count: 2;
   margin: 0 auto;
   -moz-column-count: 2;
   -webkit-column-count: 2;
 }
+
 .subtitle {
   font-size: 25px;
   color: #7a5699e8;
