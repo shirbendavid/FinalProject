@@ -95,7 +95,7 @@ export default {
 
       numOfScreens: 3, //////////// ################ chhanngeeeee #####
       currentScreenNum: 1,
-
+      
       dataImages:
       [{
             id: '${images[0].id}',
@@ -139,41 +139,9 @@ export default {
         },
 
     ],
-    async created() {
-    console.log(this.dataImages[0]);
-        /*if(this.$root.store.email){
-            let response;
-            try {
-                response = await this.axios.get(
-                this.$root.store.base_url +
-                    "/images/getImagesForGame"
-                );
-                console.log(response);
-                if (response.status !== 200) this.$router.replace("/NotFound");
-            } catch (error) {
-                console.log("error.response.status", error.response.status);
-                this.$router.replace("/NotFound");
-                return;
-            }
 
-            const images = response.data;
-            console.log(images);
-            this.image1 = images[0][0].image
-            this.image2 = images[1][0].image;
-            this.image3 = images[2][0].image;
-            this.image4 = images[3][0].image;
-            this.image5 = images[4][0].image;
-            this.image6 = images[5][0].image;
-            this.image7 = images[6][0].image;
-            this.image8 = images[7][0].image;
-            this.image9 = images[8][0].image;
-         }
-        else{
-            this.$router.push("/login");
-        }
-        */
-    },
-      initialSelected: [],
+
+    initialSelected: [],
     //     {
     //       id: '2',
     //       src: 'http://placekitten.com/201/200',
@@ -188,6 +156,37 @@ export default {
     }
   },
   methods: {
+        async created() {
+        if(this.$root.store.email){
+            let response;
+            try {
+                response = await this.axios.get(
+                this.$root.store.base_url +
+                    "/images/getImagesForGame/amount/"+8
+                );
+                console.log(response);
+                if (response.status !== 200) this.$router.replace("/NotFound");
+            } catch (error) {
+                console.log("error.response.status", error.response.status);
+                this.$router.replace("/NotFound");
+                return;
+            }
+
+            const images = response.data;
+            this.image1 = images[0];
+            this.image2 = images[1];
+            this.image3 = images[2];
+            this.image4 = images[3];
+            this.image5 = images[4];
+            this.image6 = images[5];
+            this.image7 = images[6];
+            this.image8 = images[7];
+
+         }
+        else{
+            this.$router.push("/login");
+        }
+    },
     onSelectImage: function (data) {
       console.log('fire event onSelectImage: ', data)
       this.imageSelected = data

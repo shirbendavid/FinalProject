@@ -26,7 +26,7 @@ async function saveRate(user_id,params){
 }
 async function getGameImages(){
     const gameHighRateImages= [];
-    /*const nums = new Set();
+    const nums = new Set();
     const minRate= 6;
     while(nums.size !== 9) {
       nums.add(getRandomInt(1,31));
@@ -43,7 +43,7 @@ async function getGameImages(){
     }
     for(let imageID of gameLowRateImages.values()){
       imagesGame.push({ image: await DButils.execQuery(`SElECT image FROM imagesURL WHERE imageID='${imageID}'`), id: imageID, rate: "low"});
-    }*/
+    }
 
     imagesGame.push("C:/Users/User/Desktop/Image_Preference_Project/Animals/AABO99I.jpg");
     const buffer = fs.readFileSync(imagesGame[0].image, 'utf8');

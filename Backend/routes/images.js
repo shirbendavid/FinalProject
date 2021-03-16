@@ -21,7 +21,9 @@ router.get('/getImages/amount/:num', (req, res) => {
 });
 
 router.get('/getImagesForGame', (req, res) => {
-  imageUtils.getGameImages(res)
+  const {num} = req.params;
+  let amount = num;
+  userUtils.getGameImages(amount)
   .then((info_array) => {
     if (info_array.length == 0)
       res.status(205).send({ message: "No images found", success: true });
