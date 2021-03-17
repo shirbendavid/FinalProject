@@ -162,7 +162,7 @@ export default {
             try {
                 response = await this.axios.get(
                 this.$root.store.base_url +
-                    "/images/getImagesForGame/amount/"+8
+                    "/images/getImagesForGame/amount/"+12
                 );
                 console.log(response);
                 if (response.status !== 200) this.$router.replace("/NotFound");
@@ -181,6 +181,10 @@ export default {
             this.image6 = images[5];
             this.image7 = images[6];
             this.image8 = images[7];
+            this.image10 = images[9];
+            this.image11 = images[10];
+            this.image12 = images[11];
+            this.image13 = images[12];
 
          }
         else{

@@ -1,14 +1,14 @@
 const DButils = require("./DButils");
 const fs = require("fs");
 
-async function getRandomImageToRate(user_id){
+async function getRandomImageToRate(email){
     var imageExists = new Boolean(true);
     var rand = undefined;
     while(imageExists){
         min = Math.ceil(19);
         max = Math.floor(140);
         rand = Math.floor(Math.random() * (max - min) + min);
-        image = await DButils.execQuery(`SElECT image_id FROM userRating WHERE image_id='${rand}' AND user_id='${user_id}'`);
+        image = await DButils.execQuery(`SElECT image_id FROM userRating WHERE image_id='${rand}' AND email='${email}'`);
         console.log(image);
         if(image.length === 0)
             imageExists = false;
@@ -19,11 +19,12 @@ async function getRandomImageToRate(user_id){
     return {imageID: rand, image: "imageToRate"}
 }
 
-async function saveRate(user_id,params){
+async function saveRate(email,params){
     await DButils.execQuery(
-        `INSERT INTO userRating VALUES ('${params.image_id}','${user_id}', '${params.valueRate}')`
+        `INSERT INTO userRating VALUES ('${params.image_id}','${email}', '${params.valueRate}')`
       );
 }
+
 async function getGameImages(){
     const gameHighRateImages= [];
     const nums = new Set();

@@ -20,8 +20,8 @@ router.post("/Registration", async (req, res, next) => {
     );
 
     DButils.execQuery(
-      `INSERT INTO users VALUES (default, '${req.body.email}', '${hash_password}', '${req.body.firstname}', '${req.body.lastname}', 
-      '${req.body.age}', '${req.body.gender}')`
+      `INSERT INTO users VALUES ('${req.body.email}', '${hash_password}', '${req.body.firstname}', '${req.body.lastname}', 
+      '${req.body.age}', '${req.body.gender}', default)`
     );
     res.status(201).send({ message: "user created", success: true });
   } catch (error) {
@@ -48,7 +48,7 @@ router.post("/Login", async (req, res, next) => {
       throw { status: 401, message: "Username or Password incorrect" };
     }
     // Set cookie
-    req.session.user_id = user.user_id;
+    req.session.email = user.email;
 
     // return cookie
     res.status(200).send({ message: "login succeeded", success: true });
@@ -76,7 +76,7 @@ router.post("/LoginAdmin", async (req, res, next) => {
       throw { status: 401, message: "Username or Password incorrect" };
     }
     // Set cookie
-    req.session.admin_id = admin.admin_id;
+    req.session.emailAdmin = admin.email;
 
     // return cookie
     res.status(200).send({ message: "login succeeded", success: true });

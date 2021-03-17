@@ -106,11 +106,8 @@
             </b-button>
           </div>              
         </router-link>
-
         <br><br>
         <br><br>
-
-
   </div>
  
 </template>
@@ -192,7 +189,6 @@ export default {
 .button{
     float: right;
     margin-right:45%;
-
 }
 /* css class for the transition */
 .fade-enter-active,

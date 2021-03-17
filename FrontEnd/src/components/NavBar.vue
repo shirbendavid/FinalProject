@@ -5,7 +5,7 @@
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'main' }">
           Home
         </router-link>
-        <router-link class="nav" tag="b-nav-item" :to="{ name: 'loginManagement' }">
+        <router-link v-if="!$root.store.email && !this.$cookies.get('session')" class="nav" tag="b-nav-item" :to="{ name: 'loginManagement' }">
           <b-icon icon="gear-fill" aria-hidden="true"></b-icon> Management
           portal
         </router-link>
@@ -26,8 +26,7 @@
           Login
         </router-link>
       </b-navbar-nav>
-      <!--<b-navbar-nav class="ml-auto" v-else-if="!$root.store.emailAdmin">-->
-      <b-navbar-nav class="ml-auto">
+      <b-navbar-nav class="ml-auto" v-else-if="$root.store.email && this.$cookies.get('session')">
         <b-nav-text><b>Welcome</b></b-nav-text>
         <br />
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'observation' }">
@@ -45,7 +44,7 @@
             <em>{{ $root.store.email }}</em>
           </template>
         </b-nav-item-dropdown> -->
-        <button  v-if="$root.store.email && this.$cookies.get('session')" class="button" tag="b-nav-item" @click="Logout()">
+        <button class="button" tag="b-nav-item" @click="Logout()">
           Logout
         </button>
       </b-navbar-nav>
