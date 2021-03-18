@@ -20,23 +20,5 @@ router.get('/getImages/amount/:num', (req, res) => {
   });  
 });
 
-router.get('/getImagesForGame', (req, res) => {
-  const {num} = req.params;
-  let amount = num;
-  userUtils.getGameImages(amount)
-  .then((info_array) => {
-    if (info_array.length == 0)
-      res.status(205).send({ message: "No images found", success: true });
-    else{
-      console.log(info_array);
-      res.status(200).send(info_array);
-    } 
-  })
-  .catch((error) => {
-    console.log(error);
-    res.sendStatus(500);
-  });  
-});
-
 
 module.exports = router;

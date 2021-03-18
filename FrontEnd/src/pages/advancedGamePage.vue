@@ -1,13 +1,35 @@
 <template>
   <b-container class="container">
-    <div id="app" class="VueSelectImage">
-      <br />
-      <h1 class="title">Advanced Game</h1>
-      
-        <h5 class="title">Let's see if you can recognition other's favorite images </h5> 
+    <transition name="fade">
+        <div class="popup-modal" v-if="isVisible">
+            <div class="window">
+                <slot>   
+        <h1 class="title">Advanced Game</h1>
+
+         <h5 class="title">
+
+        Please take a look at the images on the screen. Those images 
+        <br />
+        were rated by another participant. Your task is to
         <br />
 
+        recognize, base on the information we  will give you, which are
+        <br /> 
+         the images this participant rated high.
+        <br />
 
+   
+        </h5>
+        <h2 class="title">Good Luck!</h2>
+                <button  class="button" tag="b-nav-item" @click="close()">
+          CLOSE
+        </button>
+        </slot>
+            </div>
+        </div>
+    </transition>
+    <div id="app" class="VueSelectImage">
+      <br />
         <div class="grid__row content centered">
             <vue-select-image :dataImages="dataImages"
                 :is-multiple="true"
@@ -95,7 +117,7 @@ export default {
 
       numOfScreens: 3, //////////// ################ chhanngeeeee #####
       currentScreenNum: 1,
-
+      isVisible: true,
       dataImages:
       [{
             id: '${images[0].id}',
@@ -188,6 +210,13 @@ export default {
     }
   },
   methods: {
+    open() {
+      this.isVisible = true
+    },
+
+    close() {
+      this.isVisible = false
+    },
     onSelectImage: function (data) {
       console.log('fire event onSelectImage: ', data)
       this.imageSelected = data
@@ -417,5 +446,36 @@ table {
   width: 70%;
   margin: 0 auto;
   text-align: center;
+}
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s;
+}
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.popup-modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+.window {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
 }
 </style>

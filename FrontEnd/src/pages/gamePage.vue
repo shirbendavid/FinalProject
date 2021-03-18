@@ -3,13 +3,13 @@
     <div id="app" class="VueSelectImage">
       <br />
       <h1 class="title">Game Time</h1>
+
       
         <!-- <h4 class="title">Let's see if you can recognition your favorite images </h4> -->
         <!-- <br /> -->
-
-
+        <img src="image1" class="center" width="246" aspect-ratio="1.4" />
         <div class="grid__row content centered">
-            <vue-select-image :dataImages="dataImages"
+            <!-- <vue-select-image :dataImages="dataImages"
                 :is-multiple="true"
                 :selectedImages="imageMultipleSelected"
                 @onselectmultipleimage="onSelectMultipleImage"
@@ -19,7 +19,7 @@
                 :h="150"
                 ref="multi-select-image"
                 :activeClass="'--active'">
-            </vue-select-image>
+            </vue-select-image>  -->
          <br/>
           <!-- <div>
           <h5>Mutiple Image Selected :
@@ -77,15 +77,15 @@
 
 <script>
 
-import VueSelectImage from "vue-select-image";
+//import VueSelectImage from "vue-select-image";
 
 // const alertMessage= "You reached the limit of " + this.limit + " images.";
 
 export default {
   name: 'selector',
-  components: {
-    VueSelectImage,
-  },
+  // components: {
+  //   VueSelectImage,
+  // },
   data () {
     return {
       title: '✅ Vue Select Image',
@@ -96,45 +96,55 @@ export default {
       numOfScreens: 3, //////////// ################ chhanngeeeee #####
       currentScreenNum: 1,
       
+      image1: '',
+      image2: '',
+      image3: '',
+      image4: '',
+      image5: '',
+      image6: '',
+      image7: '',
+      image8: '',
+   
       dataImages:
-      [{
-            id: '${images[0].id}',
-            src: require('../assets/image1.jpg'),
+      [
+        {
+            id: '1',
+            src: this.image1,
             alt: 'Alt Image 1'
         },
         {
             id: '2',
-            src: require('../assets/image2.jpg'),
+            src: this.image2,
             alt: 'Alt Image 2'
         },
         {
             id: '3',
-            src: require('../assets/image3.jpg'),
+            src: this.image3,
             alt: 'Alt Image 3',
         },
         {
             id: '4',
-            src: require('../assets/image4.jpg'),
+            src: this.image4,
             alt: 'Alt Image 4',
         },
         {
             id: '5',
-            src: require('../assets/image5.jpg'),
+            src: this.image5,
             alt: 'Alt Image 5'
         },
         {
             id: '6',
-            src: require('../assets/image6.jpg'),
+            src: this.image6,
             alt: 'Alt Image 6'
         },
         {
             id: '7',
-            src: require('../assets/image7.jpg'),
+            src: this.image7,
             alt: 'Alt Image 7',
         },
         {
             id: '8',
-            src: require('../assets/image8.jpg'),
+            src: this.image8,
             alt: 'Alt Image 8',
         },
 
@@ -155,16 +165,21 @@ export default {
     //   ],
     }
   },
-  methods: {
-        async created() {
+  methods: {},
+
+  async created() {
+        console.log("before if");
+
         if(this.$root.store.email){
+            console.log("insideeee ima shelhaaa if");
+
             let response;
             try {
                 response = await this.axios.get(
                 this.$root.store.base_url +
-                    "/images/getImagesForGame/amount/"+12
+                    "/users/getImagesForGame/amount/"+8
                 );
-                console.log(response);
+                //console.log(response);
                 if (response.status !== 200) this.$router.replace("/NotFound");
             } catch (error) {
                 console.log("error.response.status", error.response.status);
@@ -173,7 +188,12 @@ export default {
             }
 
             const images = response.data;
+            console.log(response.data[0]);
+
             this.image1 = images[0];
+
+            //console.log(this.image1);
+
             this.image2 = images[1];
             this.image3 = images[2];
             this.image4 = images[3];
@@ -264,10 +284,10 @@ export default {
             alt: 'Alt Image 7',
         });
     },
-  },
+  }
 
   
-}
+
 </script>
 
 <style lang="scss">

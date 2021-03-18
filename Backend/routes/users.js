@@ -43,4 +43,25 @@ router.get('/saveRate/image/:image_id/rate/:valueRate', (req, res) => {
   });
   
 
+  router.get('/getImagesForGame/amount/:num', (req, res) => {
+    console.log("users.js");
+    const {num} = req.params;
+    let amount = num;
+    params = {};
+    params.amount = amount;
+    userUtils.getGameImages(params)
+    .then((info_array) => {
+      if (info_array.length == 0)
+        res.status(205).send({ message: "No images found", success: true });
+      else{
+        console.log(info_array);
+        res.status(200).send(info_array);
+      } 
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });  
+  });
+  
 module.exports = router;
