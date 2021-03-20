@@ -28,8 +28,10 @@ async function saveRate(email,params){
 async function getGameImages(params){
   console.log("amounttt");
     const gameHighRateImages= [];
+    const gameLowRateImages= [];
+
     const nums = new Set();
-    const minRate= 6;
+    const minRate= 7;
     console.log(params.amount);
     // while(nums.size < params.amount) {
     //   //console.log(nums.size);
@@ -37,42 +39,44 @@ async function getGameImages(params){
     // }
     //console.log("after random");
 
-    const gameLowRateImages= [];
     const allMax = await DButils.execQuery(`SElECT image_id FROM userRating WHERE rate>'${minRate}'`); 
     const allMin = await DButils.execQuery(`SElECT image_id FROM userRating WHERE rate<='${minRate}'`); 
     console.log(allMax);
 
     let i = 0;
-    //while(i < params.amount / 2){
+   // while(i < params.amount/2){
       while(i < 2){
-
        // gameHighRateImages.push(await DButils.execQuery(`SElECT image_id FROM userRating WHERE rate>'${minRate}'`));
        gameHighRateImages.push(allMax[i].image_id);
-       //gameHighRateImages.push(allMin[i].image_id);
+       gameLowRateImages.push(allMin[i].image_id);
        console.log(gameHighRateImages);
+      // console.log(gameLowRateImages);
+
         i+=1;
     }
     console.log();
 
     const imagesGame = [];
-
+    //i=0;
     for(let imageID of gameHighRateImages.values()){
       console.log(imageID);
-       dataImage = await DButils.execQuery(`SELECT image FROM images WHERE imageID='${imageID}'`);  
-      // imagesGame.push({ image: "data:image/jpeg;base64,"+dataImage[imageID].image.toString('base64'), id: imageID, rate: "high"});
+      dataImage = await DButils.execQuery(`SELECT image FROM images WHERE imageID='${imageID}'`);  
       console.log("before" + imageID);
       console.log(dataImage[0].image);
+      imagesGame.push({ image: "data:image/jpeg;base64,"+dataImage[0].image.toString('base64'), id: imageID, rate: "high"});
 
-      imagesGame.push("data:image/jpeg;base64,"+dataImage[0].image.toString('base64'));
+      //imagesGame.push("data:image/jpeg;base64,"+dataImage[0].image.toString('base64'));
       console.log("after");
-
+      //i+=1;
     }
+   // i=0;
+
     for(let imageID of gameLowRateImages.values()){
       dataImage = await DButils.execQuery(`SELECT image FROM images WHERE imageID='${imageID}'`);  
-      //imagesGame.push({ image: "data:image/jpeg;base64,"+dataImage[imageID].image.toString('base64'), id: imageID, rate: "low"});
-      
+      imagesGame.push({ image: "data:image/jpeg;base64,"+dataImage[0].image.toString('base64'), id: imageID, rate: "low"});
+     // i+=1;
       // imagesGame.push({ image: await DButils.execQuery(`SElECT image FROM imagesURL WHERE imageID='${imageID}'`), id: imageID, rate: "low"});
-      imagesGame.push("data:image/jpeg;base64,"+dataImage[0].image.toString('base64'));
+     // imagesGame.push("data:image/jpeg;base64,"+dataImage[0].image.toString('base64'));
     }
 
     //imagesGame.push("C:/Users/User/Desktop/Image_Preference_Project/Animals/AABO99I.jpg");
@@ -83,7 +87,9 @@ async function getGameImages(params){
     //fs.writeFileSync("../FrontEnd/src/assets/image1.jpg", buffer);
     return imagesGame;
 }
+//  async function checkUserAnswers(){
 
+//  }
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);

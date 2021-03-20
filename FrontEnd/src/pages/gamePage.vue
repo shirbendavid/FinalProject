@@ -7,9 +7,9 @@
       
         <!-- <h4 class="title">Let's see if you can recognition your favorite images </h4> -->
         <!-- <br /> -->
-        <img src="image1" class="center" width="246" aspect-ratio="1.4" />
+        <!-- <img src="image1" class="center" width="246" aspect-ratio="1.4" /> -->
         <div class="grid__row content centered">
-            <!-- <vue-select-image :dataImages="dataImages"
+            <vue-select-image :dataImages="dataImages"
                 :is-multiple="true"
                 :selectedImages="imageMultipleSelected"
                 @onselectmultipleimage="onSelectMultipleImage"
@@ -19,7 +19,7 @@
                 :h="150"
                 ref="multi-select-image"
                 :activeClass="'--active'">
-            </vue-select-image>  -->
+            </vue-select-image> 
          <br/>
           <!-- <div>
           <h5>Mutiple Image Selected :
@@ -95,7 +95,6 @@ export default {
 
       numOfScreens: 3, //////////// ################ chhanngeeeee #####
       currentScreenNum: 1,
-      
       image1: '',
       image2: '',
       image3: '',
@@ -104,7 +103,8 @@ export default {
       image6: '',
       image7: '',
       image8: '',
-   
+      images: null,
+
       dataImages:
       [
         {
@@ -165,7 +165,7 @@ export default {
     //   ],
     }
   },
-  methods: {},
+  //methods: {},
 
   async created() {
         console.log("before if");
@@ -186,31 +186,30 @@ export default {
                 this.$router.replace("/NotFound");
                 return;
             }
-
-            const images = response.data;
+            const { data: images }= response.data;
+            this.images = images;
+            
             console.log(response.data[0]);
 
-            this.image1 = images[0];
-
-            //console.log(this.image1);
-
-            this.image2 = images[1];
-            this.image3 = images[2];
-            this.image4 = images[3];
-            this.image5 = images[4];
-            this.image6 = images[5];
-            this.image7 = images[6];
-            this.image8 = images[7];
-            this.image10 = images[9];
-            this.image11 = images[10];
-            this.image12 = images[11];
-            this.image13 = images[12];
+            this.image1 = images[0].image;
+            this.image2 = images[1].image;
+            this.image3 = images[2].image;
+            this.image4 = images[3].image;
+            this.image5 = images[4].image;
+            this.image6 = images[5].image;
+            this.image7 = images[6].image;
+            this.image8 = images[7].image;
+            this.image10 = images[9].image;
+            this.image11 = images[10].image;
+            this.image12 = images[11].image;
+            this.image13 = images[12].image;
 
          }
         else{
             this.$router.push("/login");
         }
     },
+    methods: {
     onSelectImage: function (data) {
       console.log('fire event onSelectImage: ', data)
       this.imageSelected = data
@@ -231,23 +230,28 @@ export default {
             this.imageMultipleSelected.pop();
     },
 
-    check: function () {
-        console.log("to checkkk, from DB !!");
-        //const numMiss= 0;
+    check: function() {
+      console.log("to checkkk, from DB !!");
         
-       /* while ( this.imageMultipleSelected.length > 0 ){
-            const currSelected= this.imageMultipleSelected.pop();
-            const i=0;
-            while(i<images.length){
-              if(images[i].id==currSelected.id )
-                if(images[i].rate==="low")
-                  numMiss++;
-                break;
-              i++;
+        let numMiss= 0;
+       // while ( this.imageMultipleSelected.length > 0 ){
+          for( let img in this.imageMultipleSelected){
+            //let Selected= this.imageMultipleSelected;
+           // const currSelected= Selected.pop();
+            let i=0;
+            while(i<this.images.length){
+              if(this.images[i].id==img.id ){
+                if(this.images[i].rate==="low"){
+                  numMiss+=1;
+                  break;
+                }
+              }
+              i+=1;
             }
-        }
+          }
+        //}
         alert(" you have "+ numMiss+" mistakes");
-    */
+    
     },
 
     goToNextImages: function() {
@@ -283,6 +287,7 @@ export default {
             src: require('../assets/image12.jpg'),
             alt: 'Alt Image 7',
         });
+    },
     },
   }
 
