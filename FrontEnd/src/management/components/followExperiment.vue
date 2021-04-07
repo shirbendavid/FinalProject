@@ -6,8 +6,10 @@
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Last login</th>
                     <th>No. images rated</th>
+                    <th>Last time in the game</th>
                 </tr>
             </thead>
             <tbody>
@@ -15,7 +17,9 @@
                     <td>{{user.firstname}} {{user.lastname}}</td>
                     <td>{{user.email}}</td>
                     <td>{{user.status}}</td>
+                    <td>{{user.lastLogin}}</td>
                     <td>{{user.numOfRates}}</td>
+                    <td>{{user.gameTime}}</td>
                 </tr>
             </tbody>
         </table>
@@ -29,8 +33,8 @@ export default {
             users: []
         };
     },
-        async created() {
-        if(this.$root.store.emailAdmin){
+    async created() {
+        if(localStorage.getItem("emailAdmin")){
             let response;
             try {
                 response = await this.axios.get(

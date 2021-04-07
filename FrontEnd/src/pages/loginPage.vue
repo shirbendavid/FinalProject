@@ -11,8 +11,6 @@
           <div class="welcome">Welcome!</div>
           <div class="subtitle">Log into your account.</div>
           <br />
-          <br />
-          <br />
           <b-form @submit.prevent="onLogin">
             <b-form-group
               id="input-group-email"
@@ -31,7 +29,7 @@
               </b-form-invalid-feedback>
             </b-form-group>
 
-            <b-form-group
+            <!-- <b-form-group
               id="input-group-Password"
               label-cols-sm="3"
               label="Password"
@@ -46,7 +44,7 @@
               <b-form-invalid-feedback>
                 Password is required
               </b-form-invalid-feedback>
-            </b-form-group>
+            </b-form-group> -->
 
             <button
               type="submit"
@@ -90,7 +88,6 @@ export default {
     return {
       form: {
         email: "",
-        password: "",
         submitError: undefined,
       },
     };
@@ -98,9 +95,6 @@ export default {
   validations: {
     form: {
       email: {
-        required,
-      },
-      password: {
         required,
       },
     },
@@ -116,7 +110,6 @@ export default {
           this.$root.store.base_url + "/Login",
           {
             email: this.form.email,
-            password: this.form.password,
             // withCredentials: true,
           }
         );

@@ -105,7 +105,7 @@
               </b-form-invalid-feedback>
             </b-form-group>
 
-            <b-form-group
+            <!-- <b-form-group
               id="input-group-Password"
               label-cols-sm="3"
               label="Password"
@@ -153,7 +153,7 @@
               >
                 The confirmed password is not equal to the original password
               </b-form-invalid-feedback>
-            </b-form-group>
+            </b-form-group> -->
 
             <button
               type="submit"
@@ -202,15 +202,15 @@
 // import countries from '../assets/countries'
 import {
   required,
-  minLength,
-  maxLength,
-  sameAs,
+  // minLength,
+  // maxLength,
+  // sameAs,
   email,
   // regex,
-  helpers,
+  // helpers,
 } from "vuelidate/lib/validators";
-const containsNumber = helpers.regex("containsNumber ", /[0-9]/);
-const containsSpecial = helpers.regex("containsSpecial ", /[#?!@$%^&*-]/);
+// const containsNumber = helpers.regex("containsNumber ", /[0-9]/);
+// const containsSpecial = helpers.regex("containsSpecial ", /[#?!@$%^&*-]/);
 export default {
   name: "register",
   data() {
@@ -218,8 +218,8 @@ export default {
       form: {
         firstName: "",
         lastName: "",
-        password: "",
-        confirmedPassword: "",
+        // password: "",
+        // confirmedPassword: "",
         gender: null,
         age: "",
         email: "",
@@ -247,16 +247,16 @@ export default {
       lastName: {
         required,
       },
-      password: {
-        required,
-        length: (p) => minLength(5)(p) && maxLength(10)(p),
-        containsNumber,
-        containsSpecial,
-      },
-      confirmedPassword: {
-        required,
-        sameAsPassword: sameAs("password"),
-      },
+      // password: {
+      //   required,
+      //   length: (p) => minLength(5)(p) && maxLength(10)(p),
+      //   containsNumber,
+      //   containsSpecial,
+      // },
+      // confirmedPassword: {
+      //   required,
+      //   sameAsPassword: sameAs("password"),
+      // },
       gender: {
         required,
       },
@@ -285,7 +285,7 @@ export default {
             lastname: this.form.lastName,
             gender: this.form.gender,
             age: this.form.age,
-            password: this.form.password,
+            // password: this.form.password,
           }
         );
         console.log(response);
@@ -312,8 +312,8 @@ export default {
         lastName: "",
         gender: null,
         age: "",
-        password: "",
-        confirmedPassword: "",
+        // password: "",
+        // confirmedPassword: "",
       };
       this.$nextTick(() => {
         this.$v.$reset();

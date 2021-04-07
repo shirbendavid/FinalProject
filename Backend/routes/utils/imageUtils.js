@@ -10,10 +10,11 @@ async function getImages(amount){
     let i = 1;
     for(let number of nums.values()){
       dataImage = await DButils.execQuery(`SELECT image FROM images WHERE imageID='${number}'`);  
-      // fileNameToSave = "../FrontEnd/src/assets/image"+i+".jpg";
-      // fileNameForFront = "image"+i;
-      // fs.writeFileSync(fileNameToSave, dataImage[0].image)
-      images.push("data:image/jpeg;base64,"+dataImage[0].image.toString('base64'));
+      fileNameToSave = "../FrontEnd/src/assets/image"+i+".jpg";
+      fileNameForFront = "image"+i;
+      fs.writeFileSync(fileNameToSave, dataImage[0].image)
+      // images.push("data:image/jpeg;base64,"+dataImage[0].image.toString('base64'));
+      images.push(fileNameForFront);
       i+=1;
     }
    

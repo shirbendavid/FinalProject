@@ -9,10 +9,10 @@
     </b-button>
    </router-link>
 <br/>
-      <FollowExperiment/>
+      <ParameterManage/>
 <br/>
-      <button  class="button" tag="b-nav-item" @click="openParam()">
-        Paramters
+      <button  class="button" tag="b-nav-item" @click="openUsersTable()">
+        Users Table
       </button>
       <br/>
       <br/>
@@ -20,13 +20,13 @@
         Reports
       </button>
 <transition name="fade">
-        <div class="popup-modal" v-if="isVisibleParam">
+        <div class="popup-modal" v-if="isVisibleUsersTable">
             <div class="window">
                 <slot>
-                  <button  class="button" tag="b-nav-item" @click="closeParam()">
+                  <button  class="button" tag="b-nav-item" @click="closeUsersTable()">
                     CLOSE
                   </button>
-                  <ParameterManage/>
+                        <FollowExperiment/>
                 </slot>
             </div>
         </div>
@@ -54,16 +54,16 @@ import FollowExperiment from '../components/followExperiment'
 export default {
   data() {
     return {
-      isVisibleParam: false,
+      isVisibleUsersTable: false,
       isVisibleReports: false
     }
   },
     methods: {
-    openParam() {
-      this.isVisibleParam = true
+    openUsersTable() {
+      this.isVisibleUsersTable = true
     },
-    closeParam() {
-      this.isVisibleParam = false
+    closeUsersTable() {
+      this.isVisibleUsersTable = false
     },
     openReports() {
       this.isVisibleReports = true
@@ -72,7 +72,7 @@ export default {
       this.isVisibleReports = false
     },
     Logout() {
-      this.$root.store.logout();
+      this.$root.store.logoutAdmin();
       this.$root.toast("Logout", "Admin logged out successfully", "success");
 
       this.$router.push("/").catch(() => {

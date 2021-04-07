@@ -105,10 +105,18 @@ const shared_data = {
   logout() {
     console.log("logout");
     localStorage.removeItem("email");
-    localStorage.removeItem("emailAdmin");
-    Vue.$cookies.remove("session");
+    // localStorage.removeItem("emailAdmin");
+    if(!localStorage.getItem("emailAdmin")){
+      localStorage.removeItem("emailAdmin");
+      Vue.$cookies.remove("session");
+    }
     this.email = undefined;
   },
+  logoutAdmin(){
+    localStorage.removeItem("emailAdmin");
+    Vue.$cookies.remove("session");
+    this.emailAdmin=undefined;
+  }
 };
 console.log(shared_data);
 

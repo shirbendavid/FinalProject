@@ -4,5 +4,3 @@ CREATE TABLE [dbo].[userRating](
 	[rate][int] NOT NULL,
     PRIMARY KEY (email,image_id),
 	FOREIGN KEY (email) REFERENCES users(email))
-
---fk to image_id

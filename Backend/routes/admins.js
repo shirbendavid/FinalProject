@@ -32,4 +32,24 @@ router.use(async function (req, res, next) {
     });
     });
 
+  router.get('/updateParams/:params', (req, res) => {
+      const allParams=JSON.parse(req.params.params);
+      adminUtils.updateParams(allParams).then((info_array) =>res.send(info_array))
+      .catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+      });
+      });
+
+    router.get('/getParams', (req, res) => {
+        adminUtils.getParams().then((info_array) => {
+          if (info_array.length == 0)
+            res.status(205).send({ message: "No Parameters found", success: true });
+          else res.send(info_array);
+        })
+        .catch((error) => {
+          console.log(error);
+          res.sendStatus(500);
+        });
+        });
     module.exports = router;

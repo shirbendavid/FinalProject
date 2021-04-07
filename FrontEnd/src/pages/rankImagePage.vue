@@ -1,8 +1,6 @@
 <template>
-
-  <div class="container"  >
-    <!-- style="height: calc(100vh - 100px)" -->
-    <div class="image-header ma-2">
+  <div class="container"  >  
+      <div class="image-header ma-2">
       <b-row class="title">
         <h4><b>How much do you like this photo?</b> </h4>
       </b-row>
@@ -15,17 +13,6 @@
               <img :src="require('../assets/'+image+'.jpg')" class="center" />
             </b-col>
           </b-row>
-          <!-- <b-row>
-            <b-col> -->
-              <!-- <b-form-radio-group
-                v-model="value"
-                :options="options"
-                class="mb-3"
-                value-field="item"
-                text-field="name"
-                size="20%"
-                color="#ff8800"
-              ></b-form-radio-group>-->
     
 <div class="scale">       
   <b-row >
@@ -101,25 +88,32 @@
                 NEXT
               </b-button>
 
-      <!-- <v-rating
-        v-model="rating"
-        length="10"
-        readonly
-      >
-        <template v-slot:item="props">
-          <b-icon
-            large
-            :color="props.isFilled ? 'purple darken-4' : ''"
-            v-text="`mdi-numeric-${props.index}-box`"
-          ></b-icon>
-        </template>
-      </v-rating> -->
-
             </b-col>
           </b-row>
         </div>
       </div>
     </div>
+    <transition name="fade">
+        <div class="popup-modal" v-if="enoughImages">
+            <div class="window">
+                <slot>
+                           <h5 class="title">
+
+       You rating a minimum number of images, 
+       <br>
+       you can start playing or continue to rate images.    
+        </h5>
+        <h2 class="title">Good Luck!</h2>
+                <button  class="button" tag="b-nav-item" @click="close()">
+          Continue rating
+        </button>
+         <button  class="button" tag="b-nav-item" @click="StartPlay()">
+          Start Play!
+        </button>
+                </slot>
+            </div>
+        </div>
+    </transition>
         </div>
 
  
@@ -132,11 +126,34 @@ export default {
       value: 1,
       image: "",
       image_id: "",
+      enoughImages:false,
     };
   },
   methods: {
-    async saveImageRate() {
-      // add rate image to DB for this user
+    async checkNumberOfImages() {
+      let numberOfImages;
+              try{
+            numberOfImages = await this.axios.get(
+                this.$root.store.base_url +
+                    "/users/numberOfImages"
+                );  
+                console.log(numberOfImages);
+                if(numberOfImages.data.length==25){
+                  this.enoughImages=true;
+                  // this.saveImageRate();
+                }
+                else{
+                  // this.saveImageRate();
+                  this.getNextImage();
+                }
+        } catch (error) {
+            console.log("error.numberOfImages.status", error.numberOfImages.status);
+            this.$router.replace("/NotFound");
+            return;
+          }
+    },
+     // add rate image to DB for this user
+     async saveImageRate(){
       try {
         let response = await this.axios.get(
           this.$root.store.base_url +
@@ -149,7 +166,15 @@ export default {
         if (response.status !== 200) this.$router.replace("/NotFound");
         else {
           this.value = 1;
-          try {
+        this.getNextImage();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async getNextImage(){
+      let response;
+                try {
             response = await this.axios.get(
               this.$root.store.base_url + "/users/getImageToRate"
             );
@@ -162,11 +187,14 @@ export default {
           }
           this.image_id = response.data.imageID;
           this.image = response.data.image;
-        }
-      } catch (error) {
-        console.log(error);
-      }
     },
+   close() {
+            this.enoughImages = false;
+            this.getNextImage();
+        },
+   StartPlay(){
+           this.$router.replace("/game");     
+   }     
   },
   async created() {
     //  get image from server
