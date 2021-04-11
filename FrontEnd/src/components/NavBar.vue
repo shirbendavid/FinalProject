@@ -5,6 +5,9 @@
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'main' }">
           Home
         </router-link>
+        <router-link class="nav" tag="b-nav-item" :to="{ name: 'about' }">
+          About
+        </router-link>
         <router-link v-if="!$root.store.email && !this.$cookies.get('session')" class="nav" tag="b-nav-item" :to="{ name: 'loginManagement' }">
           <b-icon icon="gear-fill" aria-hidden="true"></b-icon> Management
           portal
