@@ -212,6 +212,7 @@ export default {
     display: flex;
     align-items: center;
     z-index: 1;
+
 }
 
 .window {
@@ -225,6 +226,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items:center;
+    border: 1.5px solid;
 }
 
 .title {
