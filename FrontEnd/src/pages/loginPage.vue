@@ -145,7 +145,7 @@ export default {
   max-width: 500px;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Raleway);
+// @import url(https://fonts.googleapis.com/css?family=Raleway);
 body,
 html {
   margin: 0;
@@ -306,8 +306,8 @@ button:focus {
   //height: 860px;
   // width: 500px;
   background: #fff;
-  background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
-    top left no-repeat;
+  // background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
+  //   top left no-repeat;
 }
 
 .overlay {
@@ -332,8 +332,8 @@ button:focus {
   height: 100%;
   z-index: 1;
   opacity: 0.1;
-  background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
-    left no-repeat;
+  // background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
+  //   left no-repeat;
   background-size: cover;
 }
 

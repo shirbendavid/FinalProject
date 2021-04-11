@@ -68,7 +68,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url("https://fonts.googleapis.com/css?family=Special+Elite");
+// @import url("https://fonts.googleapis.com/css?family=Special+Elite");
 .navbar {
   background: -webkit-linear-gradient(#ccd2df, #6b656e);
   background: linear-gradient(#e9c9b5c5, #f3c48ec7);

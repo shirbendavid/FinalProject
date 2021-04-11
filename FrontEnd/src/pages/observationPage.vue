@@ -5,32 +5,33 @@
         <div class="popup-modal" v-if="isVisible">
             <div class="window">
                 <slot>   
-        <h1 class="title">Sample images</h1>
+                <h1 class="title">Sample images</h1>
+                <br/>
 
-         <h5 class="title">
+                <p class="text">
+                    Please take a look at the images on the screen. They are representative of the images in our database.
+                    <br />
 
-        Please take a look at the images on the screen. They are representative of the images in our database.
-        <br />
+                    Press the Start Rating button when you are ready to rate how much you like individual images.
+                    <br /><br />
 
-        Press the Start Rating button when you are ready to rate how much you like individual images.
-        <br />
+                    A rating of 10 indicates that you <b>like</b> the image very much.
+                    <br />
 
-        A rating of 10 indicates that you like the image very much.
-        <br />
+                    A rating of 1 indicates that you <b>do not like</b> the image at all.
+                    <br />
 
-        A rating of 1 indicates that you do not like the image at all.
-        <br />
-
-        Your liking of most images will likely not be extreme, so use the in-between points on the scale to denote your liking.    
-        </h5>
-        <h2 class="title">Good Luck!</h2>
-                <button  class="button" tag="b-nav-item" @click="close()">
-          CLOSE
-        </button>
-        </slot>
-            </div>
-        </div>
-    </transition>
+                    Your liking of most images will likely not be extreme, so use the in-between points on the scale to denote your liking.    
+                </p>
+                <h2 class="title">Good Luck!</h2>
+                
+                <button class="button" tag="b-nav-item" @click="close()">
+                CLOSE
+                </button>
+                </slot>
+                    </div>
+                </div>
+            </transition>
     <b-container>
 
         <br />
@@ -207,20 +208,38 @@ export default {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 0.5rem;
+    margin-bottom: 0px;
     display: flex;
     align-items: center;
     z-index: 1;
 }
 
 .window {
-    background: #fff;
+    background: #f8dbbad3;
     border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
     max-width: 680px;
     margin-left: auto;
     margin-right: auto;
-    padding: 1rem;
+    padding: 1.1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+
+.title {
+    text-align: center;
+}
+
+.text {
+    font-size: 20px;
+}
+
+.button {
+    border-radius: 5px;
+    font-size: 20px;
+    width: 120px;
+    // margin-left: 300px
 }
 </style>
 
