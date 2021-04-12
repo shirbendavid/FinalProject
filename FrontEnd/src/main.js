@@ -5,6 +5,8 @@ import axios from "axios";
 
 import VueSelectImage from 'vue-select-image';
 Vue.use(VueSelectImage);
+import VueExcelXlsx from "vue-excel-xlsx";
+Vue.use(VueExcelXlsx);
 
 require('vue-select-image/dist/vue-select-image.css');
 

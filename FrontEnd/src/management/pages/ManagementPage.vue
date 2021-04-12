@@ -39,6 +39,7 @@
                     CLOSE
                   </button>
                   Reports
+                  <ExportToExcel/>
                 </slot>
             </div>
         </div>
@@ -51,6 +52,7 @@
 <script>
 import ParameterManage from '../components/parameterManage'
 import FollowExperiment from '../components/followExperiment'
+import ExportToExcel from '../components/exportToExcel'
 export default {
   data() {
     return {
@@ -82,7 +84,8 @@ export default {
   },
   components: {
     ParameterManage,
-    FollowExperiment
+    FollowExperiment,
+    ExportToExcel
   },
 }
 </script>
