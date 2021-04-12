@@ -93,27 +93,31 @@
         </div>
       </div>
     </div>
-    <transition name="fade">
-        <div class="popup-modal" v-if="enoughImages">
-            <div class="window">
-                <slot>
-                           <h5 class="title">
+    <div class="container">
 
-       You rating a minimum number of images, 
-       <br>
-       you can start playing or continue to rate images.    
-        </h5>
-        <h2 class="title">Good Luck!</h2>
-                <button  class="button" tag="b-nav-item" @click="close()">
-          Continue rating
-        </button>
-         <button  class="button" tag="b-nav-item" @click="StartPlay()">
-          Start Play!
-        </button>
-                </slot>
-            </div>
-        </div>
-    </transition>
+      <transition name="fade">
+          <div class="popup-modal" v-if="enoughImages">
+          <!-- <div class="popup-modal"> -->
+              <div class="window">
+                  <slot>
+                      <p class="text">
+                          You've already rated enough images, 
+                          <br>
+                          you can now start playing or continue rating images.    
+                      </p>
+                      <h2 class="title">Good Luck!</h2>
+                      <br/>
+                      <button  class="button" tag="b-nav-item" @click="close()">
+                            Continue rating
+                      </button>
+                      <button  class="button" tag="b-nav-item" @click="StartPlay()">
+                        Start Play!
+                      </button>
+                  </slot>
+              </div>
+          </div>
+      </transition>
+    </div>
         </div>
 
  
@@ -180,7 +184,7 @@ export default {
     },
     async getNextImage(){
       let response;
-            try {
+                try {
             response = await this.axios.get(
               this.$root.store.base_url + "/users/getImageToRate"
             );
@@ -340,5 +344,51 @@ label2{
 
 .buttons{
   padding-top: 4px;
+}
+
+
+.popup-modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+
+}
+
+.window {
+    background: #f8dbbad3;
+    border-radius: 5px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    border: 1.5px solid;
+}
+
+.button {
+    border-radius: 5px;
+    font-size: 20px;
+    width: 160px;
+    margin-left: 40px
+}
+
+.text {
+    font-size: 20px;
+    text-align: center;
+}
+
+.title {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 </style>
