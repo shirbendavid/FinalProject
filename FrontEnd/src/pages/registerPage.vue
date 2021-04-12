@@ -487,7 +487,7 @@ button:focus {
   box-sizing: border-box;
   //height: 860px;
   // width: 500px;
-  background: rgb(100, 22, 22);
+  background: #fff;
   // background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
   //   top left no-repeat;
 }

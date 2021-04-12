@@ -76,6 +76,19 @@ router.get('/saveRate/image/:image_id/rate/:valueRate', (req, res) => {
       res.sendStatus(500);
     });
     });
+
+    router.get('/minNumberOfImagesToRate', (req, res) => {
+      userUtils.getNmberOfImagesToRate().then((info_array) => {
+        if (info_array.length < 0){
+          res.status(205).send({ message: "No number found", success: true });
+        }
+        else res.send(info_array);
+      })
+      .catch((error) => {
+        console.log(error);
+        res.sendStatus(500);
+      });
+      });
   //  router.get('/checkUserAnswers', (req,res) => {
   //   console.log("users.js");
   //   // const {num} = req.params;

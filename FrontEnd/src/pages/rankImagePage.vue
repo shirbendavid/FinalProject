@@ -132,13 +132,18 @@ export default {
   methods: {
     async checkNumberOfImages() {
       let numberOfImages;
+      let minRatingImage;
               try{
             numberOfImages = await this.axios.get(
                 this.$root.store.base_url +
                     "/users/numberOfImages"
                 );  
-                console.log(numberOfImages);
-                if(numberOfImages.data.length==25){
+           minRatingImage = await this.axios.get(
+                this.$root.store.base_url +
+                    "/users/minNumberOfImagesToRate"
+                ); 
+                console.log(numberOfImages.data.length);
+                if(numberOfImages.data.length===minRatingImage.data[0].minimum_images_rating){
                   this.enoughImages=true;
                   // this.saveImageRate();
                 }
@@ -166,7 +171,8 @@ export default {
         if (response.status !== 200) this.$router.replace("/NotFound");
         else {
           this.value = 1;
-        this.getNextImage();
+        this.checkNumberOfImages();  
+       // this.getNextImage();
         }
       } catch (error) {
         console.log(error);
@@ -174,7 +180,7 @@ export default {
     },
     async getNextImage(){
       let response;
-                try {
+            try {
             response = await this.axios.get(
               this.$root.store.base_url + "/users/getImageToRate"
             );
@@ -222,7 +228,7 @@ export default {
 </script>
 
 <style scoped>
-@import url(https://fonts.googleapis.com/css?family=Special+Elite);
+/* @import url(https://fonts.googleapis.com/css?family=Special+Elite); */
 
 .container {
   background-color: rgba(255, 255, 255, 0.89);

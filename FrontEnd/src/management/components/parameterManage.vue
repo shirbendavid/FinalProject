@@ -86,6 +86,8 @@ data() {
 },
 methods:{
     async updated() {
+      if(this.form.numOfImages !== '' || this.form.numOfSelected !== '' || this.form.imagesInRate !== ''
+      || this.form.delayTime !== '' || this.form.numOfScreens !== ''){
         if(this.form.numOfImages !== '')
           this.numOfImages = this.form.numOfImages;
         if(this.form.numOfSelected !== '')
@@ -105,7 +107,7 @@ methods:{
                 );
                 console.log(response);
                 if (response.status !== 200) this.$router.replace("/NotFound");
-                else alert("The parameters have been updated!!")
+                else alert("The parameters have been updated!")
             } catch (error) {
                 console.log("error.response.status", error.response.status);
                 this.$router.replace("/NotFound");
@@ -119,6 +121,10 @@ methods:{
           numOfScreens: '',
           lastChange: '',
         }
+      }
+      else{
+        alert("You need to enter at least one parameter to update!")
+      }
     },
 },
 async created() {

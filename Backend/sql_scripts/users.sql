@@ -5,6 +5,7 @@ CREATE TABLE [dbo].[users](
 	[age] [varchar](50) NOT NULL, 
 	[sex] [varchar](10) NOT NULL, 
 	[status] [varchar](10) default 'active',
+	[dateOfRegistration] [datetime] Default GETDATE(),
 	[lastLogin] [datetime] default NULL,
 	[gameTime] [datetime] default NULL
 )

@@ -6,6 +6,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Date of registration</th>
                     <th>Status</th>
                     <th>Last login</th>
                     <th>No. images rated</th>
@@ -16,6 +17,7 @@
                 <tr v-for="user in users" :key="user.id">
                     <td>{{user.firstname}} {{user.lastname}}</td>
                     <td>{{user.email}}</td>
+                    <td>{{user.dateOfRegistration}}</td>
                     <td>{{user.status}}</td>
                     <td>{{user.lastLogin}}</td>
                     <td>{{user.numOfRates}}</td>

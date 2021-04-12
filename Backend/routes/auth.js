@@ -22,7 +22,7 @@ router.post("/Registration", async (req, res, next) => {
 
     DButils.execQuery(
       `INSERT INTO users VALUES ('${req.body.email}', '${req.body.firstname}', '${req.body.lastname}', 
-      '${req.body.age}', '${req.body.gender}', default, default, default)`
+      '${req.body.age}', '${req.body.gender}', default, default, default, default)`
     );
     res.status(201).send({ message: "user created", success: true });
   } catch (error) {

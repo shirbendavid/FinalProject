@@ -21,17 +21,6 @@ async function getImages(amount){
     return images;
 }
 
-// async function getImageID(amount){
-//   const nums = new Set();
-//     while(nums.size != amount) {
-//       nums.add(getRandomInt(19,140));
-//     }
-//     return nums;
-// }
-// async function getImage(id) {
-//   return await DButils.execQuery(`SELECT image FROM images WHERE imageID='${id}'`).image
-// }
-
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
