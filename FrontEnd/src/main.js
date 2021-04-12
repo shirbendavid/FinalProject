@@ -92,10 +92,12 @@ Vue.config.productionTip = false;
 const shared_data = {
   base_url: "http://localhost:3000",
   email: localStorage.email,
-  login(email) {
+  login(email, firstname) {
     localStorage.setItem("email", email);
     this.email = email;
     console.log("login", this.email);
+    localStorage.setItem("firstname", firstname);
+    this.firstname = firstname
   },
   loginAdmin(email) {
     localStorage.setItem("emailAdmin", email);

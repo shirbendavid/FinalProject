@@ -115,8 +115,7 @@ export default {
         );
         console.log(response);
         this.$root.loggedIn = true;
-        console.log(this.$root.store.login);
-        this.$root.store.login(this.form.email);
+        this.$root.store.login(this.form.email, response.data['firstname']);
 
         this.$router.push("/observation");
       } catch (err) {

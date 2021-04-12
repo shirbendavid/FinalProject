@@ -47,6 +47,7 @@ router.post("/Login", async (req, res, next) => {
     //update last login time
     await DButils.execQuery(`UPDATE users SET lastLogin=GETDATE() where email='${user.email}'`)
 
+
     // if (!bcrypt.compareSync(req.body.password, user.password)) {
     //   throw { status: 401, message: "Username or Password incorrect" };
     // }
@@ -54,7 +55,7 @@ router.post("/Login", async (req, res, next) => {
     req.session.email = user.email;
 
     // return cookie
-    res.status(200).send({ message: "login succeeded", success: true });
+    res.status(200).send({ message: "login succeeded", success: true, firstname: user.firstname });
   } catch (error) {
     next(error);
   }

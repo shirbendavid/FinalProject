@@ -30,7 +30,7 @@
         </router-link>
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto" v-else-if="$root.store.email && this.$cookies.get('session')">
-        <b-nav-text><b>Welcome</b></b-nav-text>
+        <b-nav-text><b>Welcome {{ $root.store.firstname }} </b></b-nav-text>
         <br />
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'observation' }">
           Rate
