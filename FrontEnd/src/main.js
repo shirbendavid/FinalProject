@@ -109,6 +109,7 @@ const shared_data = {
   logout() {
     console.log("logout");
     localStorage.removeItem("email");
+    localStorage.removeItem("firstname");
     // localStorage.removeItem("emailAdmin");
     if(!localStorage.getItem("emailAdmin")){
       localStorage.removeItem("emailAdmin");

@@ -128,7 +128,7 @@ methods:{
     },
 },
 async created() {
-          if(localStorage.getItem("emailAdmin")){
+          if(localStorage.getItem("emailAdmin") && this.$cookies.get('session')){
             let response;
             try {
                 response = await this.axios.get(

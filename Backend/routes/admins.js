@@ -20,10 +20,22 @@ router.use(async function (req, res, next) {
   });
   //#endregion
 
-  router.get('/getUsers', (req, res) => {
-    adminUtils.getUsersInSystem().then((info_array) => {
+router.get('/getUsers', (req, res) => {
+  adminUtils.getUsersInSystem().then((info_array) => {
+    if (info_array.length == 0)
+      res.status(205).send({ message: "No users found", success: true });
+    else res.send(info_array);
+  })
+  .catch((error) => {
+    console.log(error);
+    res.sendStatus(500);
+  });
+  });
+
+router.get('/getParams', (req, res) => {
+    adminUtils.getParams().then((info_array) => {
       if (info_array.length == 0)
-        res.status(205).send({ message: "No users found", success: true });
+        res.status(205).send({ message: "No Parameters found", success: true });
       else res.send(info_array);
     })
     .catch((error) => {
@@ -32,24 +44,60 @@ router.use(async function (req, res, next) {
     });
     });
 
-  router.get('/updateParams/:params', (req, res) => {
-      const allParams=JSON.parse(req.params.params);
-      adminUtils.updateParams(allParams).then((info_array) =>res.send(info_array))
-      .catch((error) => {
-        console.log(error);
-        res.sendStatus(500);
-      });
-      });
+router.get('/updateParams/:params', (req, res) => {
+    const allParams=JSON.parse(req.params.params);
+    adminUtils.updateParams(allParams).then((info_array) =>res.send(info_array))
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+    });
 
-    router.get('/getParams', (req, res) => {
-        adminUtils.getParams().then((info_array) => {
-          if (info_array.length == 0)
-            res.status(205).send({ message: "No Parameters found", success: true });
-          else res.send(info_array);
-        })
-        .catch((error) => {
-          console.log(error);
-          res.sendStatus(500);
-        });
-        });
+router.get('/getImagesId', (req, res) => {
+    adminUtils.getImagesId().then((info_array) => {
+      if (info_array.length == 0)
+        res.status(205).send({ message: "No Parameters found", success: true });
+      else res.send(info_array);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+    });
+
+router.get('/getImagesId', (req, res) => {
+    adminUtils.getImagesId().then((info_array) => {
+      if (info_array.length == 0)
+        res.status(205).send({ message: "No Parameters found", success: true });
+      else res.send(info_array);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+    });
+
+router.get('/getImagesId', (req, res) => {
+    adminUtils.getImagesId().then((info_array) => {
+      if (info_array.length == 0)
+        res.status(205).send({ message: "No Parameters found", success: true });
+      else res.send(info_array);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+    });
+
+router.get('/getImagesRatedByUsers', (req, res) => {
+  adminUtils.getImagesRatedByUsers().then((info_array) => {
+    if (info_array.length == 0)
+      res.status(205).send({ message: "No Parameters found", success: true });
+    else res.send(info_array);
+  })
+  .catch((error) => {
+    console.log(error);
+    res.sendStatus(500);
+  });
+  });
     module.exports = router;

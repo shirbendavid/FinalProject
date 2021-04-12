@@ -25,10 +25,28 @@ async function updateParams(allParams){
     let info= await Promise.all(promises);
     console.log(info);
     return await DButils.execQuery(`INSERT INTO parameters VALUES(default,'${info[0]}','${info[1]}','${info[2]}','${info[3]}','${info[4]}' )`);
-
 }
 
+async function getImagesId(){
+    images = await DButils.execQuery(`SElECT imageID FROM images`);
+    console.log(images);
+    return images;
+}
+
+async function getImagesRatedByUsers(){
+    users = await DButils.execQuery(`SElECT distinct email FROM userRating`);
+    for(user in users){
+        imagesRatedByUser = await DButils.execQuery(`SElECT image_id, rate FROM userRating where email='${users[user].email}'`);
+        for(image in imagesRatedByUser){
+            users[user][imagesRatedByUser[image].image_id]= imagesRatedByUser[image].rate; 
+        }
+    }
+    console.log(users);
+    return users;
+}
 
 exports.getUsersInSystem = getUsersInSystem;
-exports.getParams=getParams;
-exports.updateParams=updateParams;
+exports.getParams = getParams;
+exports.updateParams = updateParams;
+exports.getImagesId = getImagesId;
+exports.getImagesRatedByUsers = getImagesRatedByUsers;

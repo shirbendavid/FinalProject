@@ -38,8 +38,10 @@
                   <button  class="button" tag="b-nav-item" @click="closeReports()">
                     CLOSE
                   </button>
-                  Reports
-                  <ExportToExcel/>
+                  <br/>
+                  <h1>Reports</h1>
+                  <br/>
+                  <InitialRatingUsers/>
                 </slot>
             </div>
         </div>
@@ -52,7 +54,7 @@
 <script>
 import ParameterManage from '../components/parameterManage'
 import FollowExperiment from '../components/followExperiment'
-import ExportToExcel from '../components/exportToExcel'
+import InitialRatingUsers from '../components/initialRatingUsers'
 export default {
   data() {
     return {
@@ -85,7 +87,7 @@ export default {
   components: {
     ParameterManage,
     FollowExperiment,
-    ExportToExcel
+    InitialRatingUsers
   },
 }
 </script>

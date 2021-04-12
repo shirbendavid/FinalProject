@@ -140,6 +140,10 @@ export default {
       this.Login();
     },
   },
+  created() {
+    if(localStorage.getItem("emailAdmin") && this.$cookies.get('session'))
+      this.$router.push("/management");
+  },
 };
 </script>
 <style lang="scss" scoped>
