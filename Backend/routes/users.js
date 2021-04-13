@@ -54,7 +54,7 @@ router.get('/saveRate/image/:image_id/rate/:valueRate', (req, res) => {
       if (info_array.length == 0)
         res.status(205).send({ message: "No images found", success: true });
       else{
-        console.log(info_array);
+        // console.log(info_array);
         res.status(200).send(info_array);
       } 
     })

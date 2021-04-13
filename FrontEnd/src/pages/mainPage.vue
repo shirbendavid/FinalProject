@@ -13,7 +13,7 @@
       <carousel-3d :controls-visible="true" :controls-prev-html="'❬ '" :controls-next-html="'❭'" :controls-width="30" :height="200" :controls-heigth="100" :clickable="false">
         <slide v-for="(slide, i) in slides" :index="i" v-bind:key="i">
             <figure>
-                <img :src="require('../assets/'+slide.src+'.jpg')">
+                <img :src="slide.src">
             </figure>
           </slide>
       </carousel-3d>

@@ -38,61 +38,61 @@
 
         <b-row>
         <b-col class="pa-3">
-            <b-img :src="require('../assets/'+image1+'.jpg')" class="center" width="246" aspect-ratio="1.4" contain></b-img>
+            <b-img :src="image1" class="center" width="246" aspect-ratio="1.4" contain></b-img>
         </b-col>
         <b-col class="pa-3">
-            <b-img :src="require('../assets/'+image2+'.jpg')" class="center" width="246" aspect-ratio="1.4" contain></b-img>
+            <b-img :src="image2" class="center" width="246" aspect-ratio="1.4" contain></b-img>
         </b-col>
         <b-col class="pa-3">
-            <b-img :src="require('../assets/'+image3+'.jpg')" class="center" width="246" aspect-ratio="1.4" contain/>
+            <b-img :src="image3" class="center" width="246" aspect-ratio="1.4" contain/>
         </b-col>
         <b-col class="pa-3">
-            <b-img :src="require('../assets/'+image4+'.jpg')" class="center" width="246" aspect-ratio="1.4" contain/>
-        </b-col>
-        </b-row>
-        <br/>
-        <b-row>
-        <b-col class="pa-3">
-            <img :src="require('../assets/'+image5+'.jpg')" class="center" width="246"/>
-        </b-col>
-        <b-col class="pa-3">
-            <img :src="require('../assets/'+image6+'.jpg')" class="center" width="246"/>
-        </b-col>
-        <b-col class="pa-3">
-            <img :src="require('../assets/'+image7+'.jpg')" class="center" width="246"/>
-        </b-col>
-        <b-col class="pa-3">
-            <img :src="require('../assets/'+image8+'.jpg')" class="center" width="246"/>
+            <b-img :src="image4" class="center" width="246" aspect-ratio="1.4" contain/>
         </b-col>
         </b-row>
         <br/>
         <b-row>
         <b-col class="pa-3">
-            <img :src="require('../assets/'+image9+'.jpg')" class="center" width="246"/>
+            <img :src="image5" class="center" width="246"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="require('../assets/'+image10+'.jpg')" class="center" width="246"/>
+            <img :src="image6" class="center" width="246"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="require('../assets/'+image11+'.jpg')" class="center" width="246"/>
+            <img :src="image7" class="center" width="246"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="require('../assets/'+image12+'.jpg')" class="center" width="246"/>
+            <img :src="image8" class="center" width="246"/>
+        </b-col>
+        </b-row>
+        <br/>
+        <b-row>
+        <b-col class="pa-3">
+            <img :src="image9" class="center" width="246"/>
+        </b-col>
+        <b-col class="pa-3">
+            <img :src="image10" class="center" width="246"/>
+        </b-col>
+        <b-col class="pa-3">
+            <img :src="image11" class="center" width="246"/>
+        </b-col>
+        <b-col class="pa-3">
+            <img :src="image12" class="center" width="246"/>
         </b-col>
         </b-row>
         <br/>
         <b-row>
          <b-col class="pa-3">
-            <img :src="require('../assets/'+image13+'.jpg')" class="center" width="246"/>
+            <img :src="image13" class="center" width="246"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="require('../assets/'+image14+'.jpg')" class="center" width="246"/>
+            <img :src="image14" class="center" width="246"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="require('../assets/'+image15+'.jpg')" class="center" width="246"/>
+            <img :src="image15" class="center" width="246"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="require('../assets/'+image16+'.jpg')" class="center" width="246"/>
+            <img :src="image16" class="center" width="246"/>
         </b-col> 
         </b-row>
         <br/>

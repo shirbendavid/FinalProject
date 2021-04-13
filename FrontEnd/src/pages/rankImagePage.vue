@@ -10,7 +10,7 @@
         <div class="flex-item">
           <b-row>
             <b-col class="forewordimage">
-              <img :src="require('../assets/'+image+'.jpg')" class="center" />
+              <img :src="image" class="center" />
             </b-col>
           </b-row>
     

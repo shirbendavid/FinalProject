@@ -14,10 +14,10 @@ async function getRandomImageToRate(email){
             imageExists = false;
     }
     dataImage = await DButils.execQuery(`SElECT imageID, image FROM images WHERE imageID='${rand}'`)
-    // image = "data:image/jpeg;base64,"+dataImage[0].image.toString('base64');
-    fileNameToSave = "../FrontEnd/src/assets/imageToRate.jpg";
-    fs.writeFileSync(fileNameToSave, dataImage[0].image)
-    return {imageID: rand, image: "imageToRate"}
+    image = "data:image/jpeg;base64,"+dataImage[0].image.toString('base64');
+    // fileNameToSave = "../FrontEnd/src/assets/imageToRate.jpg";
+    // fs.writeFileSync(fileNameToSave, dataImage[0].image)
+    return {imageID: rand, image: image}
 }
 
 async function saveRate(email,params){
