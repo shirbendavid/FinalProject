@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid>
+  <b-container fluid class="param_container">
     <h1>Managment Portal!</h1>
     <br>
     <b-row class="my-1">
@@ -161,5 +161,7 @@ async created() {
 </script>
 
 <style>
-
+.param_container{
+  border: 1.5px solid black;
+}
 </style>

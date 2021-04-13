@@ -45,8 +45,25 @@ async function getImagesRatedByUsers(){
     return users;
 }
 
+async function getImagesRated(){
+    images = await DButils.execQuery(`SElECT imageID FROM images`);
+    for(image in images){
+        imagesRatedByUser = await DButils.execQuery(`SElECT rate FROM userRating where image_id='${images[image].imageID}'`);
+        console.log(imagesRatedByUser);
+        for(rate in imagesRatedByUser){
+            if(images[image][imagesRatedByUser[rate].rate] > 0)
+                images[image][imagesRatedByUser[rate].rate]++ ;
+            else
+                images[image][imagesRatedByUser[rate].rate] = 1;
+        }
+    }
+    console.log(images);
+    return images;
+}
+
 exports.getUsersInSystem = getUsersInSystem;
 exports.getParams = getParams;
 exports.updateParams = updateParams;
 exports.getImagesId = getImagesId;
 exports.getImagesRatedByUsers = getImagesRatedByUsers;
+exports.getImagesRated = getImagesRated; 

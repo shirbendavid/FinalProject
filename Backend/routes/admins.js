@@ -100,4 +100,16 @@ router.get('/getImagesRatedByUsers', (req, res) => {
     res.sendStatus(500);
   });
   });
-    module.exports = router;
+
+router.get('/getImagesRated', (req, res) => {
+  adminUtils.getImagesRated().then((info_array) => {
+    if (info_array.length == 0)
+      res.status(205).send({ message: "No Parameters found", success: true });
+    else res.send(info_array);
+  })
+  .catch((error) => {
+    console.log(error);
+    res.sendStatus(500);
+  });
+  });
+module.exports = router;

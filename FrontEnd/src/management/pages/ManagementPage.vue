@@ -42,6 +42,8 @@
                   <h1>Reports</h1>
                   <br/>
                   <InitialRatingUsers/>
+                  <br/>
+                  <InitialRatingImages/>
                 </slot>
             </div>
         </div>
@@ -55,6 +57,7 @@
 import ParameterManage from '../components/parameterManage'
 import FollowExperiment from '../components/followExperiment'
 import InitialRatingUsers from '../components/initialRatingUsers'
+import InitialRatingImages from '../components/initialRatingImages'
 export default {
   data() {
     return {
@@ -87,7 +90,8 @@ export default {
   components: {
     ParameterManage,
     FollowExperiment,
-    InitialRatingUsers
+    InitialRatingUsers,
+    InitialRatingImages
   },
 }
 </script>
