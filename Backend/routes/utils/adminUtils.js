@@ -49,7 +49,6 @@ async function getImagesRated(){
     images = await DButils.execQuery(`SElECT imageID FROM images`);
     for(image in images){
         imagesRatedByUser = await DButils.execQuery(`SElECT rate FROM userRating where image_id='${images[image].imageID}'`);
-        console.log(imagesRatedByUser);
         for(rate in imagesRatedByUser){
             if(images[image][imagesRatedByUser[rate].rate] > 0)
                 images[image][imagesRatedByUser[rate].rate]++ ;

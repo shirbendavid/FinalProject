@@ -19,7 +19,7 @@ export default {
                 columns : [
                     {
                         label: "Image",
-                        field: "image_id",
+                        field: "imageID",
                     },
                     {
                         label: "Rating 0",
