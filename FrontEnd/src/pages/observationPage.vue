@@ -233,6 +233,10 @@ export default {
     font-family: "Merienda", Helvetica, Arial;
 }
 
+// .goodluck {
+//     margin-bottom: 0px;
+// }
+
 .text {
     font-size: 20px;
     font-family: "Merienda", Helvetica, Arial;

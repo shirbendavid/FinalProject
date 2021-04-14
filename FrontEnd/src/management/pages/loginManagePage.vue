@@ -2,8 +2,7 @@
 <div class="backgroundImage" :style="image">
   <div class="container">
     <br />
-    <div class="bold-line"></div>
-    <div class="container">
+    <!-- <div class="bold-line"></div> -->
       <div class="window">
         <div class="overlay"></div>
         <div class="content">
@@ -15,6 +14,7 @@
               id="input-group-email"
               label-cols-sm="3"
               label="E-email"
+              class="labels"
               label-for="email"
             >
               <b-form-input
@@ -31,7 +31,8 @@
             <b-form-group
               id="input-group-Password"
               label-cols-sm="3"
-              label="Password"
+              label="Password"              
+              class="labels"
               label-for="Password"
             >
               <b-form-input
@@ -48,7 +49,7 @@
             <button
               type="submit"
               variant="primary"
-              style="width: 100%; display: block;"
+              style="width: 90%; display: block;"
               class="ghost-round full-width"
             >
               Login
@@ -68,7 +69,6 @@
         </div>
       </div>
     </div>
-  </div>
   <br/>
   <br/>
   <br/>
@@ -158,7 +158,7 @@ export default {
   background-size: cover;
 }
 
-@import url(https://fonts.googleapis.com/css?family=Raleway);
+// @import url(https://fonts.googleapis.com/css?family=Raleway);
 body,
 html {
   margin: 0;
@@ -182,7 +182,7 @@ button:focus {
 }
 
 .highlight {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.829);
   font-weight: 400;
   cursor: pointer;
   transition: color 0.2s ease;
@@ -193,17 +193,17 @@ button:focus {
   transition: color 0.2s ease;
 }
 
-.spacing {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  height: 120px;
-  font-weight: 300;
-  text-align: center;
-  margin-top: 10px;
-  color: rgba(255, 255, 255, 0.65);
-}
+// .spacing {
+//   -webkit-box-flex: 1;
+//   -webkit-flex-grow: 1;
+//   -ms-flex-positive: 1;
+//   flex-grow: 1;
+//   // height: 120px;
+//   font-weight: 300;
+//   text-align: center;
+//   margin-top: 10px;
+//   color: rgba(255, 255, 255, 0.65);
+// }
 
 .input-line:focus {
   outline: none;
@@ -215,26 +215,27 @@ button:focus {
 .ghost-round {
   cursor: pointer;
   background: none;
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  border-radius: 25px;
+  border: 1px solid black;
+  border-radius: 15px;
   color: rgba(10, 10, 10, 0.65);
   -webkit-align-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end;
   font-size: 19px;
-  font-size: 1.2rem;
-  font-family: Raleway;
   font-weight: 300;
   line-height: 2.5em;
-  margin-top: auto;
   margin-bottom: 25px;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
+  font-family: "Merienda", Helvetica, Arial;
+  margin-top: 40px;
+  margin-left: 20px;
 }
 
 .ghost-round:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
+  background: rgba(255, 255, 255, 0.267);
+  color: black;
+  font-weight: bold;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
 }
@@ -280,13 +281,14 @@ button:focus {
 
 .welcome {
   font-weight: 200;
-  margin-top: 75px;
+  margin-top: 60px;
   text-align: center;
-  font-size: 40px;
+  font-size: 45px;
   font-size: 2.5rem;
   letter-spacing: 0px;
   letter-spacing: 0.05rem;
   color: black;
+  font-family: "Merienda", Helvetica, Arial;
 }
 
 .subtitle {
@@ -297,6 +299,10 @@ button:focus {
   letter-spacing: 0.02rem;
   color: rgb(34, 34, 34);
   font-weight: bold;
+  font-family: "Merienda", Helvetica, Arial;
+  font-size: 20px;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .menu {
@@ -348,9 +354,13 @@ button:focus {
   height: 100%;
   z-index: 1;
   opacity: 0.1;
-  background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
-    left no-repeat;
+  // background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
+  //   left no-repeat;
   background-size: cover;
+}
+
+.labels {
+    font-family: "Merienda", Helvetica, Arial;
 }
 
 @media (max-width: 600px) {

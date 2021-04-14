@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h6>Initial Rating - Images</h6>
-    <vue-excel-xlsx
+    <h5 class="text-center">Initial Rating - Images</h5>
+    <vue-excel-xlsx class="btnn"
         :data="data"
         :columns="columns"
         :filename="'InitialRating_Images'"
@@ -119,4 +119,26 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+
+.btnn {
+  background: rgba(255, 255, 255, 0.233);
+  border: 1.4px solid black;
+  border-radius: 5px;
+  color: rgba(10, 10, 10, 0.65);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5em;
+  width: 48%;
+  font-family: "Merienda", Helvetica, Arial;
+  margin-left: 50px;
+  margin-top: 5px;
+}
+
+.btnn:hover {
+  background: rgba(255, 255, 255, 0.39);
+  color:  rgba(10, 10, 10, 0.774);
+  font-weight: bold;
+  transition: all 0.4s ease;
+}
+</style>

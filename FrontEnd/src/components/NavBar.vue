@@ -79,7 +79,7 @@ export default {
   // width: 100%; /* Full width */
   float: inline-start;
   font-size: 18px;
-  font-family: Special Elite;
+  font-family: "Merienda", Helvetica, Arial;
   height: 60px;
 }
 .nav :hover {

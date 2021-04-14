@@ -1,66 +1,73 @@
 <template>
   <b-container fluid class="param_container">
-    <h1>Managment Portal!</h1>
+    <h1 class="title">Managment Portal</h1>
     <br>
     <b-row class="my-1">
       <b-col sm="6">
-        <label>Minimum images in the rating process :</label>
+        <label class="text">Minimum images in the rating process :</label>
       </b-col>
-      <b-col>
+      <b-col class="numbers">
         {{imagesInRate}}
       </b-col>
-      <b-col sm="3">
+      <b-col sm="2" >
         <b-form-input id="imagesInRate" type="text" v-model="form.imagesInRate"></b-form-input>
       </b-col>
     </b-row> 
+
     <b-row class="my-1">
       <b-col sm="6">
-        <label>Number of images in game :</label>
+        <label class="text">Number of images in game :</label>
       </b-col>
-      <b-col>
+      <b-col class="numbers">
         {{numOfImages}}
       </b-col>
-      <b-col sm="3">
+      <b-col sm="2">
         <b-form-input id="numOfImages" type="text" v-model="form.numOfImages"></b-form-input>
       </b-col>
     </b-row>
+
     <b-row class="my-1">
       <b-col sm="6">
-        <label>Number of images selectes in game :</label>
+        <label class="text">Number of images selectes in game :</label>
       </b-col>
-      <b-col>
+      <b-col class="numbers">
         {{numOfSelected}}
       </b-col>
-      <b-col sm="3">
+      <b-col sm="2">
         <b-form-input id="numOfSelected" type="text" v-model="form.numOfSelected"></b-form-input>
       </b-col>
     </b-row>
-        <b-row class="my-1">
+
+    <b-row class="my-1">
       <b-col sm="6">
-        <label>Number of screens in game :</label>
+        <label class="text">Number of screens in game :</label>
       </b-col>
-      <b-col>
+      <b-col class="numbers">
         {{numOfScreens}}
       </b-col>
-      <b-col sm="3">
+      <b-col sm="2">
         <b-form-input id="numOfScreens" type="text" v-model="form.numOfScreens"></b-form-input>
       </b-col>
     </b-row>
+
     <b-row class="my-1">
       <b-col sm="6">
-        <label>Delay period :</label>
+        <label class="text">Delay period :</label>
       </b-col>
-      <b-col>
+      <b-col class="numbers">
         {{delayTime}}
       </b-col>
-      <b-col sm="3">
+      <b-col sm="2">
         <b-form-input id="delayTime" type="text" v-model="form.delayTime"></b-form-input>
       </b-col>
     </b-row>
+
+
     <b-row>
-    <button sm="4" type="submit" v-on:click="updated">Update</button>
+      <button class="update-btn" sm="4" type="submit" v-on:click="updated">Save changes</button>
     </b-row>
 
+    <br/>
   </b-container>
 </template>
 
@@ -162,6 +169,50 @@ async created() {
 
 <style>
 .param_container{
-  border: 1.5px solid black;
+    border: 1.5px solid black;
+    border-radius: 5px;
+    padding-right: 30px;
 }
+
+.title {
+    text-align: center;
+    font-family: "Merienda", Helvetica, Arial;
+    padding-top: 10px;
+    font-weight: bold;
+}
+
+.text {
+    font-size: 20px;
+    font-family: "Merienda", Helvetica, Arial;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.numbers {
+    font-size: 20px;
+    font-family: "Merienda", Helvetica, Arial;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.update-btn {
+  border-radius: 5px;
+  color: rgba(10, 10, 10, 0.774);
+  width: 24%;
+  font-size: 24px; 
+  background-color: #fc995788;
+  font-family: "Merienda", Helvetica, Arial;
+  margin-left: 420px;
+  margin-top: 16px;
+}
+
+.update-btn:hover {
+  color:  rgba(10, 10, 10, 0.849);
+  font-weight: bold;
+  transition: all 0.4s ease;
+}
+
 </style>

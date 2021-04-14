@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h3 class="p-3 text-center">List of participants in the experiment</h3>
+        <h3 class="p-3 text-center">List of the participants in the experiment</h3>
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
@@ -60,3 +60,11 @@ export default {
     },
 };
 </script>
+
+<style lang="scss" scoped>
+
+.th {
+  border-top: 2px solid black !important;
+}
+
+</style>
