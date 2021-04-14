@@ -33,11 +33,11 @@ async function getGameImages(email, params){
   //algorithm for select images and save images in table for game 
   while(i< params.amount){
     dataImage = await DButils.execQuery(`SElECT image FROM images WHERE imageID='${allRatesOfUser[i].image_id}'`)
-    // image = "data:image/jpeg;base64,"+dataImage[0].image.toString('base64');
-    fileNameToSave = "../FrontEnd/src/assets/image"+i+".jpg";
-    fileNameForFront = "image"+i;
-    fs.writeFileSync(fileNameToSave, dataImage[0].image)
-    data = {image_id: allRatesOfUser[i].image_id , image: fileNameForFront}
+    image = "data:image/jpeg;base64,"+dataImage[0].image.toString('base64');
+    // fileNameToSave = "../FrontEnd/src/assets/image"+i+".jpg";
+    // fileNameForFront = "image"+i;
+    // fs.writeFileSync(fileNameToSave, dataImage[0].image)
+    data = {image_id: allRatesOfUser[i].image_id , image: image}
     images.push(data);
     i+=1;
   }
