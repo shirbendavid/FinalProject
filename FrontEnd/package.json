@@ -17,6 +17,7 @@
     "sass-loader": "^10.1.0",
     "v-image": "^2.0.2",
     "v-rating": "^1.1.2",
+    "v-select-image": "^0.1.5",
     "vue": "^2.6.12",
     "vue-axios": "^3.2.0",
     "vue-carousel-3d": "^1.0.1",
