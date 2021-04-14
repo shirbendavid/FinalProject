@@ -6,22 +6,21 @@
                 <slot>   
         <h1 class="title">Advanced Game</h1>
 
-         <h5 class="title">
+         <p class="text">
+           <br/>
+            Please take a look at the images on the screen. Those images 
+            <br />
+            were rated by another participant. Your task is to
+            <br />
 
-        Please take a look at the images on the screen. Those images 
-        <br />
-        were rated by another participant. Your task is to
-        <br />
-
-        recognize, base on the information we  will give you, which are
-        <br /> 
-         the images this participant rated high.
-        <br />
-
-   
-        </h5>
-        <h2 class="title">Good Luck!</h2>
-                <button  class="button" tag="b-nav-item" @click="close()">
+            recognize, base on the information we  will give you, which are
+            <br /> 
+            the images this participant rated high.
+            <br /><br/>
+        </p>
+        <h3 class="title">Good Luck!</h3>
+        <br/>
+                <button class="button-modal" tag="b-nav-item" @click="close()">
           CLOSE
         </button>
         </slot>
@@ -463,19 +462,43 @@ table {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 0.5rem;
+    margin-bottom: 0px;
     display: flex;
     align-items: center;
     z-index: 1;
+
 }
 
 .window {
-    background: #fff;
+    background: #f8dbbad3;
     border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
     max-width: 680px;
     margin-left: auto;
     margin-right: auto;
-    padding: 1rem;
+    padding: 1.1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    border: 1.5px solid;
+}
+
+.title {
+    text-align: center;
+    font-family: "Merienda", Helvetica, Arial;
+    margin: auto;
+}
+
+.text {
+    font-size: 20px;
+    font-family: "Merienda", Helvetica, Arial;
+    margin: auto;
+}
+
+.button-modal {
+    border-radius: 5px;
+    font-size: 20px;
+    width: 120px;
+    margin-left: 215px
 }
 </style>

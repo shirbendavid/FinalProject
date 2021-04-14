@@ -6,7 +6,6 @@
             <div class="window">
                 <slot>   
                 <h1 class="title">Sample images</h1>
-                <br/>
 
                 <p class="text">
                     Please take a look at the images on the screen. They are representative of the images in our database.
@@ -231,20 +230,23 @@ export default {
 
 .title {
     text-align: center;
+    font-family: "Merienda", Helvetica, Arial;
 }
 
 .text {
     font-size: 20px;
+    font-family: "Merienda", Helvetica, Arial;
+    margin-top: 10px;
+    margin-bottom: 10px;;
 }
 
 .button {
     border-radius: 5px;
     font-size: 20px;
     width: 120px;
-    // margin-left: 300px
+    margin-top: 20px
 }
 </style>
-
 
 
 
