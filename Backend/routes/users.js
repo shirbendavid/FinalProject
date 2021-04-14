@@ -64,50 +64,43 @@ router.get('/saveRate/image/:image_id/rate/:valueRate', (req, res) => {
     });  
   });
 
-  router.get('/numberOfImages', (req, res) => {
-    userUtils.getNmberOfImages(req.email).then((info_array) => {
-      if (info_array.length < 0){
-        res.status(205).send({ message: "No image found", success: true });
-      }
-      else res.send(info_array);
-    })
-    .catch((error) => {
-      console.log(error);
-      res.sendStatus(500);
-    });
-    });
+router.get('/numberOfImages', (req, res) => {
+  userUtils.getNmberOfImages(req.email).then((info_array) => {
+    if (info_array.length < 0){
+      res.status(205).send({ message: "No image found", success: true });
+    }
+    else res.send(info_array);
+  })
+  .catch((error) => {
+    console.log(error);
+    res.sendStatus(500);
+  });
+  });
 
-    router.get('/minNumberOfImagesToRate', (req, res) => {
-      userUtils.getNmberOfImagesToRate().then((info_array) => {
-        if (info_array.length < 0){
-          res.status(205).send({ message: "No number found", success: true });
-        }
-        else res.send(info_array);
-      })
-      .catch((error) => {
-        console.log(error);
-        res.sendStatus(500);
-      });
-      });
-  //  router.get('/checkUserAnswers', (req,res) => {
-  //   console.log("users.js");
-  //   // const {num} = req.params;
-  //   // let amount = num;
-  //   // params = {};
-  //   // params.amount = amount;
-  //   userUtils.checkUserAnswers()
-  //   .then((info_array) => {
-  //     if (info_array.length == 0)
-  //       res.status(205).send({ message: "No selected images found", success: true });
-  //     else{
-  //       console.log(info_array);
-  //       res.status(200).send(info_array);
-  //     } 
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //     res.sendStatus(500);
-  //   }); 
-  //  });
+router.get('/minNumberOfImagesToRate', (req, res) => {
+  userUtils.getNmberOfImagesToRate().then((info_array) => {
+    if (info_array.length < 0){
+      res.status(205).send({ message: "No number found", success: true });
+    }
+    else res.send(info_array);
+  })
+  .catch((error) => {
+    console.log(error);
+    res.sendStatus(500);
+  });
+  });
+
+router.get('/getParamsOfGame', (req, res) => {
+  userUtils.getParamsOfGame().then((info_array) => {
+    if (info_array.length < 0){
+      res.status(205).send({ message: "No number found", success: true });
+    }
+    else res.send(info_array);
+  })
+  .catch((error) => {
+    console.log(error);
+    res.sendStatus(500);
+  });
+  });
   
 module.exports = router;

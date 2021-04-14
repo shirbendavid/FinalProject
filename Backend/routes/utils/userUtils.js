@@ -55,6 +55,12 @@ async function getNmberOfImagesToRate(){
   return minimum_images_rating;
 }
 
+async function getParamsOfGame(){
+  paramsOfGame = await DButils.execQuery(`SElECT images_in_game, images_selectes_in_game, screens_in_game FROM parameters WHERE date IN (SELECT max(date) FROM parameters)`);
+  console.log(paramsOfGame);
+  return paramsOfGame;
+}
+
 //  async function checkUserAnswers(){
 
 //  }
@@ -64,3 +70,4 @@ exports.saveRate = saveRate;
 exports.getGameImages= getGameImages;
 exports.getNmberOfImages=getNmberOfImages;
 exports.getNmberOfImagesToRate=getNmberOfImagesToRate;
+exports.getParamsOfGame = getParamsOfGame;

@@ -26,7 +26,7 @@ export default {
   },
   data() {
     return {
-      maxSelectable: -1,
+      maxSelectable: 2,
       selectedItems: [],
       items: [],
       colorSchema: "#8B8B8B",
@@ -44,9 +44,25 @@ export default {
   },
   async created() {
       if(this.$root.store.email){
+            let paramsOfGame;
+            try {
+                paramsOfGame = await this.axios.get(
+                this.$root.store.base_url +
+                    "/users/getParamsOfGame"
+                );
+                console.log(paramsOfGame);
+                if (paramsOfGame.status !== 200) this.$router.replace("/NotFound");
+            } catch (error) {
+                console.log("error.paramsOfGame.status", error.paramsOfGame.status);
+                this.$router.replace("/NotFound");
+                return;
+            }
+            // const limit = paramsOfGame.data[0].images_selectes_in_game;
+            // console.log(limit);
+            // this.maxSelectable = limit;
+            // console.log(this.maxSelectable);
+            this.numberOfImages = paramsOfGame.data[0].images_in_game;
             let response;
-            this.maxSelectable = 2;
-            console.log(this.numberOfImages);
             try {
                 response = await this.axios.get(
                 this.$root.store.base_url +
@@ -63,7 +79,7 @@ export default {
             const images = response.data;
             for(let num in images){
               const data = {key : images[num].image_id,
-                            backgroundImage: images[num].images,
+                            backgroundImage: images[num].image,
                             selectable: true};
               this.items.push(data);
             }
