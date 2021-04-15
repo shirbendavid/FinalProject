@@ -5,9 +5,12 @@
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'main' }">
           Home
         </router-link>
-        <router-link class="nav" tag="b-nav-item" :to="{ name: 'about' }">
-          About
-        </router-link>
+        <b-navbar-nav class="ml-auto" v-if="!$root.store.email && !this.$cookies.get('session')">
+          <router-link class="nav" tag="b-nav-item" :to="{ name: 'about' }">
+            <b-icon icon="question-circle-fill" aria-hidden="true"></b-icon>
+              About
+          </router-link>  
+          </b-navbar-nav>
         <router-link v-if="!$root.store.email" class="nav" tag="b-nav-item" :to="{ name: 'loginManagement' }">
           <b-icon icon="gear-fill" aria-hidden="true"></b-icon> Management
           portal
@@ -16,8 +19,8 @@
 
       <b-navbar-nav
         class="ml-auto"
-        v-if="!$root.store.email && !this.$cookies.get('session')"
-      >
+        v-if="!$root.store.email && !this.$cookies.get('session')">
+        
         <b-nav-text>Hello Guset!</b-nav-text>
         <p class="h3 mb-2">
           <b-icon icon="person" variant="secondary"></b-icon>
