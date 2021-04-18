@@ -7,6 +7,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const session = require("client-sessions");
 const cors = require("cors");
+var nodemailer = require("nodemailer");
 
 var authRouter = require("./routes/auth");
 var usersRouter = require("./routes/users");
@@ -90,6 +91,14 @@ process.on("SIGINT", function () {
     server.close(() => console.log("server closed"));
   }
   process.exit();
+});
+
+var transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "youremail@gmail.com",
+    pass: "yourpassword",
+  },
 });
 
 module.exports = app;
