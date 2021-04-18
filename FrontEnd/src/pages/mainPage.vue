@@ -99,7 +99,7 @@ image{
     max-height: 100%;
     margin: 0;
     padding: 0;
-    background-size:100% 100%;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 html, body {
