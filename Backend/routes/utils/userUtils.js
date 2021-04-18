@@ -4,12 +4,15 @@ const fs = require("fs");
 async function getRandomImageToRate(email){
     var imageExists = new Boolean(true);
     var rand = undefined;
+    allRatesOfUser = await DButils.execQuery(`SElECT image_id FROM userRating WHERE email='${email}'`);
+    imagesInDB = await DButils.execQuery(`SElECT * FROM images`);
+    if(allRatesOfUser.length === imagesInDB.length)
+      return [];
     while(imageExists){
         min = Math.ceil(19);
-        max = Math.floor(140);
+        max = Math.floor(141);
         rand = Math.floor(Math.random() * (max - min) + min);
         image = await DButils.execQuery(`SElECT image_id FROM userRating WHERE image_id='${rand}' AND email='${email}'`);
-        console.log(image);
         if(image.length === 0)
             imageExists = false;
     }

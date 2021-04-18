@@ -23,7 +23,7 @@ router.use(async function (req, res, next) {
 router.get('/getImageToRate', (req, res) => {
 userUtils.getRandomImageToRate(req.email).then((info_array) => {
   if (info_array.length == 0)
-    res.status(205).send({ message: "No image found", success: true });
+    res.status(201).send({ message: "No image found", success: true });
   else res.send(info_array);
 })
 .catch((error) => {
