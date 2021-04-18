@@ -104,6 +104,7 @@ export default {
                     "/admins/getimagesRated"
                 );
                 console.log(imagesRated);
+                if (imagesRated.status === 401) this.$router.replace("/loginManagement");
                 if (imagesRated.status !== 200) this.$router.replace("/NotFound");
             } catch (error) {
                 console.log("error.imagesRated.status", error.response.status);

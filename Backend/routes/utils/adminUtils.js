@@ -4,11 +4,9 @@ async function getUsersInSystem(){
     users = await DButils.execQuery(`SElECT email, firstname, lastname, dateOfRegistration, status, lastLogin, gameTime FROM users`);
     for(user in users){
         rates = await DButils.execQuery(`SElECT image_id FROM userRating where email='${users[user].email}'`);
-        console.log(rates);
         users[user].numOfRates= rates.length;
         //games***
     }
-
     return users;
 }
 
@@ -29,7 +27,6 @@ async function updateParams(allParams){
 
 async function getImagesId(){
     images = await DButils.execQuery(`SElECT imageID FROM images`);
-    console.log(images);
     return images;
 }
 
@@ -41,7 +38,6 @@ async function getImagesRatedByUsers(){
             users[user][imagesRatedByUser[image].image_id]= imagesRatedByUser[image].rate; 
         }
     }
-    console.log(users);
     return users;
 }
 
@@ -56,8 +52,29 @@ async function getImagesRated(){
                 images[image][imagesRatedByUser[rate].rate] = 1;
         }
     }
-    console.log(images);
     return images;
+}
+
+async function changeStatus(userEmail){
+    statusUser = await DButils.execQuery(`SELECT status FROM users WHERE email='${userEmail}'`);
+    console.log(statusUser);
+    if(statusUser[0].status == "active"){
+        await DButils.execQuery(`UPDATE users SET status= 'deactive' WHERE email='${userEmail}'`);
+    }
+    else{
+        await DButils.execQuery(`UPDATE users SET status= 'active' WHERE email='${userEmail}'`);
+    }
+    return getUsersInSystem();
+}
+
+async function deactiveAllUsers(){
+    await DButils.execQuery(`UPDATE users SET status= 'deactive'`);
+    return getUsersInSystem();
+}
+
+async function activeAllUsers(){
+    await DButils.execQuery(`UPDATE users SET status= 'active'`);
+    return getUsersInSystem();
 }
 
 exports.getUsersInSystem = getUsersInSystem;
@@ -66,3 +83,6 @@ exports.updateParams = updateParams;
 exports.getImagesId = getImagesId;
 exports.getImagesRatedByUsers = getImagesRatedByUsers;
 exports.getImagesRated = getImagesRated; 
+exports.changeStatus = changeStatus;
+exports.deactiveAllUsers = deactiveAllUsers;
+exports.activeAllUsers = activeAllUsers;

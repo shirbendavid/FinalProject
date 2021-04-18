@@ -112,4 +112,40 @@ router.get('/getImagesRated', (req, res) => {
     res.sendStatus(500);
   });
   });
+
+router.put('/changeStatus/:email', (req, res) => {
+  adminUtils.changeStatus(req.params.email).then((info_array) => {
+    if (info_array.length == 0)
+      res.status(205).send({ message: "No Parameters found", success: true });
+    else res.send(info_array);
+  })
+  .catch((error) => {
+    console.log(error);
+    res.sendStatus(500);
+  });
+  });
+
+router.put('/allUsersInDeactiveStatus', (req, res) => {
+  adminUtils.deactiveAllUsers().then((info_array) => {
+    if (info_array.length == 0)
+      res.status(205).send({ message: "No Parameters found", success: true });
+    else res.send(info_array);
+  })
+  .catch((error) => {
+    console.log(error);
+    res.sendStatus(500);
+  });
+  });
+
+router.put('/allUsersInActiveStatus', (req, res) => {
+  adminUtils.activeAllUsers().then((info_array) => {
+    if (info_array.length == 0)
+      res.status(205).send({ message: "No Parameters found", success: true });
+    else res.send(info_array);
+  })
+  .catch((error) => {
+    console.log(error);
+    res.sendStatus(500);
+  });
+  });
 module.exports = router;

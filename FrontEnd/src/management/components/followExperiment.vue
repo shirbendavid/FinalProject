@@ -18,13 +18,26 @@
                     <td>{{user.firstname}} {{user.lastname}}</td>
                     <td>{{user.email}}</td>
                     <td>{{user.dateOfRegistration}}</td>
-                    <td>{{user.status}}</td>
+                    <td>{{user.status}}
+                        <br/>
+                        <b-button size="sm" variant="outline-info"  @click="change(user.email)">
+                            <b-icon icon="pencil"></b-icon>
+                        </b-button>
+
+                    </td>
                     <td>{{user.lastLogin}}</td>
                     <td>{{user.numOfRates}}</td>
                     <td>{{user.gameTime}}</td>
                 </tr>
             </tbody>
         </table>
+
+    <b-row>
+      <button sm="2" type="submit" v-on:click="deactiveAllUsers">Deactive Status for all users</button>
+    </b-row>
+    <b-row>
+      <button sm="2" type="submit" v-on:click="activeAllUsers">Active Status for all users</button>
+    </b-row>
     </div>    
 </template>
 
@@ -44,6 +57,7 @@ export default {
                     "/admins/getUsers"
                 );
                 console.log(response);
+                if (response.status === 401) this.$router.replace("/loginManagement");
                 if (response.status !== 200) this.$router.replace("/NotFound");
             } catch (error) {
                 console.log("error.response.status", error.response.status);
@@ -57,6 +71,56 @@ export default {
         else{
             this.$router.push("/loginManagement");
         }
+    },
+    methods: {
+        async change(email){
+            let response;
+            try {
+                response = await this.axios.put(
+                this.$root.store.base_url +
+                    "/admins/changeStatus/" + email
+                );
+                console.log(response);
+                if (response.status !== 200) this.$router.replace("/NotFound");
+            } catch (error) {
+                console.log("error.response.status", error.response.status);
+                this.$router.replace("/NotFound");
+                return;
+            }
+            this.users = response.data;
+        },
+        async deactiveAllUsers(){
+            let response;
+            try {
+                response = await this.axios.put(
+                this.$root.store.base_url +
+                    "/admins/allUsersInDeactiveStatus"
+                );
+                console.log(response);
+                if (response.status !== 200) this.$router.replace("/NotFound");
+            } catch (error) {
+                console.log("error.response.status", error.response.status);
+                this.$router.replace("/NotFound");
+                return;
+            }
+            this.users = response.data;
+        },
+        async activeAllUsers(){
+            let response;
+            try {
+                response = await this.axios.put(
+                this.$root.store.base_url +
+                    "/admins/allUsersInActiveStatus"
+                );
+                console.log(response);
+                if (response.status !== 200) this.$router.replace("/NotFound");
+            } catch (error) {
+                console.log("error.response.status", error.response.status);
+                this.$router.replace("/NotFound");
+                return;
+            }
+            this.users = response.data;
+        },
     },
 };
 </script>

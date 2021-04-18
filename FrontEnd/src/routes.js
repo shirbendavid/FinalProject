@@ -63,6 +63,11 @@ const routes = [
     name: 'about',
     component: () => import('./pages/About'),
   },
+  {
+    path: '/maintenance',
+    name: 'maintenance',
+    component: () => import('./pages/maintenancePage'),
+  },
 ]
 
 export default routes

@@ -44,10 +44,11 @@ router.post("/Login", async (req, res, next) => {
         `SELECT * FROM users WHERE email = '${req.body.email}'`
       )
     )[0];
-    //update last login time
-    await DButils.execQuery(`UPDATE users SET lastLogin=GETDATE() where email='${user.email}'`)
-
-
+    if(user.status == 'active')
+      //update last login time
+      await DButils.execQuery(`UPDATE users SET lastLogin=GETDATE() where email='${user.email}'`)
+    else
+      res.status(403).send("Deactive user");
     // if (!bcrypt.compareSync(req.body.password, user.password)) {
     //   throw { status: 401, message: "Username or Password incorrect" };
     // }

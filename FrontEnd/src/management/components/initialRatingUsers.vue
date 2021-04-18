@@ -29,9 +29,9 @@ export default {
                     "/admins/getImagesId"
                 );
                 console.log(response);
+                if (response.status === 401) this.$router.replace("/loginManagement");
                 if (response.status !== 200) this.$router.replace("/NotFound");
             } catch (error) {
-                console.log("error.response.status", error.response.status);
                 this.$router.replace("/NotFound");
                 return;
             }
