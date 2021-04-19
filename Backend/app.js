@@ -9,13 +9,26 @@ const session = require("client-sessions");
 const cors = require("cors");
 var nodemailer = require("nodemailer");
 
+// var serveStatic = require('serve-static');
+
+
 var authRouter = require("./routes/auth");
 var usersRouter = require("./routes/users");
 var imagesRouter = require("./routes/images");
 var adminsRouter = require("./routes/admins");
 //var upload = multer({dest:"C:/Users/User"+'/uploads/images'});
 var app = express();
+
+// let reqPath = path.join(__dirname, '../Frontend/dist');
+// app.use(serveStatic(reqPath));
+
+// app.use(express.static(path.join(__dirname, "public")));
+// console.log(reqPath);
+// const port = "8110";
+
 const port = process.env.PORT || "3000";
+
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
@@ -24,7 +37,16 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, "public")));
+
+
+// app.use(express.static(reqPath));
+
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(reqPath, "index.html"))
+// })
+
 //#setting cors
 const corsConfig = {
   origin: true,

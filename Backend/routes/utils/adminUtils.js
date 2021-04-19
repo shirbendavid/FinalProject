@@ -26,7 +26,7 @@ async function updateParams(allParams){
 }
 
 async function getImagesId(){
-    images = await DButils.execQuery(`SElECT imageID FROM images`);
+    images = await DButils.execQuery(`SElECT imageID FROM image`);
     return images;
 }
 
@@ -42,7 +42,7 @@ async function getImagesRatedByUsers(){
 }
 
 async function getImagesRated(){
-    images = await DButils.execQuery(`SElECT imageID FROM images`);
+    images = await DButils.execQuery(`SElECT imageID FROM image`);
     for(image in images){
         imagesRatedByUser = await DButils.execQuery(`SElECT rate FROM userRating where image_id='${images[image].imageID}'`);
         for(rate in imagesRatedByUser){

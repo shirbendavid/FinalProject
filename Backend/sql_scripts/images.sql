@@ -95,7 +95,8 @@ BEGIN
 -- DELETE FROM [dbo].[image] WHERE imageID=15
 -- DELETE FROM [dbo].[image] WHERE imageID=16
 -- DELETE FROM [dbo].[image] WHERE imageID=17
--- DELETE FROM [dbo].[image] WHERE imageID=18
+--  DROP TABLE [dbo].[images] 
+--  DROP TABLE [dbo].[image]
 
 
 
@@ -103,19 +104,22 @@ CREATE TABLE [dbo].[image](
 	[imageID] [int] IDENTITY(1,1) PRIMARY KEY,
 	[title] [varchar](50),
 	[image] [image] NOT NULL,
+	[tag] [varchar](50),
+	[photographer] [varchar](50),
+	[url][varchar](200),
 )
 
-(
+-- (
 
 
-	[imageID] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+-- 	[imageID] ASC
+-- )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+-- ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
-END
-GO
-SET ANSI_PADDING OFF
-GO
+-- END
+-- GO
+-- SET ANSI_PADDING OFF
+-- GO
 
 
 
@@ -158,4 +162,3 @@ GO
 -- -- AS
 -- -- insert into Pictures(Picture, FileName) values (@Picture,@FileName)
 -- -- select @kFileName = SCOPE_IDENTITY()
--- -- GO

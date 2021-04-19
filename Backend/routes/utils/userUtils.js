@@ -5,7 +5,7 @@ async function getRandomImageToRate(email){
     var imageExists = new Boolean(true);
     var rand = undefined;
     allRatesOfUser = await DButils.execQuery(`SElECT image_id FROM userRating WHERE email='${email}'`);
-    imagesInDB = await DButils.execQuery(`SElECT * FROM images`);
+    imagesInDB = await DButils.execQuery(`SElECT * FROM image`);
     if(allRatesOfUser.length === imagesInDB.length)
       return [];
     while(imageExists){
@@ -16,7 +16,7 @@ async function getRandomImageToRate(email){
         if(image.length === 0)
             imageExists = false;
     }
-    dataImage = await DButils.execQuery(`SElECT imageID, image FROM images WHERE imageID='${rand}'`)
+    dataImage = await DButils.execQuery(`SElECT imageID, image FROM image WHERE imageID='${rand}'`)
     image = "data:image/jpeg;base64,"+dataImage[0].image.toString('base64');
     // fileNameToSave = "../FrontEnd/src/assets/imageToRate.jpg";
     // fs.writeFileSync(fileNameToSave, dataImage[0].image)
@@ -35,7 +35,7 @@ async function getGameImages(email, params){
   images = [];
   //algorithm for select images and save images in table for game 
   while(i< params.amount){
-    dataImage = await DButils.execQuery(`SElECT image FROM images WHERE imageID='${allRatesOfUser[i].image_id}'`)
+    dataImage = await DButils.execQuery(`SElECT image FROM image WHERE imageID='${allRatesOfUser[i].image_id}'`)
     image = "data:image/jpeg;base64,"+dataImage[0].image.toString('base64');
     // fileNameToSave = "../FrontEnd/src/assets/image"+i+".jpg";
     // fileNameForFront = "image"+i;

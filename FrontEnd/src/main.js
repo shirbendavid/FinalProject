@@ -92,6 +92,7 @@ Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 
 const shared_data = {
+  // base_url: "https://132.72.23.153:3010",
   base_url: "http://localhost:3000",
   email: localStorage.email,
   login(email, firstname) {
