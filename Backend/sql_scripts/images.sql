@@ -95,8 +95,8 @@ BEGIN
 -- DELETE FROM [dbo].[image] WHERE imageID=15
 -- DELETE FROM [dbo].[image] WHERE imageID=16
 -- DELETE FROM [dbo].[image] WHERE imageID=17
---  DROP TABLE [dbo].[images] 
---  DROP TABLE [dbo].[image]
+--  DROP TABLE [dbo].[image] 
+-- DELETE FROM [dbo].[image]
 
 
 

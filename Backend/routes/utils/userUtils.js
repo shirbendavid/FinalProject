@@ -9,8 +9,8 @@ async function getRandomImageToRate(email){
     if(allRatesOfUser.length === imagesInDB.length)
       return [];
     while(imageExists){
-        min = Math.ceil(19);
-        max = Math.floor(141);
+        min = Math.ceil(1);
+        max = Math.floor(37);
         rand = Math.floor(Math.random() * (max - min) + min);
         image = await DButils.execQuery(`SElECT image_id FROM userRating WHERE image_id='${rand}' AND email='${email}'`);
         if(image.length === 0)

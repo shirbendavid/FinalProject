@@ -328,8 +328,8 @@ button:focus {
   //height: 860px;
   // width: 500px;
   background: #fff;
-  background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
-    top left no-repeat;
+  // background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
+  //   top left no-repeat;
 }
 
 .overlay {

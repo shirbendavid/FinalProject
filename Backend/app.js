@@ -1,7 +1,5 @@
 var createError = require("http-errors");
 var express = require("express");
-//var multer = require('multer');
-//var fileUpload = require('express-fileupload');
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
@@ -16,7 +14,7 @@ var authRouter = require("./routes/auth");
 var usersRouter = require("./routes/users");
 var imagesRouter = require("./routes/images");
 var adminsRouter = require("./routes/admins");
-//var upload = multer({dest:"C:/Users/User"+'/uploads/images'});
+
 var app = express();
 
 // let reqPath = path.join(__dirname, '../Frontend/dist');
@@ -78,14 +76,6 @@ app.use("/admins", adminsRouter);
 app.get("/", function (req, res, next) {
   res.render("index", { title: "Project" });
 });
-
-// upload image
-// app.post('/upload', upload.array('photo'), (req, res) => {
-//   if(req.file) {
-//       res.json(req.file);
-//   }
-//   else throw 'error';
-// });
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
