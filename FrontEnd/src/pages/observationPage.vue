@@ -5,6 +5,9 @@
         <div class="popup-modal" v-if="isVisible">
             <div class="window">
                 <slot>   
+                      <button class="button-x" tag="b-nav-item" @click="close()">
+                            X
+                        </button>
                 <h1 class="title">Sample images</h1>
 
                 <p class="text">
@@ -22,11 +25,8 @@
 
                     Your liking of most images will likely not be extreme, so use the in-between points on the scale to denote your liking.    
                 </p>
-                <h2 class="title">Good Luck!</h2>
+                <h3 class="title">Good Luck!</h3>
                 
-                <button class="button" tag="b-nav-item" @click="close()">
-                CLOSE
-                </button>
                 </slot>
                     </div>
                 </div>
@@ -98,12 +98,13 @@
         </b-container>
         <router-link  to="/ranking">
         <div>
-            <b-button class="button"
-              color="primary"
+
+             <b-button class="buttonb"
               size="lg"
             >
-              Start Rating
+             Start Rating
             </b-button>
+
           </div>              
         </router-link>
         <br><br>
@@ -186,10 +187,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.button{
-    float: right;
-    margin-right:45%;
-}
+
 /* css class for the transition */
 .fade-enter-active,
 .fade-leave-active {
@@ -233,23 +231,24 @@ export default {
     font-family: "Merienda", Helvetica, Arial;
 }
 
-// .goodluck {
-//     margin-bottom: 0px;
-// }
-
 .text {
     font-size: 20px;
     font-family: "Merienda", Helvetica, Arial;
-    margin-top: 10px;
-    margin-bottom: 10px;;
+    margin-top: 15px;
+    margin-bottom: 20px;;
 }
 
-.button {
-    border-radius: 5px;
-    font-size: 20px;
-    width: 120px;
-    margin-top: 20px
+.buttonb {
+    float: right;
+    margin-right:45%;
+    width: 170px;
+    font-size: 25px;
 }
+
+.button-x {
+  width: 30px;
+}
+
 </style>
 
 

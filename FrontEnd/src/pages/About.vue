@@ -6,8 +6,11 @@
             <div class="popup-modal" v-if="isVisible">
                 <b-container class="window">
                     <slot>
-                         <h1 class="title">ABOUT</h1>
-                         <br/>
+                         <button class="button-x" tag="b-nav-item" @click="close()">
+                            X
+                        </button>
+
+                         <h2 class="title">ABOUT</h2>
                          <p class="text">
                         <b>About the project:</b>
                         <br/>
@@ -28,19 +31,17 @@
                         is our final project.
                         <br/>
                         Our advisors: Prof. Noam Tracktinsky and Dr. Denis Kalimov
-                        <br/>
+                        <br/><br/>
                         <b> Technologies:</b>
                         <br/>
                         <img src="../assets/sqlDB.png" style="width: 10%;"/>
-                        <img src="../assets/nodejs.png" style="width: 10%;"/>
-                        <img src="../assets/Vue.png" style="width: 10%;"/>
-                        <img src="../assets/javascript.png" style="width: 10%;"/>
-                        <img src="../assets/html5.png" style="width: 10%;"/>
-                        <img src="../assets/css3.jpg" style="width: 10%;"/>
+                        <img src="../assets/nodejs.png" style="width: 7%;"/>
+                        <img src="../assets/Vue.png" style="width: 4%;"/>
+                        <img src="../assets/javascript.png" style="width: 4%;"/>
+                        <img src="../assets/html5.png" style="width: 4%;"/>
+                        <img src="../assets/css3.jpg" style="width: 4%;"/>
                          </p>
-                         <button class="button" tag="b-nav-item" @click="close()">
-                            CLOSE
-                        </button>
+                        
                     </slot>
                 </b-container>
             </div>
@@ -131,7 +132,7 @@ export default {
     color: black;
 }
 .text {
-    font-size: 20px;
+    font-size: 18px;
     font-family: "Merienda", Helvetica, Arial;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -172,7 +173,7 @@ export default {
     background: #f8dbbad3;
     border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 680px;
+    max-width: 780px;
     margin-left: auto;
     margin-right: auto;
     padding: 1.1rem;
@@ -180,5 +181,9 @@ export default {
     justify-content: center;
     align-items:center;
     border: 1.5px solid;
+}
+
+.button-x {
+  width: 30px;
 }
 </style>

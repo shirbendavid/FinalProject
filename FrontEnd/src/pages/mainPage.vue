@@ -4,7 +4,7 @@
     <br/>
      
     <h1 class="title">
-      <b>Beautiful Images.</b> 
+      <b>Beautiful Images</b> 
     </h1>
     <h3 class="sub-title">recognition and preference</h3>
     <br/>
@@ -17,7 +17,7 @@
             </figure>
           </slide>
       </carousel-3d>
-      <br/><br/>
+      <br/>
     </div>
   </b-container>
   </div> 
@@ -92,7 +92,9 @@
   color: black;
   text-align: center;
   font-size: 50px;
+  margin-bottom: 0px;
 }
+
 image{
     width: 100%;
     height: 100%;
