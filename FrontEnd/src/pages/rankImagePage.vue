@@ -134,33 +134,6 @@ export default {
     };
   },
   methods: {
-    async checkNumberOfImages() {
-      let numberOfImages;
-      let minRatingImage;
-              try{
-            numberOfImages = await this.axios.get(
-                this.$root.store.base_url +
-                    "/users/numberOfImages"
-                );  
-           minRatingImage = await this.axios.get(
-                this.$root.store.base_url +
-                    "/users/minNumberOfImagesToRate"
-                ); 
-                console.log(numberOfImages.data.length);
-                if(numberOfImages.data.length===minRatingImage.data[0].minimum_images_rating){
-                  this.enoughImages=true;
-                  // this.saveImageRate();
-                }
-                else{
-                  // this.saveImageRate();
-                  this.getNextImage();
-                }
-        } catch (error) {
-            console.log("error.numberOfImages.status", error.numberOfImages.status);
-            this.$router.replace("/NotFound");
-            return;
-          }
-    },
      // add rate image to DB for this user
      async saveImageRate(){
       try {
@@ -175,22 +148,31 @@ export default {
         if (response.status !== 200) this.$router.replace("/NotFound");
         else {
           this.value = 1;
-        this.checkNumberOfImages();  
-       // this.getNextImage();
+
+        const numberOfImagesRating = this.$root.store.numberOfImagesRating+1;
+        console.log(numberOfImagesRating);
+          this.$root.store.addNumberOfImagesRating(numberOfImagesRating);
+          if(this.$root.store.numberOfImagesRating === this.$root.store.minImagesRating)
+            this.enoughImages=true;
+          else
+            this.getNextImage();
         }
       } catch (error) {
         console.log(error);
       }
     },
     async getNextImage(){
+      if (this.$root.store.numberOfImagesRating === this.$root.store.numberOfImagesInDB){
+        alert("You rank the maximum amount of images, transferred to the game");
+        this.$router.replace("/game");
+      }
       let response;
-                try {
+            try {
             response = await this.axios.get(
               this.$root.store.base_url + "/users/getImageToRate"
             );
             console.log(response);
-            if (response.status === 201) this.$router.replace("/game");
-            else if (response.status !== 200) this.$router.replace("/NotFound");
+            if (response.status !== 200) this.$router.replace("/NotFound");
           } catch (error) {
             console.log("error.response.status", error.response.status);
             this.$router.replace("/NotFound");
@@ -210,6 +192,10 @@ export default {
   async created() {
     //  get image from server
     if(this.$root.store.email){
+      if (this.$root.store.numberOfImagesRating === this.$root.store.numberOfImagesInDB){
+        alert("You rank the maximum amount of images, transferred to the game");
+        this.$router.replace("/game");
+      }
     let response;
     try {
       response = await this.axios.get(

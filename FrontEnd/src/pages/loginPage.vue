@@ -116,6 +116,28 @@ export default {
         console.log(response);
         this.$root.loggedIn = true;
         this.$root.store.login(this.form.email, response.data['firstname']);
+        
+        //store number of images rating to user and nimumn number images to rate
+        let numberOfImages;
+        let params;
+        try{
+            numberOfImages = await this.axios.get(
+                this.$root.store.base_url +
+                    "/users/numberOfImages"
+            );
+           params = await this.axios.get(
+                this.$root.store.base_url +
+                    "/users/getAllParams"
+                ); 
+            console.log(numberOfImages.data.length);
+            this.$root.store.addNumberOfImagesRating(numberOfImages.data.length);
+            this.$root.store.addMinImagesRating(params.data[0].minimum_images_rating);
+            this.$root.store.addNumberOfImagesInDB(params.data[1].number_of_images_in_DB);
+        } catch (error) {
+            console.log("error.numberOfImages.status", error.numberOfImages.status);
+            this.$router.replace("/NotFound");
+            return;
+          }
 
         this.$router.push("/observation");
       } catch (err) {

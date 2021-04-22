@@ -44,11 +44,16 @@ export default {
   },
   async created() {
       if(this.$root.store.email){
+        if(this.$root.store.numberOfImagesRating < this.$root.store.minImagesRating){
+          alert("You did not rate enough photos, continue to rate...");
+          this.$router.push("/ranking");
+        }
+        else{
             let paramsOfGame;
             try {
                 paramsOfGame = await this.axios.get(
                 this.$root.store.base_url +
-                    "/users/getParamsOfGame"
+                    "/users/getAllParams"
                 );
                 console.log(paramsOfGame);
                 if (paramsOfGame.status !== 200) this.$router.replace("/NotFound");
@@ -83,7 +88,8 @@ export default {
                             selectable: true};
               this.items.push(data);
             }
-         }
+        }
+        }
         else{
             this.$router.push("/login");
         }

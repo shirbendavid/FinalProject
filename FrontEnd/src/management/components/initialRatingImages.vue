@@ -22,10 +22,6 @@ export default {
                         field: "imageID",
                     },
                     {
-                        label: "Rating 0",
-                        field: "0",
-                    },
-                    {
                         label: "Rating 1",
                         field: "1",
                     },
@@ -66,28 +62,7 @@ export default {
                         field: "10",
                     },
                 ],
-                data : [
-                    // {
-                    //     product: "Beverage",
-                    //     price: 10,
-                    //     quantity: 2
-                    // },
-                    // {
-                    //     product: "Snack",
-                    //     price: 12,
-                    //     quantity: 6
-                    // },
-                    // {
-                    //     product: "Beverage",
-                    //     price: 10,
-                    //     quantity: 5
-                    // },
-                    // {
-                    //     product: "Snack",
-                    //     price: 12,
-                    //     quantity: 3
-                    // }
-                ],
+                data : [],
             }
         },
         methods: {

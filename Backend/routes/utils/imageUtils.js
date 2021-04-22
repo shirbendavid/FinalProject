@@ -5,7 +5,7 @@ async function getImages(amount){
     const images= [];
     const nums = new Set();
     while(nums.size != amount) {
-      nums.add(getRandomInt(1,37));
+      nums.add(getRandomInt(1,144));
 
     }
     let i = 1;
@@ -14,7 +14,7 @@ async function getImages(amount){
       // fileNameToSave = "../FrontEnd/src/assets/image"+i+".jpg";
       // fileNameForFront = "image"+i;
       // fs.writeFileSync(fileNameToSave, dataImage[0].image)
-      console.log(dataImage);
+      // console.log(dataImage);
       images.push("data:image/jpeg;base64,"+dataImage[0].image.toString('base64'));
       // images.push(fileNameForFront);
       i+=1;

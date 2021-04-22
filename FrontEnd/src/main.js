@@ -92,9 +92,30 @@ Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 
 const shared_data = {
-  // base_url: "https://132.72.23.153:3010",
+  // base_url: "https://icc.ise.bgu.ac.il/coil",
   base_url: "http://localhost:3000",
   email: localStorage.email,
+  numberOfImagesRating: localStorage.numberOfImagesRating
+  ? JSON.parse(localStorage.numberOfImagesRating)
+  : [],
+  addNumberOfImagesRating(numberOfImagesRating) {
+    localStorage.setItem("numberOfImagesRating", JSON.stringify(numberOfImagesRating));
+    this.numberOfImagesRating = numberOfImagesRating;
+  },
+  minImagesRating: localStorage.minImagesRating
+  ? JSON.parse(localStorage.minImagesRating)
+  : [],
+  addMinImagesRating(minImagesRating) {
+    localStorage.setItem("minImagesRating", JSON.stringify(minImagesRating));
+    this.minImagesRating = minImagesRating;
+  },
+  numberOfImagesInDB: localStorage.numberOfImagesInDB
+  ? JSON.parse(localStorage.numberOfImagesInDB)
+  : [],
+  addNumberOfImagesInDB(numberOfImagesInDB) {
+    localStorage.setItem("numberOfImagesInDB", JSON.stringify(numberOfImagesInDB));
+    this.numberOfImagesInDB = numberOfImagesInDB;
+  },
   login(email, firstname) {
     localStorage.setItem("email", email);
     this.email = email;
@@ -111,7 +132,9 @@ const shared_data = {
     console.log("logout");
     localStorage.removeItem("email");
     localStorage.removeItem("firstname");
-    // localStorage.removeItem("emailAdmin");
+    localStorage.removeItem("minImagesRating");
+    localStorage.removeItem("numberOfImagesRating");
+    localStorage.removeItem("numberOfImagesInDB");
     if(!localStorage.getItem("emailAdmin")){
       localStorage.removeItem("emailAdmin");
       Vue.$cookies.remove("session");

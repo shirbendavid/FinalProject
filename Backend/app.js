@@ -9,7 +9,6 @@ var nodemailer = require("nodemailer");
 
 // var serveStatic = require('serve-static');
 
-
 var authRouter = require("./routes/auth");
 var usersRouter = require("./routes/users");
 var imagesRouter = require("./routes/images");

@@ -77,21 +77,8 @@ router.get('/numberOfImages', (req, res) => {
   });
   });
 
-router.get('/minNumberOfImagesToRate', (req, res) => {
-  userUtils.getNmberOfImagesToRate().then((info_array) => {
-    if (info_array.length < 0){
-      res.status(205).send({ message: "No number found", success: true });
-    }
-    else res.send(info_array);
-  })
-  .catch((error) => {
-    console.log(error);
-    res.sendStatus(500);
-  });
-  });
-
-router.get('/getParamsOfGame', (req, res) => {
-  userUtils.getParamsOfGame().then((info_array) => {
+router.get('/getAllParams', (req, res) => {
+  userUtils.getAllParams().then((info_array) => {
     if (info_array.length < 0){
       res.status(205).send({ message: "No number found", success: true });
     }
