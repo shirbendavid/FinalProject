@@ -19,10 +19,7 @@ var app = express();
 // let reqPath = path.join(__dirname, '../Frontend/dist');
 // app.use(serveStatic(reqPath));
 
-// app.use(express.static(path.join(__dirname, "public")));
-// console.log(reqPath);
 // const port = "8110";
-
 const port = process.env.PORT || "3000";
 
 
@@ -66,10 +63,10 @@ app.use(
   })
 );
 
-app.use("/", authRouter);
-app.use("/users", usersRouter);
-app.use("/images", imagesRouter);
-app.use("/admins", adminsRouter);
+app.use('/', authRouter);
+app.use('/users', usersRouter);
+app.use('/images', imagesRouter);
+app.use('/admin', adminsRouter);
 
 /* GET home page. */
 app.get("/", function (req, res, next) {
@@ -92,8 +89,10 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
+const host = '0.0.0.0';
 //open server
-const server = app.listen(port, () => {
+const server = app.listen(port, // host); 
+  () => {
   console.log(`Server listen on port ${port}`);
 });
 

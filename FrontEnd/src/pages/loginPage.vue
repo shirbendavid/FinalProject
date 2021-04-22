@@ -106,6 +106,7 @@ export default {
     },
     async Login() {
       try {
+        // "/coil/Login"
         const response = await this.axios.post(
           this.$root.store.base_url + "/Login",
           {

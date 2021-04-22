@@ -48,8 +48,8 @@
   async created() {
     let response;
     try {
-      response = await this.axios.get(
-      this.$root.store.base_url +"/images/getImages/amount/"+8);
+      response = await this.axios.get(  //"/coil/images/getImages/amount/"+8);
+       this.$root.store.base_url + "/images/getImages/amount/"+8);
       console.log(response);
       if (response.status !== 200) this.$router.replace("/NotFound");
       } catch (error) {
