@@ -182,7 +182,6 @@ image{
   border-radius: 5px;
   color: rgba(10, 10, 10, 0.65);
   font-size: 19px;
-  font-weight: 400;
   line-height: 2em;
   width: 14%;
   font-family: "Merienda", Helvetica, Arial;

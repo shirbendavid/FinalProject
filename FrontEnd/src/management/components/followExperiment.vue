@@ -13,7 +13,7 @@
                     <th>Last time in the game</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="scrollable">
                 <tr v-for="user in users" :key="user.id">
                     <td>{{user.firstname}} {{user.lastname}}</td>
                     <td>{{user.email}}</td>
@@ -32,12 +32,10 @@
             </tbody>
         </table>
 
-    <b-row>
-      <button sm="2" type="submit" v-on:click="deactiveAllUsers">Deactive Status for all users</button>
-    </b-row>
-    <b-row>
-      <button sm="2" type="submit" v-on:click="activeAllUsers">Active Status for all users</button>
-    </b-row>
+        <div class="flex">
+            <button class="btn-down" type="submit" v-on:click="deactiveAllUsers">Deactive Status for all users</button>
+            <button class="btn-down" type="submit" v-on:click="activeAllUsers">Active Status for all users</button>
+        </div>
     </div>    
 </template>
 
@@ -130,5 +128,28 @@ export default {
 .th {
   border-top: 2px solid black !important;
 }
+
+
+.btn-down {
+  background: #fc995788;
+  border: 1.5px solid black;
+  border-radius: 5px;
+  color: rgba(10, 10, 10, 0.719);
+  font-size: 19px;
+  line-height: 2em;
+  width: 28%;
+  font-family: "Merienda", Helvetica, Arial;
+  margin-right: 50px;
+  margin-bottom: 30px;
+  margin-top: 5px;
+}
+
+.btn-down:hover {
+  background: #ff9f5f8a;
+  color:  rgba(10, 10, 10, 0.774);
+  font-weight: bold;
+  transition: all 0.4s ease;
+}
+
 
 </style>

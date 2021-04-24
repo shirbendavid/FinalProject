@@ -17,7 +17,7 @@
 <div class="scale">       
   <b-row >
     
- <label1>Not at all</label1><label2>Very much</label2>
+ <h3 class="label1">Not at all</h3><h2 class="label2">Very much</h2>
     </b-row>    
 <b-row>
   <b-col class="foreword">
@@ -76,12 +76,12 @@
             <b-col cols="12" md="10">
               <!-- <br/> -->
               <b-input-group-prepend>
-                <b-button @click="value = 0">Clear Rating</b-button>
+                <b-button class="btn" @click="value = 0">Clear Rating</b-button>
               </b-input-group-prepend>
             </b-col>
             <b-col cols="6" md="2">
               <!-- <br/> -->
-              <b-button
+              <b-button class="btn"
                 v-on:click="saveImageRate"
                 type="submit" 
               >
@@ -251,16 +251,18 @@ label{
   line-height: 8%;
 }
 
-label1{
-  font-size:small;
+.label1{
+  font-size:medium;
   opacity: 0.5;
   padding-left: 4%;
+  margin-top: 10px;
 }
 
-label2{
-  font-size:small;
+.label2{
+  font-size:medium;
   opacity: 0.5;
-  padding-left: 70%;
+  padding-left: 66%;
+  margin-top: 10px;
 }
 
 /* .form-check-inline{
@@ -369,6 +371,10 @@ label2{
     font-size: 20px;
     width: 160px;
     margin-left: 40px
+}
+
+.btn {
+  margin-top: 8px;
 }
 
 .text {
