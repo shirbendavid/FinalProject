@@ -43,13 +43,9 @@ router.get('/saveRate/image/:image_id/rate/:valueRate', (req, res) => {
   });
   
 
-  router.get('/getImagesForGame/amount/:num', (req, res) => {
+  router.get('/getImagesForGame/amount/:num/numOfScreens/:screens/numOfSelected/:selected', (req, res) => {
     console.log(req.params);
-    const {num} = req.params;
-    let amount = num;
-    params = {};
-    params.amount = amount;
-    userUtils.getGameImages(req.email, params)
+    userUtils.getGameImages(req.email, req.params)
     .then((info_array) => {
       if (info_array.length == 0)
         res.status(205).send({ message: "No images found", success: true });
@@ -63,6 +59,18 @@ router.get('/saveRate/image/:image_id/rate/:valueRate', (req, res) => {
       res.sendStatus(500);
     });  
   });
+
+router.get('/saveScoreScreen/gameID/:gameID/numOfScreen/:screenNum/score/:scoreScreen', (req, res) => {
+  console.log(req.params);
+  userUtils.saveScoreScreen(req.params);
+  res.sendStatus(200);
+});
+
+router.get('/saveScoreGame/gameID/:gameID/score/:score', (req, res) => {
+  console.log(req.params);
+  userUtils.saveScoreGame(req.email, req.params);
+  res.sendStatus(200);
+});
 
 router.get('/numberOfImages', (req, res) => {
   userUtils.getNmberOfImages(req.email).then((info_array) => {

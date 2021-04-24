@@ -66,7 +66,7 @@ app.use(
 app.use('/', authRouter);
 app.use('/users', usersRouter);
 app.use('/images', imagesRouter);
-app.use('/admin', adminsRouter);
+app.use('/admins', adminsRouter);
 
 /* GET home page. */
 app.get("/", function (req, res, next) {

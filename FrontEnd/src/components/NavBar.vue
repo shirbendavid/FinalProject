@@ -5,7 +5,7 @@
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'main' }">
           Home
         </router-link>
-        <b-navbar-nav class="ml-auto" v-if="!$root.store.email && !this.$cookies.get('session')">
+        <b-navbar-nav class="ml-auto">
           <router-link class="nav" tag="b-nav-item" :to="{ name: 'about' }">
             <b-icon icon="question-circle-fill" aria-hidden="true"></b-icon>
               About
