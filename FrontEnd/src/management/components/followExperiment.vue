@@ -13,7 +13,7 @@
                     <th>Last time in the game</th>
                 </tr>
             </thead>
-            <tbody class="scrollable">
+            <tbody>
                 <tr v-for="user in users" :key="user.id">
                     <td>{{user.firstname}} {{user.lastname}}</td>
                     <td>{{user.email}}</td>
@@ -149,6 +149,17 @@ export default {
   color:  rgba(10, 10, 10, 0.774);
   font-weight: bold;
   transition: all 0.4s ease;
+}
+
+.modal{
+    display: block !important;
+}
+.modal-dialog{
+      overflow-y: initial !important
+}
+.modal-body{
+  height: 250px;
+  overflow-y: auto;
 }
 
 

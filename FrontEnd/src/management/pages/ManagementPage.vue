@@ -30,13 +30,13 @@
 
         <transition name="fade">
             <div class="popup-modal" v-if="isVisibleUsersTable">
-                <div class="window">
+                <div class="window" style="overflow-y: scroll; max-height:90%; margin-top: 50px; margin-bottom:50px;">
                     <slot>
                       <button class="button-x" tag="b-nav-item" @click="closeUsersTable()">
                         X
                       </button>
                       <FollowExperiment/>
-                    </slot>
+                  </slot>
                 </div>
             </div>
         </transition>
@@ -135,6 +135,7 @@ export default {
     display: flex;
     align-items: center;
     z-index: 1;
+    overflow-y: initial !important
 }
 
 .window {
