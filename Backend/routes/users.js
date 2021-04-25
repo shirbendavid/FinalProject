@@ -20,7 +20,7 @@ router.use(async function (req, res, next) {
 });
 //#endregion
 
-router.get('/getImageToRate', (req, res) => {
+router.get('/users/getImageToRate', (req, res) => {
 userUtils.getRandomImageToRate(req.email).then((info_array) => {
   if (info_array.length == 0)
     res.status(201).send({ message: "No image found", success: true });
@@ -32,7 +32,7 @@ userUtils.getRandomImageToRate(req.email).then((info_array) => {
 });
 });
 
-router.get('/saveRate/image/:image_id/rate/:valueRate', (req, res) => {
+router.get('/users/saveRate/image/:image_id/rate/:valueRate', (req, res) => {
   const {image_id, valueRate} = req.params;
   params = {};
   params.image_id = image_id;
@@ -43,7 +43,7 @@ router.get('/saveRate/image/:image_id/rate/:valueRate', (req, res) => {
   });
   
 
-  router.get('/getImagesForGame/amount/:num/numOfScreens/:screens/numOfSelected/:selected', (req, res) => {
+  router.get('/users/getImagesForGame/amount/:num/numOfScreens/:screens/numOfSelected/:selected', (req, res) => {
     console.log(req.params);
     userUtils.getGameImages(req.email, req.params)
     .then((info_array) => {
@@ -60,19 +60,19 @@ router.get('/saveRate/image/:image_id/rate/:valueRate', (req, res) => {
     });  
   });
 
-router.get('/saveScoreScreen/gameID/:gameID/numOfScreen/:screenNum/score/:scoreScreen', (req, res) => {
+router.get('/users/saveScoreScreen/gameID/:gameID/numOfScreen/:screenNum/score/:scoreScreen', (req, res) => {
   console.log(req.params);
   userUtils.saveScoreScreen(req.params);
   res.sendStatus(200);
 });
 
-router.get('/saveScoreGame/gameID/:gameID/score/:score', (req, res) => {
+router.get('/users/saveScoreGame/gameID/:gameID/score/:score', (req, res) => {
   console.log(req.params);
   userUtils.saveScoreGame(req.email, req.params);
   res.sendStatus(200);
 });
 
-router.get('/numberOfImages', (req, res) => {
+router.get('/users/numberOfImages', (req, res) => {
   userUtils.getNmberOfImages(req.email).then((info_array) => {
     if (info_array.length < 0){
       res.status(205).send({ message: "No image found", success: true });
@@ -85,7 +85,7 @@ router.get('/numberOfImages', (req, res) => {
   });
   });
 
-router.get('/getAllParams', (req, res) => {
+router.get('/users/getAllParams', (req, res) => {
   userUtils.getAllParams().then((info_array) => {
     if (info_array.length < 0){
       res.status(205).send({ message: "No number found", success: true });

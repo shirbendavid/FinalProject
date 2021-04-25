@@ -1,5 +1,5 @@
 <template>
-  <div class="container"  >  
+  <div class="mycontainer"  >  
       <div class="image-header ma-2">
       <b-row class="title">
         <h4><b>How much do you like this photo?</b> </h4>
@@ -220,14 +220,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" >
 /* @import url(https://fonts.googleapis.com/css?family=Special+Elite); */
 
-.container {
+.mycontainer {
   background-color: rgba(255, 255, 255, 0.89);
   /* border: 5px outset#f3c48ec7;
   border-radius: 25px; */
-  opacity: 95%;
+  opacity: 95% !important;
   color: black;
   font-size: 16px;
   width:45%;
@@ -235,8 +235,9 @@ export default {
   padding-right: 20px;
   overflow: hidden;
   /* height: 50%; */
-
 }
+
+
 
 /* 
 input[type=radio]{

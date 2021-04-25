@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const imageUtils = require("./utils/imageUtils");
 
-router.get('/getImages/amount/:num', (req, res) => {
+router.get('/images/getImages/amount/:num', (req, res) => {
   const {num} = req.params;
   let amount = num;
   imageUtils.getImages(amount)

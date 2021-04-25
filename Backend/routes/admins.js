@@ -20,7 +20,7 @@ router.use(async function (req, res, next) {
   });
   //#endregion
 
-router.get('/getUsers', (req, res) => {
+router.get('/admins/getUsers', (req, res) => {
   adminUtils.getUsersInSystem().then((info_array) => {
     if (info_array.length == 0)
       res.status(205).send({ message: "No users found", success: true });
@@ -32,7 +32,7 @@ router.get('/getUsers', (req, res) => {
   });
   });
 
-router.get('/getParams', (req, res) => {
+router.get('/admins/getParams', (req, res) => {
     adminUtils.getParams().then((info_array) => {
       if (info_array.length == 0)
         res.status(205).send({ message: "No Parameters found", success: true });
@@ -44,7 +44,7 @@ router.get('/getParams', (req, res) => {
     });
     });
 
-router.get('/updateParams/:params', (req, res) => {
+router.get('/admins/updateParams/:params', (req, res) => {
     const allParams=JSON.parse(req.params.params);
     adminUtils.updateParams(allParams).then((info_array) =>res.send(info_array))
     .catch((error) => {
@@ -53,7 +53,7 @@ router.get('/updateParams/:params', (req, res) => {
     });
     });
 
-router.get('/getImagesId', (req, res) => {
+router.get('/admins/getImagesId', (req, res) => {
     adminUtils.getImagesId().then((info_array) => {
       if (info_array.length == 0)
         res.status(205).send({ message: "No Parameters found", success: true });
@@ -65,7 +65,7 @@ router.get('/getImagesId', (req, res) => {
     });
     });
 
-router.get('/getImagesId', (req, res) => {
+router.get('/admins/getImagesId', (req, res) => {
     adminUtils.getImagesId().then((info_array) => {
       if (info_array.length == 0)
         res.status(205).send({ message: "No Parameters found", success: true });
@@ -77,7 +77,7 @@ router.get('/getImagesId', (req, res) => {
     });
     });
 
-router.get('/getImagesId', (req, res) => {
+router.get('/admins/getImagesId', (req, res) => {
     adminUtils.getImagesId().then((info_array) => {
       if (info_array.length == 0)
         res.status(205).send({ message: "No Parameters found", success: true });
@@ -89,7 +89,7 @@ router.get('/getImagesId', (req, res) => {
     });
     });
 
-router.get('/getImagesRatedByUsers', (req, res) => {
+router.get('/admins/getImagesRatedByUsers', (req, res) => {
   adminUtils.getImagesRatedByUsers().then((info_array) => {
     if (info_array.length == 0)
       res.status(205).send({ message: "No Parameters found", success: true });
@@ -101,7 +101,7 @@ router.get('/getImagesRatedByUsers', (req, res) => {
   });
   });
 
-router.get('/getImagesRated', (req, res) => {
+router.get('/admins/getImagesRated', (req, res) => {
   adminUtils.getImagesRated().then((info_array) => {
     if (info_array.length == 0)
       res.status(205).send({ message: "No Parameters found", success: true });
@@ -113,7 +113,7 @@ router.get('/getImagesRated', (req, res) => {
   });
   });
 
-router.put('/changeStatus/:email', (req, res) => {
+router.put('/admins/changeStatus/:email', (req, res) => {
   adminUtils.changeStatus(req.params.email).then((info_array) => {
     if (info_array.length == 0)
       res.status(205).send({ message: "No Parameters found", success: true });
@@ -125,7 +125,7 @@ router.put('/changeStatus/:email', (req, res) => {
   });
   });
 
-router.put('/allUsersInDeactiveStatus', (req, res) => {
+router.put('/admins/allUsersInDeactiveStatus', (req, res) => {
   adminUtils.deactiveAllUsers().then((info_array) => {
     if (info_array.length == 0)
       res.status(205).send({ message: "No Parameters found", success: true });
@@ -137,7 +137,7 @@ router.put('/allUsersInDeactiveStatus', (req, res) => {
   });
   });
 
-router.put('/allUsersInActiveStatus', (req, res) => {
+router.put('/admins/allUsersInActiveStatus', (req, res) => {
   adminUtils.activeAllUsers().then((info_array) => {
     if (info_array.length == 0)
       res.status(205).send({ message: "No Parameters found", success: true });

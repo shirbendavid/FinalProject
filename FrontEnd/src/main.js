@@ -92,8 +92,8 @@ Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 
 const shared_data = {
-  // base_url: "https://icc.ise.bgu.ac.il/coil",
-  base_url: "http://localhost:3000",
+  base_url: "https://icc.ise.bgu.ac.il/coil",
+  // base_url: "http://localhost:3000",
   email: localStorage.email,
   numberOfImagesRating: localStorage.numberOfImagesRating
   ? JSON.parse(localStorage.numberOfImagesRating)
