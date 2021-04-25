@@ -1,8 +1,9 @@
 <template>
-  <div class="mycontainer"  >  
+  <div class="container"  >  
       <div class="image-header ma-2">
+        <br/>
       <b-row class="title">
-        <h4><b>How much do you like this photo?</b> </h4>
+        <h4><b>How much do you like this photo?</b></h4>
       </b-row>
     </div>
     <div class="image-body">
@@ -223,17 +224,21 @@ export default {
 <style lang="scss" >
 /* @import url(https://fonts.googleapis.com/css?family=Special+Elite); */
 
-.mycontainer {
+.container {
   background-color: rgba(255, 255, 255, 0.89);
   /* border: 5px outset#f3c48ec7;
   border-radius: 25px; */
-  opacity: 95% !important;
+  // opacity: 95% !important;
   color: black;
   font-size: 16px;
   width:45%;
   padding-left: 20px;
   padding-right: 20px;
   overflow: hidden;
+  margin: auto;
+  align-content: center;
+  align-self: center;
+  justify-content: center;
   /* height: 50%; */
 }
 
@@ -384,7 +389,7 @@ label{
 }
 
 .title {
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 15%;
 }
 </style>

@@ -4,20 +4,31 @@ const DButils = require("./utils/DButils");
 const userUtils = require("./utils/userUtils");
 
 //#region cookie middleware
-router.use(async function (req, res, next) {
+var sessionChecker = (req, res, next) => {
   if (req.session && req.session.email) {
-    await DButils.execQuery("SELECT * FROM users")
-      .then((users) => {
-        if (users.find((x) => x.email === req.session.email)) {
-          req.email = req.session.email;
-        }
-        next();
-      })
-      .catch((error) => next());
+    console.log('already logged in');
+    res.redirect('/');
   } else {
-    res.sendStatus(401);
-  }
-});
+    res.status(200);
+    next();
+  }    
+};
+
+
+// router.use(async function (req, res, next) {
+//   if (req.session && req.session.email) {
+//     await DButils.execQuery("SELECT * FROM users")
+//       .then((users) => {
+//         if (users.find((x) => x.email === req.session.email)) {
+//           req.email = req.session.email;
+//         }
+//         next();
+//       })
+//       .catch((error) => next());
+//   } else {
+//     res.status(401).send("user ??? does not exist!");
+//   }
+// });
 //#endregion
 
 router.get('/users/getImageToRate', (req, res) => {

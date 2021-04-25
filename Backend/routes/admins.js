@@ -15,7 +15,7 @@ router.use(async function (req, res, next) {
         })
         .catch((error) => next());
     } else {
-      res.sendStatus(401);
+      res.status(401).send("admin does not exist!");
     }
   });
   //#endregion
