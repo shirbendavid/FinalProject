@@ -30,7 +30,7 @@
                         We are 4 Software and Information System Engineering students in our 4th year and this 
                         is our final project.
                         <br/>
-                        Our advisors: Prof. Noam Tracktinsky and Dr. Denis Kalimov
+                        Our advisors: Prof. Noam Tractinsky and Dr. Denis Klimov
                         <br/><br/>
                         <b> Technologies:</b>
                         <br/>

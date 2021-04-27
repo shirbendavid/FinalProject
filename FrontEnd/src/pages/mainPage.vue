@@ -6,7 +6,7 @@
     <h1 class="title">
       <b>Beautiful Images</b> 
     </h1>
-    <h3 class="sub-title">recognition and preference</h3>
+    <h3 class="sub-title">The Game!</h3>
     <br/>
     <div id="example">
       <br/>
