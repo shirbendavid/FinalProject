@@ -1,6 +1,20 @@
 const DButils = require("./DButils");
 const fs = require("fs");
 
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}
+
+async function getAllParams(){
+  params = await DButils.execQuery(`SElECT * FROM parameters WHERE date IN (SELECT max(date) FROM parameters)`);
+  imagesInDB = await DButils.execQuery(`SElECT COUNT(imageID) AS rows FROM image`);
+  params.push({number_of_images_in_DB: imagesInDB[0].rows});
+  return params;
+}
+
+//Rate image
 async function getRandomImageToRate(email){
     var imageExists = new Boolean(true);
     var rand = undefined;
@@ -35,6 +49,7 @@ async function saveRate(email,params){
       );
 }
 
+//Game
 async function getGameImages(email, params){
   rates = await DButils.execQuery(`SElECT * FROM ratePerUser WHERE email='${email}'`);
   let level1 = 0;
@@ -122,7 +137,7 @@ async function getGameImages(email, params){
     m=1;
     while(m <= params.screens){
       await DButils.execQuery(
-        `INSERT INTO gameScreens VALUES ('${game_id[0].game_id}','${m}','${images_id[m-1]}', '${target_id[m-1]}',NULL)`
+        `INSERT INTO gameScreens VALUES ('${game_id[0].game_id}','${m}','${images_id[m-1]}', '${target_id[m-1]}',NULL,NULL)`
       );
       m++;
     }
@@ -132,7 +147,7 @@ async function getGameImages(email, params){
 }
 
 async function saveScoreScreen(params){
-  await DButils.execQuery(`UPDATE gameScreens SET score='${params.scoreScreen}' WHERE game_id='${params.gameID}' AND screenNum='${params.screenNum}'`);
+  await DButils.execQuery(`UPDATE gameScreens SET userSelection='${params.images}', score='${params.scoreScreen}' WHERE game_id='${params.gameID}' AND screenNum='${params.screenNum}'`);
 }
 
 async function saveScoreGame(email,params){
@@ -145,17 +160,35 @@ async function getNmberOfImages(email){
   return allRatesOfUser;
 }
 
-async function getAllParams(){
-  params = await DButils.execQuery(`SElECT * FROM parameters WHERE date IN (SELECT max(date) FROM parameters)`);
-  imagesInDB = await DButils.execQuery(`SElECT COUNT(imageID) AS rows FROM image`);
-  params.push({number_of_images_in_DB: imagesInDB[0].rows});
-  return params;
+async function checkIfPlay(email){
+  play = await DButils.execQuery(`SElECT * FROM games WHERE email='${email}' AND CAST(gameTime AS DATE) = CAST(GETDATE() AS DATE)`);
+  return play;
 }
 
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+async function getScreensGame(params){
+  screens = await DButils.execQuery(`SElECT * FROM gameScreens WHERE game_id='${params.id}' AND score IS NULL`);
+  images = [];
+  i = 0;
+  for(screen in screens){
+    images.push({screen: screens[screen].screenNum , imagesScreen: []});
+    imagesIdInScreen = screens[screen].images_id.split(",");
+    targetId_images = screens[screen].target.split(",");
+    for(index in imagesIdInScreen){
+      if(imagesIdInScreen[index]!=''){
+        dataImage = await DButils.execQuery(`SElECT image FROM image WHERE imageID='${imagesIdInScreen[index]}'`)
+        image = "data:image/jpeg;base64,"+dataImage[0].image.toString('base64');
+        data = {image_id: imagesIdInScreen[index] , image: image, target: targetId_images.includes(imagesIdInScreen[index])}
+        images[i].imagesScreen.push(data);
+      }
+    }
+    i++;
+  }
+  return images;
+}
+
+//Advanced Game
+async function getImagesForAdvancedGame(email){
+
 }
 
 exports.getRandomImageToRate=getRandomImageToRate;
@@ -165,3 +198,6 @@ exports.getNmberOfImages=getNmberOfImages;
 exports.getAllParams = getAllParams;
 exports.saveScoreScreen = saveScoreScreen;
 exports.saveScoreGame = saveScoreGame;
+exports.checkIfPlay = checkIfPlay;
+exports.getScreensGame = getScreensGame;
+exports.getImagesForAdvancedGame = getImagesForAdvancedGame;

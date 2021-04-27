@@ -10,6 +10,7 @@
                     <th>Status</th>
                     <th>Last login</th>
                     <th>No. images rated</th>
+                    <th>No. games</th>
                     <th>Last time in the game</th>
                 </tr>
             </thead>
@@ -27,6 +28,7 @@
                     </td>
                     <td>{{user.lastLogin}}</td>
                     <td>{{user.numOfRates}}</td>
+                    <td>{{user.numOfGames}}</td>
                     <td>{{user.gameTime}}</td>
                 </tr>
             </tbody>

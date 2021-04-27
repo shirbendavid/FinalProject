@@ -95,6 +95,27 @@ const shared_data = {
   // base_url: "https://icc.ise.bgu.ac.il/coil",
   base_url: "http://localhost:3000",
   email: localStorage.email,
+  numberOfImagesInGame: localStorage.numberOfImagesInGame
+  ? JSON.parse(localStorage.numberOfImagesInGame)
+  : [],
+  addNumberOfImagesInGame(numberOfImagesInGame) {
+    localStorage.setItem("numberOfImagesInGame", JSON.stringify(numberOfImagesInGame));
+    this.numberOfImagesInGame = numberOfImagesInGame;
+  },
+  numberOfScreensInGame: localStorage.numberOfScreensInGame
+  ? JSON.parse(localStorage.numberOfScreensInGame)
+  : [],
+  addNumberOfScreensInGame(numberOfScreensInGame) {
+    localStorage.setItem("numberOfScreensInGame", JSON.stringify(numberOfScreensInGame));
+    this.numberOfScreensInGame = numberOfScreensInGame;
+  },
+  limitSelectInGame: localStorage.limitSelectInGame
+  ? JSON.parse(localStorage.limitSelectInGame)
+  : [],
+  addLimitSelectInGame(limitSelectInGame) {
+    localStorage.setItem("limitSelectInGame", JSON.stringify(limitSelectInGame));
+    this.limitSelectInGame = limitSelectInGame;
+  },
   numberOfImagesRating: localStorage.numberOfImagesRating
   ? JSON.parse(localStorage.numberOfImagesRating)
   : [],
@@ -135,6 +156,9 @@ const shared_data = {
     localStorage.removeItem("minImagesRating");
     localStorage.removeItem("numberOfImagesRating");
     localStorage.removeItem("numberOfImagesInDB");
+    localStorage.removeItem("numberOfImagesInGame");
+    localStorage.removeItem("numberOfScreensInGame");
+    localStorage.removeItem("limitSelectInGame");
     if(!localStorage.getItem("emailAdmin")){
       localStorage.removeItem("emailAdmin");
       Vue.$cookies.remove("session");
