@@ -94,7 +94,7 @@ const host = '0.0.0.0';
 // const server = app.listen(port, host); 
 // console.log(`Server listen on port ${port}`);
 
-const server = app.listen(port, // host); 
+const server = app.listen(host, port, // host); 
   () => {
   console.log(`Server listen on port ${port}`);
 });
