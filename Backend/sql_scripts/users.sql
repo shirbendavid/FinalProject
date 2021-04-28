@@ -7,5 +7,6 @@ CREATE TABLE [dbo].[users](
 	[status] [varchar](10) default 'active',
 	[dateOfRegistration] [datetime] Default GETDATE(),
 	[lastLogin] [datetime] default NULL,
-	[gameTime] [datetime] default NULL
+	[gameTime] [datetime] default NULL,
+	[playAdvancedGame] [bit] default 0 
 )

@@ -90,6 +90,7 @@ export default {
                             selectable: true};
               this.items.push(data);
             }
+            this.index++;
           }
       }
     }
@@ -133,7 +134,7 @@ export default {
                 );
                 console.log(playToday);
                 if(playToday.status === 201){
-                  console.log(playToday);
+                  //not finish to play today
                   if(playToday.data[0].scoreGame == null){
                     // const numberOfImages=this.$root.store.numberOfImagesInGame;
                     // const limit=this.$root.store.limitSelectInGame;
@@ -155,6 +156,24 @@ export default {
                   this.allImages = response.data;
                   this.gameID = playToday.data[0].game_id;
                   this.screenNum = this.allImages[0].screen;
+                  //get score screens
+                  if(this.screenNum > 1){
+                    let scoreScreens;
+                    try {
+                      scoreScreens = await this.axios.get(
+                      this.$root.store.base_url +
+                          "/users/getScoreScreens/gameId/"+this.gameID
+                      );
+                      console.log(scoreScreens);
+                      if (scoreScreens.status !== 200) this.$router.replace("/NotFound");
+                  } catch (error) {
+                      console.log("error.scoreScreens.status", error.scoreScreens.status);
+                      this.$router.replace("/NotFound");
+                      return;
+                  }
+                  this.score = scoreScreens.data[0].score;
+                  console.log(this.score);
+                  }
                   for(let num in this.allImages[0].imagesScreen){
                     const data = {key: this.allImages[0].imagesScreen[num].image_id,
                                   backgroundImage: this.allImages[0].imagesScreen[num].image,

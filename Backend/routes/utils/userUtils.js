@@ -151,7 +151,6 @@ async function saveScoreScreen(params){
 }
 
 async function saveScoreGame(email,params){
-  console.log('hereee!')
   await DButils.execQuery(`UPDATE games SET scoreGame='${params.score}' WHERE game_id='${params.gameID}' AND email='${email}'`);
 }
 
@@ -167,6 +166,11 @@ async function checkIfPlay(email){
 
 async function getScreensGame(params){
   screens = await DButils.execQuery(`SElECT * FROM gameScreens WHERE game_id='${params.id}' AND score IS NULL`);
+  return returnScreensWithImages(screens);
+}
+
+//helper function- return screen game with image data
+async function returnScreensWithImages(screens){
   images = [];
   i = 0;
   for(screen in screens){
@@ -186,9 +190,57 @@ async function getScreensGame(params){
   return images;
 }
 
+async function getScoreScreens(params){
+  score = await DButils.execQuery(`SElECT SUM(score) AS score FROM gameScreens WHERE game_id='${params.id}' AND score IS NOT NULL`);
+  console.log(score);
+  return score;
+}
+
 //Advanced Game
 async function getImagesForAdvancedGame(email){
+  games = await DButils.execQuery(`SElECT game_id FROM games where game_id NOT IN (SELECT game_id FROM games WHERE email='${email}') AND scoreGame IS NOT NULL`);
+  if(games.length == 0)
+    return [];
+  success= false;
+  userGameId = '';
+  while(!success){
+    if(games.length == 1)
+      randGame = 0;
+    else
+      randGame = getRandomInt(0,games.length-1);
+    userGameId = games[randGame].game_id;
+    advancedGames = await DButils.execQuery(`SElECT * FROM advancedGames WHERE email='${email}' AND scoreGame IS NOT NULL`);
+    existsGame = await DButils.execQuery(`SElECT * FROM advancedGames WHERE userGame_id='${userGameId}' AND email='${email}' AND scoreGame IS NOT NULL`);
+    if(advancedGames.length == games.length)
+      return [];
+    if(existsGame.length==0)
+      success = true;
+  }
 
+  screens = await DButils.execQuery(`SElECT * FROM gameScreens WHERE game_id='${userGameId}'`);
+  images = await returnScreensWithImages(screens);
+  //save in DB 
+  await DButils.execQuery(
+    `INSERT INTO advancedGames VALUES ('${email}','${userGameId}',default,NULL)`
+  );
+  advancedGame_id = await DButils.execQuery(`SElECT game_id FROM advancedGames WHERE gameTime IN (SELECT max(gameTime) FROM advancedGames WHERE email='${email}')`);
+  m=0;
+  while(m < screens.length){
+    await DButils.execQuery(
+      `INSERT INTO advancedGameScreens VALUES ('${advancedGame_id[0].game_id}','${m+1}','${screens[m].images_id}', '${screens[m].target}',NULL,NULL)`
+    );
+    m++;
+  }
+  images.push(advancedGame_id[0].game_id);
+  return images;
+}
+
+async function saveScoreScreenAdvanced(params){
+  await DButils.execQuery(`UPDATE advancedGameScreens SET userSelection='${params.images}', score='${params.scoreScreen}' WHERE game_id='${params.gameID}' AND screenNum='${params.screenNum}'`);
+}
+
+async function saveScoreAdvancedGame(email,params){
+  await DButils.execQuery(`UPDATE advancedGames SET scoreGame='${params.score}' WHERE game_id='${params.gameID}' AND email='${email}'`);
 }
 
 exports.getRandomImageToRate=getRandomImageToRate;
@@ -201,3 +253,6 @@ exports.saveScoreGame = saveScoreGame;
 exports.checkIfPlay = checkIfPlay;
 exports.getScreensGame = getScreensGame;
 exports.getImagesForAdvancedGame = getImagesForAdvancedGame;
+exports.saveScoreScreenAdvanced = saveScoreScreenAdvanced;
+exports.saveScoreAdvancedGame = saveScoreAdvancedGame;
+exports.getScoreScreens = getScoreScreens;

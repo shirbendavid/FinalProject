@@ -137,11 +137,12 @@ const shared_data = {
     localStorage.setItem("numberOfImagesInDB", JSON.stringify(numberOfImagesInDB));
     this.numberOfImagesInDB = numberOfImagesInDB;
   },
-  login(email, firstname) {
+  login(email, firstname, playAdvancedGame) {
     localStorage.setItem("email", email);
     this.email = email;
     console.log("login", this.email);
     localStorage.setItem("firstname", firstname);
+    localStorage.setItem("playAdvancedGame", playAdvancedGame);
     this.firstname = firstname
   },
   loginAdmin(email) {
@@ -153,6 +154,7 @@ const shared_data = {
     console.log("logout");
     localStorage.removeItem("email");
     localStorage.removeItem("firstname");
+    localStorage.removeItem("playAdvancedGame");
     localStorage.removeItem("minImagesRating");
     localStorage.removeItem("numberOfImagesRating");
     localStorage.removeItem("numberOfImagesInDB");

@@ -123,8 +123,8 @@ router.get('/getScreensGame/gameId/:id', (req, res) => {
   });
   });
 
-router.get('/getImagesForAdvancedGame', (req, res) => {
-  userUtils.getImagesForAdvancedGame(req.email).then((info_array) => {
+router.get('/getScoreScreens/gameId/:id', (req, res) => {
+  userUtils.getScoreScreens(req.params).then((info_array) => {
     if (info_array.length < 0){
       res.status(205).send({ message: "No number found", success: true });
     }
@@ -135,5 +135,32 @@ router.get('/getImagesForAdvancedGame', (req, res) => {
     res.sendStatus(500);
   });
   });
+
+router.get('/getImagesForAdvancedGame', (req, res) => {
+  userUtils.getImagesForAdvancedGame(req.email).then((info_array) => {
+    if (info_array.length < 0){
+      res.status(205).send({ message: "No game found", success: true });
+    }
+    else if(info_array.length == 0)
+      res.status(201).send({ message: "No game found", success: false });
+    else res.send(info_array);
+  })
+  .catch((error) => {
+    console.log(error);
+    res.sendStatus(500);
+  });
+  });
+
+router.get('/saveScoreScreenAdvanced/gameID/:gameID/numOfScreen/:screenNum/imagesSelect/:images/score/:scoreScreen', (req, res) => {
+  console.log(req.params);
+  userUtils.saveScoreScreenAdvanced(req.params);
+  res.sendStatus(200);
+});
+
+router.get('/saveScoreAdvancedGame/gameID/:gameID/score/:score', (req, res) => {
+  console.log(req.params);
+  userUtils.saveScoreAdvancedGame(req.email, req.params);
+  res.sendStatus(200);
+});
   
 module.exports = router;

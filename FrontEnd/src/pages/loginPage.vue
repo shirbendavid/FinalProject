@@ -116,7 +116,7 @@ export default {
         );
         console.log(response);
         this.$root.loggedIn = true;
-        this.$root.store.login(this.form.email, response.data['firstname']);
+        this.$root.store.login(this.form.email, response.data['firstname'], response.data['playAdvancedGame']);
         
         //store number of images rating to user and nimumn number images to rate
         let numberOfImages;

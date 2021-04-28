@@ -22,7 +22,7 @@ router.post("/Registration", async (req, res, next) => {
 
     DButils.execQuery(
       `INSERT INTO users VALUES ('${req.body.email}', '${req.body.firstname}', '${req.body.lastname}', 
-      '${req.body.age}', '${req.body.gender}', default, default, default, default)`
+      '${req.body.age}', '${req.body.gender}', default, default, default, default, default)`
     );
     res.status(201).send({ message: "user created", success: true });
   } catch (error) {
@@ -56,7 +56,7 @@ router.post("/Login", async (req, res, next) => {
     req.session.email = user.email;
 
     // return cookie
-    res.status(200).send({ message: "login succeeded", success: true, firstname: user.firstname });
+    res.status(200).send({ message: "login succeeded", success: true, firstname: user.firstname, playAdvancedGame: user.playAdvancedGame });
   } catch (error) {
     next(error);
   }
