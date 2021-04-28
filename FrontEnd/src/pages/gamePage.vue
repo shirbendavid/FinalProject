@@ -15,7 +15,7 @@
     <b-button class="btn"
               v-on:click="save"
               type="submit" >
-    Check your selection
+    Next
     </b-button>
   </div>
 </template>
@@ -35,18 +35,23 @@ export default {
       else{
         console.log(this.selectedItems);
         let scoreScreen = 0;
+        let imagesSelect = '';
         for(let index in this.selectedItems){
           if(this.selectedItems[index].target == true)
-            scoreScreen++; 
+            scoreScreen++;
+          imagesSelect = imagesSelect + this.selectedItems[index].key + ','; 
         }
+        console.log('images selection:' +imagesSelect);
         this.score = this.score + scoreScreen;
         console.log(this.score);
         let saveScore;
+        
         try {
           saveScore = await this.axios.get(
           this.$root.store.base_url +
               "/users/saveScoreScreen/gameID/"+this.gameID+
-              "/numOfScreen/"+this.screenNum+"/score/"+scoreScreen
+              "/numOfScreen/"+this.screenNum+"/imagesSelect/"+imagesSelect+
+              "/score/" + scoreScreen
           );
           console.log(saveScore);
           if (saveScore.status !== 200) this.$router.replace("/NotFound");
@@ -70,19 +75,22 @@ export default {
               this.$router.replace("/NotFound");
               return;
           }
-            alert('finish game!');
+            alert('The game is over, your score: '+ this.score);
+            this.$router.push("/");
+
           }
           else{
             this.screenNum++;
             this.$children[0].clear();
             this.items =[];
-            for(let num in this.allImages[this.screenNum-1].imagesScreen){
-              const data = {key: this.allImages[this.screenNum-1].imagesScreen[num].image_id,
-                            backgroundImage: this.allImages[this.screenNum-1].imagesScreen[num].image,
-                            target: this.allImages[this.screenNum-1].imagesScreen[num].target,
+            for(let num in this.allImages[this.index].imagesScreen){
+              const data = {key: this.allImages[this.index].imagesScreen[num].image_id,
+                            backgroundImage: this.allImages[this.index].imagesScreen[num].image,
+                            target: this.allImages[this.index].imagesScreen[num].target,
                             selectable: true};
               this.items.push(data);
             }
+            this.index++;
           }
       }
     }
@@ -98,6 +106,7 @@ export default {
       score: 0, 
       gameID: '',
       allImages: [],
+      index: ''
     };
   },
   watch: {
@@ -117,54 +126,112 @@ export default {
           this.$router.push("/ranking");
         }
         else{
-          //if play today!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            let paramsOfGame;
+            let playToday;
             try {
-                paramsOfGame = await this.axios.get(
+                playToday = await this.axios.get(
                 this.$root.store.base_url +
-                    "/users/getAllParams"
+                    "/users/checkIfPlayToday"
                 );
-                console.log(paramsOfGame);
-                if (paramsOfGame.status !== 200) this.$router.replace("/NotFound");
-            } catch (error) {
-                console.log("error.paramsOfGame.status", error.paramsOfGame.status);
-                this.$router.replace("/NotFound");
-                return;
-            }
-            // this.maxSelectable = limit;
-            // console.log(this.maxSelectable);
-            const numberOfImages = paramsOfGame.data[0].images_in_game;
-            const numberOfScreens = paramsOfGame.data[0].screens_in_game;
-            this.screens = numberOfScreens;
-            const limit = paramsOfGame.data[0].images_selectes_in_game;
-            this.maxSelectable = limit;
-            // this.$emit('maxSelectable', 3);
-            let response;
-            try {
-                response = await this.axios.get(
-                this.$root.store.base_url +
-                    "/users/getImagesForGame/amount/"+numberOfImages+"/numOfScreens/"+
-                    numberOfScreens+"/numOfSelected/"+limit
-                );
-                console.log(response);
-                if (response.status !== 200) this.$router.replace("/NotFound");
-            } catch (error) {
-                console.log("error.response.status", error.response.status);
-                this.$router.replace("/NotFound");
-                return;
-            }
+                console.log(playToday);
+                if(playToday.status === 201){
+                  //not finish to play today
+                  if(playToday.data[0].scoreGame == null){
+                    // const numberOfImages=this.$root.store.numberOfImagesInGame;
+                    // const limit=this.$root.store.limitSelectInGame;
+                    this.screens = this.$root.store.numberOfScreensInGame;
+                    let response;
+                    try {
+                      response = await this.axios.get(
+                      this.$root.store.base_url +
+                          "/users/getScreensGame/gameId/"+playToday.data[0].game_id
+                      );
+                      console.log(response);
+                      if (response.status !== 200) this.$router.replace("/NotFound");
+                  } catch (error) {
+                      console.log("error.response.status", error.response.status);
+                      this.$router.replace("/NotFound");
+                      return;
+                  }
+                  console.log(response.data);
+                  this.allImages = response.data;
+                  this.gameID = playToday.data[0].game_id;
+                  this.screenNum = this.allImages[0].screen;
+                  //get score screens
+                  if(this.screenNum > 1){
+                    let scoreScreens;
+                    try {
+                      scoreScreens = await this.axios.get(
+                      this.$root.store.base_url +
+                          "/users/getScoreScreens/gameId/"+this.gameID
+                      );
+                      console.log(scoreScreens);
+                      if (scoreScreens.status !== 200) this.$router.replace("/NotFound");
+                  } catch (error) {
+                      console.log("error.scoreScreens.status", error.scoreScreens.status);
+                      this.$router.replace("/NotFound");
+                      return;
+                  }
+                  this.score = scoreScreens.data[0].score;
+                  console.log(this.score);
+                  }
+                  for(let num in this.allImages[0].imagesScreen){
+                    const data = {key: this.allImages[0].imagesScreen[num].image_id,
+                                  backgroundImage: this.allImages[0].imagesScreen[num].image,
+                                  target: this.allImages[0].imagesScreen[num].target,
+                                  selectable: true};
+                    this.items.push(data);
+                  }
+                  this.index =0;
+                  if(this.index + 1 < this.allImages.length)
+                    this.index++;
+                  }
+                  else{
+                    alert('You already played today, will be back tomorrow!')
+                    this.$router.replace("/")
+                  }
+                }
+                else if (playToday.status !== 200) this.$router.replace("/NotFound");
+                else{
+                  //not play today
+                  const numberOfImages=this.$root.store.numberOfImagesInGame;
+                  const limit=this.$root.store.limitSelectInGame;
+                  this.screens = this.$root.store.numberOfScreensInGame;
 
-            console.log(response.data);
-            this.allImages = response.data;
-            this.gameID = this.allImages[this.screens];
-            for(let num in this.allImages[this.screenNum-1].imagesScreen){
-              const data = {key: this.allImages[this.screenNum-1].imagesScreen[num].image_id,
-                            backgroundImage: this.allImages[this.screenNum-1].imagesScreen[num].image,
-                            target: this.allImages[this.screenNum-1].imagesScreen[num].target,
-                            selectable: true};
-              this.items.push(data);
+                  // this.maxSelectable = limit;
+                  // this.$emit('maxSelectable', 3);
+                  let response;
+                  try {
+                      response = await this.axios.get(
+                      this.$root.store.base_url +
+                          "/users/getImagesForGame/amount/"+numberOfImages+"/numOfScreens/"+
+                          this.screens+"/numOfSelected/"+limit
+                      );
+                      console.log(response);
+                      if (response.status !== 200) this.$router.replace("/NotFound");
+                  } catch (error) {
+                      console.log("error.response.status", error.response.status);
+                      this.$router.replace("/NotFound");
+                      return;
+                  }
+
+                  console.log(response.data);
+                  this.allImages = response.data;
+                  this.gameID = this.allImages[this.screens];
+                  for(let num in this.allImages[this.screenNum-1].imagesScreen){
+                    const data = {key: this.allImages[this.screenNum-1].imagesScreen[num].image_id,
+                                  backgroundImage: this.allImages[this.screenNum-1].imagesScreen[num].image,
+                                  target: this.allImages[this.screenNum-1].imagesScreen[num].target,
+                                  selectable: true};
+                    this.items.push(data);
+                  }
+                  this.index = this.screenNum;
+                  console.log(this.items);
+                }
+            } catch (error) {
+                console.log("error.playToday.status", error.playToday.status);
+                this.$router.replace("/NotFound");
+                return;
             }
-            console.log(this.items);
         }
         }
         else{

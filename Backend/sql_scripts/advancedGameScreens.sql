@@ -1,4 +1,4 @@
-CREATE TABLE [dbo].[gameScreens](
+CREATE TABLE [dbo].[advancedGameScreens](
 	[game_id] [integer] NOT NULL, 
     [screenNum] [integer] NOT NULL,
     [images_id] [varchar](100) NOT NULL,
