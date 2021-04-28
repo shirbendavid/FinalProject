@@ -15,20 +15,20 @@ var sessionChecker = (req, res, next) => {
 };
 
 
-// router.use(async function (req, res, next) {
-//   if (req.session && req.session.email) {
-//     await DButils.execQuery("SELECT * FROM users")
-//       .then((users) => {
-//         if (users.find((x) => x.email === req.session.email)) {
-//           req.email = req.session.email;
-//         }
-//         next();
-//       })
-//       .catch((error) => next());
-//   } else {
-//     res.status(401).send("user ??? does not exist!");
-//   }
-// });
+router.use(async function (req, res, next) {
+  if (req.session && req.session.email) {
+    await DButils.execQuery("SELECT * FROM users")
+      .then((users) => {
+        if (users.find((x) => x.email === req.session.email)) {
+          req.email = req.session.email;
+        }
+        next();
+      })
+      .catch((error) => next());
+  } else {
+    res.status(401).send("user ??? does not exist!");
+  }
+});
 //#endregion
 
 router.get('/users/getImageToRate', (req, res) => {

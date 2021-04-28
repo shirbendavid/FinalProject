@@ -92,7 +92,7 @@ app.use(function (err, req, res, next) {
 const host = '0.0.0.0';
 //open server
 // const server = app.listen(port, host); 
-console.log(`Server listen on port ${port}`);
+// console.log(`Server listen on port ${port}`);
 
 const server = app.listen(port, // host); 
   () => {
