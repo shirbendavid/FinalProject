@@ -42,7 +42,7 @@
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'game' }">
           Game
         </router-link>
-        <router-link class="nav" tag="b-nav-item" :to="{ name: 'advanced' }">
+        <router-link v-if="this.$root.store.playAdvancedGame" tag="b-nav-item" :to="{ name: 'advanced' }">
           advancedGame
         </router-link>
         <!-- <b-nav-item-dropdown right>

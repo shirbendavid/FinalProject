@@ -122,9 +122,8 @@ export default {
   },
   async created() {
     if(this.$root.store.email){
-      // const numberOfImages=this.$root.store.numberOfImagesInGame;
-      // const limit=this.$root.store.limitSelectInGame;
       this.screens = this.$root.store.numberOfScreensInGame;
+      // const limit=this.$root.store.limitSelectInGame;
       // this.maxSelectable = limit;
       // this.$emit('maxSelectable', 3);
       let response;
