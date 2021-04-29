@@ -94,10 +94,18 @@ const host = '0.0.0.0';
 // const server = app.listen(port, host); 
 // console.log(`Server listen on port ${port}`);
 
-const server = app.listen(host, port, // host); 
-  () => {
-  console.log(`Server listen on port ${port}`);
-});
+// const server = app.listen(host, port, // host); 
+//   () => {
+//   console.log(`Server listen on port ${port}`);
+// });
+
+const server = app.listen(port, host, function (err) {
+  if (err) {
+   console.log(err)
+   return
+  }
+  console.log('Listening at http://localhost:' + port + '\n')
+ })
 
 process.on("SIGINT", function () {
   if (server) {

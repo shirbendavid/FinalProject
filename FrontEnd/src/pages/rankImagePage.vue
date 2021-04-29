@@ -1,6 +1,6 @@
 <template>
   <div class="container"  >  
-      <div class="image-header ma-2">
+      <div class="image-header">
         <br/>
       <b-row class="title">
         <h4><b>How much do you like this photo?</b></h4>
