@@ -23,7 +23,7 @@ router.use(async function (req, res, next) {
 router.get('/admins/getUsers', (req, res) => {
   adminUtils.getUsersInSystem().then((info_array) => {
     if (info_array.length == 0)
-      res.status(205).send({ message: "No users found", success: true });
+      res.status(205).send({ message: "No Users found", success: true });
     else res.send(info_array);
   })
   .catch((error) => {
@@ -56,7 +56,7 @@ router.get('/admins/updateParams/:params', (req, res) => {
 router.get('/admins/getImagesId', (req, res) => {
     adminUtils.getImagesId().then((info_array) => {
       if (info_array.length == 0)
-        res.status(205).send({ message: "No Parameters found", success: true });
+        res.status(205).send({ message: "No Images found", success: true });
       else res.send(info_array);
     })
     .catch((error) => {
@@ -68,7 +68,7 @@ router.get('/admins/getImagesId', (req, res) => {
 router.get('/admins/getImagesId', (req, res) => {
     adminUtils.getImagesId().then((info_array) => {
       if (info_array.length == 0)
-        res.status(205).send({ message: "No Parameters found", success: true });
+        res.status(205).send({ message: "No Images found", success: true });
       else res.send(info_array);
     })
     .catch((error) => {
@@ -80,7 +80,7 @@ router.get('/admins/getImagesId', (req, res) => {
 router.get('/admins/getImagesId', (req, res) => {
     adminUtils.getImagesId().then((info_array) => {
       if (info_array.length == 0)
-        res.status(205).send({ message: "No Parameters found", success: true });
+        res.status(205).send({ message: "No Images found", success: true });
       else res.send(info_array);
     })
     .catch((error) => {
@@ -92,7 +92,7 @@ router.get('/admins/getImagesId', (req, res) => {
 router.get('/admins/getImagesRatedByUsers', (req, res) => {
   adminUtils.getImagesRatedByUsers().then((info_array) => {
     if (info_array.length == 0)
-      res.status(205).send({ message: "No Parameters found", success: true });
+      res.status(205).send({ message: "No Images found", success: true });
     else res.send(info_array);
   })
   .catch((error) => {
@@ -104,7 +104,7 @@ router.get('/admins/getImagesRatedByUsers', (req, res) => {
 router.get('/admins/getImagesRated', (req, res) => {
   adminUtils.getImagesRated().then((info_array) => {
     if (info_array.length == 0)
-      res.status(205).send({ message: "No Parameters found", success: true });
+      res.status(205).send({ message: "No Images found", success: true });
     else res.send(info_array);
   })
   .catch((error) => {
@@ -116,7 +116,7 @@ router.get('/admins/getImagesRated', (req, res) => {
 router.put('/admins/changeStatus/:email', (req, res) => {
   adminUtils.changeStatus(req.params.email).then((info_array) => {
     if (info_array.length == 0)
-      res.status(205).send({ message: "No Parameters found", success: true });
+      res.status(205).send({ message: "No User found", success: true });
     else res.send(info_array);
   })
   .catch((error) => {
@@ -128,7 +128,7 @@ router.put('/admins/changeStatus/:email', (req, res) => {
 router.put('/admins/allUsersInDeactiveStatus', (req, res) => {
   adminUtils.deactiveAllUsers().then((info_array) => {
     if (info_array.length == 0)
-      res.status(205).send({ message: "No Parameters found", success: true });
+      res.status(205).send({ message: "No Users found", success: true });
     else res.send(info_array);
   })
   .catch((error) => {
@@ -140,7 +140,19 @@ router.put('/admins/allUsersInDeactiveStatus', (req, res) => {
 router.put('/admins/allUsersInActiveStatus', (req, res) => {
   adminUtils.activeAllUsers().then((info_array) => {
     if (info_array.length == 0)
-      res.status(205).send({ message: "No Parameters found", success: true });
+      res.status(205).send({ message: "No Users found", success: true });
+    else res.send(info_array);
+  })
+  .catch((error) => {
+    console.log(error);
+    res.sendStatus(500);
+  });
+  });
+
+router.put('/changePlayAdvancedGame/:email', (req, res) => {
+  adminUtils.changePlayAdvancedGame(req.params.email).then((info_array) => {
+    if (info_array.length == 0)
+      res.status(205).send({ message: "No User found", success: true });
     else res.send(info_array);
   })
   .catch((error) => {

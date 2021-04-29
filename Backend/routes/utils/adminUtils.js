@@ -1,7 +1,7 @@
 const DButils = require("./DButils");
 
 async function getUsersInSystem(){
-    users = await DButils.execQuery(`SElECT email, firstname, lastname, dateOfRegistration, status, lastLogin, gameTime FROM users`);
+    users = await DButils.execQuery(`SElECT email, firstname, lastname, dateOfRegistration, status, lastLogin, gameTime, playAdvancedGame FROM users`);
     for(user in users){
         rates = await DButils.execQuery(`SElECT image_id FROM userRating where email='${users[user].email}'`);
         users[user].numOfRates= rates.length;
@@ -78,6 +78,18 @@ async function activeAllUsers(){
     return getUsersInSystem();
 }
 
+async function changePlayAdvancedGame(userEmail){
+    playAdvancedGame = await DButils.execQuery(`SELECT playAdvancedGame FROM users WHERE email='${userEmail}'`);
+    console.log(playAdvancedGame);
+    if(playAdvancedGame[0].playAdvancedGame == "0"){
+        await DButils.execQuery(`UPDATE users SET playAdvancedGame='1' WHERE email='${userEmail}'`);
+    }
+    else{
+        await DButils.execQuery(`UPDATE users SET playAdvancedGame='0' WHERE email='${userEmail}'`);
+    }
+    return getUsersInSystem();
+}
+
 exports.getUsersInSystem = getUsersInSystem;
 exports.getParams = getParams;
 exports.updateParams = updateParams;
@@ -87,3 +99,4 @@ exports.getImagesRated = getImagesRated;
 exports.changeStatus = changeStatus;
 exports.deactiveAllUsers = deactiveAllUsers;
 exports.activeAllUsers = activeAllUsers;
+exports.changePlayAdvancedGame = changePlayAdvancedGame;

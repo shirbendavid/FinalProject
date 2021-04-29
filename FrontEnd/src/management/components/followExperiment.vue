@@ -12,6 +12,7 @@
                     <th>No. images rated</th>
                     <th>No. games</th>
                     <th>Last time in the game</th>
+                    <th>Advanced game</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,12 +25,23 @@
                         <b-button size="sm" variant="outline-info"  @click="change(user.email)">
                             <b-icon icon="pencil"></b-icon>
                         </b-button>
-
                     </td>
                     <td>{{user.lastLogin}}</td>
                     <td>{{user.numOfRates}}</td>
                     <td>{{user.numOfGames}}</td>
                     <td>{{user.gameTime}}</td>
+                    <td v-if="user.playAdvancedGame">allowed
+                        <br/>
+                        <b-button size="sm" variant="outline-info"  @click="changePlayAdvanced(user.email)">
+                            <b-icon icon="pencil"></b-icon>
+                        </b-button>
+                    </td>
+                    <td v-else>not allowed
+                        <br/>
+                        <b-button size="sm" variant="outline-info"  @click="changePlayAdvanced(user.email)">
+                            <b-icon icon="pencil"></b-icon>
+                        </b-button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -121,6 +133,22 @@ export default {
             }
             this.users = response.data;
         },
+        async changePlayAdvanced(email){
+            let response;
+            try {
+                response = await this.axios.put(
+                this.$root.store.base_url +
+                    "/admins/changePlayAdvancedGame/" + email
+                );
+                console.log(response);
+                if (response.status !== 200) this.$router.replace("/NotFound");
+            } catch (error) {
+                console.log("error.response.status", error.response.status);
+                this.$router.replace("/NotFound");
+                return;
+            }
+            this.users = response.data;
+        }
     },
 };
 </script>
