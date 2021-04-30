@@ -19,7 +19,7 @@ async function getRandomImageToRate(email){
     var imageExists = new Boolean(true);
     var rand = undefined;
     while(imageExists){
-        rand = getRandomInt(1,144);
+        rand = getRandomInt(1,270);
         image = await DButils.execQuery(`SElECT image_id FROM userRating WHERE image_id='${rand}' AND email='${email}'`);
         if(image.length === 0)
             imageExists = false;
@@ -243,6 +243,16 @@ async function saveScoreAdvancedGame(email,params){
   await DButils.execQuery(`UPDATE advancedGames SET scoreGame='${params.score}' WHERE game_id='${params.gameID}' AND email='${email}'`);
 }
 
+//LeaderBorad
+async function getTop10(){
+  usersTop = await DButils.execQuery(`SElECT TOP 10 email, SUM(scoreGame) as score FROM games GROUP BY email ORDER BY score DESC`);
+  for(user in usersTop){
+    details = await DButils.execQuery(`SElECT firstname, lastname FROM users where email='${usersTop[user].email}'`);
+    usersTop[user].name= details[0].firstname + " " + details[0].lastname;
+  }
+  return usersTop;
+}
+
 exports.getRandomImageToRate=getRandomImageToRate;
 exports.saveRate = saveRate;
 exports.getGameImages= getGameImages;
@@ -256,3 +266,4 @@ exports.getImagesForAdvancedGame = getImagesForAdvancedGame;
 exports.saveScoreScreenAdvanced = saveScoreScreenAdvanced;
 exports.saveScoreAdvancedGame = saveScoreAdvancedGame;
 exports.getScoreScreens = getScoreScreens;
+exports.getTop10 = getTop10;

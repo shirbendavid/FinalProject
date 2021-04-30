@@ -61,12 +61,17 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    component: () => import('./pages/About'),
+    component: () => import('./pages/about'),
   },
   {
     path: '/maintenance',
     name: 'maintenance',
     component: () => import('./pages/maintenancePage'),
+  },
+    {
+    path: '/leaderboard',
+    name: 'leaderboard',
+    component: () => import('./pages/leaderBoard'),
   },
 ]
 
