@@ -68,6 +68,11 @@ const routes = [
     name: 'maintenance',
     component: () => import('./pages/maintenancePage'),
   },
+    {
+    path: '/leaderboard',
+    name: 'leaderboard',
+    component: () => import('./pages/LeaderBoard'),
+  },
 ]
 
 export default routes

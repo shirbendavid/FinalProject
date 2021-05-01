@@ -54,7 +54,7 @@ app.use(
     cookieName: "session", // the cookie key name
     secret: "blargadeeblargblarg", // the encryption key
     duration: 30 * 60 * 1000, // expired after 30 sec
-    activeDuration: 0, // if expiresIn < activeDuration,
+    activeDuration: 30, // if expiresIn < activeDuration,
     //the session will be extended by activeDuration milliseconds
     cookie: {
       httpOnly: false,

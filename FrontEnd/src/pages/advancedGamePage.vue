@@ -28,11 +28,13 @@ export default {
   components: { VSelectImage },
   methods: {
     maxSelected() {
-      alert("You cant select more than " + this.maxSelectable);
+      this.$alert("You can't select more than " + this.maxSelectable + " images." ,
+      "Error", "error");
     },
     async save(){
       if(this.selectedItems.length < this.maxSelectable)
-        alert("You need to select " + this.maxSelectable + " images");
+        this.$alert("You need to select " + this.maxSelectable + " images" ,
+      "Error", "error");
       else{
         console.log(this.selectedItems);
         let scoreScreen = 0;
@@ -61,7 +63,7 @@ export default {
               this.$router.replace("/NotFound");
               return;
           }
-          alert('Your score in this round: ' +scoreScreen + '/' + this.maxSelectable);
+          this.$alert('Your score in this round: ' +scoreScreen + '/' + this.maxSelectable);
           if(this.screenNum == this.screens){
             let saveScoreGame;
             try {
@@ -76,7 +78,7 @@ export default {
                 this.$router.replace("/NotFound");
                 return;
             }
-              alert('The game is over, your score: '+ this.score);
+              this.$alert('The game is over, your score: '+ this.score);
               this.$router.push("/");
 
           }

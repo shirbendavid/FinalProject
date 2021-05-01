@@ -1,5 +1,5 @@
 {
-  "name": "front-end",
+  "name": "Images-Preferences",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -13,6 +13,7 @@
     "bootstrap-vue": "^2.19.0",
     "core-js": "^3.6.5",
     "ks-vue-fullpage": "^1.2.8",
+    "moment": "^2.29.1",
     "node-sass": "^5.0.0",
     "sass-loader": "^10.1.0",
     "v-image": "^2.0.2",
@@ -28,6 +29,7 @@
     "vue-router": "^3.4.9",
     "vue-scrolling-table": "^1.0.4",
     "vue-select-image": "^1.9.0",
+    "vue-simple-alert": "^1.1.1",
     "vuelidate": "^0.7.6"
   },
   "devDependencies": {

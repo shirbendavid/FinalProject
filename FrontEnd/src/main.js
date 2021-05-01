@@ -20,6 +20,10 @@ const router = new VueRouter({
 import VueCookies from "vue-cookies";
 Vue.use(VueCookies);
 
+import VueSimpleAlert from "vue-simple-alert";
+
+Vue.use(VueSimpleAlert);
+
 import Vuelidate from "vuelidate";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
@@ -39,6 +43,7 @@ import {
   FormRatingPlugin,
   InputGroupPlugin,
   ImagePlugin,
+  TablePlugin
 } from "bootstrap-vue";
 [
   FormGroupPlugin,
@@ -56,6 +61,7 @@ import {
   FormRatingPlugin,
   InputGroupPlugin,
   ImagePlugin,
+  TablePlugin
 ].forEach((x) => Vue.use(x));
 Vue.use(Vuelidate);
 axios.defaults.withCredentials = true;

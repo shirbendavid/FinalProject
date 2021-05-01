@@ -19,14 +19,14 @@
                 <tr v-for="user in users" :key="user.id">
                     <td>{{user.firstname}} {{user.lastname}}</td>
                     <td>{{user.email}}</td>
-                    <td>{{user.dateOfRegistration}}</td>
+                    <td>{{format_date(user.dateOfRegistration)}}</td>
                     <td>{{user.status}}
                         <br/>
                         <b-button size="sm" variant="outline-info"  @click="change(user.email)">
                             <b-icon icon="pencil"></b-icon>
                         </b-button>
                     </td>
-                    <td>{{user.lastLogin}}</td>
+                    <td>{{format_date(user.lastLogin)}}</td>
                     <td>{{user.numOfRates}}</td>
                     <td>{{user.numOfGames}}</td>
                     <td>{{user.gameTime}}</td>
@@ -47,13 +47,14 @@
         </table>
 
         <div class="flex">
-            <button class="btn-down" type="submit" v-on:click="deactiveAllUsers">Deactive Status for all users</button>
-            <button class="btn-down" type="submit" v-on:click="activeAllUsers">Active Status for all users</button>
+            <button class="btn-down" style="width: 28%;" type="submit" v-on:click="deactiveAllUsers">Deactive Status for all users</button>
+            <button class="btn-down" style="width: 28%;" type="submit" v-on:click="activeAllUsers">Active Status for all users</button>
         </div>
     </div>    
 </template>
 
 <script>
+  import moment from 'moment';
 export default {
     data() {
         return {
@@ -148,7 +149,12 @@ export default {
                 return;
             }
             this.users = response.data;
-        }
+        },
+        format_date(value){
+            if (value) {
+                return moment(String(value)).format('DD/MM/YYYY HH:MM');
+            }
+      },
     },
 };
 </script>
@@ -167,7 +173,6 @@ export default {
   color: rgba(10, 10, 10, 0.719);
   font-size: 19px;
   line-height: 2em;
-  width: 28%;
   font-family: "Merienda", Helvetica, Arial;
   margin-right: 50px;
   margin-bottom: 30px;

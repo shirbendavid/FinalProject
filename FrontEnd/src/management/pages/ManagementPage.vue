@@ -142,7 +142,7 @@ export default {
     background: #fff;
     border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 80%;
+    max-width: 90%;
     margin-left: auto;
     margin-right: auto;
     padding: 1rem;
@@ -151,7 +151,7 @@ export default {
 
 .reports {
   width: 40%;
-  background: rgba(248, 222, 186, 0.945);
+  background: rgba(255, 234, 204, 0.945);
 } 
 
 .title {

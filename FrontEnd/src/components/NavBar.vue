@@ -3,46 +3,54 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'main' }">
+          <b-icon icon="house-door" aria-hidden="true"></b-icon> 
           Home
         </router-link>
-        <b-navbar-nav class="ml-auto">
-          <router-link class="nav" tag="b-nav-item" :to="{ name: 'about' }">
-            <b-icon icon="question-circle-fill" aria-hidden="true"></b-icon>
-              About
-          </router-link>  
-          </b-navbar-nav>
+        <router-link class="nav" tag="b-nav-item" :to="{ name: 'about' }">
+          <b-icon icon="info-circle" aria-hidden="true"></b-icon>
+            About
+        </router-link>  
         <router-link v-if="!$root.store.email" class="nav" tag="b-nav-item" :to="{ name: 'loginManagement' }">
-          <b-icon icon="gear-fill" aria-hidden="true"></b-icon> Management
-          portal
+          <b-icon icon="gear" aria-hidden="true"></b-icon> 
+          Management portal
         </router-link>
+        <b-nav-text v-if="$root.store.email && this.$cookies.get('session')">
+           <b-icon icon="person" scale="1.4" aria-hidden="true"></b-icon>
+           Welcome <b>{{ $root.store.firstname }}</b>
+            </b-nav-text>
       </b-navbar-nav>
 
       <b-navbar-nav
         class="ml-auto"
         v-if="!$root.store.email && !this.$cookies.get('session')">
         
-        <b-nav-text>Hello Guset!</b-nav-text>
-        <p class="h3 mb-2">
-          <b-icon icon="person" variant="secondary"></b-icon>
-        </p>
+        <!-- <b-nav-text>
+          <b-icon icon="person" scale="1.4" aria-hidden="true"></b-icon>
+          Hello Guset!</b-nav-text> -->
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'register' }">
+          <b-icon icon="clipboard-check" aria-hidden="true"></b-icon>
           Register
         </router-link>
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'login' }">
+          <b-icon icon="person" scale="1.4" aria-hidden="true"></b-icon>
           Login
         </router-link>
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto" v-else-if="$root.store.email && this.$cookies.get('session')">
-        <b-nav-text><b>Welcome {{ $root.store.firstname }} </b></b-nav-text>
-        <br />
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'observation' }">
+          <b-icon icon="images" aria-hidden="true"></b-icon>
           Rate
         </router-link>
-
+        <router-link class="nav" tag="b-nav-item" :to="{ name: 'leaderboard' }">
+          <b-icon icon="trophy" aria-hidden="true"></b-icon>
+          LeaderBorad
+        </router-link>
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'game' }">
+          <b-icon icon="controller" aria-hidden="true"></b-icon>
           Game
         </router-link>
         <router-link v-if="this.$root.store.playAdvancedGame" tag="b-nav-item" :to="{ name: 'advanced' }">
+          <b-icon icon="joystick" aria-hidden="true"></b-icon>
           advancedGame
         </router-link>
         <!-- <b-nav-item-dropdown right>
@@ -51,6 +59,7 @@
           </template>
         </b-nav-item-dropdown> -->
         <button class="button" tag="b-nav-item" @click="Logout()">
+          <b-icon icon="power" aria-hidden="true"></b-icon>
           Logout
         </button>
       </b-navbar-nav>
