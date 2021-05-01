@@ -104,7 +104,7 @@ const server = app.listen(port, host, function (err) {
    console.log(err)
    return
   }
-  console.log('Listening at http://localhost:' + port + '\n')
+  console.log('Listening at ' + host + ":" + port + '\n')
  })
 
 process.on("SIGINT", function () {
