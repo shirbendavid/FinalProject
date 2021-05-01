@@ -114,7 +114,11 @@ methods:{
                 );
                 console.log(response);
                 if (response.status !== 200) this.$router.replace("/NotFound");
-                else alert("The parameters have been updated!")
+                else{
+                  this.$alert('The parameters have been updated!' ,
+      "Success",
+      "success");
+                }
             } catch (error) {
                 console.log("error.response.status", error.response.status);
                 this.$router.replace("/NotFound");
@@ -130,7 +134,8 @@ methods:{
         }
       }
       else{
-        alert("You need to enter at least one parameter to update!")
+        this.$alert('You need to enter at least one parameter to update!' ,
+      "Error", "error");
       }
     },
 },

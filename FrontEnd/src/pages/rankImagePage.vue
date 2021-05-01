@@ -164,7 +164,7 @@ export default {
     },
     async getNextImage(){
       if (this.$root.store.numberOfImagesRating === this.$root.store.numberOfImagesInDB){
-        alert("You rank the maximum amount of images, transferred to the game");
+        this.$alert("You ranked the maximum amount of images, transferred to the game");
         this.$router.replace("/game");
       }
       let response;
@@ -194,7 +194,7 @@ export default {
     //  get image from server
     if(this.$root.store.email){
       if (this.$root.store.numberOfImagesRating === this.$root.store.numberOfImagesInDB){
-        alert("You rank the maximum amount of images, transferred to the game");
+        this.$alert("You ranked the maximum amount of images, transferred to the game");
         this.$router.replace("/game");
       }
     let response;

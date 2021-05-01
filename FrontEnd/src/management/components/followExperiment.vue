@@ -47,8 +47,8 @@
         </table>
 
         <div class="flex">
-            <button class="btn-down" type="submit" v-on:click="deactiveAllUsers">Deactive Status for all users</button>
-            <button class="btn-down" type="submit" v-on:click="activeAllUsers">Active Status for all users</button>
+            <button class="btn-down" style="width: 28%;" type="submit" v-on:click="deactiveAllUsers">Deactive Status for all users</button>
+            <button class="btn-down" style="width: 28%;" type="submit" v-on:click="activeAllUsers">Active Status for all users</button>
         </div>
     </div>    
 </template>
@@ -167,7 +167,6 @@ export default {
   color: rgba(10, 10, 10, 0.719);
   font-size: 19px;
   line-height: 2em;
-  width: 28%;
   font-family: "Merienda", Helvetica, Arial;
   margin-right: 50px;
   margin-bottom: 30px;

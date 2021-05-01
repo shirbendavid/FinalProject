@@ -20,6 +20,10 @@ const router = new VueRouter({
 import VueCookies from "vue-cookies";
 Vue.use(VueCookies);
 
+import VueSimpleAlert from "vue-simple-alert";
+
+Vue.use(VueSimpleAlert);
+
 import Vuelidate from "vuelidate";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";

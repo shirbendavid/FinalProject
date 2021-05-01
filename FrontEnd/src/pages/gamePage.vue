@@ -1,12 +1,14 @@
 <template>
   <div class="d-flex flex-column justify-center align-center">
-    {{ screenNum }} / {{ screens }}
+    <br/>
+    Page {{ screenNum }} of {{ screens }}
     <div class="d-flex flex-row justify-center align-center">
       <v-select-image
         class="w-650"
         v-model="selectedItems"
         :items="items"
         :colorSchema="colorSchema"
+        :h="100"
         uniqueKey="key"
         :maxSelectable="maxSelectable"
         @maxSelectionError="maxSelected()"
@@ -27,11 +29,13 @@ export default {
   components: { VSelectImage },
   methods: {
     maxSelected() {
-      alert("You cant select more than " + this.maxSelectable);
+      this.$alert("You can't select more than " + this.maxSelectable + " images." ,
+      "Error", "error");
     },
     async save(){
       if(this.selectedItems.length < this.maxSelectable)
-        alert("You need to select " + this.maxSelectable + " images");
+        this.$alert("You need to select " + this.maxSelectable + " images" ,
+      "Error", "error");
       else{
         console.log(this.selectedItems);
         let scoreScreen = 0;
@@ -60,7 +64,7 @@ export default {
               this.$router.replace("/NotFound");
               return;
           }
-          alert('Your score in this round: ' +scoreScreen + '/' + this.maxSelectable);
+          this.$alert('Your score in this round: ' +scoreScreen + '/' + this.maxSelectable);
           if(this.screenNum == this.screens){
             let saveScoreGame;
         try {
@@ -75,7 +79,7 @@ export default {
               this.$router.replace("/NotFound");
               return;
           }
-            alert('The game is over, your score: '+ this.score);
+            this.$alert('The game is over, your score: '+ this.score);
             this.$router.push("/");
 
           }
@@ -100,7 +104,7 @@ export default {
       maxSelectable: 2,
       selectedItems: [],
       items: [],
-      colorSchema: "#8B8B8B",
+      colorSchema: "#00cc44",
       screenNum: 1,
       screens: '',
       score: 0, 
@@ -122,7 +126,8 @@ export default {
   async created() {
       if(this.$root.store.email){
         if(this.$root.store.numberOfImagesRating < this.$root.store.minImagesRating){
-          alert("You did not rate enough photos, continue to rate...");
+          this.$alert("You did not rate enough photos, please continue to rate..." ,
+      "Error", "error");
           this.$router.push("/ranking");
         }
         else{
@@ -186,7 +191,8 @@ export default {
                     this.index++;
                   }
                   else{
-                    alert('You already played today, will be back tomorrow!')
+                    this.$alert('You already played today, please come back tomorrow!' ,
+      "Error", "error");
                     this.$router.replace("/")
                   }
                 }
@@ -241,7 +247,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .d-flex {
   display: flex;
 }
@@ -258,13 +264,13 @@ export default {
   align-items: center;
 }
 .w-650 {
-  max-width: 650px;
+  max-width: 850px;
 }
 .mt-20 {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .mt-25 {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 pre {
   counter-reset: line-numbering;
@@ -285,4 +291,16 @@ pre code .line::before {
   opacity: 0.5;
   color: white;
 }
+
+.item .isSelectedBox {
+  top: 10px !important;
+  left: 10px !important;
+}
+
+.swal2-confirm .swal2-styled .button{
+  width: 20px !important;
+  height: 30px !important;
+}
+
+
 </style>
