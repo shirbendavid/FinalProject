@@ -19,14 +19,14 @@
                 <tr v-for="user in users" :key="user.id">
                     <td>{{user.firstname}} {{user.lastname}}</td>
                     <td>{{user.email}}</td>
-                    <td>{{user.dateOfRegistration}}</td>
+                    <td>{{format_date(user.dateOfRegistration)}}</td>
                     <td>{{user.status}}
                         <br/>
                         <b-button size="sm" variant="outline-info"  @click="change(user.email)">
                             <b-icon icon="pencil"></b-icon>
                         </b-button>
                     </td>
-                    <td>{{user.lastLogin}}</td>
+                    <td>{{format_date(user.lastLogin)}}</td>
                     <td>{{user.numOfRates}}</td>
                     <td>{{user.numOfGames}}</td>
                     <td>{{user.gameTime}}</td>
@@ -54,6 +54,7 @@
 </template>
 
 <script>
+  import moment from 'moment';
 export default {
     data() {
         return {
@@ -148,7 +149,12 @@ export default {
                 return;
             }
             this.users = response.data;
-        }
+        },
+        format_date(value){
+            if (value) {
+                return moment(String(value)).format('DD/MM/YYYY HH:MM');
+            }
+      },
     },
 };
 </script>
