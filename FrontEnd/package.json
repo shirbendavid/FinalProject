@@ -28,6 +28,7 @@
     "vue-router": "^3.4.9",
     "vue-scrolling-table": "^1.0.4",
     "vue-select-image": "^1.9.0",
+    "vue-simple-alert": "^1.1.1",
     "vuelidate": "^0.7.6"
   },
   "devDependencies": {
