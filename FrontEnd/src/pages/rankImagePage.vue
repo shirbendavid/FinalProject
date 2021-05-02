@@ -102,14 +102,20 @@
               <div class="window">
                   <slot>
                       <p class="text">
-                          You've already rated enough images, 
-                          <br>
-                          you can now start playing or continue rating images.    
+                          .יפה מאוד, נתת ציונים ל-60 תמונות, שזה המינימום הנדרש להשתתפות במשחק
+                          <br/>
+                          ככל שיהיו לנו יותר תמונות עם הציונים שלך, כך ישתפרו סיכוייך להצליח 
+                          <br/>
+                          .Continue Rating במשחק. במידה וברצונך לראות תמונות נוספות, נא לבחור
+                          <br/>
+                          .Finish Ratings ניתן להפסיק את שלב מתן הציונים בכל עת על ידי לחיצה על מקש
+                          <br/>
+                          Start Play! במידה וברצונך להתחיל לשחק, יש לבחור במקש    
                       </p>
-                      <h2 class="title">Good Luck!</h2>
+                      <h2 class="title">!בהצלחה</h2>
                       <br/>
                       <button  class="button" tag="b-nav-item" @click="close()">
-                            Continue rating
+                            Continue Rating
                       </button>
                       <button  class="button" tag="b-nav-item" @click="StartPlay()">
                         Start Play!
@@ -356,7 +362,7 @@ label{
     background: #f8dbbad3;
     border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 680px;
+    max-width: 750px;
     margin-left: auto;
     margin-right: auto;
     padding: 1.1rem;
@@ -370,7 +376,7 @@ label{
     border-radius: 5px;
     font-size: 20px;
     width: 160px;
-    margin-left: 40px
+    margin-left: 100px
 }
 
 .btn {
@@ -385,5 +391,6 @@ label{
 .title {
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 100px;
 }
 </style>
