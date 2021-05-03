@@ -86,14 +86,14 @@ export default {
 // @import url("https://fonts.googleapis.com/css?family=Special+Elite");
 .navbar {
   background: -webkit-linear-gradient(#ccd2df, #6b656e);
-  background: linear-gradient(#e9c9b5c5, #f3c48ec7);
+  background: linear-gradient(#e9c9b5c5, #e9e3ddc7);
   // position: fixed; /* Set the navbar to fixed position */
   // width: 100%; /* Full width */
   float: inline-start;
   font-size: 18px;
   font-family: "Merienda", Helvetica, Arial;
   height: 60px;
-}
+  }
 .nav :hover {
   background: rgba(255, 255, 255, 0.15);
   border: 1px solid rgba(29, 27, 27, 0.822);

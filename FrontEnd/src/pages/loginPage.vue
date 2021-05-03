@@ -74,9 +74,23 @@
           >
             Login failed: {{ form.submitError }}
           </b-alert>
+
         </div>
+        
       </div>
     </div>
+                          <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+                      <br />
+            <br />
+            <br />
+          
+
   </div>
 </template>
 

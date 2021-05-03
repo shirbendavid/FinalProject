@@ -8,24 +8,28 @@
                       <button class="button-x" tag="b-nav-item" @click="close()">
                             X
                         </button>
-                <h1 class="title">Sample images</h1>
+                <h1 class="title">תמונות להתרשמות</h1>
 
                 <p class="text">
-                    Please take a look at the images on the screen. They are representative of the images in our database.
-                    <br />
-
-                    Press the Start Rating button when you are ready to rate how much you like individual images.
-                    <br /><br />
-
-                    A rating of 10 indicates that you <b>like</b> the image very much.
-                    <br />
-
-                    A rating of 1 indicates that you <b>do not like</b> the image at all.
-                    <br />
-
-                    Your liking of most images will likely not be extreme, so use the in-between points on the scale to denote your liking.    
+                   בשלב הראשון של המשחק, עליכם לצפות ב-60 תמונות, ולתת להן ציון שמשקף עד כמה
+                   <br/>
+                   אתם אוהבים אותן. כאן, יש לם אפשרות לצפות בכל 60 התמונות כשהן מוקטנות, כדי
+                   <br/>
+                   שתוכלו להתרשם מרמת היופי הכללית של התמונות. אתם יכולים להשתמש בפס הגלילה כדי
+                   <br/>
+                   .Next לראות את כל התמונות. כשתסיימו להתרשם מאוסף התמונות, עליכם ללחוץ על כפתור
+                   <br/><br/>
+                   כפתור זה יעביר אתכם למצב של הצגת תמונה בודדת בגודל גדול יותר. בתחתית המסך עליכם
+                   <br/>
+                   .Next לסמן עד כמה אתם אוהבים את התמונה. כדי להמשיך לתמונה הבאה, יש ללחוץ כל כפתור
+                   <br/>
+                   .בדרך זו, יתקבלו ציוניכם לכל 60 התמונות
+                   <br/><br/>
+                   כאשר תסיימו להערך את 60 התמונות תוכלו לבחור בין האפשרות לראות עוד תמונות ולתת
+                   <br/>
+                   .להן ציונים או שתוכלו לבחור לעבור לשלב הבא
                 </p>
-                <h3 class="title">Good Luck!</h3>
+                <h3 class="title">!בהצלחה</h3>
                 
                 </slot>
                     </div>
@@ -216,7 +220,7 @@ export default {
     background: #f8dbbad3;
     border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 680px;
+    max-width: 780px;
     margin-left: auto;
     margin-right: auto;
     padding: 1.1rem;
@@ -224,6 +228,7 @@ export default {
     justify-content: center;
     align-items:center;
     border: 1.5px solid;
+    text-align: right;
 }
 
 .title {

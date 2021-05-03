@@ -1,8 +1,11 @@
 
 <template>
+  <div :style="bgImg" class="img1">
+<!-- <div :style="{'background-image': 'url(' + require('./assets/main-b.jpg') + ')'} "> -->
   <div id="app">
     <NavBar  v-if="!isNotManage"/>
     <router-view />
+  </div>
   </div>
 </template>
 
@@ -15,6 +18,16 @@ Vue.use(Carousel3d);
 
 
 export default {
+  data() {
+          return {
+            bgImg: {
+                backgroundImage: "url(" + require("./assets/main-b.jpg")+")",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: '100% auto'
+            },
+            };
+  },
+          
   components: {
     NavBar,
   },
@@ -22,6 +35,7 @@ export default {
   computed: {
     isNotManage() {
       return this.$route.name === 'management'
+      
   }
 }
 };
@@ -32,14 +46,17 @@ export default {
 // @import url(https://fonts.googleapis.com/css?family=Raleway);
 
 @media all and (max-width: 480px) {
-
+.img1{
+      height: 100%;    
+      width: 100%
+  }
 #app {
   font-family: Raleway;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   min-height: 100vh;
-  // background-image: url("assets/2757336.jpg");
+  //  background-image: url("assets/main-b.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }

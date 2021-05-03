@@ -10,29 +10,34 @@
                             X
                         </button>
 
-                         <h2 class="title">ABOUT</h2>
+                         <h2 class="title">אודות הפרויקט</h2>
                          <p class="text">
-                        <b>About the project:</b>
                         <br/>
-                        This is an e2e system that aims to help the researchers conduct their research through
-                        a computer game platform based on image recognition and preference.
+                        משחק העדפת תמונות פותח במסגרת פרויקט גמר במחלקה
+                        <br/>
+                        .להנדסת מערכות תוכנה ומידע באוניברסיטת בן-גוריון
+                        <br/>
+                        המשחק עצמו מסייע לחוקים במחלקה לחקור נושאים
+                        <br/>
+                        .הקשורים להעדפות אסתטיות של אנשים
+                        <br/>
+                        <br/>
+                        <b>:צוות הפיתוח</b>
+                        <br/>
+                        לירון בן יעקב
+                        <br/>
+                        שיר בן- דור
+                        <br/>
+                        ירדן לוי
+                        <br/>
+                        טלי שוורץ
+                        <br/>
+                        ד"ר דניס קלימוב
+                        <br/>
+                        פרופ' נעם טרקטינסקי
                         
-                        <br/>
-                        The aim of the research is to examine preferences of beautiful images by users over time.
-                        The motivation for conducting the research comes from the information security world. 
-                        User identification is a critical step in information security. Recently, identification 
-                        methods have been developed based on a user's preference and in this research we are 
-                        checking them as well.
-                        <br/>
-                        <br/>
-                        <b>About the Team:</b>
-                        <br />
-                        We are 4 Software and Information System Engineering students in our 4th year and this 
-                        is our final project.
-                        <br/>
-                        Our advisors: Prof. Noam Tractinsky and Dr. Denis Klimov
                         <br/><br/>
-                        <b> Technologies:</b>
+                        <b> :הטכנולוגיות בהן עשינו שימוש במסגרת הפרויקט</b>
                         <br/>
                         <img src="../assets/sqlDB.png" style="width: 10%;"/>
                         <img src="../assets/nodejs.png" style="width: 7%;"/>
@@ -137,6 +142,7 @@ export default {
     margin-top: 10px;
     margin-bottom: 10px;
     color: black;
+    text-align: center;
 }
 .fade-enter-active,
 .fade-leave-active {
@@ -173,7 +179,7 @@ export default {
     background: #f8dbbad3;
     border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 780px;
+    max-width: 650px;
     margin-left: auto;
     margin-right: auto;
     padding: 1.1rem;

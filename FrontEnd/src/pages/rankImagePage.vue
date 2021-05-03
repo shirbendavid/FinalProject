@@ -1,7 +1,28 @@
 <template>
-  <div class="container"  >  
-      <div class="image-header">
-        <br/>
+  <div class="container"  > 
+    <transition name="fade">
+        <div class="popup-modal" v-if="isVisible">
+            <div class="window">
+                <slot>   
+                      <button class="button-x" tag="b-nav-item" @click="close()">
+                            X
+                        </button>
+                <h1 class="title" style="text-align: center; direction: RTL">הגעתם לשלב הדירוג!</h1>
+
+                <p class="text1" style="direction: RTL;">
+                   כעת, עליכם לתת לכל אחת מהתמונות ציון המשקף עד כמה אתם אוהבים אותן.
+                   <br/>
+                   אנחנו ממליצים שתנסו להשתמש בכל סולם הציונים- מהגבוהים, עבור תמונות שאתם אוהבים
+                   
+                   מאוד ועד הנמוכים, עבור תמונות שאתם פחות אוהבים.
+                   
+                </p>
+                
+                </slot>
+                    </div>
+                </div>
+            </transition> 
+      <div class="image-header ma-2">
       <b-row class="title">
         <h4><b>How much do you like this photo?</b></h4>
       </b-row>
@@ -103,14 +124,20 @@
               <div class="window">
                   <slot>
                       <p class="text">
-                          You've already rated enough images, 
-                          <br>
-                          you can now start playing or continue rating images.    
+                          .יפה מאוד, נתת ציונים ל-60 תמונות, שזה המינימום הנדרש להשתתפות במשחק
+                          <br/>
+                          ככל שיהיו לנו יותר תמונות עם הציונים שלך, כך ישתפרו סיכוייך להצליח 
+                          <br/>
+                          .Continue Rating במשחק. במידה וברצונך לראות תמונות נוספות, נא לבחור
+                          <br/>
+                          .Finish Ratings ניתן להפסיק את שלב מתן הציונים בכל עת על ידי לחיצה על מקש
+                          <br/>
+                          Start Play! במידה וברצונך להתחיל לשחק, יש לבחור במקש    
                       </p>
-                      <h2 class="title">Good Luck!</h2>
+                      <h2 class="title">!בהצלחה</h2>
                       <br/>
                       <button  class="button" tag="b-nav-item" @click="close()">
-                            Continue rating
+                            Continue Rating
                       </button>
                       <button  class="button" tag="b-nav-item" @click="StartPlay()">
                         Start Play!
@@ -133,9 +160,11 @@ export default {
       image: "",
       image_id: "",
       enoughImages:false,
+      isVisible: true,
     };
   },
   methods: {
+    
      // add rate image to DB for this user
      async saveImageRate(){
       try {
@@ -183,10 +212,17 @@ export default {
           this.image_id = response.data.imageID;
           this.image = response.data.image;
     },
-   close() {
+    open() {
+            this.isVisible = true
+    },
+
+      
+     close() {
+            this.isVisible = false
+
             this.enoughImages = false;
             this.getNextImage();
-        },
+    },
    StartPlay(){
            this.$router.replace("/game");     
    }     
@@ -362,7 +398,7 @@ label{
     background: #f8dbbad3;
     border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 680px;
+    max-width: 650px;
     margin-left: auto;
     margin-right: auto;
     padding: 1.1rem;
@@ -376,20 +412,29 @@ label{
     border-radius: 5px;
     font-size: 20px;
     width: 160px;
-    margin-left: 40px
+    margin-left: 100px
 }
 
 .btn {
   margin-top: 8px;
 }
-
+.text1 {
+    font-size: 20px;
+    font-family: "Merienda", Helvetica, Arial;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    text-align: right;
+}
 .text {
     font-size: 20px;
     text-align: center;
 }
 
 .title {
-    font-family: Arial, Helvetica, sans-serif;
-    margin-left: 15%;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;//ariel, helvetica, sans-serif
+    margin-left: 100px;
+    //margin-left: 15%;
+    
 }
 </style>

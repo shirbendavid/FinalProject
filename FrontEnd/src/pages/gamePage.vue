@@ -79,7 +79,7 @@ export default {
               this.$router.replace("/NotFound");
               return;
           }
-            this.$alert('The game is over, your score: '+ this.score);
+            this.$alert('Game Over! You earned '+ this.score+' points today. See you tommorow!');
             this.$router.push("/");
 
           }
