@@ -1,5 +1,27 @@
 <template>
-  <div class="container"  >  
+  <div class="container"  > 
+    <transition name="fade">
+        <div class="popup-modal" v-if="isVisible">
+            <div class="window">
+                <slot>   
+                      <button class="button-x" tag="b-nav-item" @click="close()">
+                            X
+                        </button>
+                <h1 class="title" style="text-align: center; direction: RTL">הגעתם לשלב הדירוג!</h1>
+
+                <p class="text1" style="direction: RTL;">
+                   כעת, עליכם לתת לכל אחת מהתמונות ציון המשקף עד כמה אתם אוהבים אותן.
+                   <br/>
+                   אנחנו ממליצים שתנסו להשתמש בכל סולם הציונים- מהגבוהים, עבור תמונות שאתם אוהבים
+                   
+                   מאוד ועד הנמוכים, עבור תמונות שאתם פחות אוהבים.
+                   
+                </p>
+                
+                </slot>
+                    </div>
+                </div>
+            </transition> 
       <div class="image-header ma-2">
       <b-row class="title">
         <h4><b>How much do you like this photo?</b> </h4>
@@ -138,9 +160,11 @@ export default {
       image: "",
       image_id: "",
       enoughImages:false,
+      isVisible: true,
     };
   },
   methods: {
+    
      // add rate image to DB for this user
      async saveImageRate(){
       try {
@@ -188,10 +212,17 @@ export default {
           this.image_id = response.data.imageID;
           this.image = response.data.image;
     },
-   close() {
+    open() {
+            this.isVisible = true
+    },
+
+      
+     close() {
+            this.isVisible = false
+
             this.enoughImages = false;
             this.getNextImage();
-        },
+    },
    StartPlay(){
            this.$router.replace("/game");     
    }     
@@ -362,7 +393,7 @@ label{
     background: #f8dbbad3;
     border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 750px;
+    max-width: 650px;
     margin-left: auto;
     margin-right: auto;
     padding: 1.1rem;
@@ -382,7 +413,13 @@ label{
 .btn {
   margin-top: 8px;
 }
-
+.text1 {
+    font-size: 20px;
+    font-family: "Merienda", Helvetica, Arial;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    text-align: right;
+}
 .text {
     font-size: 20px;
     text-align: center;
