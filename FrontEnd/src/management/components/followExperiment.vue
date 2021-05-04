@@ -159,7 +159,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 .th {
   border-top: 2px solid black !important;

@@ -5,7 +5,7 @@
         <div class="popup-modal" v-if="isVisible">
             <div class="window">
                 <slot>   
-                      <button class="button-x" tag="b-nav-item" @click="close()">
+                      <button class="btn-x" tag="b-nav-item" @click="close()">
                             X
                         </button>
                 <h1 class="title">תמונות להתרשמות</h1>
@@ -220,7 +220,8 @@ export default {
     background: #f8dbbad3;
     border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 780px;
+    max-width: 1000px;
+    max-height: 550px;
     margin-left: auto;
     margin-right: auto;
     padding: 1.1rem;
@@ -250,7 +251,7 @@ export default {
     font-size: 25px;
 }
 
-.button-x {
+.btn-x {
   width: 30px;
   margin: 0px auto !important;
 }

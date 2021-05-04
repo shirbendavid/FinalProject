@@ -7,7 +7,7 @@
 </template>
 
 
-<style lang="scss" scoped>
+<style lang="scss">
 .container {
   padding: 10px;
   vertical-align: middle;

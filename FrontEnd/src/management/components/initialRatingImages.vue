@@ -95,7 +95,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 .btnn {
   background: rgba(255, 255, 255, 0.233);
