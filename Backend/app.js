@@ -16,11 +16,15 @@ var adminsRouter = require("./routes/admins");
 
 var app = express();
 
-let reqPath = path.join(__dirname, '../Frontend/dist');
-app.use(serveStatic(reqPath));
+//////// uncomment these 3 lines:
+// let reqPath = path.join(__dirname, '../Frontend/dist');
+// app.use(serveStatic(reqPath));
+// const port = "8110";
 
-const port = "8110";
-// const port = process.env.PORT || "3000";
+// comment this line:
+const port = process.env.PORT || "3000";
+
+const host = '0.0.0.0';
 
 
 // view engine setup
@@ -34,12 +38,6 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, "public")));
 
-
-// app.use(express.static(reqPath));
-
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(reqPath, "index.html"))
-// })
 
 //#setting cors
 const corsConfig = {
@@ -89,16 +87,7 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-const host = '0.0.0.0';
 //open server
-// const server = app.listen(port, host); 
-// console.log(`Server listen on port ${port}`);
-
-// const server = app.listen(host, port, // host); 
-//   () => {
-//   console.log(`Server listen on port ${port}`);
-// });
-
 const server = app.listen(port, host, function (err) {
   if (err) {
    console.log(err)
