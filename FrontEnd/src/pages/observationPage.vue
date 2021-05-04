@@ -190,7 +190,7 @@ export default {
     },
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 
 /* css class for the transition */
 .fade-enter-active,
@@ -252,6 +252,7 @@ export default {
 
 .button-x {
   width: 30px;
+  margin: 0px auto !important;
 }
 
 </style>

@@ -7,7 +7,7 @@ const session = require("client-sessions");
 const cors = require("cors");
 var nodemailer = require("nodemailer");
 
-// var serveStatic = require('serve-static');
+var serveStatic = require('serve-static');
 
 var authRouter = require("./routes/auth");
 var usersRouter = require("./routes/users");
@@ -16,11 +16,11 @@ var adminsRouter = require("./routes/admins");
 
 var app = express();
 
-// let reqPath = path.join(__dirname, '../Frontend/dist');
-// app.use(serveStatic(reqPath));
+let reqPath = path.join(__dirname, '../Frontend/dist');
+app.use(serveStatic(reqPath));
 
-// const port = "8110";
-const port = process.env.PORT || "3000";
+const port = "8110";
+// const port = process.env.PORT || "3000";
 
 
 // view engine setup
@@ -63,10 +63,10 @@ app.use(
   })
 );
 
-app.use('/', authRouter);
-app.use('/users', usersRouter);
-app.use('/images', imagesRouter);
-app.use('/admins', adminsRouter);
+app.use('', authRouter);
+app.use('', usersRouter);
+app.use('', imagesRouter);
+app.use('', adminsRouter);
 
 /* GET home page. */
 app.get("/", function (req, res, next) {
@@ -91,10 +91,21 @@ app.use(function (err, req, res, next) {
 
 const host = '0.0.0.0';
 //open server
-const server = app.listen(port, // host); 
-  () => {
-  console.log(`Server listen on port ${port}`);
-});
+// const server = app.listen(port, host); 
+// console.log(`Server listen on port ${port}`);
+
+// const server = app.listen(host, port, // host); 
+//   () => {
+//   console.log(`Server listen on port ${port}`);
+// });
+
+const server = app.listen(port, host, function (err) {
+  if (err) {
+   console.log(err)
+   return
+  }
+  console.log('Listening at ' + host + ":" + port + '\n')
+ })
 
 process.on("SIGINT", function () {
   if (server) {

@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <div class="main-container">
     <br />
     <div class="bold-line"></div>
-    <div class="container">
+    <div class="containerr">
       <div class="window">
         <div class="overlay"></div>
         <div class="content">
@@ -322,10 +322,19 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
-.container {
-  max-width: 700px;
+<style lang="scss">
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
 }
+
+.containerr {
+  width: 40%;
+}
+
 // @import url(https://fonts.googleapis.com/css?family=Raleway);
 body,
 html {

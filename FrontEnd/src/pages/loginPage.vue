@@ -1,10 +1,10 @@
 <template>
 
-  <div class="container">
+  <div class="main-container">
     <br />
     <br />
     <div class="bold-line"></div>
-    <div class="container">
+    <div class="containerr">
       <div class="window">
         <div class="overlay"></div>
         <div class="content">
@@ -178,10 +178,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
-.container {
-  max-width: 500px;
-}
+<style lang="scss">
 
 // @import url(https://fonts.googleapis.com/css?family=Raleway);
 body,
@@ -341,6 +338,7 @@ button:focus {
   flex-flow: column;
   box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
+  
   //height: 860px;
   // width: 500px;
   background: #fff;
@@ -373,6 +371,13 @@ button:focus {
   // background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
   //   left no-repeat;
   background-size: cover;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
 }
 
 @media (max-width: 600px) {

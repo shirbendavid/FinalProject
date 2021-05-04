@@ -1,3 +1,3 @@
-// module.exports = {
-//     publicPath: '/coil/'
-// }
+module.exports = {
+    publicPath: '/coil'
+}
