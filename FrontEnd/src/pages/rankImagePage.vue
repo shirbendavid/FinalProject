@@ -7,7 +7,7 @@
                       <button class="button-x" tag="b-nav-item" @click="close()">
                             X
                         </button>
-                <h1 class="title" style="text-align: center; direction: RTL">הגעתם לשלב הדירוג!</h1>
+                <h1 class="title" style="text-align: center; direction: RTL; font-size: 30px;">הגעתם לשלב הדירוג!</h1>
 
                 <p class="text1" style="direction: RTL;">
                    כעת, עליכם לתת לכל אחת מהתמונות ציון המשקף עד כמה אתם אוהבים אותן.
@@ -428,6 +428,12 @@ label{
 .text {
     font-size: 20px;
     text-align: center;
+    background: #f8dbbad3;
+    max-width: 800px;
+    font-family: "Merienda", Helvetica, Arial;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    color: black;
 }
 
 .title {

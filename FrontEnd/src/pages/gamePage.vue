@@ -1,4 +1,5 @@
 <template>
+  
   <div class="d-flex flex-column justify-center align-center">
     <br/>
     Page {{ screenNum }} of {{ screens }}
@@ -13,6 +14,7 @@
         :maxSelectable="maxSelectable"
         @maxSelectionError="maxSelected()"
       />
+      
     </div>
     <b-button class="btn"
               v-on:click="save"
@@ -20,6 +22,7 @@
     Next
     </b-button>
   </div>
+  
 </template>
 
 <script>
@@ -300,6 +303,72 @@ pre code .line::before {
 .swal2-confirm .swal2-styled .button{
   width: 20px !important;
   height: 30px !important;
+}
+.container {
+  width: 100%;
+  height: 100%;
+}
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s;
+}
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.popup-modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+
+}
+
+.window {
+    background: #f8dbbad3;
+    border-radius: 5px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 1000px;
+    //max-height: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    border: 1.5px solid;
+    text-align: right;
+    color: black;
+    //window.scrollBy(0,100);
+}
+
+.button {
+    border-radius: 5px;
+    font-size: 20px;
+    width: 160px;
+    margin-left: 100px
+}
+
+.btn {
+  margin-top: 8px;
+}
+.text {
+    font-size: 20px !important;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    //color: black;
+}
+.title {
+    text-align: center;
+    font-family: "Merienda", Helvetica, Arial;
 }
 
 

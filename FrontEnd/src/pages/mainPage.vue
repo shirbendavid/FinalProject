@@ -3,12 +3,12 @@
     
       <transition name="fade">
         <div class="popup-modal" v-if="isVisible">
-            <div class="window" style="overflow-y:scroll; height:550px;">
+            <div class="window" style="overflow-y:scroll; height:550px; max-width: 900px;">
                 <slot>   
-                      <button class="button-x" tag="b-nav-item" @click="close()">
+                      <button class="button-x" tag="b-nav-item"  @click="close()">
                             X
                         </button>
-                <p class="text">
+                <p class="text" style="color: black;">
                   <b>ברוכים הבאים למשחק העדפת תמונות</b>
                   <br/>
                   .המשחק נערך במסגרת פרויקט גמר במחלקה להנדסת מערכות תוכנה ומידע
@@ -62,7 +62,7 @@
                 </div>
             </transition>
   
-    <img src='../assets/main logo.png' class="center" />
+    <img src='../assets/main logo.png' class="center" style="width: 50%; height:50%;" />
     <br/>
     <div id="example">
       <br/>
@@ -190,6 +190,7 @@ html, body {
     border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
     max-width: 1000px;
+    //max-height: 1500px;
     margin-left: auto;
     margin-right: auto;
     padding: 1.1rem;
@@ -198,6 +199,7 @@ html, body {
     align-items:center;
     border: 1.5px solid;
     text-align: right;
+    color: black;
     //window.scrollBy(0,100);
 }
 
@@ -207,7 +209,7 @@ html, body {
     font-family: Arial, Helvetica, sans-serif;
     margin-top: 15px;
     margin-bottom: 20px;
-    color: black;
+    //color: black;
 }
 .title {
     text-align: center;
@@ -222,6 +224,7 @@ html, body {
 
 .button-x {
   width: 30px;
+  margin-right: 5px;
 }
 .checking {
   display: block;
@@ -292,6 +295,10 @@ html, body {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+img.center {
+  display: block;
+  margin: 0 auto;
 }
 
 

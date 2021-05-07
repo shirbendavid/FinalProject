@@ -2,8 +2,9 @@
 <template>
   <div class="container">
         <transition name="fade">
+
         <div class="popup-modal" v-if="isVisible">
-            <div class="window">
+            <div class="window" style=" height:550px; max-width: 900px;">
                 <slot>   
                       <button class="btn-x" tag="b-nav-item" @click="close()">
                             X
@@ -235,13 +236,16 @@ export default {
 .title {
     text-align: center;
     font-family: "Merienda", Helvetica, Arial;
+    font-size: 30px;
+    margin-right: 50px;
 }
 
 .text {
     font-size: 20px;
     font-family: "Merienda", Helvetica, Arial;
     margin-top: 15px;
-    margin-bottom: 20px;;
+    margin-bottom: 20px;
+    color: black;
 }
 
 .buttonb {

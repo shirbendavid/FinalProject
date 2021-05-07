@@ -6,12 +6,12 @@
             <div class="popup-modal" v-if="isVisible">
                 <b-container class="window">
                     <slot>
-                         <button class="button-x" tag="b-nav-item" @click="close()">
+                         <button class="button-x" tag="b-nav-item" style="font-family: Arial;" @click="close()">
                             X
                         </button>
 
-                         <h2 class="title">אודות הפרויקט</h2>
-                         <p class="text">
+                         <h2 class="title" >אודות הפרויקט</h2>
+                         <p class="text" >
                         <br/>
                         משחק העדפת תמונות פותח במסגרת פרויקט גמר במחלקה
                         <br/>
@@ -22,7 +22,7 @@
                         .הקשורים להעדפות אסתטיות של אנשים
                         <br/>
                         <br/>
-                        <b>:צוות הפיתוח</b>
+                        <b><u>:צוות הפיתוח</u></b>
                         <br/>
                         לירון בן יעקב
                         <br/>
@@ -37,14 +37,17 @@
                         פרופ' נעם טרקטינסקי
                         
                         <br/><br/>
-                        <b> :הטכנולוגיות בהן עשינו שימוש במסגרת הפרויקט</b>
+                        <b> <u>:הטכנולוגיות בהן עשינו שימוש במסגרת הפרויקט</u></b>
                         <br/>
+                        <b-row style="margin-left: 200px;">
                         <img src="../assets/sqlDB.png" style="width: 10%;"/>
                         <img src="../assets/nodejs.png" style="width: 7%;"/>
-                        <img src="../assets/Vue.png" style="width: 4%;"/>
-                        <img src="../assets/javascript.png" style="width: 4%;"/>
-                        <img src="../assets/html5.png" style="width: 4%;"/>
-                        <img src="../assets/css3.jpg" style="width: 4%;"/>
+                        <img src="../assets/Vue.png" style="width: 7%;"/>
+                        <img src="../assets/javascript.png" style="width: 7%;"/>
+                        <img src="../assets/html5.png" style="width: 7%;"/>
+                        <img src="../assets/css3.jpg" style="width: 7%;"/>
+                        </b-row>
+                        
                          </p>
                         
                     </slot>
@@ -104,7 +107,7 @@ export default {
     },  
 };
 </script>
-<style lang="scss">
+<style lang="scss" >
 .container {
     max-width:60%;
 }
@@ -133,12 +136,14 @@ export default {
 }
 .title {
     text-align: center;
-    font-family: "Merienda", Helvetica, Arial;
+    margin-right: 15px;
+    font-size: 30px;
+    font-family: Arial;
     color: black;
 }
 .text {
     font-size: 18px;
-    font-family: "Merienda", Helvetica, Arial;
+    font-family: Arial;
     margin-top: 10px;
     margin-bottom: 10px;
     color: black;
@@ -180,6 +185,7 @@ export default {
     border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
     max-width: 650px;
+    max-height: 650px;
     margin-left: auto;
     margin-right: auto;
     padding: 1.1rem;
