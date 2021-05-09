@@ -143,13 +143,18 @@ const shared_data = {
     localStorage.setItem("numberOfImagesInDB", JSON.stringify(numberOfImagesInDB));
     this.numberOfImagesInDB = numberOfImagesInDB;
   },
+  firstname:localStorage.firstname,
+
+  playAdvancedGame:localStorage.playAdvancedGame,
+
   login(email, firstname, playAdvancedGame) {
     localStorage.setItem("email", email);
     this.email = email;
     console.log("login", this.email);
     localStorage.setItem("firstname", firstname);
     localStorage.setItem("playAdvancedGame", playAdvancedGame);
-    this.firstname = firstname
+    this.firstname = firstname;
+    this.playAdvancedGame=playAdvancedGame;
   },
   loginAdmin(email) {
     localStorage.setItem("emailAdmin", email);

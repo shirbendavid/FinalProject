@@ -1,72 +1,13 @@
 <template>
   <div class="container">
     
-      <transition name="fade">
-        <div class="popup-modal" v-if="isVisible">
-            <div class="window" style="overflow-y:scroll; height:550px; max-width: 900px;">
-                <slot>   
-                      <button class="button-x" tag="b-nav-item"  @click="close()">
-                            X
-                        </button>
-                <p class="text" style="color: black;">
-                  <b>ברוכים הבאים למשחק העדפת תמונות</b>
-                  <br/>
-                  .המשחק נערך במסגרת פרויקט גמר במחלקה להנדסת מערכות תוכנה ומידע
-                  <br/><br/>
-                  <u>:המשחק מחולק לשני שלבים</u>
-                  <br/>
-                  בשלב הראשון, עליכם לצפות ב-60 תמונות לפחות ולתת להן ציון לפי סולם של 10 דרגות שמבטא עד
-                  <br/>
-                  כמה אתם אוהבים את התמונה. שלב זה נמשך כ-10 דקות. חשוב שתתנו ציונים המשקפים את העדפותיכם
-                  <br/>
-                  .כי המשחק תלוי בכך שבהמשך תזהו אילו תמונות אהבתם יותר ואילו פחות
-                  <br/><br/>
-                  בשלב השני, לאחר דירוג התמונות אתם מוזמנים לשחק במשחק. בכל פעם שתיכנסו למערכת יוצגו בפניכם
-                  <br/>
-                  ארבעה מסכים שבכל אחד מהם מספר תמונות מתוך אלו שראיתם בשלב הראשון. האתגר הוא לזהות  
-                  <br/>
-                  .ולבחור בכל אחד מהמסכים את התמונות להן נתתן את הציונים הגבוהים ביותר בשלב הקודם
-                  <br/>
-                  .על כל בחירה נכונה תזכו בנקודה
-                  <!-- <br/><br/>
-                  המטרה היא לצבור כמה שיותר נקודות במהלך תקופת המשחק. אנא התאמצו ככל האפשר כדי שתהיה לנו
-                  <br/>
-                  תחרות מעניינת! אתם מוזמנים לשחק במשחק פעם אחת בכל יום, במהלך כל התקופה בה יהיה המשחק
-                  <br/>
-                  .זמין. לא ניתן לשחק במשחק יותר מאשר פעם אחת ביום
-                  <br/> -->
-                  כדי לאפשר משחק בהתאם לכללים, וכדי לאפשר קשר אתכם במהלך תקופת המשחק, נבקשכם לציין כתובת
-                  <br/>
-                  של דואר אלקטרוני באמצעותה נוכל לשלוח לכם הודעות (למשל, תזכורת במידה ועברו מספר ימים מאז ששיחקתם לאחרונה). מעבר לכך, אין צורך באמצעי הזדהות כלשהו. אתם יכולים גם לבחור בעצמכם כינוי
-                  <br/>
-                  .שיאפשר לכם לזהות את עצמכם בטבלת השחקנים המצטיינים
-                  <br/>
-                  <u>:אנו מתחייבים</u>
-                  <br/>
-                  <ul style="direction: RTL;">
-                    <li>לעדכן אתכם לגבי ההישג שלכם במשחק עם סיום תקופת המשחק.
-                    </li>
-                    <li>כל הנתונים על המשחק יישמרו על מחשב מאובטח וישמשו אך ורק לניתוחים סטטיסטיים.
-                      <br/>
-                      בשום אופן לא יפורסמו נתונים אישיים לגביכם.
-                    </li>
-                  </ul>
-                  <br/>
-                  <label class="checking"> אני אני מסכים/ה להשתתף במשחק העדפת התמונות בהתאם לתנאים שפורטו לעיל.
-                    <input type="checkbox" checked="checked" style="direction: RTL;">
-                      <span class="checkmark" style="direction: RTL;"></span>
-                  </label>
-                </p>
-                </slot>
-                    </div>
-                </div>
-            </transition>
+     
   
-    <img src='../assets/main logo.png' class="center" style="width: 50%; height:50%;" />
+    <img src='../assets/main-logo.jpeg' class="center" style="width: 35%; height:35%;" />
     <br/>
     <div id="example">
       <br/>
-      <carousel-3d :controls-visible="true" :controls-prev-html="'❬ '" :controls-next-html="'❭'" :controls-width="30" :height="200" :controls-heigth="100" :clickable="false">
+      <carousel-3d :controls-visible="true" :controls-prev-html="'❬ '" :controls-next-html="'❭'" :controls-width="30" :height="200" :controls-heigth="50" :clickable="false">
         <slide v-for="(slide, i) in slides" :index="i" v-bind:key="i">
             <figure>
                 <img :src="slide.src">
@@ -222,80 +163,7 @@ html, body {
     font-size: 25px;
 }
 
-.button-x {
-  width: 30px;
-  margin-right: 5px;
-}
-.checking {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-right: 5px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  direction: RTL;
-}
 
-/* Hide the browser's default checkbox */
-.checking input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-/* Create a custom checkbox */
-.checkmark {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-}
-
-/* On mouse-over, add a grey background color */
-.checking:hover input ~ .checkmark {
-  background-color: #ccc;
-  direction: RTL;
-}
-
-/* When the checkbox is checked, add a blue background */
-.checking input:checked ~ .checkmark {
-  background-color: #2196F3;
-}
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-  background-color: #2196F3;
-}
-
-/* Show the checkmark when checked */
-.checking input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the checkmark/indicator */
-.checking .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
 img.center {
   display: block;
   margin: 0 auto;

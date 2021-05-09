@@ -161,16 +161,16 @@ router.put('/admins/allUsersInActiveStatus', adminSessionChecker, (req, res, nex
     res.sendStatus(500);
   });
   });
+  router.put('/admins/changePlayAdvancedGame/:email', adminSessionChecker, (req, res, next) => {
+    adminUtils.changePlayAdvancedGame(req.params.email).then((info_array) => {
+      if (info_array.length == 0)
+        res.status(205).send({ message: "No User found", success: true });
+      else res.send(info_array);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+    });
 
-router.put('/changePlayAdvancedGame/:email', adminSessionChecker, (req, res, next) => {
-  adminUtils.changePlayAdvancedGame(req.params.email).then((info_array) => {
-    if (info_array.length == 0)
-      res.status(205).send({ message: "No User found", success: true });
-    else res.send(info_array);
-  })
-  .catch((error) => {
-    console.log(error);
-    res.sendStatus(500);
-  });
-  });
 module.exports = router;

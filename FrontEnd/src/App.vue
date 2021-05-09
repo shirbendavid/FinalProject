@@ -23,7 +23,7 @@ export default {
             bgImg: {
                 backgroundImage: "url(" + require("./assets/main-b.jpg")+")",
                 backgroundRepeat: "no-repeat",
-                backgroundSize: '100% auto'
+                backgroundSize: '100%'
             },
             };
   },
@@ -45,10 +45,10 @@ export default {
 @import "@/scss/form-style.scss";
 // @import url(https://fonts.googleapis.com/css?family=Raleway);
 
-@media all and (max-width: 480px) {
 .img1{
       height: 100%;    
-      width: 100%
+      width: 100%;
+      background-size: cover,contain;
   }
 #app {
   font-family: Raleway;
@@ -73,5 +73,5 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
-}
+
 </style>

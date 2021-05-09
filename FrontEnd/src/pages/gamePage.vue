@@ -5,7 +5,7 @@
     Page {{ screenNum }} of {{ screens }}
     <div class="d-flex flex-row justify-center align-center">
       <v-select-image
-        class="w-650"
+        class="w-1040"
         v-model="selectedItems"
         :items="items"
         :colorSchema="colorSchema"
@@ -266,8 +266,8 @@ export default {
 .align-center {
   align-items: center;
 }
-.w-650 {
-  max-width: 850px;
+.w-1040 {
+  max-width: 1040px;
 }
 .mt-20 {
   margin-top: 10px;
@@ -293,6 +293,14 @@ pre code .line::before {
   text-align: right;
   opacity: 0.5;
   color: white;
+}
+
+.item {
+  margin: 5px !important;
+  height: 220px !important;
+  width: 250px !important;
+  top: 10px !important;
+  left: 10px !important;
 }
 
 .item .isSelectedBox {

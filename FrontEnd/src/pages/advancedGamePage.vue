@@ -3,7 +3,7 @@
     {{ screenNum }} / {{ screens }}
     <div class="d-flex flex-row justify-center align-center">
       <v-select-image
-        class="w-650"
+        class="w-1040"
         v-model="selectedItems"
         :items="items"
         :colorSchema="colorSchema"
@@ -103,7 +103,7 @@ export default {
       maxSelectable: 2,
       selectedItems: [],
       items: [],
-      colorSchema: "#8B8B8B",
+      colorSchema: "#00cc44",
       screenNum: 1,
       screens: '',
       score: 0, 
@@ -179,8 +179,8 @@ export default {
 .align-center {
   align-items: center;
 }
-.w-650 {
-  max-width: 650px;
+.w-1040 {
+  max-width: 1040px;
 }
 .mt-20 {
   margin-top: 20px;
@@ -207,4 +207,11 @@ pre code .line::before {
   opacity: 0.5;
   color: white;
 }
+
+.item {
+  margin: 5px !important;
+  height: 220px !important;
+  width: 250px !important;
+}
+
 </style>

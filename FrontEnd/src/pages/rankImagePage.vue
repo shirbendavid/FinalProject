@@ -22,24 +22,18 @@
                     </div>
                 </div>
             </transition> 
-      <div class="image-header ma-2">
-      <b-row class="title">
-        <h4><b>How much do you like this photo?</b></h4>
-      </b-row>
-    </div>
-    <div class="image-body">
+
       <div class="flex-container">
         <div class="flex-item">
           <b-row>
             <b-col class="forewordimage">
-              <img :src="image" class="center" />
+              <b-img v-bind="mainProps" rounded alt="Rounded image" :src="image" class="center" />
             </b-col>
           </b-row>
     
 <div class="scale">       
   <b-row >
-    
- <h3 class="label1">Not at all</h3><h2 class="label2">Very much</h2>
+ <div class="label1">Not at all</div><div class="label2">Very much</div>
     </b-row>    
 <b-row>
   <b-col class="foreword">
@@ -112,18 +106,16 @@
 
             </b-col>
           </b-row>
-          <br/><br/>
         </div>
       </div>
-    </div>
     <div class="container">
 
       <transition name="fade">
           <div class="popup-modal" v-if="enoughImages">
           <!-- <div class="popup-modal"> -->
-              <div class="window">
+              <div class="window" style="max-width: 900px;">
                   <slot>
-                      <p class="text">
+                      <p class="text" >
                           .יפה מאוד, נתת ציונים ל-60 תמונות, שזה המינימום הנדרש להשתתפות במשחק
                           <br/>
                           ככל שיהיו לנו יותר תמונות עם הציונים שלך, כך ישתפרו סיכוייך להצליח 
@@ -136,10 +128,10 @@
                       </p>
                       <h2 class="title">!בהצלחה</h2>
                       <br/>
-                      <button  class="button" tag="b-nav-item" @click="close()">
+                      <button  class="button" tag="b-nav-item"  @click="close()">
                             Continue Rating
                       </button>
-                      <button  class="button" tag="b-nav-item" @click="StartPlay()">
+                      <button  class="button" tag="b-nav-item"  @click="StartPlay()">
                         Start Play!
                       </button>
                   </slot>
@@ -261,15 +253,15 @@ export default {
 /* @import url(https://fonts.googleapis.com/css?family=Special+Elite); */
 
 .container {
-  background-color: rgba(255, 255, 255, 0.89);
+  // background-color: rgba(255, 255, 255, 0.89);
   /* border: 5px outset#f3c48ec7;
   border-radius: 25px; */
   // opacity: 95% !important;
   color: black;
   font-size: 16px;
-  width:45%;
-  padding-left: 20px;
-  padding-right: 20px;
+  width:50%;
+  padding-left:5%;
+  padding-right:5%;
   overflow: hidden;
   margin: auto;
   align-content: center;
@@ -280,12 +272,12 @@ export default {
 
 
 
-/* 
+
 input[type=radio]{
   border:1px;
-  width: 10px;
-  height:13px;
-} */
+  width: 18px;
+  height:21px;
+} 
 
 label{
   /* padding: 10px; */
@@ -295,16 +287,18 @@ label{
 
 .label1{
   font-size:medium;
-  opacity: 0.5;
   padding-left: 4%;
   margin-top: 10px;
+  color: black;
+
 }
 
 .label2{
   font-size:medium;
-  opacity: 0.5;
-  padding-left: 66%;
+  padding-left: 70%;
   margin-top: 10px;
+  color: black;
+
 }
 
 /* .form-check-inline{
@@ -319,12 +313,13 @@ label{
 
 .scale{
     width: 100%;
-    border: 1px solid #595b5f;
+    // border: 1px solid #595b5f;
 }
 
 .center {
-  border: 1px solid #595b5f;
-  width: 208%;
+  border: 2px;
+  width: 218%;
+  height: 100%;
 }
 
 .favorite_icon:hover {
@@ -412,7 +407,7 @@ label{
     border-radius: 5px;
     font-size: 20px;
     width: 160px;
-    margin-left: 100px
+    margin-left: 40px
 }
 
 .btn {
@@ -420,7 +415,7 @@ label{
 }
 .text1 {
     font-size: 20px;
-    font-family: "Merienda", Helvetica, Arial;
+    font-family:  Arial;
     margin-top: 15px;
     margin-bottom: 20px;
     text-align: right;
@@ -429,8 +424,8 @@ label{
     font-size: 20px;
     text-align: center;
     background: #f8dbbad3;
-    max-width: 800px;
-    font-family: "Merienda", Helvetica, Arial;
+    max-width: 850px;
+    font-family:  Arial;
     margin-top: 15px;
     margin-bottom: 20px;
     color: black;

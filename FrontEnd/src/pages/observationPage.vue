@@ -42,61 +42,61 @@
 
         <b-row>
         <b-col class="pa-3">
-            <b-img :src="image1" class="center" width="246" aspect-ratio="1.4" contain></b-img>
+            <b-img :src="image1" class="center" style="width: 90%; height:90%;" aspect-ratio="1.4" contain></b-img>
         </b-col>
         <b-col class="pa-3">
-            <b-img :src="image2" class="center" width="246" aspect-ratio="1.4" contain></b-img>
+            <b-img :src="image2" class="center" style="width: 90%; height:90%;" aspect-ratio="1.4" contain></b-img>
         </b-col>
         <b-col class="pa-3">
-            <b-img :src="image3" class="center" width="246" aspect-ratio="1.4" contain/>
+            <b-img :src="image3" class="center" style="width: 90%; height:90%;" aspect-ratio="1.4" contain></b-img>
         </b-col>
         <b-col class="pa-3">
-            <b-img :src="image4" class="center" width="246" aspect-ratio="1.4" contain/>
-        </b-col>
-        </b-row>
-        <br/>
-        <b-row>
-        <b-col class="pa-3">
-            <img :src="image5" class="center" width="246"/>
-        </b-col>
-        <b-col class="pa-3">
-            <img :src="image6" class="center" width="246"/>
-        </b-col>
-        <b-col class="pa-3">
-            <img :src="image7" class="center" width="246"/>
-        </b-col>
-        <b-col class="pa-3">
-            <img :src="image8" class="center" width="246"/>
+            <b-img :src="image4" class="center" style="width: 90%; height:90%;" aspect-ratio="1.4" contain></b-img>
         </b-col>
         </b-row>
         <br/>
         <b-row>
         <b-col class="pa-3">
-            <img :src="image9" class="center" width="246"/>
+            <img :src="image5" class="center" style="width: 90%; height:90%;"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image10" class="center" width="246"/>
+            <img :src="image6" class="center" style="width: 90%; height:90%;"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image11" class="center" width="246"/>
+            <img :src="image7" class="center" style="width: 90%; height:90%;"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image12" class="center" width="246"/>
+            <img :src="image8" class="center" style="width: 90%; height:90%;"/>
+        </b-col>
+        </b-row>
+        <br/>
+        <b-row>
+        <b-col class="pa-3">
+            <img :src="image9" class="center" style="width: 90%; height:90%;"/>
+        </b-col>
+        <b-col class="pa-3">
+            <img :src="image10" class="center" style="width: 90%; height:90%;"/>
+        </b-col>
+        <b-col class="pa-3">
+            <img :src="image11" class="center" style="width: 90%; height:90%;"/>
+        </b-col>
+        <b-col class="pa-3">
+            <img :src="image12" class="center" style="width: 90%; height:90%;"/>
         </b-col>
         </b-row>
         <br/>
         <b-row>
          <b-col class="pa-3">
-            <img :src="image13" class="center" width="246"/>
+            <img :src="image13" class="center" style="width: 90%; height:90%;"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image14" class="center" width="246"/>
+            <img :src="image14" class="center" style="width: 90%; height:90%;"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image15" class="center" width="246"/>
+            <img :src="image15" class="center" style="width: 90%; height:90%;"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image16" class="center" width="246"/>
+            <img :src="image16" class="center" style="width: 90%; height:90%;"/>
         </b-col> 
         </b-row>
         <br/>
@@ -191,7 +191,7 @@ export default {
     },
 }
 </script>
-<style lang="scss">
+<style lang="scss" >
 
 /* css class for the transition */
 .fade-enter-active,

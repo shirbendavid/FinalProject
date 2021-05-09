@@ -71,7 +71,7 @@ const routes = [
     {
     path: '/leaderboard',
     name: 'leaderboard',
-    component: () => import('./pages/LeaderBoard'),
+    component: () => import('./pages/leaderBoard'),
   },
 ]
 

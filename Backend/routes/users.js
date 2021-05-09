@@ -191,7 +191,7 @@ router.get('/users/saveScoreAdvancedGame/gameID/:gameID/score/:score', sessionCh
   userUtils.saveScoreAdvancedGame(req.email, req.params);
   res.sendStatus(200);
 });
-router.get('/getTop10', (req, res) => {
+router.get('/users/getTop10', (req, res) => {
   userUtils.getTop10().then((info_array) => {
     if (info_array.length < 0){
       res.status(205).send({ message: "No Users found", success: true });

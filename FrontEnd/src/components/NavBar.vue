@@ -43,7 +43,7 @@
         </router-link>
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'leaderboard' }">
           <b-icon icon="trophy" aria-hidden="true"></b-icon>
-          LeaderBorad
+          Leaderboard
         </router-link>
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'game' }">
           <b-icon icon="controller" aria-hidden="true"></b-icon>
@@ -51,7 +51,7 @@
         </router-link>
         <router-link v-if="this.$root.store.playAdvancedGame" tag="b-nav-item" :to="{ name: 'advanced' }">
           <b-icon icon="joystick" aria-hidden="true"></b-icon>
-          advancedGame
+         AdvancedGame
         </router-link>
         <!-- <b-nav-item-dropdown right>
           <template v-slot:button-content>
