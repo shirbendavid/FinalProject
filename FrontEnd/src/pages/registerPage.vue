@@ -1,7 +1,68 @@
 <template>
+<div class="container">
+  <transition name="fade">
+        <div class="popup-modal" v-if="isVisible">
+            <div class="window1" style="overflow-y:scroll; height:550px; max-width: 900px;">
+                <slot>   
+                      
+                <p class="text" style="color: black;">
+                  <b>ברוכים הבאים למשחק העדפת תמונות</b>
+                  <br/>
+                  .המשחק נערך במסגרת פרויקט גמר במחלקה להנדסת מערכות תוכנה ומידע
+                  <br/><br/>
+                  <u>:המשחק מחולק לשני שלבים</u>
+                  <br/>
+                  בשלב הראשון, עליכם לצפות ב-60 תמונות לפחות ולתת להן ציון לפי סולם של 10 דרגות שמבטא עד
+                  <br/>
+                  כמה אתם אוהבים את התמונה. שלב זה נמשך כ-10 דקות. חשוב שתתנו ציונים המשקפים את העדפותיכם
+                  <br/>
+                  .כי המשחק תלוי בכך שבהמשך תזהו אילו תמונות אהבתם יותר ואילו פחות
+                  <br/><br/>
+                  בשלב השני, לאחר דירוג התמונות אתם מוזמנים לשחק במשחק. בכל פעם שתיכנסו למערכת יוצגו בפניכם
+                  <br/>
+                  ארבעה מסכים שבכל אחד מהם מספר תמונות מתוך אלו שראיתם בשלב הראשון. האתגר הוא לזהות  
+                  <br/>
+                  .ולבחור בכל אחד מהמסכים את התמונות להן נתתן את הציונים הגבוהים ביותר בשלב הקודם
+                  <br/>
+                  .על כל בחירה נכונה תזכו בנקודה
+                  <!-- <br/><br/>
+                  המטרה היא לצבור כמה שיותר נקודות במהלך תקופת המשחק. אנא התאמצו ככל האפשר כדי שתהיה לנו
+                  <br/>
+                  תחרות מעניינת! אתם מוזמנים לשחק במשחק פעם אחת בכל יום, במהלך כל התקופה בה יהיה המשחק
+                  <br/>
+                  .זמין. לא ניתן לשחק במשחק יותר מאשר פעם אחת ביום
+                  <br/> -->
+                  כדי לאפשר משחק בהתאם לכללים, וכדי לאפשר קשר אתכם במהלך תקופת המשחק, נבקשכם לציין כתובת
+                  <br/>
+                  של דואר אלקטרוני באמצעותה נוכל לשלוח לכם הודעות (למשל, תזכורת במידה ועברו מספר ימים מאז ששיחקתם לאחרונה). מעבר לכך, אין צורך באמצעי הזדהות כלשהו. אתם יכולים גם לבחור בעצמכם כינוי
+                  <br/>
+                  .שיאפשר לכם לזהות את עצמכם בטבלת השחקנים המצטיינים
+                  <br/>
+                  <u>:אנו מתחייבים</u>
+                  <br/>
+                  <ul style="direction: RTL;">
+                    <li>לעדכן אתכם לגבי ההישג שלכם במשחק עם סיום תקופת המשחק.
+                    </li>
+                    <li>כל הנתונים על המשחק יישמרו על מחשב מאובטח וישמשו אך ורק לניתוחים סטטיסטיים.
+                      <br/>
+                      בשום אופן לא יפורסמו נתונים אישיים לגביכם.
+                    </li>
+                  </ul>
+                  <br/>
+                   אני מסכים/ה להשתתף במשחק העדפת התמונות בהתאם לתנאים שפורטו לעיל
+                    
+                  <b-button class="buttonb" size="lg" @click="close()">
+                    מאשר/ת הסכמה 
+                  </b-button>
+                </p>
+                </slot>
+                    </div>
+                </div>
+            </transition>
   <div class="main-container">
-    <br />
-    <div class="bold-line"></div>
+       
+    
+    <!-- <div class="bold-line"></div> -->
     <div class="containerr">
       <div class="window">
         <div class="overlay"></div>
@@ -13,13 +74,11 @@
             You need to create an account.
           </div>
           <br />
-          <br />
-          <br />
 
           <b-form @submit.prevent="onRegister" @reset.prevent="onReset">
             <b-form-group
               id="input-group-email"
-              label-cols-sm="3"
+              label-cols-sm="4"
               label="Email"
               label-for="email"
             >
@@ -38,8 +97,31 @@
             </b-form-group>
 
             <b-form-group
+              id="input-group-email-confirmEmail"
+              label-cols-sm="4"
+              label="Confirm Email"
+              label-for="confirmEmail"
+            >
+              <b-form-input
+                id="confirmEmail"
+                type="email"
+                v-model="$v.form.confirmEmail.$model"
+                :state="validateState('confirmEmail')"
+              ></b-form-input>
+              <b-form-invalid-feedback v-if="!$v.form.confirmEmail.required">
+                Email address is required
+              </b-form-invalid-feedback>
+              <b-form-invalid-feedback v-else-if="!$v.form.confirmEmail.email">
+                Email is not a properly formatted email address
+              </b-form-invalid-feedback>
+              <b-form-invalid-feedback v-else-if="!$v.form.confirmEmail.sameAsEmail">
+                Email addresses must match
+              </b-form-invalid-feedback>
+            </b-form-group>
+
+            <b-form-group
               id="input-group-firstName"
-              label-cols-sm="3"
+              label-cols-sm="4"
               label="First Name"
               label-for="firstName"
             >
@@ -56,7 +138,7 @@
 
             <b-form-group
               id="input-group-lastName"
-              label-cols-sm="3"
+              label-cols-sm="4"
               label="Last Name"
               label-for="lastName"
             >
@@ -73,7 +155,7 @@
 
             <b-form-group
               id="input-group-gender"
-              label-cols-sm="3"
+              label-cols-sm="4"
               label="Gender"
               label-for="gender"
             >
@@ -90,7 +172,7 @@
 
             <b-form-group
               id="input-group-age"
-              label-cols-sm="3"
+              label-cols-sm="4"
               label="Age"
               label-for="age"
             >
@@ -163,23 +245,22 @@
             >
               Create Account
             </button>
-            <br />
+            <!-- <br />
             <b-button
               type="reset"
               variant="danger"
               style="border-radius: 25px;  background-color: #d85416;"
             >
               Reset
-            </b-button>
+            </b-button> -->
 
-            <div class="mt-2">
+            <div >
               You have an account already?
               <router-link to="login" style="color: #d85416; font-size: 19px;"
                 ><b>Log in here</b></router-link
               >
               <br />
-              <br />
-              <br />
+
             </div>
           </b-form>
           <b-alert
@@ -196,36 +277,31 @@
     </div>
     <br />
   </div>
+</div>
+  
 </template>
 
 <script>
-// import countries from '../assets/countries'
 import {
   required,
-  // minLength,
-  // maxLength,
-  // sameAs,
   email,
-  // regex,
-  // helpers,
+  sameAs,
 } from "vuelidate/lib/validators";
-// const containsNumber = helpers.regex("containsNumber ", /[0-9]/);
-// const containsSpecial = helpers.regex("containsSpecial ", /[#?!@$%^&*-]/);
+
 export default {
   name: "register",
   data() {
     return {
+      isVisible: true,
       form: {
         firstName: "",
         lastName: "",
-        // password: "",
-        // confirmedPassword: "",
         gender: null,
         age: "",
         email: "",
+        confirmEmail: "",
         submitError: undefined,
       },
-      // countries: [{ value: null, text: '', disabled: true }],
       genders: [
         { value: null, text: "", disabled: true },
         { value: "female", text: "female", disabled: false },
@@ -247,16 +323,11 @@ export default {
       lastName: {
         required,
       },
-      // password: {
-      //   required,
-      //   length: (p) => minLength(5)(p) && maxLength(10)(p),
-      //   containsNumber,
-      //   containsSpecial,
-      // },
-      // confirmedPassword: {
-      //   required,
-      //   sameAsPassword: sameAs("password"),
-      // },
+      confirmEmail: {
+        required,
+        email,
+        sameAsEmail: sameAs("email"),
+      },
       gender: {
         required,
       },
@@ -271,10 +342,18 @@ export default {
     // console.log($v);
   },
   methods: {
+    open() {
+            this.isVisible = true
+        },
+
+        close() {
+            this.isVisible = false
+        },
     validateState(param) {
       const { $dirty, $error } = this.$v.form[param];
       return $dirty ? !$error : null;
     },
+    
     async Register() {
       try {
         const response = await this.axios.post(
@@ -312,8 +391,7 @@ export default {
         lastName: "",
         gender: null,
         age: "",
-        // password: "",
-        // confirmedPassword: "",
+        confirmEmail: "",
       };
       this.$nextTick(() => {
         this.$v.$reset();
@@ -323,12 +401,19 @@ export default {
 };
 </script>
 <style lang="scss">
-
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s;
+}
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
 .main-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
 .containerr {
@@ -441,21 +526,23 @@ button:focus {
 }
 
 .content {
-  padding-left: 25px;
-  padding-right: 25px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-flow: column;
-  -ms-flex-flow: column;
-  flex-flow: column;
+  // padding-left: 25px;
+  // padding-right: 25px;
+  width: 80%;
+  // display: -webkit-box;
+  // display: -webkit-flex;
+  // display: -ms-flexbox;
+  // display: flex;
+  // -webkit-flex-flow: column;
+  // -ms-flex-flow: column;
+  // flex-flow: column;
   z-index: 5;
+  margin-top: 0px;
 }
 
 .welcome {
-  font-weight: 200;
-  margin-top: 75px;
+  // font-weight: 200;
+  // margin-top: 20px;
   text-align: center;
   font-size: 40px;
   font-size: 2.5rem;
@@ -477,7 +564,7 @@ button:focus {
 .menu {
   background: rgba(0, 0, 0, 0.2);
   width: 100%;
-  height: 50px;
+  height: 50%;
 }
 
 .window {
@@ -499,6 +586,12 @@ button:focus {
   background: #fff;
   // background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
   //   top left no-repeat;
+}
+.buttonb {
+    float: right;
+    align-items: center;
+    width: 170px;
+    font-size: 25px;
 }
 
 .overlay {
@@ -527,8 +620,11 @@ button:focus {
   //   left no-repeat;
   background-size: cover;
 }
+.container {
+  width: 100%;
+  height: 100%;
+}
 
-@media (max-width: 600px) {
   .window {
     width: 100%;
     height: 100%;
@@ -537,5 +633,35 @@ button:focus {
     width: 100%;
     height: 100%;
   }
+  .window1 {
+    background: #f8dbbad3;
+    border-radius: 5px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 1000px;
+    //max-height: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    border: 1.5px solid;
+    text-align: right;
+    color: black;
+    //window.scrollBy(0,100);
 }
+  .popup-modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+
+}
+
 </style>
