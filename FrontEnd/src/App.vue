@@ -46,7 +46,7 @@ export default {
 // @import url(https://fonts.googleapis.com/css?family=Raleway);
 
 .img1{
-      height: 100%;    
+      height: auto;    
       width: 100%;
       background-size: cover,contain;
   }
