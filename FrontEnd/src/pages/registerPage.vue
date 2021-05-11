@@ -219,11 +219,13 @@
     </div>
       <transition name="fade">
         <div class="popup-modal" v-if="isVisible">
-            <div class="window1" style="overflow-y:scroll; height:550px; max-width: 900px;">
+            <div class="window1" style="overflow-y:scroll; height:550px; max-width: 950px;">
                 <slot>   
                       
-                <p class="text" style="color: black;">
-                  <b>ברוכים הבאים למשחק העדפת תמונות</b>
+                <p class="text" style="color: black; text-align: center;">
+                      <img src='../assets/new logo.png' class="center" style="width: 30%; height:30%;" />
+                  <br>
+                  ברוכים הבאים למשחק העדפת תמונות
                   <br/>
                   .המשחק נערך במסגרת פרויקט גמר במחלקה להנדסת מערכות תוכנה ומידע
                   <br/><br/>
@@ -250,14 +252,12 @@
                   .זמין. לא ניתן לשחק במשחק יותר מאשר פעם אחת ביום
                   <br/> -->
                   כדי לאפשר משחק בהתאם לכללים, וכדי לאפשר קשר אתכם במהלך תקופת המשחק, נבקשכם לציין כתובת
-                  <br/>
                   של דואר אלקטרוני באמצעותה נוכל לשלוח לכם הודעות (למשל, תזכורת במידה ועברו מספר ימים מאז ששיחקתם לאחרונה). מעבר לכך, אין צורך באמצעי הזדהות כלשהו. אתם יכולים גם לבחור בעצמכם כינוי
-                  <br/>
                   .שיאפשר לכם לזהות את עצמכם בטבלת השחקנים המצטיינים
-                  <br/>
+                  <br/><br/>
                   <u>:אנו מתחייבים</u>
                   <br/>
-                  <ul style="direction: RTL;">
+                  <ul style="direction: RTL; text-align: right;">
                     <li>לעדכן אתכם לגבי ההישג שלכם במשחק עם סיום תקופת המשחק.
                     </li>
                     <li>כל הנתונים על המשחק יישמרו על מחשב מאובטח וישמשו אך ורק לניתוחים סטטיסטיים.

@@ -1,6 +1,31 @@
 <template>
-  
+
+   
   <div class="d-flex flex-column justify-center align-center">
+    <transition name="fade">
+
+        <div class="popup-modal" v-if="isVisible">
+            <div class="window" style=" height:450px; max-width: 680px;">
+                <slot>   
+                      <button class="btn-x" style="position: absolute; right: 2%; margin-top:2%;" tag="b-nav-item" @click="close()">
+                            X
+                        </button>
+                <h1 class="title" style="direction: RTL; font-size: xx-large; max-width: 500px;">הגענו לשלב המשחק!</h1>
+
+                <p class="text" style="color: black; direction: RTL;">
+                   כעת נציג לפניכם {{this.$root.store.numberOfScreensInGame}} מסכים. בכל מסך יהיו {{this.$root.store.numberOfImagesInGame}} תמונות מוקטנות אשר לקוחות מהתמונות שראיתם בשלב הקודם.
+                   מתוך {{this.$root.store.numberOfImagesInGame}} התמונות עליכם יהיה לבחור את {{this.$root.store.limitSelectInGame}} התמונות שאתם הכי אוהבים. המטרה בכל מסך היא לבחור את {{this.$root.store.limitSelectInGame}} התמונות
+                   שקיבלו את הציונים הגבוהים ביותר בשלב דירוג התמונות.
+                   <br/><br/>
+                   עבור כל תמונה שבחרתם נכון תקבלו נקודה. כמו כן, ניתן לבטל בחירה של תמונה 
+                   מסוימת על ידי לחיצה נוספת עליה.
+                </p>
+                <h3 class="title">!בהצלחה</h3>
+                
+                </slot>
+                    </div>
+                </div>
+            </transition>
     <br/>
     Page {{ screenNum }} of {{ screens }}
     <div class="d-flex flex-row justify-center align-center">
@@ -31,6 +56,13 @@ export default {
   name: "App",
   components: { VSelectImage },
   methods: {
+    open() {
+            this.isVisible = true
+        },
+
+        close() {
+            this.isVisible = false
+        },
     maxSelected() {
       this.$alert("You can't select more than " + this.maxSelectable + " images." ,
       "Error", "error");
@@ -104,6 +136,8 @@ export default {
   },
   data() {
     return {
+      isVisible: true,
+
       maxSelectable: 2,
       selectedItems: [],
       items: [],
@@ -340,21 +374,24 @@ pre code .line::before {
 }
 
 .window {
-    background: #f8dbbad3;
-    border-radius: 5px;
-    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 1000px;
-    //max-height: 1500px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1.1rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
-    border: 1.5px solid;
-    text-align: right;
-    color: black;
-    //window.scrollBy(0,100);
+  background-color: #f8dbbad3;
+  z-index: 100;
+  color: rgb(51, 51, 51);
+  font-family: Raleway;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  //height: 860px;
+  // width: 500px;
+  // background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
+  //   top left no-repeat;
 }
 
 .button {
@@ -377,6 +414,8 @@ pre code .line::before {
 .title {
     text-align: center;
     font-family: "Merienda", Helvetica, Arial;
+    font-size: x-large;
+    max-width: 500%;
 }
 
 

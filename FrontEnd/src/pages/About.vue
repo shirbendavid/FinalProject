@@ -26,7 +26,7 @@
                         <br/>
                         לירון בן יעקב
                         <br/>
-                        שיר בן- דור
+                        שיר בן דור
                         <br/>
                         ירדן לוי
                         <br/>
@@ -47,9 +47,10 @@
                         <img src="../assets/html5.png" style="width: 7%;"/>
                         <img src="../assets/css3.jpg" style="width: 7%;"/>
                         </b-row>
-                        
+                                                <br>
+
                          </p>
-                        
+                        <br>
                     </slot>
                 </b-container>
             </div>
@@ -102,7 +103,7 @@ export default {
 
         close() {
             this.isVisible = false
-            this.$router.replace("/");
+            this.$router.go(-1);
         },
     },  
 };

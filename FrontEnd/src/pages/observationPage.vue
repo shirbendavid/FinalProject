@@ -36,7 +36,7 @@
                     </div>
                 </div>
             </transition>
-    <b-container>
+    <b-container class="sizeAll">
 
         <br />
 
@@ -259,7 +259,10 @@ export default {
   width: 30px;
   margin: 0px auto !important;
 }
-
+.sizeAll{
+    width: 100%;
+    height: auto;
+}
 </style>
 
 
