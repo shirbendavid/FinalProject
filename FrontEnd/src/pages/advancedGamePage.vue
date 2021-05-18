@@ -1,6 +1,31 @@
 <template>
   <div class="d-flex flex-column justify-center align-center">
-    {{ screenNum }} / {{ screens }}
+    <transition name="fade">
+
+        <div class="popup-modal" v-if="isVisible">
+            <div class="window" style=" height:450px; max-width: 680px;">
+                <slot>   
+                      <button class="btn-x"  tag="b-nav-item" @click="close()">
+                            X
+                        </button>
+                <h1 class="title" style="direction: RTL; font-size: xx-large; max-width: 500px;">משחק למתקדמים!</h1>
+               
+                <p class="text" style="color: black; direction: RTL;">
+                כעת עליכם לנסות לזהות איזה תמונות משתמש אחר הכי אהב. 
+                </p>
+                <h3 class="title">!בהצלחה</h3>
+                
+                </slot>
+                    </div>
+                </div>
+            </transition>
+            <br>
+
+             <router-link to="/" >
+          <b-button color="primary" class="btn-x">
+         HOME
+          </b-button>
+        </router-link> <h3> <b>Page {{ screenNum }} / {{ screens }}</b></h3>
     <div class="d-flex flex-row justify-center align-center">
       <v-select-image
         class="w-1040"
@@ -12,7 +37,8 @@
         @maxSelectionError="maxSelected()"
       />
     </div>
-    <b-button class="btn"
+    <br>
+    <b-button size="lg" class="btn"
               v-on:click="save"
               type="submit" >
     Next
@@ -27,6 +53,13 @@ export default {
   name: "App",
   components: { VSelectImage },
   methods: {
+        open() {
+            this.isVisible = true
+        },
+
+        close() {
+            this.isVisible = false
+        },
     maxSelected() {
       this.$alert("You can't select more than " + this.maxSelectable + " images." ,
       "Error", "error");
@@ -100,6 +133,7 @@ export default {
   },
   data() {
     return {
+      isVisible:true,
       maxSelectable: 2,
       selectedItems: [],
       items: [],
@@ -213,5 +247,79 @@ pre code .line::before {
   height: 220px !important;
   width: 250px !important;
 }
+.btn-x {
+  width:7%;
+  margin-top: 1%;
+  margin-right: 2%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s;
+}
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
 
+.popup-modal {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+
+}
+
+.window {
+  background-color: #f8dbbad3;
+  z-index: 100;
+  color: rgb(51, 51, 51);
+  font-family: Raleway;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  //height: 860px;
+  // width: 500px;
+  // background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
+  //   top left no-repeat;
+}
+
+.button {
+    border-radius: 5px;
+    font-size: 20px;
+    width: 160px;
+    margin-left: 100px
+}
+
+.btn {
+  margin-top: 8px;
+}
+.text {
+    font-size: 20px !important;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    //color: black;
+}
+.title {
+    text-align: center;
+    font-family: "Merienda", Helvetica, Arial;
+    font-size: x-large;
+    max-width: 500%;
+}
 </style>

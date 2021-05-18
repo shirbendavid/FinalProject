@@ -155,8 +155,12 @@ export default {
             this.$router.replace("/NotFound");
             return;
           }
-
-        this.$router.push("/observation");
+        if(this.$root.store.numberOfImagesRating === this.$root.store.minImagesRating) 
+          this.$router.push("/afterLogin");
+        else if (this.$root.store.numberOfImagesRating > this.$root.store.minImagesRating)  
+          this.$router.push("/afterLogin");
+        else
+          this.$router.push("/observation");
       } catch (err) {
         console.log(err.response);
         if (err.response.status === 403) this.$router.replace("/maintenance");

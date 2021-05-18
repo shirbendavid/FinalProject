@@ -1,6 +1,5 @@
 <template>
   <b-container fluid class="param_container">
-    <h1 class="title">Managment Portal</h1>
     <br>
     <b-row class="my-1">
       <b-col sm="6">
@@ -210,8 +209,7 @@ async created() {
   font-size: 24px; 
   background-color: #fc995788;
   font-family: "Merienda", Helvetica, Arial;
-  margin-left: 420px;
-  margin-top: 16px;
+
 }
 
 .update-btn:hover {

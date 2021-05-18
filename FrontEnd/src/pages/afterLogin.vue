@@ -1,23 +1,34 @@
-
 <template>
   <div class="container">
     <br>
     <div class="center">
     <br/><br/><br/>
-    <h1>The site is under maintanance.</h1>
-    <h3>Please try again later...</h3>
+    <h1 ><b>Hello {{ $root.store.firstname }}!</b></h1>
+
+    <h3>You rated enough images.</h3>
+    <h3>You can choose to continue to rate more images or play the game.</h3>
 
     <br/><br/><br/>
     <div class="my-2">
-        <router-link to="/" >
+        <router-link to="/ranking" >
           <b-button size="lg" class="button"
                     color="primary" 
                    >
-          Home Page
+          Images Rating
           </b-button>
           
         </router-link>
         </div>
+            <div class="my-2">
+
+         <router-link to="/game" >
+          <b-button size="lg" class="button"
+                    color="primary" 
+                   >
+         Play Game
+          </b-button>
+        </router-link >    
+           </div>
 
 </div>
   </div>

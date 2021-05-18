@@ -36,11 +36,21 @@
           Login
         </router-link>
       </b-navbar-nav>
+<!-- after log in -->
       <b-navbar-nav class="ml-auto" v-else-if="$root.store.email && this.$cookies.get('session')">
-        <router-link class="nav" tag="b-nav-item" :to="{ name: 'observation' }">
+        <div v-if="$root.store.numberOfImagesRating< $root.store.minImagesRating">
+        <router-link class="nav" tag="b-nav-item" :to="{ name: 'observation' }" >
           <b-icon icon="images" aria-hidden="true"></b-icon>
           Rate
         </router-link>
+        </div>
+        <div v-else>
+        <router-link class="nav" tag="b-nav-item" :to="{ name: 'ranking' }" >
+          <b-icon icon="images" aria-hidden="true"></b-icon>
+          Rate
+        </router-link>
+        </div>
+         <b-navbar-nav  v-if="$root.store.numberOfImagesRating>= $root.store.minImagesRating">
         <router-link class="nav" tag="b-nav-item" :to="{ name: 'leaderboard' }">
           <b-icon icon="trophy" aria-hidden="true"></b-icon>
           Leaderboard
@@ -49,10 +59,14 @@
           <b-icon icon="controller" aria-hidden="true"></b-icon>
           Game
         </router-link>
-        <router-link v-if="this.$root.store.playAdvancedGame" tag="b-nav-item" :to="{ name: 'advanced' }">
+        <b-navbar-nav v-if="$root.store.playAdvancedGame==='true'">
+        <router-link tag="b-nav-item" :to="{ name: 'advanced' }">
           <b-icon icon="joystick" aria-hidden="true"></b-icon>
          AdvancedGame
         </router-link>
+        </b-navbar-nav>
+       </b-navbar-nav>
+
         <!-- <b-nav-item-dropdown right>
           <template v-slot:button-content>
             <em>{{ $root.store.email }}</em>

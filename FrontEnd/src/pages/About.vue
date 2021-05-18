@@ -6,7 +6,7 @@
             <div class="popup-modal" v-if="isVisible">
                 <b-container class="window">
                     <slot>
-                         <button class="button-x" tag="b-nav-item" style="font-family: Arial;" @click="close()">
+                         <button class="btn-x" tag="b-nav-item" style="font-family: Arial;" @click="close()">
                             X
                         </button>
 
@@ -196,7 +196,13 @@ export default {
     border: 1.5px solid;
 }
 
-.button-x {
-  width: 30px;
+
+.btn-x {
+  width:7%;
+  margin-top: 1%;
+  margin-right: 2%;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 </style>

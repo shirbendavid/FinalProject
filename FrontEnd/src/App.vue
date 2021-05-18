@@ -3,7 +3,7 @@
   <div :style="bgImg" class="img1">
 <!-- <div :style="{'background-image': 'url(' + require('./assets/main-b.jpg') + ')'} "> -->
   <div id="app">
-    <NavBar  v-if="!isNotManage"/>
+    <NavBar  v-if="!isNotManageOrGames"/>
     <router-view />
   </div>
   </div>
@@ -33,8 +33,8 @@ export default {
   },
   name: "App",
   computed: {
-    isNotManage() {
-      return this.$route.name === 'management'
+    isNotManageOrGames() {
+      return this.$route.name === 'management' || this.$route.name==='game' || this.$route.name==='advanced'
       
   }
 }

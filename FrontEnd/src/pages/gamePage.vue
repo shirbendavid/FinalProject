@@ -7,7 +7,7 @@
         <div class="popup-modal" v-if="isVisible">
             <div class="window" style=" height:450px; max-width: 680px;">
                 <slot>   
-                      <button class="btn-x" style="position: absolute; right: 2%; margin-top:2%;" tag="b-nav-item" @click="close()">
+                      <button class="btn-x"  tag="b-nav-item" @click="close()">
                             X
                         </button>
                 <h1 class="title" style="direction: RTL; font-size: xx-large; max-width: 500px;">הגענו לשלב המשחק!</h1>
@@ -26,8 +26,14 @@
                     </div>
                 </div>
             </transition>
+
     <br/>
-    Page {{ screenNum }} of {{ screens }}
+
+          <router-link to="/" >
+          <b-button color="primary" class="btn-x">
+         HOME
+          </b-button>
+        </router-link> <h3> <b>Page {{ screenNum }} / {{ screens }}</b></h3>
     <div class="d-flex flex-row justify-center align-center">
       <v-select-image
         class="w-1040"
@@ -41,7 +47,8 @@
       />
       
     </div>
-    <b-button class="btn"
+    <br>
+    <b-button size="lg" class="btn"
               v-on:click="save"
               type="submit" >
     Next
@@ -416,6 +423,14 @@ pre code .line::before {
     font-family: "Merienda", Helvetica, Arial;
     font-size: x-large;
     max-width: 500%;
+}
+.btn-x {
+  width:7%;
+  margin-top: 1%;
+  margin-right: 2%;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 

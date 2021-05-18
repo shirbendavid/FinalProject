@@ -256,8 +256,12 @@ export default {
 }
 
 .btn-x {
-  width: 30px;
-  margin: 0px auto !important;
+  width:7%;
+  margin-top: 1%;
+  margin-right: 2%;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 .sizeAll{
     width: 100%;

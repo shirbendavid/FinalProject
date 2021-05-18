@@ -1,28 +1,24 @@
 <template>
-    <div :style="image">
-        <b-container class="container">
-        <div class= "leaderboard">
         <transition name="fade">
             <div class="popup-modal" v-if="isVisible">
                 <b-container class="window">
                     <slot>
-                         <button class="button-x" tag="b-nav-item" @click="close()">
+                         <button  class="button-x"  tag="b-nav-item" @click="close()">
                             X
                         </button>
+                        <br>
+                         <h3 class="title">LEADERBOARD</h3>
+                         <br>
+                        <br>
 
-                         <h2 class="title">LEADERBOARD</h2>
-                        <b-table
-                        no-border-collapse="false"
+                        <b-table class="table" fixed="true" 
                         :items="users"></b-table>
                     </slot>
                 </b-container>
             </div>
         
         </transition>
-        </div>
             
-    </b-container>
-    </div>
 </template>
 
 <script>
@@ -82,49 +78,19 @@ async created() {
 
         close() {
             this.isVisible = false
-            this.$router.replace("/");
+            this.$router.go(-1);
         },
     },  
 };
 </script>
 <style lang="scss">
 .container {
-    max-width:60%;
+    max-width:50%;
 }
-.fa{
-    padding:2px;
-    font-size:30px;
-    text-align: center;
-    text-decoration: none;
-    color: black;
-}
-.fa:hover {
-    opacity: 0.7;
-}
-.leaderboard {
-    margin: 6px;
-    padding: 8px;
-    background: linear-gradient(#e9c9b5c5, #f3c48ec7);
-    //background: rgba(26,26,26,0.74);
+.table{
+    text-align: left;
+   font-size: large;
 
-    opacity: 0.997;
-    width: 100%;
-
-    margin: auto;
-    border-radius: 20px;
-
-}
-.title {
-    text-align: center;
-    font-family: "Merienda", Helvetica, Arial;
-    color: black;
-}
-.text {
-    font-size: 18px;
-    font-family: "Merienda", Helvetica, Arial;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    color: black;
 }
 .fade-enter-active,
 .fade-leave-active {
@@ -134,17 +100,9 @@ async created() {
 .fade-leave-to {
     opacity: 0;
 }
-.image{
-    //width: 100%;
-    //height: 100%;
-   // max-height: 100%;
-   // margin: 0;
-   // padding: 0;
 
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 .popup-modal {
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
@@ -157,11 +115,13 @@ async created() {
     z-index: 1;
 
 }
+
+
 .window {
     background: #f8dbbad3;
     border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 780px;
+    max-width: 50%;
     margin-left: auto;
     margin-right: auto;
     padding: 1.1rem;
@@ -170,8 +130,15 @@ async created() {
     align-items:center;
     border: 1.5px solid;
 }
-
+.title{
+    font-size: xx-large;
+}
 .button-x {
-  width: 30px;
+  width:7%;
+  margin-top: 1%;
+  margin-right: 2%;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 </style>

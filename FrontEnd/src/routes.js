@@ -73,6 +73,11 @@ const routes = [
     name: 'leaderboard',
     component: () => import('./pages/leaderBoard'),
   },
+  {
+    path: '/afterLogin',
+    name: 'afterLogin',
+    component: () => import('./pages/afterLogin'),
+  },
 ]
 
 export default routes

@@ -7,9 +7,12 @@
           <b-button class="button"
                     color="primary" 
                     @click="Logout()">
-            Back To Home
+          Home
           </b-button>
         </router-link>
+        <br>
+            <h1 class="title">Managment Portal</h1>
+
         <br/>
 
         <ParameterManage/>
@@ -123,7 +126,10 @@ export default {
 .fade-leave-to {
     opacity: 0;
 }
-
+.container{
+  width: 100%;
+  height: auto;
+}
 .popup-modal {
     background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
@@ -137,7 +143,9 @@ export default {
     z-index: 1;
     overflow-y: initial !important
 }
-
+.title{
+  font-size: xx-large;
+}
 .window {
     background: #fff;
     border-radius: 5px;

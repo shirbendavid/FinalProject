@@ -2,9 +2,9 @@
   <div class="container"  > 
     <transition name="fade">
         <div class="popup-modal" v-if="isVisible">
-            <div class="window">
+            <div class="window" style="max-width: 700px; max-height: 300px;">
                 <slot>   
-                      <button class="button-x" tag="b-nav-item" @click="close()">
+                      <button class="btn-x" tag="b-nav-item" @click="close()">
                             X
                         </button>
                 <h1 class="title" style="text-align: center; direction: RTL; font-size: 30px;">הגעתם לשלב הדירוג!</h1>
@@ -437,5 +437,14 @@ label{
     margin-left: 100px;
     //margin-left: 15%;
     
+}
+
+.btn-x {
+  width:7%;
+  margin-top: 1%;
+  margin-right: 2%;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 </style>

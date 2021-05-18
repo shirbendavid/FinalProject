@@ -3,7 +3,7 @@
     
      
   
-    <img src='../assets/main-logo.jpeg' class="center" style="width: 35%; height:35%;" />
+    <img src='../assets/new logo.png' class="centerr" style="width: 35%; height:35%;" />
     <br/>
     <div id="example">
       <br/>
@@ -98,7 +98,7 @@ html, body {
     margin: 0;
     padding: 0;
 }
-.center {
+.centerr {
   margin-left: 30%;
   padding-top: 6px;
 
