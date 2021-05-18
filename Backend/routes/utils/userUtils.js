@@ -128,6 +128,14 @@ async function getGameImages(email, params){
     m++;
   }
   images.push(game_id[0].game_id);
+  
+  for(i=0;i<params.screens;i++){
+    images[i].imagesScreen.sort(function (x, y) {
+      let a = x.image_id,
+          b = y.image_id;
+      return a == b ? 0 : a > b ? 1 : -1;
+  });
+  }
   return images;
 }
 
