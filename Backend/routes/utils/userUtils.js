@@ -191,6 +191,8 @@ async function getScoreScreens(params){
 
 //Advanced Game
 async function getImagesForAdvancedGame(email){
+  let screens=0;
+  let randGame=0;
   games = await DButils.execQuery(`SElECT game_id FROM games where game_id NOT IN (SELECT game_id FROM games WHERE email='${email}') AND scoreGame IS NOT NULL`);
   if(games.length == 0)
     return [];
@@ -200,7 +202,7 @@ async function getImagesForAdvancedGame(email){
     if(games.length == 1)
       randGame = 0;
     else
-      randGame = getRandomInt(0,games.length-1);
+      randGame = getRandomInt(0,games.length);/// games.length-1
     userGameId = games[randGame].game_id;
     advancedGames = await DButils.execQuery(`SElECT * FROM advancedGames WHERE email='${email}' AND scoreGame IS NOT NULL`);
     existsGame = await DButils.execQuery(`SElECT * FROM advancedGames WHERE userGame_id='${userGameId}' AND email='${email}' AND scoreGame IS NOT NULL`);
@@ -224,7 +226,15 @@ async function getImagesForAdvancedGame(email){
     );
     m++;
   }
-  images.push(advancedGame_id[0].game_id);
+  // console.log(screens);
+   images.push(advancedGame_id[0].game_id);
+  for(i=0;i< screens.length;i++){
+    images[i].imagesScreen.sort(function (x, y) {
+      let a = x.image_id,
+          b = y.image_id;
+      return a == b ? 0 : a > b ? 1 : -1;
+  });
+  }
   return images;
 }
 

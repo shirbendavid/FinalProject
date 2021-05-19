@@ -27,7 +27,7 @@
           </b-button>
         </router-link> <h3> <b>Page {{ screenNum }} / {{ screens }}</b></h3>
     <div class="d-flex flex-row justify-center align-center">
-      <v-select-image
+      <v-select-image ref="VSelectImage"
         class="w-1040"
         v-model="selectedItems"
         :items="items"
@@ -51,7 +51,7 @@
 import VSelectImage from "../components/VSelectImage.vue";
 export default {
   name: "App",
-  components: { VSelectImage },
+  components: {  'v-select-image': VSelectImage },
   methods: {
         open() {
             this.isVisible = true
@@ -117,7 +117,7 @@ export default {
           }
           else{
             this.screenNum++;
-            this.$children[0].clear();
+            this.$refs.VSelectImage.clear();
             this.items =[];
             for(let num in this.allImages[this.index].imagesScreen){
               const data = {key: this.allImages[this.index].imagesScreen[num].image_id,
