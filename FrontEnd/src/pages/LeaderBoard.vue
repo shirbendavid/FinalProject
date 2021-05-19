@@ -3,9 +3,9 @@
             <div class="popup-modal" v-if="isVisible">
                 <b-container class="window">
                     <slot>
-                         <button  class="button-x"  tag="b-nav-item" @click="close()">
+                         <!-- <button  class="button-x"  tag="b-nav-item" @click="close()">
                             X
-                        </button>
+                        </button> -->
                         <br>
                          <h3 class="title">LEADERBOARD</h3>
                          <br>
@@ -14,7 +14,13 @@
                         <b-table class="table" fixed="true" 
                         :items="users"></b-table>
                     </slot>
+                    <b-row>
+                    <b-col ></b-col>
+                        <b-col lg="6" class="pb-2"><button block @click="close()">סגור </button></b-col>
+                        <b-col></b-col>
+                    </b-row>
                 </b-container>
+                
             </div>
         
         </transition>
@@ -122,6 +128,7 @@ async created() {
     border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
     max-width: 50%;
+    max-height: 90%;
     margin-left: auto;
     margin-right: auto;
     padding: 1.1rem;
@@ -133,12 +140,19 @@ async created() {
 .title{
     font-size: xx-large;
 }
-.button-x {
-  width:7%;
-  margin-top: 1%;
-  margin-right: 2%;
-  position: absolute;
-  top: 0;
-  right: 0;
+// .button-x {
+//   width:7%;
+//   margin-top: 1%;
+//   margin-right: 2%;
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+// }
+.button {
+    border-radius: 5px;
+    font-size: 25px;
+    width: 300px;
+    height: 150px;
+    margin-right: 50%;
 }
 </style>

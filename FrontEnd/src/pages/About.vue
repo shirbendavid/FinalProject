@@ -6,13 +6,13 @@
             <div class="popup-modal" v-if="isVisible">
                 <b-container class="window">
                     <slot>
-                         <button class="btn-x" tag="b-nav-item" style="font-family: Arial;" @click="close()">
+                         <!-- <button class="btn-x" tag="b-nav-item" style="font-family: Arial;" @click="close()">
                             X
-                        </button>
+                        </button> -->
 
                          <h2 class="title" >אודות הפרויקט</h2>
                          <p class="text" >
-                        <br/>
+                        
                         משחק העדפת תמונות פותח במסגרת פרויקט גמר במחלקה
                         <br/>
                         .להנדסת מערכות תוכנה ומידע באוניברסיטת בן-גוריון
@@ -22,8 +22,8 @@
                         .הקשורים להעדפות אסתטיות של אנשים
                         <br/>
                         <br/>
-                        <b><u>:צוות הפיתוח</u></b>
-                        <br/>
+                        <u>:צוות הפיתוח</u>
+                        
                         לירון בן יעקב
                         <br/>
                         שיר בן דור
@@ -37,7 +37,7 @@
                         פרופ' נעם טרקטינסקי
                         
                         <br/><br/>
-                        <b> <u>:הטכנולוגיות בהן עשינו שימוש במסגרת הפרויקט</u></b>
+                        <u>:הטכנולוגיות בהן עשינו שימוש במסגרת הפרויקט</u>
                         <br/>
                         <b-row style="margin-left: 200px;">
                         <img src="../assets/sqlDB.png" style="width: 10%;"/>
@@ -47,10 +47,16 @@
                         <img src="../assets/html5.png" style="width: 7%;"/>
                         <img src="../assets/css3.jpg" style="width: 7%;"/>
                         </b-row>
-                                                <br>
+                        <br>
+                        <b-row>
+                            <b-col ></b-col>
+                            <b-col lg="6" class="pb-2"><button block @click="close()">חזור חזרה</button></b-col>
+                            <b-col></b-col>
+                        </b-row>
 
                          </p>
                         <br>
+                        
                     </slot>
                 </b-container>
             </div>
@@ -145,7 +151,7 @@ export default {
 .text {
     font-size: 18px;
     font-family: Arial;
-    margin-top: 10px;
+    margin-top: 8px;
     margin-bottom: 10px;
     color: black;
     text-align: center;
@@ -185,8 +191,8 @@ export default {
     background: #f8dbbad3;
     border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 650px;
-    max-height: 650px;
+    max-width: 750px;
+    max-height: 720px;
     margin-left: auto;
     margin-right: auto;
     padding: 1.1rem;

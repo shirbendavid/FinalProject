@@ -6,15 +6,15 @@
         <div class="popup-modal" v-if="isVisible">
             <div class="window" style=" height:550px; max-width: 900px;">
                 <slot>   
-                      <button class="btn-x" tag="b-nav-item" @click="close()">
+                      <!-- <button class="btn-x" tag="b-nav-item" @click="close()">
                             X
-                        </button>
+                        </button> -->
                 <h1 class="title">תמונות להתרשמות</h1>
 
                 <p class="text">
                    בשלב הראשון של המשחק, עליכם לצפות ב-60 תמונות, ולתת להן ציון שמשקף עד כמה
                    <br/>
-                   אתם אוהבים אותן. כאן, יש לם אפשרות לצפות בכל 60 התמונות כשהן מוקטנות, כדי
+                   אתם אוהבים אותן. כאן, יש לכם אפשרות לצפות בכל 60 התמונות כשהן מוקטנות, כדי
                    <br/>
                    שתוכלו להתרשם מרמת היופי הכללית של התמונות. אתם יכולים להשתמש בפס הגלילה כדי
                    <br/>
@@ -31,7 +31,11 @@
                    .להן ציונים או שתוכלו לבחור לעבור לשלב הבא
                 </p>
                 <h3 class="title">!בהצלחה</h3>
-                
+                <b-row>
+                    <b-col ></b-col>
+                        <b-col lg="6" class="pb-2"><button block @click="close()">OK</button></b-col>
+                        <b-col></b-col>
+                    </b-row>
                 </slot>
                     </div>
                 </div>
@@ -255,13 +259,10 @@ export default {
     font-size: 25px;
 }
 
-.btn-x {
-  width:7%;
-  margin-top: 1%;
-  margin-right: 2%;
-  position: absolute;
-  top: 0;
-  right: 0;
+button {
+  width:150px;
+  margin-right: 100px;
+  font-size: 25px;
 }
 .sizeAll{
     width: 100%;

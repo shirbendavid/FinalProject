@@ -43,6 +43,7 @@
   border: 3px solid rgb(53, 204, 224);
   padding: 10px;
   text-align: center;
+  max-height: 55%;
 
 }
 

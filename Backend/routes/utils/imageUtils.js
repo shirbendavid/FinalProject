@@ -5,7 +5,7 @@ async function getImages(amount){
     const images= [];
     const nums = new Set();
     while(nums.size != amount) {
-      nums.add(getRandomInt(1,270));
+      nums.add(getRandomInt(1,318));
     }
     let i = 1;
     for(let number of nums.values()){

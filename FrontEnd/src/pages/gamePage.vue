@@ -7,12 +7,12 @@
         <div class="popup-modal" v-if="isVisible">
             <div class="window" style=" height:450px; max-width: 680px;">
                 <slot>   
-                      <button class="btn-x"  tag="b-nav-item" @click="close()">
+                      <!-- <button class="btn-x"  tag="b-nav-item" @click="close()">
                             X
-                        </button>
-                <h1 class="title" style="direction: RTL; font-size: xx-large; max-width: 500px;">הגענו לשלב המשחק!</h1>
+                        </button> -->
+                <h1 class="title" style="direction: RTL; font-size: xx-large; max-width: 500px; margin-right: 50px;">הגענו לשלב המשחק!</h1>
 
-                <p class="text" style="color: black; direction: RTL;">
+                <p class="text" style="color: black; direction: RTL; text-align: center;">
                    כעת נציג לפניכם {{this.$root.store.numberOfScreensInGame}} מסכים. בכל מסך יהיו {{this.$root.store.numberOfImagesInGame}} תמונות מוקטנות אשר לקוחות מהתמונות שראיתם בשלב הקודם.
                    מתוך {{this.$root.store.numberOfImagesInGame}} התמונות עליכם יהיה לבחור את {{this.$root.store.limitSelectInGame}} התמונות שאתם הכי אוהבים. המטרה בכל מסך היא לבחור את {{this.$root.store.limitSelectInGame}} התמונות
                    שקיבלו את הציונים הגבוהים ביותר בשלב דירוג התמונות.
@@ -20,7 +20,12 @@
                    עבור כל תמונה שבחרתם נכון תקבלו נקודה. כמו כן, ניתן לבטל בחירה של תמונה 
                    מסוימת על ידי לחיצה נוספת עליה.
                 </p>
-                <h3 class="title">!בהצלחה</h3>
+                <h3 class="title" style=" margin-right: 50px;">!בהצלחה</h3>
+                <b-row>
+                  <b-col ></b-col>
+                    <b-col lg="6" class="pb-2"><button block @click="close()">התחל לשחק</button></b-col>
+                  <b-col></b-col>
+                </b-row>
                 
                 </slot>
                     </div>
@@ -403,8 +408,8 @@ pre code .line::before {
 
 .button {
     border-radius: 5px;
-    font-size: 20px;
-    width: 160px;
+    font-size: 25px;
+    width: 300px;
     margin-left: 100px
 }
 
