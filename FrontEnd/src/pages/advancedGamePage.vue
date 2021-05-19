@@ -3,18 +3,22 @@
     <transition name="fade">
 
         <div class="popup-modal" v-if="isVisible">
-            <div class="window" style=" height:450px; max-width: 680px;">
+            <div class="window" style=" max-height:450px; max-width: 680px;">
                 <slot>   
-                      <button class="btn-x"  tag="b-nav-item" @click="close()">
+                      <!-- <button class="btn-x"  tag="b-nav-item" @click="close()">
                             X
-                        </button>
-                <h1 class="title" style="direction: RTL; font-size: xx-large; max-width: 500px;">משחק למתקדמים!</h1>
+                        </button> -->
+                <h1 class="title" style="direction: RTL; font-size: xx-large; max-width: 500px; margin-right:55px;">משחק למתקדמים!</h1>
                
                 <p class="text" style="color: black; direction: RTL;">
                 כעת עליכם לנסות לזהות איזה תמונות משתמש אחר הכי אהב. 
                 </p>
-                <h3 class="title">!בהצלחה</h3>
-                
+                <h3 class="title" style="margin-right:55px;">!בהצלחה</h3>
+                <b-row>
+                  <b-col ></b-col>
+                    <b-col lg="6" class="pb-2"><button block @click="close()" style="margin-right: 60px; font-size: 20px; width: 120px;">התחל לשחק</button></b-col>
+                  <b-col></b-col>
+                </b-row>
                 </slot>
                     </div>
                 </div>

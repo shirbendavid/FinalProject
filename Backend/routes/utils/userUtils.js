@@ -19,7 +19,7 @@ async function getRandomImageToRate(email){
     var imageExists = new Boolean(true);
     var rand = undefined;
     while(imageExists){
-        rand = getRandomInt(1,270);
+        rand = getRandomInt(1,318);
         image = await DButils.execQuery(`SElECT image_id FROM userRating WHERE image_id='${rand}' AND email='${email}'`);
         if(image.length === 0)
             imageExists = false;

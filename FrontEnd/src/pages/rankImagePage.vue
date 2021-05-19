@@ -4,9 +4,9 @@
         <div class="popup-modal" v-if="isVisible">
             <div class="window" style="max-width: 700px; max-height: 300px;">
                 <slot>   
-                      <button class="btn-x" tag="b-nav-item" @click="close()">
+                      <!-- <button class="btn-x" tag="b-nav-item" @click="close()">
                             X
-                        </button>
+                        </button> -->
                 <h1 class="title" style="text-align: center; direction: RTL; font-size: 30px;">הגעתם לשלב הדירוג!</h1>
 
                 <p class="text1" style="direction: RTL;">
@@ -17,7 +17,11 @@
                    מאוד ועד הנמוכים, עבור תמונות שאתם פחות אוהבים.
                    
                 </p>
-                
+                <b-row>
+                  <b-col ></b-col>
+                    <b-col lg="6" class="pb-2"><button block @click="close()" style="margin-right: 60px; font-size: 20px; width: 120px;">התחל לדרג</button></b-col>
+                  <b-col></b-col>
+                </b-row>
                 </slot>
                     </div>
                 </div>
@@ -31,61 +35,63 @@
             </b-col>
           </b-row>
     
-<div class="scale">       
+<div class="scale" >       
   <b-row >
  <div class="label1">Not at all</div><div class="label2">Very much</div>
     </b-row>    
 <b-row>
-  <b-col class="foreword">
+  <!-- <b-col class="label1" cols="12" md="1" style="font-size: 14px; ">Not at all</b-col> -->
+  <b-col class="foreword" >
   <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1" aria-label="..." v-model="value">
   <br>
   <label for="inlineRadio1">1</label>
 </b-col>
-<b-col class="foreword">
+<b-col class="foreword" >
   <input  type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2" aria-label="..." v-model="value">
   <br>
   <label  for="inlineRadio2">2</label>
 </b-col>
-<b-col class="foreword">
+<b-col class="foreword" >
   <input  type="radio" name="inlineRadioOptions" id="inlineRadio3" value="3" aria-label="..." v-model="value">
   <br>
   <label  for="inlineRadio3">3</label>
 </b-col>
-<b-col class="foreword">
+<b-col class="foreword" >
   <input  type="radio" name="inlineRadioOptions" id="inlineRadio4" value="4" aria-label="..." v-model="value">
   <br>
   <label  for="inlineRadio4">4</label>
 </b-col>
-<b-col class="foreword">
+<b-col class="foreword" >
   <input  type="radio" name="inlineRadioOptions" id="inlineRadio5" value="5" aria-label="..." v-model="value">
 <br>
  <label  for="inlineRadio5">5</label>
 </b-col>
-<b-col class="foreword">
+<b-col class="foreword" >
   <input type="radio" name="inlineRadioOptions" id="inlineRadio6" value="6" aria-label="..." v-model="value">
  <br>
  <label  for="inlineRadio6">6</label>
  </b-col>
-<b-col class="foreword"> 
+<b-col class="foreword" > 
   <input  type="radio" name="inlineRadioOptions" id="inlineRadio7" value="7" aria-label="..." v-model="value">
 <br>
 <label for="inlineRadio7">7</label>
 </b-col>
-<b-col class="foreword">
+<b-col class="foreword" >
   <input  type="radio" name="inlineRadioOptions" id="inlineRadio8" value="8" aria-label="..." v-model="value">
 <br>
 <label for="inlineRadio8">8</label>
 </b-col>
-<b-col class="foreword">
+<b-col class="foreword" >
   <input  type="radio" name="inlineRadioOptions" id="inlineRadio9" value="9" aria-label="..." v-model="value">
 <br>
 <label  for="inlineRadio9">9</label>
 </b-col>
-<b-col class="foreword">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio10" value="10" aria-label="..." v-model="value">
+<b-col class="foreword" >
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio10" value="10" aria-label="..." v-model="value" >
 <br>
 <label for="inlineRadio10">10</label>
 </b-col>
+<!-- <b-col class="label2"  style="font-size: 13px;">Very much</b-col> -->
 </b-row>
 </div>
           <b-row class="buttons">
@@ -332,6 +338,11 @@ label{
   margin: 0 auto;
   -moz-column-count: 1;
   -webkit-column-count: 1;
+  column-width: 2%;
+  
+}
+b-col{
+  column-width: 2%;
 }
 
 .forewordimage {

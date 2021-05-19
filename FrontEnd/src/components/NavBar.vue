@@ -59,7 +59,7 @@
           <b-icon icon="controller" aria-hidden="true"></b-icon>
           Game
         </router-link>
-        <b-navbar-nav v-if="$root.store.playAdvancedGame==='true'">
+        <b-navbar-nav v-if="$root.store.playAdvancedGame">
         <router-link tag="b-nav-item" :to="{ name: 'advanced' }">
           <b-icon icon="joystick" aria-hidden="true"></b-icon>
          AdvancedGame
