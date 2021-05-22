@@ -17,12 +17,12 @@ var adminsRouter = require("./routes/admins");
 var app = express();
 
 //////// uncomment these 3 lines:
-// let reqPath = path.join(__dirname, '../Frontend/dist');
-// app.use(serveStatic(reqPath));
-// const port = "8110";
+let reqPath = path.join(__dirname, '../Frontend/dist');
+app.use(serveStatic(reqPath));
+const port = "8110";
 
 // comment this line:
-const port = process.env.PORT || "3000";
+//const port = process.env.PORT || "3000";
 
 const host = '0.0.0.0';
 
