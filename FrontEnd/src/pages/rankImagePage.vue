@@ -1,5 +1,5 @@
 <template>
-  <div class="container"  > 
+  <div class="rank-container"  > 
     <transition name="fade">
         <div class="popup-modal" v-if="isVisible">
             <div class="window" style="max-width: 700px; max-height: 300px;">
@@ -100,7 +100,7 @@
 
         </div>
       </div>
-    <div class="container">
+    <div class="rank-container">
 
       <transition name="fade">
           <div class="popup-modal" v-if="enoughImages">
@@ -253,7 +253,7 @@ export default {
 <style lang="scss" >
 /* @import url(https://fonts.googleapis.com/css?family=Special+Elite); */
 
-.container {
+.rank-container {
   // background-color: rgba(255, 255, 255, 0.89);
   /* border: 5px outset#f3c48ec7;
   border-radius: 25px; */
@@ -454,4 +454,9 @@ b-col{
   top: 0;
   right: 0;
 }
+
+.pb-2 {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 </style>

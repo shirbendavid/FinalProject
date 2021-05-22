@@ -1,20 +1,20 @@
 <template>
     <div :style="image">
 
-      <div class="container">
+      <div class="management-container">
       
         <router-link to="/" >
-          <b-button class="button"
+          <b-button style="margin-top: 10px; font-family: Merienda, Helvetica, Arial;" class="btn-home"
+
                     color="primary" 
                     @click="Logout()">
           Home
           </b-button>
         </router-link>
-        <br>
+        
             <h1 class="title">Managment Portal</h1>
 
         <br/>
-
         <ParameterManage/>
 
         <br/>
@@ -126,9 +126,11 @@ export default {
 .fade-leave-to {
     opacity: 0;
 }
-.container{
-  width: 100%;
+.management-container{
+  /* width: 100%; */
   height: auto;
+  margin-left: 62px;
+  margin-right: 62px;
 }
 .popup-modal {
     background-color: rgba(0, 0, 0, 0.5);

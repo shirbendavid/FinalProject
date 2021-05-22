@@ -72,7 +72,7 @@
             <em>{{ $root.store.email }}</em>
           </template>
         </b-nav-item-dropdown> -->
-        <button class="button" tag="b-nav-item" @click="Logout()">
+        <button class="btn" tag="b-nav-item" @click="Logout()">
           <b-icon icon="power" aria-hidden="true"></b-icon>
           Logout
         </button>
@@ -123,7 +123,7 @@ export default {
   font-size: 20px;
 }
 
-.button {
+.btn {
   background-color: #e9c9b5c5;
   // border: 1px solid rgba(250, 248, 245, 0.911);
   // border-radius: 25px;

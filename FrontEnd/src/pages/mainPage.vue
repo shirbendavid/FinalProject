@@ -1,8 +1,5 @@
 <template>
-  <div class="container">
-    
-     
-  
+  <div class="main-page-container">
     <img src='../assets/new logo.png' class="centerr" style="width: 35%; height:35%;" />
     <br/>
     <div id="example">
@@ -73,7 +70,7 @@
 
 <style lang="scss">
 
-.container {
+.main-page-container {
   width: 100%;
   height: 100%;
 }
@@ -96,7 +93,7 @@
 html, body {
     height: 100%;
     margin: 0;
-    padding: 0;
+    // padding: 0;
 }
 .centerr {
   margin-left: 30%;
@@ -123,7 +120,6 @@ html, body {
     display: flex;
     align-items: center;
     z-index: 1;
-
 }
 
 .window {
@@ -163,12 +159,9 @@ html, body {
     font-size: 25px;
 }
 
-
 img.center {
   display: block;
   margin: 0 auto;
 }
-
-
 
 </style>

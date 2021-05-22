@@ -209,7 +209,7 @@ async created() {
   font-size: 24px; 
   background-color: #fc995788;
   font-family: "Merienda", Helvetica, Arial;
-
+  margin-left: 13%;
 }
 
 .update-btn:hover {

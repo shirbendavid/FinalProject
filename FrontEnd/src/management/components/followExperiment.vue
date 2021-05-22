@@ -163,6 +163,15 @@ export default {
 
 .th {
   border-top: 2px solid black !important;
+font-family: "Merienda", Helvetica, Arial;
+}
+
+.table {
+    font-family: "Merienda", Helvetica, Arial;
+}
+
+.text-center {
+    font-family: "Merienda", Helvetica, Arial;  
 }
 
 

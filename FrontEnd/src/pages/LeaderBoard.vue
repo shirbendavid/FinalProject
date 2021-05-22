@@ -1,10 +1,10 @@
 <template>
         <transition name="fade">
             <div class="popup-modal" v-if="isVisible">
-                <b-container class="window">
+                <b-container class="leaders-window">
                     <slot>
             <div class="my-2">
-          <b-button class="button"
+          <b-button class="btn-close"
                     variant="outline-secondary" 
                     @click="close"
                    >
@@ -14,8 +14,6 @@
                         
                          <h3 class="titleL">LEADERBOARD</h3>
                          
-                  
-
                         <b-table class="table" fixed="true" 
                         :items="users"></b-table>
                     </slot>
@@ -90,18 +88,22 @@ async created() {
 };
 </script>
 <style lang="scss">
-.container {
-    max-width:50%;
-}
+
+// .container {
+//     max-width:50%;
+// }
+
 .table{
     text-align: left;
-   font-size: large;
-
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 .fade-enter-active,
 .fade-leave-active {
     transition: opacity 0.3s;
 }
+
 .fade-enter,
 .fade-leave-to {
     opacity: 0;
@@ -119,11 +121,9 @@ async created() {
     display: flex;
     align-items: center;
     z-index: 1;
-
 }
 
-
-.window {
+.leaders-window {
     background: #f8dbbad3;
     border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
@@ -131,19 +131,22 @@ async created() {
     max-height: 90%;
     margin-left: auto;
     margin-right: auto;
-    padding: 1.1rem;
+    // padding: 1.1rem;
     flex-direction: column;
     justify-content: center;
     align-items:center;
     border: 1.5px solid;
 }
-.titleL{
+
+.titleL {
     font-size: xx-large;
-        text-align: center;
-
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 20px;
 }
 
-.button{
-    margin-left:80%;
+.btn-close {
+    margin-left: 94%;
 }
+
 </style>
