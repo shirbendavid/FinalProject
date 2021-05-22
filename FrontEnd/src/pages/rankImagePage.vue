@@ -4,12 +4,10 @@
         <div class="popup-modal" v-if="isVisible">
             <div class="window" style="max-width: 700px; max-height: 300px;">
                 <slot>   
-                      <!-- <button class="btn-x" tag="b-nav-item" @click="close()">
-                            X
-                        </button> -->
-                <h1 class="title" style="text-align: center; direction: RTL; font-size: 30px;">הגעתם לשלב הדירוג!</h1>
 
-                <p class="text1" style="direction: RTL;">
+                <h1 class="titlerat" style="text-align: center; direction: RTL; font-size: 30px;">הגעתם לשלב הדירוג!</h1>
+
+                <p class="textrat" style="direction: RTL;">
                    כעת, עליכם לתת לכל אחת מהתמונות ציון המשקף עד כמה אתם אוהבים אותן.
                    <br/>
                    אנחנו ממליצים שתנסו להשתמש בכל סולם הציונים- מהגבוהים, עבור תמונות שאתם אוהבים
@@ -17,17 +15,17 @@
                    מאוד ועד הנמוכים, עבור תמונות שאתם פחות אוהבים.
                    
                 </p>
-                <b-row>
-                  <b-col ></b-col>
-                    <b-col lg="6" class="pb-2"><button block @click="close()" style="margin-right: 60px; font-size: 20px; width: 120px;">התחל לדרג</button></b-col>
-                  <b-col></b-col>
-                </b-row>
+<b-row>
+  <b-col ></b-col>
+  <b-col lg="6" class="pb-2"><b-button class="b-obs" block @click="closeStart()">התחל</b-button></b-col>
+  <b-col></b-col>
+</b-row>
                 </slot>
                     </div>
                 </div>
             </transition> 
 
-      <div class="flex-container">
+      <div class="flex-container" v-if="rate">
         <div class="flex-item">
           <b-row>
             <b-col class="forewordimage">
@@ -94,24 +92,12 @@
 <!-- <b-col class="label2"  style="font-size: 13px;">Very much</b-col> -->
 </b-row>
 </div>
-          <b-row class="buttons">
-            <b-col cols="12" md="10">
-              <!-- <br/> -->
-              <b-input-group-prepend>
-                <b-button class="btn" @click="value = 0">Clear Rating</b-button>
-              </b-input-group-prepend>
-            </b-col>
-            <b-col cols="6" md="2">
-              <!-- <br/> -->
-              <b-button class="btn"
-                v-on:click="saveImageRate"
-                type="submit" 
-              >
-                NEXT
-              </b-button>
+<b-row>
+  <b-col ></b-col>
+  <b-col lg="6" class="pb-2"><b-button class="b-obs" block @click="saveImageRate()">NEXT</b-button></b-col>
+  <b-col></b-col>
+</b-row>
 
-            </b-col>
-          </b-row>
         </div>
       </div>
     <div class="container">
@@ -121,25 +107,30 @@
           <!-- <div class="popup-modal"> -->
               <div class="window" style="max-width: 900px;">
                   <slot>
-                      <p class="text" >
+                      <p class="textrat" >
                           .יפה מאוד, נתת ציונים ל-60 תמונות, שזה המינימום הנדרש להשתתפות במשחק
                           <br/>
                           ככל שיהיו לנו יותר תמונות עם הציונים שלך, כך ישתפרו סיכוייך להצליח 
                           <br/>
-                          .Continue Rating במשחק. במידה וברצונך לראות תמונות נוספות, נא לבחור
+                          .Continue Rating במשחק. במידה וברצונך לראות ולדרג תמונות נוספות, נא לבחור
                           <br/>
-                          .Finish Ratings ניתן להפסיק את שלב מתן הציונים בכל עת על ידי לחיצה על מקש
-                          <br/>
-                          Start Play! במידה וברצונך להתחיל לשחק, יש לבחור במקש    
+                          .Start Play במידה וברצונך להתחיל לשחק, יש לבחור במקש    
                       </p>
-                      <h2 class="title">!בהצלחה</h2>
+                      <h3 class="titlerat">!בהצלחה</h3>
                       <br/>
-                      <button  class="button" tag="b-nav-item"  @click="close()">
+                      <b-row>
+                        <b-col>
+                      <b-button  class="b-obs"   @click="close()">
                             Continue Rating
-                      </button>
-                      <button  class="button" tag="b-nav-item"  @click="StartPlay()">
+                      </b-button>
+                      </b-col>
+                      <b-col></b-col>
+                      <b-col>
+                      <b-button  class="b-obs"   @click="StartPlay()">
                         Start Play!
-                      </button>
+                      </b-button>
+                      </b-col>
+                      </b-row>
                   </slot>
               </div>
           </div>
@@ -154,11 +145,12 @@
 export default {
   data() {
     return {
-      value: 1,
+      value: "",
       image: "",
       image_id: "",
       enoughImages:false,
       isVisible: true,
+      rate:false,
     };
   },
   methods: {
@@ -176,7 +168,7 @@ export default {
         console.log(response);
         if (response.status !== 200) this.$router.replace("/NotFound");
         else {
-          this.value = 1;
+          this.value = "";
 
         const numberOfImagesRating = this.$root.store.numberOfImagesRating+1;
         console.log(numberOfImagesRating);
@@ -214,10 +206,13 @@ export default {
             this.isVisible = true
     },
 
-      
+    closeStart() {
+            this.isVisible = false;
+            this.rate=true;
+    },  
      close() {
-            this.isVisible = false
-
+            this.isVisible = false;
+            this.rate=true;
             this.enoughImages = false;
             this.getNextImage();
     },
@@ -401,17 +396,22 @@ b-col{
 }
 
 .window {
-    background: #f8dbbad3;
-    border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 650px;
+    max-width: 80%;
+    //max-height: 1500px;
     margin-left: auto;
     margin-right: auto;
-    padding: 1.1rem;
     flex-direction: column;
     justify-content: center;
     align-items:center;
-    border: 1.5px solid;
+    text-align: right;
+    color: black;
+      margin: auto;
+
+  border: 3px solid rgba(143, 241, 216, 0.87);
+ border-radius: 2px;
+  padding: 1.1rem;
+  background-color: rgba(251, 241, 226, 0.897);
 }
 
 .button {
@@ -431,23 +431,19 @@ b-col{
     margin-bottom: 20px;
     text-align: right;
 }
-.text {
-    font-size: 20px;
+.titlerat {
     text-align: center;
-    background: #f8dbbad3;
-    max-width: 850px;
-    font-family:  Arial;
-    margin-top: 15px;
-    margin-bottom: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: black;
 }
 
-.title {
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;//ariel, helvetica, sans-serif
-    margin-left: 100px;
-    //margin-left: 15%;
-    
+.textrat {
+
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: right;
+    color: black;
+
 }
 
 .btn-x {

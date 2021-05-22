@@ -10,9 +10,9 @@
                       <!-- <button class="btn-x"  tag="b-nav-item" @click="close()">
                             X
                         </button> -->
-                <h1 class="title" style="direction: RTL; font-size: xx-large; max-width: 500px; margin-right: 50px;">הגענו לשלב המשחק!</h1>
+                <h2 class="titlegame" >הגענו לשלב המשחק</h2>
 
-                <p class="text" style="color: black; direction: RTL; text-align: center;">
+                <p class="textgame" style="color: black; direction: RTL; ">
                    כעת נציג לפניכם {{this.$root.store.numberOfScreensInGame}} מסכים. בכל מסך יהיו {{this.$root.store.numberOfImagesInGame}} תמונות מוקטנות אשר לקוחות מהתמונות שראיתם בשלב הקודם.
                    מתוך {{this.$root.store.numberOfImagesInGame}} התמונות עליכם יהיה לבחור את {{this.$root.store.limitSelectInGame}} התמונות שאתם הכי אוהבים. המטרה בכל מסך היא לבחור את {{this.$root.store.limitSelectInGame}} התמונות
                    שקיבלו את הציונים הגבוהים ביותר בשלב דירוג התמונות.
@@ -20,10 +20,11 @@
                    עבור כל תמונה שבחרתם נכון תקבלו נקודה. כמו כן, ניתן לבטל בחירה של תמונה 
                    מסוימת על ידי לחיצה נוספת עליה.
                 </p>
-                <h3 class="title" style=" margin-right: 50px;">!בהצלחה</h3>
+                <h3 class="titlegame" >!בהצלחה</h3>
+                <br>
                 <b-row>
                   <b-col ></b-col>
-                    <b-col lg="6" class="pb-2"><button block @click="close()">התחל לשחק</button></b-col>
+                    <b-col ><b-button size="lg" class="b-game" block @click="close()">התחל</b-button></b-col>
                   <b-col></b-col>
                 </b-row>
                 
@@ -56,7 +57,7 @@
     <b-button size="lg" class="btn"
               v-on:click="save"
               type="submit" >
-    Next
+    NEXT
     </b-button>
   </div>
   
@@ -387,26 +388,29 @@ pre code .line::before {
 }
 
 .window {
-  background-color: #f8dbbad3;
-  z-index: 100;
-  color: rgb(51, 51, 51);
-  font-family: Raleway;
+   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 80%;
+    //max-height: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    text-align: right;
+    color: black;
+      margin: auto;
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-flow: column;
-  -ms-flex-flow: column;
-  flex-flow: column;
-  box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
-  //height: 860px;
-  // width: 500px;
-  // background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
-  //   top left no-repeat;
+  border: 3px solid rgba(143, 241, 216, 0.87);
+ border-radius: 2px;
+  padding: 1.1rem;
+  background-color: rgba(251, 241, 226, 0.897);
 }
+.b-game {
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
 
+}
 .button {
     border-radius: 5px;
     font-size: 25px;
@@ -417,18 +421,19 @@ pre code .line::before {
 .btn {
   margin-top: 8px;
 }
-.text {
-    font-size: 20px !important;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: 15px;
-    margin-bottom: 20px;
-    //color: black;
-}
-.title {
+.titlegame {
     text-align: center;
-    font-family: "Merienda", Helvetica, Arial;
-    font-size: x-large;
-    max-width: 500%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+}
+
+.textgame {
+
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: right;
+    color: black;
+
 }
 .btn-x {
   width:7%;

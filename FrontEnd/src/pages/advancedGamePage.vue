@@ -8,15 +8,15 @@
                       <!-- <button class="btn-x"  tag="b-nav-item" @click="close()">
                             X
                         </button> -->
-                <h1 class="title" style="direction: RTL; font-size: xx-large; max-width: 500px; margin-right:55px;">משחק למתקדמים!</h1>
+                <h2 class="titlegame" >משחק למתקדמים</h2>
                
-                <p class="text" style="color: black; direction: RTL;">
-                כעת עליכם לנסות לזהות איזה תמונות משתמש אחר הכי אהב. 
+                <p class="textgame" >
+                כעת עליכם לנסות לזהות איזה תמונות משתמש אחר הכי אהב 
                 </p>
-                <h3 class="title" style="margin-right:55px;">!בהצלחה</h3>
+                <h4 class="titlegame" >!בהצלחה</h4>
                 <b-row>
                   <b-col ></b-col>
-                    <b-col lg="6" class="pb-2"><button block @click="close()" style="margin-right: 60px; font-size: 20px; width: 120px;">התחל לשחק</button></b-col>
+                    <b-col lg="6" class="pb-2"><b-button class="b-game" block @click="close()" >התחל </b-button></b-col>
                   <b-col></b-col>
                 </b-row>
                 </slot>
@@ -45,7 +45,7 @@
     <b-button size="lg" class="btn"
               v-on:click="save"
               type="submit" >
-    Next
+    NEXT
     </b-button>
   </div>
 </template>
@@ -283,26 +283,43 @@ pre code .line::before {
 }
 
 .window {
-  background-color: #f8dbbad3;
-  z-index: 100;
-  color: rgb(51, 51, 51);
-  font-family: Raleway;
+   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 80%;
+    //max-height: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    text-align: right;
+    color: black;
+      margin: auto;
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-flow: column;
-  -ms-flex-flow: column;
-  flex-flow: column;
-  box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
-  //height: 860px;
-  // width: 500px;
-  // background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
-  //   top left no-repeat;
+  border: 3px solid rgba(143, 241, 216, 0.87);
+ border-radius: 2px;
+  padding: 1.1rem;
+  background-color: rgba(251, 241, 226, 0.897);
+}
+.b-game {
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+
+}
+.titlegame {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
 }
 
+.textgame {
+
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: right;
+    color: black;
+
+}
 .button {
     border-radius: 5px;
     font-size: 20px;

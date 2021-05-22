@@ -83,10 +83,12 @@
 
 <script>
 export default {
+
   methods: {
     Logout() {
+      this.$alert('Thanks! See you tommorow!');
       this.$root.store.logout();
-      this.$root.toast("Logout", "User logged out successfully", "success");
+      // this.$root.toast("Logout", "User logged out successfully", "success");
 
       this.$router.push("/").catch(() => {
         this.$forceUpdate();

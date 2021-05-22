@@ -9,16 +9,16 @@
                       <!-- <button class="btn-x" tag="b-nav-item" @click="close()">
                             X
                         </button> -->
-                <h1 class="title">תמונות להתרשמות</h1>
+                <h2 class="titleobs">תמונות להתרשמות</h2>
 
-                <p class="text">
-                   בשלב הראשון של המשחק, עליכם לצפות ב-60 תמונות, ולתת להן ציון שמשקף עד כמה
+                <p class="textobs">
+                   בשלב הראשון של המשחק, עליכם לצפות בלפחות 60 תמונות, ולתת להן ציון שמשקף עד כמה
                    <br/>
-                   אתם אוהבים אותן. כאן, יש לכם אפשרות לצפות בכל 60 התמונות כשהן מוקטנות, כדי
+                   אתם אוהבים אותן. כאן, יש לכם אפשרות לצפות בחלק מהתמונות כשהן מוקטנות, כדי
                    <br/>
                    שתוכלו להתרשם מרמת היופי הכללית של התמונות. אתם יכולים להשתמש בפס הגלילה כדי
                    <br/>
-                   .Next לראות את כל התמונות. כשתסיימו להתרשם מאוסף התמונות, עליכם ללחוץ על כפתור
+                   .start rating לראות את כל התמונות. כשתסיימו להתרשם מאוסף התמונות, עליכם ללחוץ על כפתור
                    <br/><br/>
                    כפתור זה יעביר אתכם למצב של הצגת תמונה בודדת בגודל גדול יותר. בתחתית המסך עליכם
                    <br/>
@@ -26,16 +26,21 @@
                    <br/>
                    .בדרך זו, יתקבלו ציוניכם לכל 60 התמונות
                    <br/><br/>
-                   כאשר תסיימו להערך את 60 התמונות תוכלו לבחור בין האפשרות לראות עוד תמונות ולתת
+                   כאשר תסיימו להעריך את 60 התמונות תוכלו לבחור בין האפשרות לראות עוד תמונות ולתת
                    <br/>
                    .להן ציונים או שתוכלו לבחור לעבור לשלב הבא
                 </p>
-                <h3 class="title">!בהצלחה</h3>
-                <b-row>
-                    <b-col ></b-col>
-                        <b-col lg="6" class="pb-2"><button block @click="close()">OK</button></b-col>
-                        <b-col></b-col>
-                    </b-row>
+                        <br />
+
+                <h3 class="titleobs">!בהצלחה</h3>
+                        <br />
+
+
+<b-row>
+  <b-col ></b-col>
+  <b-col lg="6" class="pb-2"><b-button class="b-obs" block @click="close()">אישור</b-button></b-col>
+  <b-col></b-col>
+</b-row>
                 </slot>
                     </div>
                 </div>
@@ -46,61 +51,61 @@
 
         <b-row>
         <b-col class="pa-3">
-            <b-img :src="image1" class="center" style="width: 90%; height:90%;" aspect-ratio="1.4" contain></b-img>
+            <b-img :src="image1"  style="width: 90%; height:90%;" aspect-ratio="1.4" contain></b-img>
         </b-col>
         <b-col class="pa-3">
-            <b-img :src="image2" class="center" style="width: 90%; height:90%;" aspect-ratio="1.4" contain></b-img>
+            <b-img :src="image2" style="width: 90%; height:90%;" aspect-ratio="1.4" contain></b-img>
         </b-col>
         <b-col class="pa-3">
-            <b-img :src="image3" class="center" style="width: 90%; height:90%;" aspect-ratio="1.4" contain></b-img>
+            <b-img :src="image3"  style="width: 90%; height:90%;" aspect-ratio="1.4" contain></b-img>
         </b-col>
         <b-col class="pa-3">
-            <b-img :src="image4" class="center" style="width: 90%; height:90%;" aspect-ratio="1.4" contain></b-img>
-        </b-col>
-        </b-row>
-        <br/>
-        <b-row>
-        <b-col class="pa-3">
-            <img :src="image5" class="center" style="width: 90%; height:90%;"/>
-        </b-col>
-        <b-col class="pa-3">
-            <img :src="image6" class="center" style="width: 90%; height:90%;"/>
-        </b-col>
-        <b-col class="pa-3">
-            <img :src="image7" class="center" style="width: 90%; height:90%;"/>
-        </b-col>
-        <b-col class="pa-3">
-            <img :src="image8" class="center" style="width: 90%; height:90%;"/>
+            <b-img :src="image4" style="width: 90%; height:90%;" aspect-ratio="1.4" contain></b-img>
         </b-col>
         </b-row>
         <br/>
         <b-row>
         <b-col class="pa-3">
-            <img :src="image9" class="center" style="width: 90%; height:90%;"/>
+            <img :src="image5"  style="width: 90%; height:90%;"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image10" class="center" style="width: 90%; height:90%;"/>
+            <img :src="image6"  style="width: 90%; height:90%;"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image11" class="center" style="width: 90%; height:90%;"/>
+            <img :src="image7" style="width: 90%; height:90%;"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image12" class="center" style="width: 90%; height:90%;"/>
+            <img :src="image8"  style="width: 90%; height:90%;"/>
+        </b-col>
+        </b-row>
+        <br/>
+        <b-row>
+        <b-col class="pa-3">
+            <img :src="image9"  style="width: 90%; height:90%;"/>
+        </b-col>
+        <b-col class="pa-3">
+            <img :src="image10"  style="width: 90%; height:90%;"/>
+        </b-col>
+        <b-col class="pa-3">
+            <img :src="image11"  style="width: 90%; height:90%;"/>
+        </b-col>
+        <b-col class="pa-3">
+            <img :src="image12"  style="width: 90%; height:90%;"/>
         </b-col>
         </b-row>
         <br/>
         <b-row>
          <b-col class="pa-3">
-            <img :src="image13" class="center" style="width: 90%; height:90%;"/>
+            <img :src="image13"  style="width: 90%; height:90%;"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image14" class="center" style="width: 90%; height:90%;"/>
+            <img :src="image14"  style="width: 90%; height:90%;"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image15" class="center" style="width: 90%; height:90%;"/>
+            <img :src="image15" style="width: 90%; height:90%;"/>
         </b-col>
         <b-col class="pa-3">
-            <img :src="image16" class="center" style="width: 90%; height:90%;"/>
+            <img :src="image16"  style="width: 90%; height:90%;"/>
         </b-col> 
         </b-row>
         <br/>
@@ -222,34 +227,37 @@ export default {
 }
 
 .window {
-    background: #f8dbbad3;
-    border-radius: 5px;
-    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 1000px;
-    max-height: 550px;
+   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 80%;
+    //max-height: 1500px;
     margin-left: auto;
     margin-right: auto;
-    padding: 1.1rem;
     flex-direction: column;
     justify-content: center;
     align-items:center;
-    border: 1.5px solid;
     text-align: right;
-}
-
-.title {
-    text-align: center;
-    font-family: "Merienda", Helvetica, Arial;
-    font-size: 30px;
-    margin-right: 50px;
-}
-
-.text {
-    font-size: 20px;
-    font-family: "Merienda", Helvetica, Arial;
-    margin-top: 15px;
-    margin-bottom: 20px;
     color: black;
+      margin: auto;
+
+  border: 3px solid rgba(143, 241, 216, 0.87);
+ border-radius: 2px;
+  padding: 1.1rem;
+  background-color: rgba(251, 241, 226, 0.897);
+}
+
+.titleobs {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+}
+
+.textobs {
+
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: right;
+    color: black;
+
 }
 
 .buttonb {
@@ -259,15 +267,17 @@ export default {
     font-size: 25px;
 }
 
-button {
-  width:150px;
-  margin-right: 100px;
-  font-size: 25px;
+.b-obs {
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+
 }
 .sizeAll{
     width: 100%;
     height: auto;
 }
+
 </style>
 
 

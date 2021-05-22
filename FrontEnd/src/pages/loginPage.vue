@@ -8,14 +8,13 @@
       <div class="window">
         <div class="overlay"></div>
         <div class="content">
-          <div class="welcome">Welcome!</div>
-          <div class="subtitle">Log into your account.</div>
+          <div class="welcome">Please log in!</div>
           <br />
           <b-form @submit.prevent="onLogin">
             <b-form-group
               id="input-group-email"
               label-cols-sm="3"
-              label="E-email"
+              label="Email"
               label-for="email"
             >
               <b-form-input
@@ -59,7 +58,7 @@
               <router-link
                 to="register"
                 style="color: #d85416; font-size: 19px;"
-                ><b>Register in here</b></router-link
+                ><b>Register here</b></router-link
               >
             </div>
             <br />
@@ -313,14 +312,7 @@ button:focus {
   color: black;
 }
 
-.subtitle {
-  text-align: center;
-  line-height: 1em;
-  font-weight: 100;
-  letter-spacing: 0px;
-  letter-spacing: 0.02rem;
-  color: rgb(34, 34, 34);
-}
+
 
 .menu {
   background: rgba(0, 0, 0, 0.2);

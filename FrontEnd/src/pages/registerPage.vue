@@ -9,12 +9,7 @@
       <div class="window">
         <div class="overlay"></div>
         <div class="content">
-          <div class="welcome">Hello There!</div>
-          <div class="subtitle">
-            We're almost done.
-            <br />
-            You need to create an account.
-          </div>
+          <div class="welcome">Registration!</div>
           <br />
 
           <b-form @submit.prevent="onRegister" @reset.prevent="onReset">
@@ -90,9 +85,7 @@
                 type="text"
                 :state="validateState('lastName')"
               ></b-form-input>
-              <b-form-invalid-feedback v-if="!$v.form.lastName.required">
-                Last name is required
-              </b-form-invalid-feedback>
+
             </b-form-group>
 
             <b-form-group
@@ -107,9 +100,7 @@
                 :options="genders"
                 :state="validateState('gender')"
               ></b-form-select>
-              <b-form-invalid-feedback v-if="!$v.form.gender.required">
-                gender is required
-              </b-form-invalid-feedback>
+
             </b-form-group>
 
             <b-form-group
@@ -124,60 +115,7 @@
                 type="text"
                 :state="validateState('age')"
               ></b-form-input>
-              <b-form-invalid-feedback v-if="!$v.form.age.required">
-                age is required
-              </b-form-invalid-feedback>
             </b-form-group>
-
-            <!-- <b-form-group
-              id="input-group-Password"
-              label-cols-sm="3"
-              label="Password"
-              label-for="password"
-            >
-              <b-form-input
-                id="password"
-                type="password"
-                v-model="$v.form.password.$model"
-                :state="validateState('password')"
-              ></b-form-input>
-              <b-form-invalid-feedback v-if="!$v.form.password.required">
-                Password is required
-              </b-form-invalid-feedback>
-              <b-form-invalid-feedback v-else-if="!$v.form.password.length">
-                Have length between 5-10 characters long
-              </b-form-invalid-feedback>
-              <b-form-invalid-feedback v-if="!$v.form.password.containsSpecial">
-                The password must contain at least: one special character
-              </b-form-invalid-feedback>
-              <b-form-invalid-feedback v-if="!$v.form.password.containsNumber">
-                The password must contain at least: one number
-              </b-form-invalid-feedback>
-            </b-form-group>
-
-            <b-form-group
-              id="input-group-confirmedPassword"
-              label-cols-sm="3"
-              label="Confirm Password"
-              label-for="confirmedPassword"
-            >
-              <b-form-input
-                id="confirmedPassword"
-                type="password"
-                v-model="$v.form.confirmedPassword.$model"
-                :state="validateState('confirmedPassword')"
-              ></b-form-input>
-              <b-form-invalid-feedback
-                v-if="!$v.form.confirmedPassword.required"
-              >
-                Password confirmation is required
-              </b-form-invalid-feedback>
-              <b-form-invalid-feedback
-                v-else-if="!$v.form.confirmedPassword.sameAsPassword"
-              >
-                The confirmed password is not equal to the original password
-              </b-form-invalid-feedback>
-            </b-form-group> -->
 
             <button
               type="submit"
@@ -197,7 +135,7 @@
             </b-button> -->
 
             <div >
-              You have an account already?
+               Already have an account?
               <router-link to="login" style="color: #d85416; font-size: 19px;"
                 ><b>Log in here</b></router-link
               >
@@ -222,14 +160,18 @@
             <div class="window1" style="overflow-y:scroll; height:550px; max-width: 950px;">
                 <slot>   
                       
-                <p class="text" style="color: black; text-align: center;">
-                      <img src='../assets/new logo.png' class="center" style="width: 30%; height:30%;" />
-                  <br>
+                <p class="textregi" style=" text-align: center;">
+                      <img src='../assets/new logo.png'  style="width: 30%; height:30%;" />
+                       <br>
+                  <br><b>
                   ברוכים הבאים למשחק העדפת תמונות
                   <br/>
                   .המשחק נערך במסגרת פרויקט גמר במחלקה להנדסת מערכות תוכנה ומידע
+                  </b>
                   <br/><br/>
                   <u>:המשחק מחולק לשני שלבים</u>
+                </p>
+                <p class="textregi" style=" text-align: right;">
                   <br/>
                   בשלב הראשון, עליכם לצפות ב-60 תמונות לפחות ולתת להן ציון לפי סולם של 10 דרגות שמבטא עד
                   <br/>
@@ -244,15 +186,14 @@
                   .ולבחור בכל אחד מהמסכים את התמונות להן נתתן את הציונים הגבוהים ביותר בשלב הקודם
                   <br/>
                   .על כל בחירה נכונה תזכו בנקודה
-                  <!-- <br/><br/>
-                  המטרה היא לצבור כמה שיותר נקודות במהלך תקופת המשחק. אנא התאמצו ככל האפשר כדי שתהיה לנו
                   <br/>
-                  תחרות מעניינת! אתם מוזמנים לשחק במשחק פעם אחת בכל יום, במהלך כל התקופה בה יהיה המשחק
-                  <br/>
-                  .זמין. לא ניתן לשחק במשחק יותר מאשר פעם אחת ביום
-                  <br/> -->
-                  כדי לאפשר משחק בהתאם לכללים, וכדי לאפשר קשר אתכם במהלך תקופת המשחק, נבקשכם לציין כתובת
-                  של דואר אלקטרוני באמצעותה נוכל לשלוח לכם הודעות (למשל, תזכורת במידה ועברו מספר ימים מאז ששיחקתם לאחרונה). מעבר לכך, אין צורך באמצעי הזדהות כלשהו. אתם יכולים גם לבחור בעצמכם כינוי
+
+                  כדי לאפשר משחק בהתאם לכללים, וכדי לאפשר קשר אתכם במהלך תקופת
+                   המשחק, נבקשכם לציין כתובת 
+                   <br>
+                של דואר אלקטרוני באמצעותה נוכל לשלוח לכם הודעות (למשל, תזכורת במידה ועברו מספר ימים מאז ששיחקתם לאחרונה)
+                .   מעבר לכך, אין צורך באמצעי הזדהות כלשהו. אתם יכולים גם לבחור בעצמכם כינוי
+                   <br/>
                   .שיאפשר לכם לזהות את עצמכם בטבלת השחקנים המצטיינים
                   <br/><br/>
                   <u>:אנו מתחייבים</u>
@@ -266,16 +207,14 @@
                     </li>
                   </ul>
                   <br/>
-                   אני מסכים/ה להשתתף במשחק העדפת התמונות בהתאם לתנאים שפורטו לעיל
+                   .בלחיצה על כפתור "אישור" אני מסכים/ה להשתתף במשחק העדפת התמונות בהתאם לתנאים שפורטו לעיל
                     
-                  <!-- <b-button class="buttonb" size="lg" @click="close()">
-                    מאשר/ת הסכמה 
-                  </b-button> -->
+
    <br/>   
    <br/>
 <b-row>
   <b-col ></b-col>
-  <b-col lg="6" class="pb-2"><b-button block @click="close()">מאשר/ת הסכמה</b-button></b-col>
+  <b-col lg="6" class="pb-2"><b-button block @click="close()">אישור</b-button></b-col>
   <b-col></b-col>
 </b-row>
                 </p>
@@ -330,7 +269,7 @@ export default {
         required,
       },
       lastName: {
-        required,
+        
       },
       confirmEmail: {
         required,
@@ -338,10 +277,8 @@ export default {
         sameAsEmail: sameAs("email"),
       },
       gender: {
-        required,
       },
       age: {
-        required,
       },
     },
   },
@@ -427,10 +364,11 @@ export default {
 }
 
 .containerr {
-  width: 40%;
+  width: 50%;
+  
 }
 
-// @import url(https://fonts.googleapis.com/css?family=Raleway);
+ @import url(https://fonts.googleapis.com/css?family=Raleway);
 body,
 html {
   margin: 0;
@@ -536,16 +474,16 @@ button:focus {
 }
 
 .content {
-  // padding-left: 25px;
-  // padding-right: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
   width: 80%;
-  // display: -webkit-box;
-  // display: -webkit-flex;
-  // display: -ms-flexbox;
-  // display: flex;
-  // -webkit-flex-flow: column;
-  // -ms-flex-flow: column;
-  // flex-flow: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
   z-index: 5;
   margin-top: 0px;
 }
@@ -594,6 +532,7 @@ button:focus {
   //height: 860px;
   // width: 500px;
   background: #fff;
+  text-align: left;
   // background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
   //   top left no-repeat;
 }
@@ -644,21 +583,22 @@ button:focus {
     height: 100%;
   }
   .window1 {
-    background: #f8dbbad3;
-    border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 1000px;
+    max-width: 80%;
     //max-height: 1500px;
     margin-left: auto;
     margin-right: auto;
-    padding: 1.1rem;
     flex-direction: column;
     justify-content: center;
     align-items:center;
-    border: 1.5px solid;
     text-align: right;
     color: black;
-    //window.scrollBy(0,100);
+      margin: auto;
+
+  border: 3px solid rgba(143, 241, 216, 0.87);
+ border-radius: 2px;
+  padding: 1.1rem;
+  background-color: rgba(251, 241, 226, 0.897);
 }
   .popup-modal {
     background-color: rgba(0, 0, 0, 0.5);
@@ -673,5 +613,10 @@ button:focus {
     z-index: 1;
 
 }
-
+.textregi{
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: right;
+    color: black;
+}
 </style>

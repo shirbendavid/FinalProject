@@ -3,22 +3,22 @@
             <div class="popup-modal" v-if="isVisible">
                 <b-container class="window">
                     <slot>
-                         <!-- <button  class="button-x"  tag="b-nav-item" @click="close()">
-                            X
-                        </button> -->
-                        <br>
-                         <h3 class="title">LEADERBOARD</h3>
-                         <br>
-                        <br>
+            <div class="my-2">
+          <b-button class="button"
+                    variant="outline-secondary" 
+                    @click="close"
+                   >
+          X
+          </b-button>
+        </div>
+                        
+                         <h3 class="titleL">LEADERBOARD</h3>
+                         
+                  
 
                         <b-table class="table" fixed="true" 
                         :items="users"></b-table>
                     </slot>
-                    <b-row>
-                    <b-col ></b-col>
-                        <b-col lg="6" class="pb-2"><button block @click="close()">סגור </button></b-col>
-                        <b-col></b-col>
-                    </b-row>
                 </b-container>
                 
             </div>
@@ -137,22 +137,13 @@ async created() {
     align-items:center;
     border: 1.5px solid;
 }
-.title{
+.titleL{
     font-size: xx-large;
+        text-align: center;
+
 }
-// .button-x {
-//   width:7%;
-//   margin-top: 1%;
-//   margin-right: 2%;
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-// }
-.button {
-    border-radius: 5px;
-    font-size: 25px;
-    width: 300px;
-    height: 150px;
-    margin-right: 50%;
+
+.button{
+    margin-left:80%;
 }
 </style>
