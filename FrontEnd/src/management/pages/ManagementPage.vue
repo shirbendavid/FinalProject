@@ -12,7 +12,7 @@
           </b-button>
         </router-link>
         
-            <h1 class="title">Managment Portal</h1>
+            <h1 class="manage-title text-center">Managment Portal</h1>
 
         <br/>
         <ParameterManage/>
