@@ -1,10 +1,10 @@
 <template>
         <transition name="fade">
             <div class="popup-modal" v-if="isVisible">
-                <b-container class="window">
+                <b-container class="window"  style="overflow-y:scroll; height:550px; max-width: 950px;">
                     <slot>
             <div class="my-2">
-          <b-button class="button"
+          <b-button class="btn-close-ad"
                     variant="outline-secondary" 
                     @click="close"
                    >
@@ -173,7 +173,7 @@ async created() {
 
 }
 
-.button{
-    margin-left:80%;
+.btn-close-ad{
+    margin-left:94%;
 }
 </style>

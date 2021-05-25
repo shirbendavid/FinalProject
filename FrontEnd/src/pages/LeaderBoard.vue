@@ -1,7 +1,7 @@
 <template>
         <transition name="fade">
             <div class="popup-modal" v-if="isVisible">
-                <b-container class="leaders-window">
+                <b-container class="leaders-window" style="overflow-y:scroll; height:550px; max-width: 950px;">
                     <slot>
             <div class="my-2">
           <b-button class="btn-close"
@@ -56,11 +56,11 @@ async created() {
 
             console.log(response.data);
             const users = response.data;
-            let userExsits = false;
+            // let userExsits = false;
             for(let user in users){
                 let data;
                 if(users[user].email == this.$root.store.email){
-                    userExsits = true;
+                    // userExsits = true;
                     data= {
                     _rowVariant: 'light', 
                     rank: users[user].place, 
@@ -77,29 +77,29 @@ async created() {
                 }
                 this.users.push(data);     
             }
-            if(!userExsits){
-                let userData;
-            try {
-                userData = await this.axios.get(
-                this.$root.store.base_url +
-                    "/users/getUserScore"
-                );
-                console.log(userData);
-                if (userData.status === 401) this.$router.replace("/login");
-                if (userData.status !== 200) this.$router.replace("/NotFound");
-            } catch (error) {
-                console.log("error.userData.status", error.userData.status);
-                this.$router.replace("/NotFound");
-                return;
-            }
-            console.log(userData.data);
-            this.users.push({
-                    _rowVariant: 'light', 
-                    rank: userData.place, 
-                    name: userData.name,
-                    score: userData.score,
-                    }); 
-            }
+            // if(!userExsits){
+            //     let userData;
+            // try {
+            //     userData = await this.axios.get(
+            //     this.$root.store.base_url +
+            //         "/users/getUserScore"
+            //     );
+            //     console.log(userData);
+            //     if (userData.status === 401) this.$router.replace("/login");
+            //     if (userData.status !== 200) this.$router.replace("/NotFound");
+            // } catch (error) {
+            //     console.log("error.userData.status", error.userData.status);
+            //     this.$router.replace("/NotFound");
+            //     return;
+            // }
+            // console.log(userData.data);
+            // this.users.push({
+            //         _rowVariant: 'light', 
+            //         rank: userData.place, 
+            //         name: userData.name,
+            //         score: userData.score,
+            //         }); 
+            // }
          }
         else{
             this.$router.push("/login");

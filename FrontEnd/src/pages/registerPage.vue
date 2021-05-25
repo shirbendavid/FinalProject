@@ -1,5 +1,5 @@
 <template>
-<div class="container">
+<div class="container_main">
 
   <div class="main-container">
        
@@ -536,12 +536,12 @@ button:focus {
   // background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
   //   top left no-repeat;
 }
-.buttonb {
-    float: center;
-    align-items: center;
-    width: 170px;
-    font-size: 25px;
-}
+// .buttonb {
+//     float: center;
+//     align-items: center;
+//     width: 170px;
+//     font-size: 25px;
+// }
 
 .overlay {
   background: -webkit-linear-gradient(#ccd2df, #6b656e);
@@ -569,7 +569,7 @@ button:focus {
   //   left no-repeat;
   background-size: cover;
 }
-.container {
+.container_main {
   width: 100%;
   height: 100%;
 }

@@ -38,7 +38,7 @@
 
 <b-row>
   <b-col ></b-col>
-  <b-col lg="6" class="pb-2"><b-button class="b-obs" block @click="close()">אישור</b-button></b-col>
+  <b-col lg="7" class="pb-2"><b-button class="obs" block @click="close()">אישור</b-button></b-col>
   <b-col></b-col>
 </b-row>
                 </slot>
@@ -113,7 +113,7 @@
         <router-link  to="/ranking">
         <div>
 
-             <b-button class="buttonb"
+             <b-button class="b-rate"
               size="lg"
             >
              Start Rating
@@ -260,7 +260,7 @@ export default {
 
 }
 
-.buttonb {
+.b-rate{
     float: right;
     margin-right:45%;
     width: 170px;

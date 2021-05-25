@@ -248,9 +248,24 @@ async function saveScoreAdvancedGame(email,params){
 
 //LeaderBorad
 async function getTop10(){
-  usersTop = await DButils.execQuery(`SElECT TOP 10 email, SUM(scoreGame) as score FROM games GROUP BY email ORDER BY score DESC`);
+  usersTop = await DButils.execQuery(`SElECT TOP 10 email, SUM(scoreGame) as score FROM games WHERE scoreGame IS NOT NULL GROUP BY email ORDER BY score DESC`);
+  let i=1;
   for(user in usersTop){
     details = await DButils.execQuery(`SElECT firstname, lastname FROM users where email='${usersTop[user].email}'`);
+    usersTop[user].place=i;
+    i++;
+    usersTop[user].name= details[0].firstname + " " + details[0].lastname;
+  }
+  return usersTop;
+}
+
+async function getTop10Advance(){
+  usersTop = await DButils.execQuery(`SElECT TOP 10 email, SUM(scoreGame) as score FROM advancedGames WHERE scoreGame IS NOT NULL GROUP BY email ORDER BY score DESC`);
+  let i=1;
+  for(user in usersTop){
+    details = await DButils.execQuery(`SElECT firstname, lastname FROM users where email='${usersTop[user].email}'`);
+    usersTop[user].place=i;
+    i++;
     usersTop[user].name= details[0].firstname + " " + details[0].lastname;
   }
   return usersTop;
@@ -270,3 +285,4 @@ exports.saveScoreScreenAdvanced = saveScoreScreenAdvanced;
 exports.saveScoreAdvancedGame = saveScoreAdvancedGame;
 exports.getScoreScreens = getScoreScreens;
 exports.getTop10 = getTop10;
+exports.getTop10Advance= getTop10Advance;

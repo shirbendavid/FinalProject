@@ -1,14 +1,14 @@
 <template>
 
-  <div class="main-container">
+  <div class="login-container">
     <br />
     <br />
-    <div class="bold-line"></div>
-    <div class="containerr">
-      <div class="window">
-        <div class="overlay"></div>
-        <div class="content">
-          <div class="welcome">Please log in!</div>
+    <div class="bold-line_login"></div>
+    <div class="container2_login">
+      <div class="window_login">
+        <div class="overlay_login"></div>
+        <div class="content_login">
+          <div class="welcome_login">Please log in!</div>
           <br />
           <b-form @submit.prevent="onLogin">
             <b-form-group
@@ -288,7 +288,7 @@ button:focus {
   margin-top: 25px;
 }
 
-.content {
+.content_login {
   padding-left: 25px;
   padding-right: 25px;
   display: -webkit-box;
@@ -301,7 +301,7 @@ button:focus {
   z-index: 5;
 }
 
-.welcome {
+.welcome_login {
   font-weight: 200;
   margin-top: 75px;
   text-align: center;
@@ -314,13 +314,13 @@ button:focus {
 
 
 
-.menu {
+.menu_login {
   background: rgba(0, 0, 0, 0.2);
   width: 100%;
   height: 50px;
 }
 
-.window {
+.window_login {
   z-index: 100;
   color: rgb(51, 51, 51);
   font-family: Raleway;
@@ -342,7 +342,7 @@ button:focus {
   //   top left no-repeat;
 }
 
-.overlay {
+.overlay_login {
   background: -webkit-linear-gradient(#ccd2df, #6b656e);
   background: linear-gradient(#e9c9b5c5, #f3c48ec7);
   opacity: 0.95;
@@ -354,7 +354,7 @@ button:focus {
   border-radius: 15px;
 }
 
-.bold-line {
+.bold-line_login {
   background: #e7e7e7;
   position: absolute;
   top: 0px;
@@ -369,7 +369,7 @@ button:focus {
   background-size: cover;
 }
 
-.main-container {
+.login-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -377,11 +377,11 @@ button:focus {
 }
 
 @media (max-width: 600px) {
-  .window {
+  .window_login {
     width: 100%;
     height: 100%;
   }
-  .overlay {
+  .overlay_login {
     width: 100%;
     height: 100%;
   }
