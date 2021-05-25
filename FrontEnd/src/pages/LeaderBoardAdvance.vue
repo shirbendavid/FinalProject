@@ -1,10 +1,10 @@
 <template>
         <transition name="fade">
             <div class="popup-modal" v-if="isVisible">
-                <b-container class="leaders-window">
+                <b-container class="window">
                     <slot>
             <div class="my-2">
-          <b-button class="btn-close"
+          <b-button class="button"
                     variant="outline-secondary" 
                     @click="close"
                    >
@@ -14,6 +14,8 @@
                         
                          <h3 class="titleL">LEADERBOARD</h3>
                          
+                  
+
                         <b-table class="table" fixed="true" 
                         :items="users"></b-table>
                     </slot>
@@ -43,7 +45,7 @@ async created() {
             try {
                 response = await this.axios.get(
                 this.$root.store.base_url +
-                    "/users/getTop10"
+                    "/users/getTop10Advance"
                 );
                 console.log(response);
                 if (response.status === 401) this.$router.replace("/login");
@@ -82,7 +84,7 @@ async created() {
             try {
                 userData = await this.axios.get(
                 this.$root.store.base_url +
-                    "/users/getUserScore"
+                    "/users/getUserScoreAdvance"
                 );
                 console.log(userData);
                 if (userData.status === 401) this.$router.replace("/login");
@@ -118,22 +120,18 @@ async created() {
 };
 </script>
 <style lang="scss">
-
-// .container {
-//     max-width:50%;
-// }
-
+.container {
+    max-width:50%;
+}
 .table{
     text-align: left;
-    font-size: large;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
+   font-size: large;
 
+}
 .fade-enter-active,
 .fade-leave-active {
     transition: opacity 0.3s;
 }
-
 .fade-enter,
 .fade-leave-to {
     opacity: 0;
@@ -151,9 +149,11 @@ async created() {
     display: flex;
     align-items: center;
     z-index: 1;
+
 }
 
-.leaders-window {
+
+.window {
     background: #f8dbbad3;
     border-radius: 5px;
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
@@ -161,22 +161,19 @@ async created() {
     max-height: 90%;
     margin-left: auto;
     margin-right: auto;
-    // padding: 1.1rem;
+    padding: 1.1rem;
     flex-direction: column;
     justify-content: center;
     align-items:center;
     border: 1.5px solid;
 }
-
-.titleL {
+.titleL{
     font-size: xx-large;
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-bottom: 20px;
+        text-align: center;
+
 }
 
-.btn-close {
-    margin-left: 94%;
+.button{
+    margin-left:80%;
 }
-
 </style>

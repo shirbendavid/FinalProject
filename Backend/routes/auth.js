@@ -8,9 +8,10 @@ router.post("/Registration", async (req, res, next) => {
     // parameters exists
     // valid parameters
     // username exists
+    let email = req.body.email.toLowerCase();
     const users = await DButils.execQuery("SELECT email FROM users");
    if (users.length > 0) {
-      if (users.find((x) => x.email === req.body.email))
+      if (users.find((x) => x.email === email))
         // throw { status: 409, message: "Email already exists!" };
         res.status(409).send("Email already exists!");
     }
@@ -21,7 +22,7 @@ router.post("/Registration", async (req, res, next) => {
     // );
 
     DButils.execQuery(
-      `INSERT INTO users VALUES ('${req.body.email}', '${req.body.firstname}', '${req.body.lastname}', 
+      `INSERT INTO users VALUES ('${email}', '${req.body.firstname}', '${req.body.lastname}', 
       '${req.body.age}', '${req.body.gender}', default, default, default, default, default)`
     );
     res.status(201).send({ message: "user created", success: true });
@@ -35,13 +36,14 @@ router.post("/Login", async (req, res, next) => {
   try {
     // check that username exists
     const users = await DButils.execQuery("SELECT email FROM users");
-    if (!users.find((x) => x.email === req.body.email))
+    let email = req.body.email.toLowerCase();
+    if (!users.find((x) => x.email === email))
       // throw { status: 401, message: "Email does not exist!" };
       res.status(401).send("Email does not exist!");
     // check that the password is correct
     const user = (
       await DButils.execQuery(
-        `SELECT * FROM users WHERE email = '${req.body.email}'`
+        `SELECT * FROM users WHERE email = '${email}'`
       )
     )[0];
     if(user.status == 'active')

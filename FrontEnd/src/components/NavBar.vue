@@ -51,27 +51,28 @@
         </router-link>
         </div>
          <b-navbar-nav  v-if="$root.store.numberOfImagesRating>= $root.store.minImagesRating">
-        <router-link class="nav" tag="b-nav-item" :to="{ name: 'leaderboard' }">
-          <b-icon icon="trophy" aria-hidden="true"></b-icon>
-          Leaderboard
-        </router-link>
-        <router-link class="nav" tag="b-nav-item" :to="{ name: 'game' }">
-          <b-icon icon="controller" aria-hidden="true"></b-icon>
-          Game
-        </router-link>
-        <b-navbar-nav v-if="$root.store.playAdvancedGame">
-        <router-link tag="b-nav-item" :to="{ name: 'advanced' }">
-          <b-icon icon="joystick" aria-hidden="true"></b-icon>
-         AdvancedGame
-        </router-link>
-        </b-navbar-nav>
-       </b-navbar-nav>
 
-        <!-- <b-nav-item-dropdown right>
-          <template v-slot:button-content>
-            <em>{{ $root.store.email }}</em>
-          </template>
-        </b-nav-item-dropdown> -->
+        <b-nav-item-dropdown text="Game" right>
+          <router-link class="nav" tag="b-nav-item" :to="{ name: 'game' }">
+            <b-icon icon="controller" aria-hidden="true"></b-icon>
+            Play
+          </router-link>
+          <router-link class="nav" tag="b-nav-item" :to="{ name: 'leaderboard' }">
+            <b-icon icon="trophy" aria-hidden="true"></b-icon>
+            Leaderboard
+          </router-link>
+        </b-nav-item-dropdown>
+        <b-nav-item-dropdown v-if="$root.store.playAdvancedGame" text="AdvancedGame" right>
+          <router-link tag="b-nav-item" :to="{ name: 'advanced' }">
+            <b-icon icon="joystick" aria-hidden="true"></b-icon>
+            Play
+          </router-link>
+          <router-link class="nav" tag="b-nav-item" :to="{ name: 'leaderboardAdvance' }">
+            <b-icon icon="trophy" aria-hidden="true"></b-icon>
+            Leaderboard
+          </router-link>
+        </b-nav-item-dropdown>
+       </b-navbar-nav>
         <button class="btn" tag="b-nav-item" @click="Logout()">
           <b-icon icon="power" aria-hidden="true"></b-icon>
           Logout
