@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="admin-login-container">
     <br />
               <router-link to="/" >
           <b-button variant="outline-secondary" class="btn-x">
@@ -7,8 +7,8 @@
           </b-button>
         </router-link>
         <br>
-      <div class="window">
-        <div class="overlay"></div>
+      <div class="admin-login-window">
+        <div class="admin-login-overlay"></div>
         <div class="content">     
                <div class="welcome">Welcome!</div>
           <div class="subtitle">Log into the management portal.</div>
@@ -145,8 +145,10 @@ export default {
 };
 </script>
 <style lang="scss">
-.container {
+
+.admin-login-container {
   max-width: 500px;
+  margin-left: 30%;
 }
 
 
@@ -293,7 +295,7 @@ button:focus {
   height: 50px;
 }
 
-.window {
+.admin-login-window {
   z-index: 100;
   color: rgb(51, 51, 51);
   font-family: Raleway;
@@ -312,7 +314,7 @@ button:focus {
 
 }
 
-.overlay {
+.admin-login-overlay {
   background: -webkit-linear-gradient(#ccd2df, #6b656e);
   background: linear-gradient(#eba980c5, #f3c48ec7);
   opacity: 50%;
@@ -345,11 +347,13 @@ button:focus {
 .btn-x {
   width:7%;
   margin-top: 1%;
-  margin-right: 2%;
+  margin-right: 90%;
   position: absolute;
   top: 0;
   right: 0;
+  font-family: "Merienda", Helvetica, Arial;
 }
+
 @media (max-width: 600px) {
   .window {
     width: 100%;

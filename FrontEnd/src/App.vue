@@ -34,7 +34,7 @@ export default {
   name: "App",
   computed: {
     isNotManageOrGames() {
-      return this.$route.name === 'management' || this.$route.name==='game' || this.$route.name==='advanced'
+      return this.$route.name === 'management' || this.$route.name==='game' || this.$route.name==='advanced' || this.$route.name==='loginManagement'
       
   }
 }

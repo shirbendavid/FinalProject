@@ -1,8 +1,8 @@
 <template>
-  <div class="container"  > 
+  <div class="rank-container"  > 
     <transition name="fade">
-        <div class="popup-modal" v-if="isVisible">
-            <div class="window" style="max-width: 700px; max-height: 300px;">
+        <div class="rank-popup-modal" v-if="isVisible">
+            <div class="rank-window" style="max-width: 700px; max-height: 300px;">
                 <slot>   
 
                 <h1 class="titlerat" style="text-align: center; direction: RTL; font-size: 30px;">הגעתם לשלב הדירוג!</h1>
@@ -17,7 +17,7 @@
                 </p>
 <b-row>
   <b-col ></b-col>
-  <b-col lg="6" class="pb-2"><b-button class="b-obs" block @click="closeStart()">התחל</b-button></b-col>
+  <b-col lg="4" class="pb-2"><b-button class="b-obs" block @click="closeStart()">התחל</b-button></b-col>
   <b-col></b-col>
 </b-row>
                 </slot>
@@ -100,7 +100,7 @@
 
         </div>
       </div>
-    <div class="container">
+    <div class="rank-container">
 
       <transition name="fade">
           <div class="popup-modal" v-if="enoughImages">
@@ -253,7 +253,7 @@ export default {
 <style lang="scss" >
 /* @import url(https://fonts.googleapis.com/css?family=Special+Elite); */
 
-.container {
+.rank-container {
   // background-color: rgba(255, 255, 255, 0.89);
   /* border: 5px outset#f3c48ec7;
   border-radius: 25px; */
@@ -381,7 +381,7 @@ b-col{
 }
 
 
-.popup-modal {
+.rank-popup-modal {
     background-color: rgba(0, 0, 0, 0.5);
     position: fixed;
     top: 0;
@@ -395,7 +395,7 @@ b-col{
 
 }
 
-.window {
+.rank-window {
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
     max-width: 80%;
     //max-height: 1500px;
@@ -435,6 +435,7 @@ b-col{
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: black;
+    margin-bottom: 20px;
 }
 
 .textrat {
@@ -454,4 +455,10 @@ b-col{
   top: 0;
   right: 0;
 }
+
+.pb-2 {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      width: 100px !important;
+}
+
 </style>

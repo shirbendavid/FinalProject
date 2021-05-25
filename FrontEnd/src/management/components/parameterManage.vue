@@ -246,7 +246,7 @@ export default {
   font-size: 24px;
   background-color: #fc995788;
   font-family: "Merienda", Helvetica, Arial;
-  margin-bottom: 25px;
+  margin-left: 13%;
 }
 
 .update-btn:hover {

@@ -128,9 +128,12 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
+
 .management_container {
   width: 100%;
   height: auto;
+  margin-left: 62px;
+  margin-right: 62px;
 }
 .popup-modal {
   background-color: rgba(0, 0, 0, 0.5);
