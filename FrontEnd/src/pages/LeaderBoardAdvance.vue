@@ -45,7 +45,7 @@ async created() {
             try {
                 response = await this.axios.get(
                 this.$root.store.base_url +
-                    "/users/getTop10"
+                    "/users/getTop10Advance"
                 );
                 console.log(response);
                 if (response.status === 401) this.$router.replace("/login");
@@ -84,7 +84,7 @@ async created() {
             try {
                 userData = await this.axios.get(
                 this.$root.store.base_url +
-                    "/users/getUserScore"
+                    "/users/getUserScoreAdvance"
                 );
                 console.log(userData);
                 if (userData.status === 401) this.$router.replace("/login");

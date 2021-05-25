@@ -68,10 +68,15 @@ const routes = [
     name: 'maintenance',
     component: () => import('./pages/maintenancePage'),
   },
-    {
+  {
     path: '/leaderboard',
     name: 'leaderboard',
     component: () => import('./pages/LeaderBoard'),
+  },
+  {
+    path: '/leaderboardAdvance',
+    name: 'leaderboardAdvance',
+    component: () => import('./pages/LeaderBoardAdvance'),
   },
   {
     path: '/afterLogin',
