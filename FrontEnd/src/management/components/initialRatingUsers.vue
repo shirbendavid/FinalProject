@@ -28,7 +28,6 @@ export default {
                 this.$root.store.base_url +
                     "/admins/getImagesId"
                 );
-                console.log(response);
                 if (response.status === 401) this.$router.replace("/loginManagement");
                 if (response.status !== 200) this.$router.replace("/NotFound");
             } catch (error) {
@@ -46,7 +45,6 @@ export default {
                         field: response.data[i].imageID,
                     })
             }
-            console.log(this.columns);
             
             let imagesRatedByUsers;
             try {
@@ -54,7 +52,6 @@ export default {
                 this.$root.store.base_url +
                     "/admins/getimagesRatedByUsers"
                 );
-                console.log(imagesRatedByUsers);
                 if (imagesRatedByUsers.status !== 200) this.$router.replace("/NotFound");
             } catch (error) {
                 console.log("error.imagesRatedByUsers.status", error.response.status);

@@ -168,7 +168,6 @@ export default {
                 this.$root.store.base_url +
                     "/images/getImages/amount/"+16
                 );
-                console.log(response);
                 if (response.status !== 200) this.$router.replace("/NotFound");
             } catch (error) {
                 console.log("error.response.status", error.response.status);

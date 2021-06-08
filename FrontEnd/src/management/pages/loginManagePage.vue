@@ -116,9 +116,7 @@ export default {
             // withCredentials: true,
           }
         );
-        console.log(response);
         this.$root.loggedIn = true;
-        console.log(this.$root.store.login);
         this.$root.store.loginAdmin(this.form.email);
         this.$router.push("/management");
 

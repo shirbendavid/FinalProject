@@ -45,7 +45,6 @@ async created() {
                 this.$root.store.base_url +
                     "/users/getTop10"
                 );
-                console.log(response);
                 if (response.status === 401) this.$router.replace("/login");
                 if (response.status !== 200) this.$router.replace("/NotFound");
             } catch (error) {
@@ -54,7 +53,6 @@ async created() {
                 return;
             }
 
-            console.log(response.data);
             const users = response.data;
             // let userExsits = false;
             for(let user in users){

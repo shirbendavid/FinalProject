@@ -25,11 +25,11 @@
                 </div>
             </transition> 
 
-      <div class="flex-container" v-if="rate">
-        <div class="flex-item">
+      <div class="flex-container-rate" v-if="rate">
+        <div class="flex-item-rate">
           <b-row>
-            <b-col class="forewordimage">
-              <b-img v-bind="mainProps" rounded alt="Rounded image" :src="image" class="center" />
+            <b-col class="forewordimage-rate">
+              <b-img v-bind="mainProps"  :src="image" class="center-rate" />
             </b-col>
           </b-row>
     
@@ -165,13 +165,11 @@ export default {
             "/rate/" +
             this.value
         );
-        console.log(response);
         if (response.status !== 200) this.$router.replace("/NotFound");
         else {
           this.value = "";
 
         const numberOfImagesRating = this.$root.store.numberOfImagesRating+1;
-        console.log(numberOfImagesRating);
           this.$root.store.addNumberOfImagesRating(numberOfImagesRating);
           if(this.$root.store.numberOfImagesRating === this.$root.store.minImagesRating)
             this.enoughImages=true;
@@ -192,10 +190,8 @@ export default {
             response = await this.axios.get(
               this.$root.store.base_url + "/users/getImageToRate"
             );
-            console.log(response);
             if (response.status !== 200) this.$router.replace("/NotFound");
           } catch (error) {
-            console.log("error.response.status", error.response.status);
             this.$router.replace("/NotFound");
             return;
           }
@@ -232,11 +228,9 @@ export default {
       response = await this.axios.get(
         this.$root.store.base_url + "/users/getImageToRate"
       );
-      console.log(response);
       if (response.status === 201) this.$router.replace("/game");
       else if (response.status !== 200) this.$router.replace("/NotFound");
     } catch (error) {
-      console.log("error.response.status", error.response.status);
       this.$router.replace("/NotFound");
       return;
     }
@@ -317,10 +311,12 @@ label{
     // border: 1px solid #595b5f;
 }
 
-.center {
+.center-rate {
   border: 2px;
   width: 218%;
   height: 100%;
+    border-radius: 5px;
+
 }
 
 .favorite_icon:hover {
@@ -340,7 +336,7 @@ b-col{
   column-width: 2%;
 }
 
-.forewordimage {
+.forewordimage-rate {
   column-count: 2;
   margin: 0 auto;
   -moz-column-count: 2;
@@ -352,7 +348,7 @@ b-col{
   color: #7a5699e8;
 }
 
-.flex-container {
+.flex-container-rate {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -361,7 +357,7 @@ b-col{
   justify-content: space-around;
 }
 
-.flex-item {
+.flex-item-rate {
   padding: 1px;
   font-weight: bold;
   font-size: 20px;

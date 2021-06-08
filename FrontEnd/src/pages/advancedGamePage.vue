@@ -73,7 +73,6 @@ export default {
         this.$alert("You need to select " + this.maxSelectable + " images" ,
       "Error", "error");
       else{
-        console.log(this.selectedItems);
         let scoreScreen = 0;
         let imagesSelect = '';
         for(let index in this.selectedItems){
@@ -81,9 +80,7 @@ export default {
             scoreScreen++;
           imagesSelect = imagesSelect + this.selectedItems[index].key + ','; 
         }
-        console.log('images selection:' +imagesSelect);
         this.score = this.score + scoreScreen;
-        console.log(this.score);
         let saveScore;
         
         try {
@@ -93,7 +90,6 @@ export default {
               "/numOfScreen/"+this.screenNum+"/imagesSelect/"+imagesSelect+
               "/score/" + scoreScreen
           );
-          console.log(saveScore);
           if (saveScore.status !== 200) this.$router.replace("/NotFound");
           } catch (error) {
               console.log("error.saveScore.status", error.saveScore.status);
@@ -108,7 +104,6 @@ export default {
             this.$root.store.base_url +
                 "/users/saveScoreAdvancedGame/gameID/"+this.gameID+"/score/"+this.score
             );
-            console.log(saveScoreGame);
             if (saveScoreGame.status !== 200) this.$router.replace("/NotFound");
             } catch (error) {
                 console.log("error.saveScoreGame.status", error.saveScoreGame.status);
@@ -172,7 +167,6 @@ export default {
           this.$root.store.base_url +
               "/users/getImagesForAdvancedGame"
           );
-          console.log(response);
           if(response.status === 201) this.$router.replace("/");
           else if (response.status !== 200) this.$router.replace("/NotFound");
       } catch (error) {
@@ -181,7 +175,6 @@ export default {
           return;
       }
 
-      console.log(response.data);
       this.allImages = response.data;
       this.gameID = this.allImages[this.screens];
       for(let num in this.allImages[this.screenNum-1].imagesScreen){
@@ -192,7 +185,6 @@ export default {
         this.items.push(data);
       }
       this.index = this.screenNum;
-      console.log(this.items);
     }
     else{
       this.$router.push("/login");

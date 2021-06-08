@@ -47,7 +47,6 @@ async created() {
                 this.$root.store.base_url +
                     "/users/getTop10Advance"
                 );
-                console.log(response);
                 if (response.status === 401) this.$router.replace("/login");
                 if (response.status !== 200) this.$router.replace("/NotFound");
             } catch (error) {
@@ -56,7 +55,6 @@ async created() {
                 return;
             }
 
-            console.log(response.data);
             const users = response.data;
             let userExsits = false;
             for(let user in users){
@@ -79,29 +77,29 @@ async created() {
                 }
                 this.users.push(data);     
             }
-            if(!userExsits){
-                let userData;
-            try {
-                userData = await this.axios.get(
-                this.$root.store.base_url +
-                    "/users/getUserScoreAdvance"
-                );
-                console.log(userData);
-                if (userData.status === 401) this.$router.replace("/login");
-                if (userData.status !== 200) this.$router.replace("/NotFound");
-            } catch (error) {
-                console.log("error.userData.status", error.userData.status);
-                this.$router.replace("/NotFound");
-                return;
-            }
-            console.log(userData.data);
-            this.users.push({
-                    _rowVariant: 'light', 
-                    rank: userData.place, 
-                    name: userData.name,
-                    score: userData.score,
-                    }); 
-            }
+            // if(!userExsits){
+            //     let userData;
+            // try {
+            //     userData = await this.axios.get(
+            //     this.$root.store.base_url +
+            //         "/users/getUserScoreAdvance"
+            //     );
+            //     console.log(userData);
+            //     if (userData.status === 401) this.$router.replace("/login");
+            //     if (userData.status !== 200) this.$router.replace("/NotFound");
+            // } catch (error) {
+            //     console.log("error.userData.status", error.userData.status);
+            //     this.$router.replace("/NotFound");
+            //     return;
+            // }
+            // console.log(userData.data);
+            // this.users.push({
+            //         _rowVariant: 'light', 
+            //         rank: userData.place, 
+            //         name: userData.name,
+            //         score: userData.score,
+            //         }); 
+            // }
          }
         else{
             this.$router.push("/login");

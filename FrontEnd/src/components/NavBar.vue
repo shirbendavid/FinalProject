@@ -10,10 +10,10 @@
           <b-icon icon="info-circle" aria-hidden="true"></b-icon>
             About
         </router-link>  
-        <router-link v-if="!$root.store.email" class="nav" tag="b-nav-item" :to="{ name: 'loginManagement' }">
+        <!--<router-link v-if="!$root.store.email" class="nav" tag="b-nav-item" :to="{ name: 'loginManagement' }">
           <b-icon icon="gear" aria-hidden="true"></b-icon> 
           Management portal
-        </router-link>
+        </router-link>-->
         <b-nav-text v-if="$root.store.email && this.$cookies.get('session')">
            <b-icon icon="person" scale="1.4" aria-hidden="true"></b-icon>
            Welcome <b>{{ $root.store.firstname }}</b>

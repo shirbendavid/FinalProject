@@ -85,7 +85,6 @@ export default {
         this.$alert("You need to select " + this.maxSelectable + " images" ,
       "Error", "error");
       else{
-        console.log(this.selectedItems);
         let scoreScreen = 0;
         let imagesSelect = '';
         for(let index in this.selectedItems){
@@ -93,9 +92,7 @@ export default {
             scoreScreen++;
           imagesSelect = imagesSelect + this.selectedItems[index].key + ','; 
         }
-        console.log('images selection:' +imagesSelect);
         this.score = this.score + scoreScreen;
-        console.log(this.score);
         let saveScore;
         
         try {
@@ -105,7 +102,6 @@ export default {
               "/numOfScreen/"+this.screenNum+"/imagesSelect/"+imagesSelect+
               "/score/" + scoreScreen
           );
-          console.log(saveScore);
           if (saveScore.status !== 200) this.$router.replace("/NotFound");
           } catch (error) {
               console.log("error.saveScore.status", error.saveScore.status);
@@ -120,7 +116,6 @@ export default {
           this.$root.store.base_url +
               "/users/saveScoreGame/gameID/"+this.gameID+"/score/"+this.score
           );
-          console.log(saveScoreGame);
           if (saveScoreGame.status !== 200) this.$router.replace("/NotFound");
           } catch (error) {
               console.log("error.saveScoreGame.status", error.saveScoreGame.status);
@@ -188,12 +183,9 @@ export default {
                 this.$root.store.base_url +
                     "/users/checkIfPlayToday"
                 );
-                console.log(playToday);
                 if(playToday.status === 201){
                   //not finish to play today
                   if(playToday.data[0].scoreGame == null){
-                    // const numberOfImages=this.$root.store.numberOfImagesInGame;
-                    // const limit=this.$root.store.limitSelectInGame;
                     this.screens = this.$root.store.numberOfScreensInGame;
                     let response;
                     try {
@@ -201,14 +193,12 @@ export default {
                       this.$root.store.base_url +
                           "/users/getScreensGame/gameId/"+playToday.data[0].game_id
                       );
-                      console.log(response);
                       if (response.status !== 200) this.$router.replace("/NotFound");
                   } catch (error) {
                       console.log("error.response.status", error.response.status);
                       this.$router.replace("/NotFound");
                       return;
                   }
-                  console.log(response.data);
                   this.allImages = response.data;
                   this.gameID = playToday.data[0].game_id;
                   this.screenNum = this.allImages[0].screen;
@@ -220,7 +210,6 @@ export default {
                       this.$root.store.base_url +
                           "/users/getScoreScreens/gameId/"+this.gameID
                       );
-                      console.log(scoreScreens);
                       if (scoreScreens.status !== 200) this.$router.replace("/NotFound");
                   } catch (error) {
                       console.log("error.scoreScreens.status", error.scoreScreens.status);
@@ -228,7 +217,6 @@ export default {
                       return;
                   }
                   this.score = scoreScreens.data[0].score;
-                  console.log(this.score);
                   }
                   for(let num in this.allImages[0].imagesScreen){
                     const data = {key: this.allImages[0].imagesScreen[num].image_id,
@@ -263,7 +251,6 @@ export default {
                           "/users/getImagesForGame/amount/"+numberOfImages+"/numOfScreens/"+
                           this.screens+"/numOfSelected/"+limit
                       );
-                      console.log(response);
                       if (response.status !== 200) this.$router.replace("/NotFound");
                   } catch (error) {
                       console.log("error.response.status", error.response.status);
@@ -271,7 +258,6 @@ export default {
                       return;
                   }
 
-                  console.log(response.data);
                   this.allImages = response.data;
                   this.gameID = this.allImages[this.screens];
                   for(let num in this.allImages[this.screenNum-1].imagesScreen){
@@ -282,7 +268,6 @@ export default {
                     this.items.push(data);
                   }
                   this.index = this.screenNum;
-                  console.log(this.items);
                 }
             } catch (error) {
                 console.log("error.playToday.status", error.playToday.status);

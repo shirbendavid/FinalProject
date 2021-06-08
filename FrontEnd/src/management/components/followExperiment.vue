@@ -69,7 +69,6 @@ export default {
                 this.$root.store.base_url +
                     "/admins/getUsers"
                 );
-                console.log(response);
                 if (response.status === 401) this.$router.replace("/loginManagement");
                 if (response.status !== 200) this.$router.replace("/NotFound");
             } catch (error) {
@@ -78,7 +77,6 @@ export default {
                 return;
             }
 
-            console.log(response.data);
             this.users = response.data;
          }
         else{
@@ -93,7 +91,6 @@ export default {
                 this.$root.store.base_url +
                     "/admins/changeStatus/" + email
                 );
-                console.log(response);
                 if (response.status !== 200) this.$router.replace("/NotFound");
             } catch (error) {
                 console.log("error.response.status", error.response.status);
@@ -109,7 +106,6 @@ export default {
                 this.$root.store.base_url +
                     "/admins/allUsersInDeactiveStatus"
                 );
-                console.log(response);
                 if (response.status !== 200) this.$router.replace("/NotFound");
             } catch (error) {
                 console.log("error.response.status", error.response.status);
@@ -125,7 +121,6 @@ export default {
                 this.$root.store.base_url +
                     "/admins/allUsersInActiveStatus"
                 );
-                console.log(response);
                 if (response.status !== 200) this.$router.replace("/NotFound");
             } catch (error) {
                 console.log("error.response.status", error.response.status);
@@ -141,7 +136,6 @@ export default {
                 this.$root.store.base_url +
                     "/admins/changePlayAdvancedGame/" + email
                 );
-                console.log(response);
                 if (response.status !== 200) this.$router.replace("/NotFound");
             } catch (error) {
                 console.log("error.response.status", error.response.status);

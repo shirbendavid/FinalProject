@@ -282,11 +282,6 @@ export default {
       },
     },
   },
-  mounted() {
-    // console.log("mounted");
-    // this.countries.push(...countries)
-    // console.log($v);
-  },
   methods: {
     open() {
             this.isVisible = true
@@ -323,12 +318,10 @@ export default {
       }
     },
     onRegister() {
-      // console.log("register method called");
       this.$v.form.$touch();
       if (this.$v.form.$anyError) {
         return;
       }
-      // console.log("register method go");
       this.Register();
     },
     onReset() {

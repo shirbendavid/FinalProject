@@ -78,7 +78,6 @@ export default {
                 this.$root.store.base_url +
                     "/admins/getimagesRated"
                 );
-                console.log(imagesRated);
                 if (imagesRated.status === 401) this.$router.replace("/loginManagement");
                 if (imagesRated.status !== 200) this.$router.replace("/NotFound");
             } catch (error) {

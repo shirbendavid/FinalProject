@@ -147,7 +147,6 @@ export default {
               this.numOfScreens +
               "]"
           );
-          console.log(response);
           if (response.status !== 200) this.$router.replace("/NotFound");
           else {
             this.$alert(
@@ -185,7 +184,6 @@ export default {
         response = await this.axios.get(
           this.$root.store.base_url + "/admins/getParams"
         );
-        console.log(response);
         if (response.status !== 200) this.$router.replace("/NotFound");
       } catch (error) {
         console.log("error.response.status", error.response.status);
@@ -200,7 +198,6 @@ export default {
       this.imagesInRate = params[0].minimum_images_rating;
       this.delayTime = params[0].delay;
       this.numOfScreens = params[0].screens_in_game;
-      console.log(params);
     } else {
       this.$router.push("/loginManagement");
     }

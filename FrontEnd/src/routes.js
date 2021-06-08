@@ -37,12 +37,6 @@ const routes = [
     name: 'advanced',
     component: () => import('./pages/advancedGamePage'),
   },
-
-  {
-    path: '/upload',
-    name: 'upload',
-    component: () => import('./pages/uploadPage'),
-  },
   {
     path: '/loginManagement',
     name: 'loginManagement',
