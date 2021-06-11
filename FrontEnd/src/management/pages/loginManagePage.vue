@@ -108,7 +108,7 @@ export default {
     },
     async Login() {
       try {
-        const response = await this.axios.post(
+        await this.axios.post(
           this.$root.store.base_url + "/LoginAdmin",
           {
             email: this.form.email,
@@ -209,7 +209,7 @@ button:focus {
   margin-bottom: 25px;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
-  font-family: "Merienda", Helvetica, Arial;
+  font-family: Raleway;
   margin-top: 40px;
   margin-left: 20px;
 }
@@ -270,7 +270,7 @@ button:focus {
   letter-spacing: 0px;
   letter-spacing: 0.05rem;
   color: black;
-  font-family: "Merienda", Helvetica, Arial;
+  font-family: Raleway;
 }
 
 .subtitle {
@@ -281,7 +281,7 @@ button:focus {
   letter-spacing: 0.02rem;
   color: rgb(34, 34, 34);
   font-weight: bold;
-  font-family: "Merienda", Helvetica, Arial;
+  font-family: Raleway;
   font-size: 20px;
   margin-bottom: 20px;
   margin-top: 10px;
@@ -340,7 +340,7 @@ button:focus {
 }
 
 .labels {
-    font-family: "Merienda", Helvetica, Arial;
+    font-family: Raleway;
 }
 .btn-x {
   width:7%;
@@ -349,7 +349,7 @@ button:focus {
   position: absolute;
   top: 0;
   right: 0;
-  font-family: "Merienda", Helvetica, Arial;
+  font-family: Raleway;
 }
 
 @media (max-width: 600px) {

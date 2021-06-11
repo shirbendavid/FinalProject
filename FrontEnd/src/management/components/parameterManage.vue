@@ -214,14 +214,14 @@ export default {
 
 .title {
   text-align: center;
-  font-family: "Merienda", Helvetica, Arial;
+  font-family: Raleway;
   padding-top: 10px;
   font-weight: bold;
 }
 
 .text {
   font-size: 20px;
-  font-family: "Merienda", Helvetica, Arial;
+  font-family: Raleway;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 10px;
@@ -229,7 +229,7 @@ export default {
 
 .numbers {
   font-size: 20px;
-  font-family: "Merienda", Helvetica, Arial;
+  font-family: Raleway;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 10px;
@@ -242,7 +242,7 @@ export default {
   width: 24%;
   font-size: 24px;
   background-color: #fc995788;
-  font-family: "Merienda", Helvetica, Arial;
+  font-family: Raleway;
   margin-left: 13%;
 }
 

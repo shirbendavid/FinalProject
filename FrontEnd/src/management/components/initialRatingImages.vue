@@ -105,7 +105,7 @@ export default {
   font-weight: 400;
   line-height: 1.5em;
   width: 48%;
-  font-family: "Merienda", Helvetica, Arial;
+  font-family: Raleway;
   margin-left: 50px;
   margin-top: 5px;
 }

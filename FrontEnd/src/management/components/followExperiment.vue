@@ -157,15 +157,15 @@ export default {
 
 .th {
   border-top: 2px solid black !important;
-font-family: "Merienda", Helvetica, Arial;
+font-family: Raleway;
 }
 
 .table {
-    font-family: "Merienda", Helvetica, Arial;
+    font-family:Raleway;
 }
 
 .text-center {
-    font-family: "Merienda", Helvetica, Arial;  
+    font-family: Raleway;  
 }
 
 
@@ -176,7 +176,7 @@ font-family: "Merienda", Helvetica, Arial;
   color: rgba(10, 10, 10, 0.719);
   font-size: 19px;
   line-height: 2em;
-  font-family: "Merienda", Helvetica, Arial;
+  font-family: Raleway;
   margin-right: 50px;
   margin-bottom: 30px;
   margin-top: 5px;

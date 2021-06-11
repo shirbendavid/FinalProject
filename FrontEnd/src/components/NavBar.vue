@@ -108,7 +108,7 @@ export default {
   // width: 100%; /* Full width */
   float: inline-start;
   font-size: 18px;
-  font-family: "Merienda", Helvetica, Arial;
+  font-family: Raleway !important;
   height: 60px;
   }
 .nav :hover {

@@ -490,6 +490,7 @@ button:focus {
   letter-spacing: 0px;
   letter-spacing: 0.05rem;
   color: black;
+  font-family: Raleway;
 }
 
 .subtitle {
