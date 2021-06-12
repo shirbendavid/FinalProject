@@ -87,8 +87,6 @@
         Save changes
       </button>
     </b-row>
-
-    <br />
   </b-container>
 </template>
 
@@ -206,6 +204,8 @@ export default {
 </script>
 
 <style>
+ @import url(https://fonts.googleapis.com/css?family=Raleway);
+
 .param_container {
   border: 1.5px solid black;
   border-radius: 5px;
@@ -214,22 +214,23 @@ export default {
 
 .title {
   text-align: center;
-  font-family: Raleway;
+  font-family: Raleway !important;
   padding-top: 10px;
   font-weight: bold;
 }
 
 .text {
   font-size: 20px;
-  font-family: Raleway;
+  font-family: Raleway !important;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 10px;
+  color: black;
 }
 
 .numbers {
   font-size: 20px;
-  font-family: Raleway;
+  font-family: Raleway !important;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 10px;
@@ -241,9 +242,22 @@ export default {
   color: rgba(10, 10, 10, 0.774);
   width: 24%;
   font-size: 24px;
-  background-color: #fc995788;
-  font-family: Raleway;
+  background-color:rgba(255, 255, 255, 0.233);
+  font-family: Raleway !important;
   margin-left: 13%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* background: rgba(255, 255, 255, 0.233);
+  border: 1.4px solid black;
+  border-radius: 5px;
+  color: rgba(10, 10, 10, 0.65);
+  font-size: 19px;
+  line-height: 2em;
+  width: 14%;
+  font-family: Raleway !important;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  margin-top: 5px; */
 }
 
 .update-btn:hover {

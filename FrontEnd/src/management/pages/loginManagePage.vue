@@ -209,7 +209,7 @@ button:focus {
   margin-bottom: 25px;
   -webkit-transition: all 0.2s ease;
   transition: all 0.2s ease;
-  font-family: Raleway;
+  font-family: Raleway !important;
   margin-top: 40px;
   margin-left: 20px;
 }
@@ -227,7 +227,7 @@ button:focus {
   margin-bottom: 10px;
   line-height: 2.4em;
   color: #fff;
-  font-family: Raleway;
+  font-family: Raleway !important;
   font-weight: 300;
   letter-spacing: 0px;
   letter-spacing: 0.02rem;
@@ -270,7 +270,7 @@ button:focus {
   letter-spacing: 0px;
   letter-spacing: 0.05rem;
   color: black;
-  font-family: Raleway;
+  font-family: Raleway !important;
 }
 
 .subtitle {
@@ -281,7 +281,7 @@ button:focus {
   letter-spacing: 0.02rem;
   color: rgb(34, 34, 34);
   font-weight: bold;
-  font-family: Raleway;
+  font-family: Raleway !important;
   font-size: 20px;
   margin-bottom: 20px;
   margin-top: 10px;
@@ -296,7 +296,7 @@ button:focus {
 .admin-login-window {
   z-index: 100;
   color: rgb(51, 51, 51);
-  font-family: Raleway;
+  font-family: Raleway !important;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -340,7 +340,7 @@ button:focus {
 }
 
 .labels {
-    font-family: Raleway;
+    font-family: Raleway !important;
 }
 .btn-x {
   width:7%;
@@ -349,7 +349,7 @@ button:focus {
   position: absolute;
   top: 0;
   right: 0;
-  font-family: Raleway;
+  font-family: Raleway !important;
 }
 
 @media (max-width: 600px) {

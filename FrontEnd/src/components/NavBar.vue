@@ -100,6 +100,8 @@ export default {
 </script>
 
 <style lang="scss">
+ @import url(https://fonts.googleapis.com/css?family=Raleway);
+
 // @import url("https://fonts.googleapis.com/css?family=Special+Elite");
 .navbar {
   background: -webkit-linear-gradient(#ccd2df, #6b656e);

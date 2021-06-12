@@ -426,7 +426,7 @@ button:focus {
   align-self: flex-end;
   font-size: 19px;
   font-size: 1.2rem;
-  font-family: Raleway;
+  font-family: Raleway !important;
   font-weight: 300;
   line-height: 2.5em;
   margin-top: auto;
@@ -447,7 +447,7 @@ button:focus {
   margin-bottom: 10px;
   line-height: 2.4em;
   color: #fff;
-  font-family: Raleway;
+  font-family: Raleway !important;
   font-weight: 300;
   letter-spacing: 0px;
   letter-spacing: 0.02rem;
@@ -490,7 +490,7 @@ button:focus {
   letter-spacing: 0px;
   letter-spacing: 0.05rem;
   color: black;
-  font-family: Raleway;
+  font-family: Raleway !important;
 }
 
 .subtitle {
@@ -512,7 +512,7 @@ button:focus {
 .window {
   z-index: 100;
   color: rgb(51, 51, 51);
-  font-family: Raleway;
+  font-family: Raleway !important;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;

@@ -123,11 +123,6 @@ export default {
           this.$router.replace("/NotFound");
           return;
         }
-        this.alertIsDisplayed = true;
-        this.$alert(
-          "Your score in this round: " + scoreScreen + "/" + this.maxSelectable
-        ).then(() => {});
-          // this.alertIsDisplayed = false;
 
         if (this.screenNum == this.screens) {
           let saveScoreGame;
@@ -159,8 +154,10 @@ export default {
           });
 
         } else {
-          // if (!this.alertIsDisplayed) {
-            this.screenNum++;
+          this.$alert(
+          "Your score in this round: " + scoreScreen + "/" + this.maxSelectable)
+          .then(() => {           
+             this.screenNum++;
             // this.$root.$children[0].clear();
             this.$refs.VSelectImage.clear();
             this.items = [];
@@ -174,7 +171,7 @@ export default {
               };
               this.items.push(data);
             }
-            this.index++;
+            this.index++;});
           // }
         }
         // });
@@ -195,7 +192,6 @@ export default {
       gameID: "",
       allImages: [],
       index: "",
-      alertIsDisplayed: false,
     };
   },
   watch: {

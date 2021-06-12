@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="experiment_container">
         <h3 class="p-3 text-center">List of the participants in the experiment</h3>
         <table class="table table-striped table-bordered">
             <thead>
@@ -154,18 +154,19 @@ export default {
 </script>
 
 <style lang="scss">
+ @import url(https://fonts.googleapis.com/css?family=Raleway);
 
 .th {
   border-top: 2px solid black !important;
-font-family: Raleway;
+  font-family: Raleway !important;
 }
 
 .table {
-    font-family:Raleway;
+    font-family: Raleway !important;
 }
 
 .text-center {
-    font-family: Raleway;  
+    font-family: Raleway  !important;  
 }
 
 
@@ -176,7 +177,7 @@ font-family: Raleway;
   color: rgba(10, 10, 10, 0.719);
   font-size: 19px;
   line-height: 2em;
-  font-family: Raleway;
+  font-family: Raleway !important;
   margin-right: 50px;
   margin-bottom: 30px;
   margin-top: 5px;
@@ -199,6 +200,5 @@ font-family: Raleway;
   height: 250px;
   overflow-y: auto;
 }
-
 
 </style>

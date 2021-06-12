@@ -43,7 +43,7 @@ export default {
 
 <style lang="scss">
 @import "@/scss/form-style.scss";
-// @import url(https://fonts.googleapis.com/css?family=Raleway);
+@import url(https://fonts.googleapis.com/css?family=Raleway);
 
 .img1{
       height: auto;    

@@ -95,6 +95,7 @@ export default {
 </script>
 
 <style lang="scss">
+ @import url(https://fonts.googleapis.com/css?family=Raleway);
 
 .btnn {
   background: rgba(255, 255, 255, 0.233);
@@ -105,7 +106,7 @@ export default {
   font-weight: 400;
   line-height: 1.5em;
   width: 48%;
-  font-family: Raleway;
+  font-family: Raleway !important;
   margin-left: 50px;
   margin-top: 5px;
 }

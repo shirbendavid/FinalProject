@@ -128,7 +128,9 @@ export default {
           }
         );
         this.$root.loggedIn = true;
-        this.$root.store.login(this.form.email, response.data['firstname'], response.data['playAdvancedGame']);
+        let saveEmail = this.form.email.toLowerCase();
+        console.log(saveEmail);
+        this.$root.store.login(saveEmail, response.data['firstname'], response.data['playAdvancedGame']);
         
         //store number of images rating to user and nimumn number images to rate
         let numberOfImages;
@@ -180,7 +182,7 @@ export default {
 </script>
 <style lang="scss">
 
-// @import url(https://fonts.googleapis.com/css?family=Raleway);
+@import url(https://fonts.googleapis.com/css?family=Raleway);
 body,
 html {
   margin: 0;
@@ -245,7 +247,7 @@ button:focus {
   align-self: flex-end;
   font-size: 19px;
   font-size: 1.2rem;
-  font-family: Raleway;
+  font-family: Raleway !important;
   font-weight: 300;
   line-height: 2.5em;
   margin-top: auto;
@@ -266,7 +268,7 @@ button:focus {
   margin-bottom: 10px;
   line-height: 2.4em;
   color: #fff;
-  font-family: Raleway;
+  font-family: Raleway !important;
   font-weight: 300;
   letter-spacing: 0px;
   letter-spacing: 0.02rem;
@@ -320,7 +322,7 @@ button:focus {
 .window_login {
   z-index: 100;
   color: rgb(51, 51, 51);
-  font-family: Raleway;
+  font-family: Raleway !important;
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
