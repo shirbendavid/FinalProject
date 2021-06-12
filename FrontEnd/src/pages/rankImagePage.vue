@@ -380,15 +380,15 @@ label {
 .label1 {
   font-size: medium;
   color: black;
-  width: 65px;
-  margin-right: 10px;
+  width: 68px;
+  margin-right: 6px;
 }
 
 .label2 {
   font-size: medium;
   width: 85px;
   color: black;
-  margin-left: 10px;
+  margin-left: 6px;
 }
 
 .title {

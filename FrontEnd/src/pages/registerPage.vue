@@ -207,17 +207,27 @@
                     </li>
                   </ul>
                   <br/>
-                   .בלחיצה על כפתור "אישור" אני מסכים/ה להשתתף במשחק העדפת התמונות בהתאם לתנאים שפורטו לעיל
-                    
+
+                 </p>
+            <div class="form-group form-check">
+                <input type="checkbox" v-model="user.accept" id="accept" class="form-check-input">
+                <label class="form-check-label" for="accept" style="float: right;">
+                  .בלחיצה על כפתור "אישור" אני מסכים/ה להשתתף במשחק העדפת התמונות בהתאם לתנאים שפורטו לעיל
+                </label>
+            </div>
 
    <br/>   
    <br/>
 <b-row>
   <b-col ></b-col>
-  <b-col lg="6" class="pb-2"><b-button block @click="close()">אישור</b-button></b-col>
+
+  <b-col lg="6" class="pb-2">
+    <b-button :disabled="!user.accept" block @click="close()">אישור</b-button>
+  </b-col>
+
   <b-col></b-col>
 </b-row>
-                </p>
+               
                 </slot>
                     </div>
                 </div>
@@ -240,7 +250,10 @@ export default {
   data() {
     return {
       isVisible: true,
-      regis:false,
+      regis: false,
+       user: {
+          accept: false
+      },
       form: {
         firstName: "",
         lastName: "",
@@ -612,5 +625,15 @@ button:focus {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: right;
     color: black;
+}
+
+.form-check-label {
+  margin-right: 30px;
+  font-size: 17px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.pb-2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 </style>

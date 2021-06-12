@@ -56,11 +56,11 @@ async created() {
             }
 
             const users = response.data;
-            let userExsits = false;
+            // let userExsits = false;
             for(let user in users){
                 let data;
                 if(users[user].email == this.$root.store.email){
-                    userExsits = true;
+                    // userExsits = true;
                     data= {
                     _rowVariant: 'light', 
                     rank: users[user].place, 
