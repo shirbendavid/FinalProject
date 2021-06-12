@@ -6,11 +6,9 @@
         <div class="popup-modal" v-if="isVisible">
             <div class="window" style=" height:550px; max-width: 900px;">
                 <slot>   
-                      <!-- <button class="btn-x" tag="b-nav-item" @click="close()">
-                            X
-                        </button> -->
+                <br/>
                 <h2 class="titleobs">תמונות להתרשמות</h2>
-
+                <br/>
                 <p class="textobs">
                    בשלב הראשון של המשחק, עליכם לצפות בלפחות 60 תמונות, ולתת להן ציון שמשקף עד כמה
                    <br/>
@@ -30,15 +28,13 @@
                    <br/>
                    .להן ציונים או שתוכלו לבחור לעבור לשלב הבא
                 </p>
-                        <br />
 
                 <h3 class="titleobs">!בהצלחה</h3>
                         <br />
 
-
 <b-row>
   <b-col ></b-col>
-  <b-col lg="7" class="pb-2"><b-button class="obs" block @click="close()">אישור</b-button></b-col>
+  <b-col lg="7" class="pb-2"><b-button class="titleobs" block @click="close()">אישור</b-button></b-col>
   <b-col></b-col>
 </b-row>
                 </slot>
@@ -108,7 +104,7 @@
             <img :src="image16"  style="width: 90%; height:90%;"/>
         </b-col> 
         </b-row>
-        <br/>
+        <!-- <br/> -->
         </b-container>
         <router-link  to="/ranking">
         <div>
@@ -122,7 +118,8 @@
           </div>              
         </router-link>
         <br><br>
-        <br><br>
+        <!-- <br><br> -->
+        <!-- <br><br> -->
   </div>
  
 </template>
@@ -261,9 +258,10 @@ export default {
 
 .b-rate{
     float: right;
-    margin-right:45%;
+    margin-right: 45%;
     width: 170px;
     font-size: 25px;
+    margin-bottom: 20px;
 }
 
 .b-obs {

@@ -29,7 +29,7 @@
                     <td>{{format_date(user.lastLogin)}}</td>
                     <td>{{user.numOfRates}}</td>
                     <td>{{user.numOfGames}}</td>
-                    <td>{{user.gameTime}}</td>
+                    <td>{{format_date(user.gameTime)}}</td>
                     <td v-if="user.playAdvancedGame">allowed
                         <br/>
                         <b-button size="sm" variant="outline-info"  @click="changePlayAdvanced(user.email)">

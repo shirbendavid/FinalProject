@@ -93,9 +93,11 @@ router.get('/users/saveScoreScreen/gameID/:gameID/numOfScreen/:screenNum/imagesS
   res.sendStatus(200);
 });
 
-router.get('/users/saveScoreGame/gameID/:gameID/score/:score', sessionChecker, (req, res, next) => {
+router.get('/users/saveScoreGame/gameID/:gameID/score/:score', sessionChecker, async (req, res, next) => {
   console.log(req.params);
   userUtils.saveScoreGame(req.email, req.params);
+  await DButils.execQuery(`UPDATE users SET gameTime=GETDATE() where email='${req.email}'`)
+
   res.sendStatus(200);
 });
 

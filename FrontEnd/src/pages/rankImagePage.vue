@@ -33,6 +33,7 @@
 
     <div class="flex-container-rate" v-if="rate">
       <div class="flex-item-rate">
+          <div class="rating-status">You've already rated {{ this.$root.store.numberOfImagesRating }} out of {{ this.$root.store.minImagesRating }} images</div>
         <b-row>
           <b-col class="forewordimage-rate">
             <b-img v-bind="mainProps" :src="image" class="center-rate" />
@@ -389,6 +390,13 @@ label {
   width: 85px;
   color: black;
   margin-left: 6px;
+}
+
+.rating-status {
+  font-size: medium;
+  // width: 85px;
+  color: black;
+  // margin-left: 6px;
 }
 
 .title {
