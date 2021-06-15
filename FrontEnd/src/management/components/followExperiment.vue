@@ -6,18 +6,50 @@
         <tr>
           <th>Name</th>
           <th>Email</th>
-          <th>Date of registration</th>
-          <th>Status</th>
-          <th class="sortedColumn" @click="handleSort('lastLogin', !sortMethod.order)">
-                Last login
-            <span v-if="sortMethod.isSorted && sortMethod.order">
+
+           <th class="sortedColumn" @click="handleSort('dateOfRegistration', !sortMethod.order)">
+                Date of registration
+            <span v-if="sortMethod.name=='dateOfRegistration' && sortMethod.isSorted && sortMethod.order">
                  ▲</span>
-            <span v-if="sortMethod.isSorted && !sortMethod.order">
+            <span v-if="sortMethod.name=='dateOfRegistration' && sortMethod.isSorted && !sortMethod.order">
             ▼</span>
           </th>
-          <th>No. images rated</th>
-          <th>No. games</th>
-          <th>Last time in the game</th>
+
+          <th>Status</th>
+
+          <th class="sortedColumn" @click="handleSort('lastLogin', !sortMethod.order)">
+                Last login
+            <span v-if="sortMethod.name=='lastLogin' && sortMethod.isSorted && sortMethod.order">
+                 ▲</span>
+            <span v-if="sortMethod.name=='lastLogin' && sortMethod.isSorted && !sortMethod.order">
+            ▼</span>
+          </th>
+
+            <th class="sortedColumn" @click="handleSort('numOfRates', !sortMethod.order)">
+                No. images rated
+            <span v-if="sortMethod.name=='numOfRates' && sortMethod.isSorted && sortMethod.order">
+                 ▲</span>
+            <span v-if="sortMethod.name=='numOfRates' && sortMethod.isSorted && !sortMethod.order">
+            ▼</span>
+          </th>
+
+
+           <th class="sortedColumn" @click="handleSort('numOfGames', !sortMethod.order)">
+                No. games
+            <span v-if="sortMethod.name=='numOfGames' && sortMethod.isSorted && sortMethod.order">
+                 ▲</span>
+            <span v-if="sortMethod.name=='numOfGames' && sortMethod.isSorted && !sortMethod.order">
+            ▼</span>
+          </th>
+
+           <th class="sortedColumn" @click="handleSort('gameTime', !sortMethod.order)">
+                Last time in the game
+            <span v-if="sortMethod.name=='gameTime' && sortMethod.isSorted && sortMethod.order">
+                 ▲</span>
+            <span v-if="sortMethod.name=='gameTime' && sortMethod.isSorted && !sortMethod.order">
+            ▼</span>
+          </th>
+
           <th>Advanced game</th>
         </tr>
       </thead>
@@ -103,22 +135,35 @@ export default {
                 order: false,
                 isSorted: false,
             },
-
-            
-            
         };
     },
 
     computed: {
         sortedItems () {
-            if ( this.sortMethod.name == 'lastLogin'){
+
+            // all dates columns
+            if (this.sortMethod.name == 'dateOfRegistration' ||
+                this.sortMethod.name == 'gameTime' ||
+                this.sortMethod.name == 'lastLogin') {
 
                 return this.users.sort((a, b) => {
 
                     if (this.sortMethod.order){
-                        return new Date(a.lastLogin) - new Date(b.lastLogin);
+                        return new Date(a[this.sortMethod.name]) - new Date(b[this.sortMethod.name]);
                     }
-                    return new Date(b.lastLogin) - new Date(a.lastLogin);
+                    return new Date(b[this.sortMethod.name]) - new Date(a[this.sortMethod.name]);
+                })
+            }
+
+            // sorting numbers
+            else if (this.sortMethod.name == 'numOfRates' ||
+                    this.sortMethod.name == 'numOfGames'){
+                 return this.users.sort((a, b) => {
+
+                    if (this.sortMethod.order){
+                        return (a[this.sortMethod.name]) - (b[this.sortMethod.name]);
+                    }
+                    return (b[this.sortMethod.name]) - (a[this.sortMethod.name]);
                 })
             }
             return this.users;
@@ -152,7 +197,6 @@ export default {
             this.sortMethod.name = name;
             this.sortMethod.order = order;
             this.sortMethod.isSorted = true;
-
         }, 
        
         async change(email){

@@ -236,7 +236,7 @@ export default {
       enoughImages: false,
       isVisible: true,
       rate: false,
-      lessThanMinimum: true,
+      lessThanMinimum: false,
     };
   },
   methods: {
@@ -265,12 +265,12 @@ export default {
             this.enoughImages = true;
 
           else {
-            if (this.$root.store.numberOfImagesRating <=
-              this.$root.store.minImagesRating){
-                this.lessThanMinimum = true;
-              }
-              else
-              this.lessThanMinimum = false;
+            // if (this.$root.store.numberOfImagesRating <=
+            //   this.$root.store.minImagesRating){
+            //     this.lessThanMinimum = true;
+            //   }
+            //   else
+            //   this.lessThanMinimum = false;
             this.getNextImage();
           } 
         }
@@ -331,6 +331,14 @@ export default {
         );
         this.$router.replace("/game");
       }
+
+      if (this.$root.store.numberOfImagesRating <=
+          this.$root.store.minImagesRating){
+              this.lessThanMinimum = true;
+      }
+      else
+        this.lessThanMinimum = false;
+
       let response;
       try {
         response = await this.axios.get(
