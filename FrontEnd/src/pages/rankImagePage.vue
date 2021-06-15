@@ -396,7 +396,7 @@ label {
 
 .rating-status {
   font-size: medium;
-  color: rgba(92, 92, 92, 0.877);
+  color: rgba(136, 136, 136, 0.877);
   margin-left: -8px;
   margin-top: 16px;
 }
