@@ -33,7 +33,7 @@
 
     <div class="flex-container-rate" v-if="rate">
       <div class="flex-item-rate">
-          <div class="rating-status">You've already rated {{ this.$root.store.numberOfImagesRating }} out of {{ this.$root.store.minImagesRating }} images</div>
+        <div class="my_space"></div>
         <b-row>
           <b-col class="forewordimage-rate">
             <b-img v-bind="mainProps" :src="image" class="center-rate" />
@@ -41,14 +41,7 @@
         </b-row>
 
         <div class="scale">
-          <!-- <b-row>
-            <div class="label1">Not at all</div>
-            <div class="label2">Very much</div>
-          </b-row> -->
-          <!-- <b-row></b-row> -->
-          <br/>
           <b-row>
-            <!-- <b-col class="label1" cols="12" md="1" style="font-size: 14px; ">Not at all</b-col> -->
             <b-col class="foreword">
                <div class="label1">Not at all</div>
             </b-col>
@@ -65,6 +58,7 @@
               <br />
               <label for="inlineRadio1">1</label>
             </b-col>
+
             <b-col class="foreword">
               <input
                 type="radio"
@@ -176,11 +170,13 @@
              <b-col class="foreword">
                <div class="label2">Very much</div>
             </b-col>
-            <!-- <b-col class="label2"  style="font-size: 13px;">Very much</b-col> -->
           </b-row>
         </div>
         <b-row>
-          <b-col></b-col>
+          <b-col>
+            <div v-if="!lessThanMinimum" class="rating-status">Image {{ this.$root.store.numberOfImagesRating }} </div>
+            <div v-if="lessThanMinimum" class="rating-status">Image {{ this.$root.store.numberOfImagesRating }} / {{ this.$root.store.minImagesRating }} </div>
+          </b-col>
           <b-col lg="6" class="pb-2"
             ><b-button class="b-obs" block @click="saveImageRate()"
               >NEXT</b-button
@@ -193,7 +189,6 @@
     <div class="rank-container">
       <transition name="fade">
         <div class="popup-modal" v-if="enoughImages">
-          <!-- <div class="popup-modal"> -->
           <div class="window" style="max-width: 900px;">
             <slot>
               <p class="textrat">
@@ -241,6 +236,7 @@ export default {
       enoughImages: false,
       isVisible: true,
       rate: false,
+      lessThanMinimum: true,
     };
   },
   methods: {
@@ -261,12 +257,22 @@ export default {
           const numberOfImagesRating =
             this.$root.store.numberOfImagesRating + 1;
           this.$root.store.addNumberOfImagesRating(numberOfImagesRating);
+
           if (
             this.$root.store.numberOfImagesRating ===
             this.$root.store.minImagesRating
           )
             this.enoughImages = true;
-          else this.getNextImage();
+
+          else {
+            if (this.$root.store.numberOfImagesRating <=
+              this.$root.store.minImagesRating){
+                this.lessThanMinimum = true;
+              }
+              else
+              this.lessThanMinimum = false;
+            this.getNextImage();
+          } 
         }
       } catch (error) {
         console.log(error);
@@ -346,13 +352,8 @@ export default {
 </script>
 
 <style lang="scss">
-/* @import url(https://fonts.googleapis.com/css?family=Special+Elite); */
 
 .rank-container {
-  // background-color: rgba(255, 255, 255, 0.89);
-  /* border: 5px outset#f3c48ec7;
-  border-radius: 25px; */
-  // opacity: 95% !important;
   color: black;
   font-size: 16px;
   width: 50%;
@@ -363,7 +364,6 @@ export default {
   align-content: center;
   align-self: center;
   justify-content: center;
-  /* height: 50%; */
 }
 
 input[type="radio"] {
@@ -373,8 +373,8 @@ input[type="radio"] {
 }
 
 label {
-  /* padding: 10px; */
-  font-size: smaller;
+  font-size: 15px;
+  font-family: Arial;
   line-height: 8%;
 }
 
@@ -394,9 +394,9 @@ label {
 
 .rating-status {
   font-size: medium;
-  // width: 85px;
-  color: black;
-  // margin-left: 6px;
+  color: rgba(92, 92, 92, 0.877);
+  margin-left: -8px;
+  margin-top: 16px;
 }
 
 .title {
@@ -407,7 +407,7 @@ label {
 
 .scale {
   width: 100%;
-  // border: 1px solid #595b5f;
+  margin-left: 14px;
 }
 
 .center-rate {
@@ -429,7 +429,9 @@ label {
   -moz-column-count: 1;
   -webkit-column-count: 1;
   column-width: 1%;
+  margin-top: 8px;
 }
+
 b-col {
   column-width: 1%;
 }
@@ -490,7 +492,6 @@ b-col {
 .rank-window {
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
   max-width: 80%;
-  //max-height: 1500px;
   margin-left: auto;
   margin-right: auto;
   flex-direction: column;
@@ -516,13 +517,9 @@ b-col {
 .btn {
   margin-top: 8px;
 }
-.text1 {
-  font-size: 20px;
-  font-family: Arial;
-  margin-top: 15px;
-  margin-bottom: 20px;
-  text-align: right;
-}
+
+
+
 .titlerat {
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -550,4 +547,13 @@ b-col {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   width: 100px !important;
 }
+
+.my_space {
+  height: 5px;
+}
+
+.inlineRadioOptions{
+  margin-bottom: -5px;
+}
+
 </style>
