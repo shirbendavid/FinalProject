@@ -265,12 +265,6 @@ export default {
             this.enoughImages = true;
 
           else {
-            // if (this.$root.store.numberOfImagesRating <=
-            //   this.$root.store.minImagesRating){
-            //     this.lessThanMinimum = true;
-            //   }
-            //   else
-            //   this.lessThanMinimum = false;
             this.getNextImage();
           } 
         }
