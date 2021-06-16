@@ -2,12 +2,12 @@
   <div>
     <div class="management_container">
       <router-link to="/">
-        <b-button class="button" color="primary" @click="Logout()">
+        <b-button class="management-button" color="primary" @click="Logout()">
           Home
         </b-button>
       </router-link>
       <br />
-      <h1 class="title">Managment Portal</h1>
+      <h1 class="management-title">Managment Portal</h1>
 
       <ParameterManage />
 
@@ -146,9 +146,12 @@ export default {
   z-index: 1;
   overflow-y: initial !important;
 }
-.title {
+.management-title {
   font-size: xx-large;
+  margin-top: 0px;
+  margin-left: 450px;
 }
+
 .window {
   background: #fff;
   border-radius: 5px;
@@ -162,10 +165,6 @@ export default {
 .reports {
   width: 40%;
   background: rgba(255, 234, 204, 0.945);
-}
-
-.title {
-  margin-top: 0px;
 }
 
 image {
@@ -182,7 +181,7 @@ image {
   width: 30px;
 }
 
-.button {
+.management-button {
   margin-top: 10px;
   margin-bottom: 10px;
 }
