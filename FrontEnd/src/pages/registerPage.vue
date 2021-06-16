@@ -1,10 +1,6 @@
 <template>
 <div class="container_main">
-
   <div class="main-container">
-       
-    
-    <!-- <div class="bold-line"></div> -->
     <div class="containerr" v-if="regis">
       <div class="window">
         <div class="overlay"></div>
@@ -125,15 +121,7 @@
             >
               Create Account
             </button>
-            <!-- <br />
-            <b-button
-              type="reset"
-              variant="danger"
-              style="border-radius: 25px;  background-color: #d85416;"
-            >
-              Reset
-            </b-button> -->
-
+ 
             <div >
                Already have an account?
               <router-link to="login" style="color: #d85416; font-size: 19px;"
@@ -215,27 +203,25 @@
                   .בלחיצה על כפתור "אישור" אני מסכים/ה להשתתף במשחק העדפת התמונות בהתאם לתנאים שפורטו לעיל
                 </label>
             </div>
+            <br/>   
+            <br/>
+            <b-row>
+              <b-col></b-col>
 
-   <br/>   
-   <br/>
-<b-row>
-  <b-col ></b-col>
+              <b-col lg="6" class="pb-2">
+                <b-button :disabled="!user.accept" block @click="close()">אישור</b-button>
+              </b-col>
 
-  <b-col lg="6" class="pb-2">
-    <b-button :disabled="!user.accept" block @click="close()">אישור</b-button>
-  </b-col>
-
-  <b-col></b-col>
-</b-row>
+              <b-col></b-col>
+            </b-row>
                
-                </slot>
-                    </div>
+            </slot>
                 </div>
-            </transition>
-    <br />
-  </div>
-</div>
-  
+            </div>
+        </transition>
+        <br />
+      </div>
+    </div>
 </template>
 
 <script>
@@ -319,14 +305,12 @@ export default {
             lastname: this.form.lastName,
             gender: this.form.gender,
             age: this.form.age,
-            // password: this.form.password,
           }
         );
         console.log(response);
         this.$router.push("/Login");
       } catch (err) {
         console.log(err.response);
-        // this.form.submitError = err.response.data.message
         this.form.submitError = err.response.data;
       }
     },
@@ -371,7 +355,6 @@ export default {
 
 .containerr {
   width: 50%;
-  
 }
 
  @import url(https://fonts.googleapis.com/css?family=Raleway);
@@ -495,8 +478,6 @@ button:focus {
 }
 
 .welcome {
-  // font-weight: 200;
-  // margin-top: 20px;
   text-align: center;
   font-size: 40px;
   font-size: 2.5rem;
@@ -536,19 +517,9 @@ button:focus {
   flex-flow: column;
   box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
-  //height: 860px;
-  // width: 500px;
   background: #fff;
   text-align: left;
-  // background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
-  //   top left no-repeat;
 }
-// .buttonb {
-//     float: center;
-//     align-items: center;
-//     width: 170px;
-//     font-size: 25px;
-// }
 
 .overlay {
   background: -webkit-linear-gradient(#ccd2df, #6b656e);
@@ -568,12 +539,9 @@ button:focus {
   top: 0px;
   bottom: 0px;
   margin: auto;
-  //width: 100%;
   height: 100%;
   z-index: 1;
   opacity: 0.1;
-  // background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
-  //   left no-repeat;
   background-size: cover;
 }
 .container_main {
@@ -592,7 +560,6 @@ button:focus {
   .window1 {
     box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
     max-width: 80%;
-    //max-height: 1500px;
     margin-left: auto;
     margin-right: auto;
     flex-direction: column;

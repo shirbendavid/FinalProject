@@ -122,7 +122,6 @@ export default {
 
       } catch (err) {
         console.log(err.response);
-        // this.form.submitError = err.response.data.message
         this.form.submitError = err.response.data;
         console.log(err.response.data);
       }
@@ -184,8 +183,6 @@ button:focus {
   color: #fff;
   transition: color 0.2s ease;
 }
-
-
 
 .input-line:focus {
   outline: none;
@@ -309,7 +306,6 @@ button:focus {
   box-sizing: border-box;
   border-radius: 5px;
   background-color: rgba(251, 241, 226, 0.555);
-
 }
 
 .admin-login-overlay {
@@ -330,12 +326,9 @@ button:focus {
   top: 0px;
   bottom: 0px;
   margin: auto;
-  //width: 100%;
   height: 100%;
   z-index: 1;
   opacity: 0.1;
-  // background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
-  //   left no-repeat;
   background-size: cover;
 }
 

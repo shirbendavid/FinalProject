@@ -4,9 +4,7 @@
       <div class="popup-modal" v-if="isVisible">
         <div class="window" style=" height:450px; max-width: 680px;">
           <slot>
-            <!-- <button class="btn-x"  tag="b-nav-item" @click="close()">
-                            X
-                        </button> -->
+
             <h2 class="titlegame">הגענו לשלב המשחק</h2>
 
             <p class="textgame" style="color: black; direction: RTL; ">
@@ -164,7 +162,6 @@ export default {
               this.maxSelectable
           ).then(() => {
             this.screenNum++;
-            // this.$root.$children[0].clear();
             this.$refs.VSelectImage.clear();
             this.items = [];
             for (let num in this.allImages[this.index].imagesScreen) {
@@ -179,9 +176,7 @@ export default {
             }
             this.index++;
           });
-          // }
         }
-        // });
       }
     },
   },
@@ -229,7 +224,8 @@ export default {
             this.$root.store.base_url + "/users/checkIfPlayToday"
           );
           if (playToday.status === 201) {
-            //not finish to play today
+
+            // not finish to play today
             if (playToday.data[0].scoreGame == null) {
               this.screens = this.$root.store.numberOfScreensInGame;
               let response;
@@ -248,6 +244,7 @@ export default {
               this.allImages = response.data;
               this.gameID = playToday.data[0].game_id;
               this.screenNum = this.allImages[0].screen;
+
               //get score screens
               if (this.screenNum > 1) {
                 let scoreScreens;
@@ -296,8 +293,6 @@ export default {
             const limit = this.$root.store.limitSelectInGame;
             this.screens = this.$root.store.numberOfScreensInGame;
 
-            // this.maxSelectable = limit;
-            // this.$emit('maxSelectable', 3);
             let response;
             try {
               response = await this.axios.get(
@@ -436,7 +431,6 @@ pre code .line::before {
 .window {
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
   max-width: 80%;
-  //max-height: 1500px;
   margin-left: auto;
   margin-right: auto;
   flex-direction: column;

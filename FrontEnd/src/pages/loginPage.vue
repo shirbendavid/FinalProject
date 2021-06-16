@@ -1,5 +1,4 @@
 <template>
-
   <div class="login-container">
     <br />
     <br />
@@ -27,23 +26,6 @@
                 email is required
               </b-form-invalid-feedback>
             </b-form-group>
-
-            <!-- <b-form-group
-              id="input-group-Password"
-              label-cols-sm="3"
-              label="Password"
-              label-for="Password"
-            >
-              <b-form-input
-                id="Password"
-                type="password"
-                v-model="$v.form.password.$model"
-                :state="validateState('password')"
-              ></b-form-input>
-              <b-form-invalid-feedback>
-                Password is required
-              </b-form-invalid-feedback>
-            </b-form-group> -->
 
             <button
               type="submit"
@@ -73,23 +55,19 @@
           >
             Login failed: {{ form.submitError }}
           </b-alert>
-
         </div>
-        
       </div>
     </div>
-                          <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-                      <br />
-            <br />
-            <br />
-          
-
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
   </div>
 </template>
 
@@ -119,48 +97,66 @@ export default {
     },
     async Login() {
       try {
-        // "/coil/Login"
         const response = await this.axios.post(
           this.$root.store.base_url + "/Login",
           {
             email: this.form.email,
-            // withCredentials: true,
           }
         );
         this.$root.loggedIn = true;
         let saveEmail = this.form.email.toLowerCase();
         console.log(saveEmail);
-        this.$root.store.login(saveEmail, response.data['firstname'], response.data['playAdvancedGame']);
-        
-        //store number of images rating to user and nimumn number images to rate
+        this.$root.store.login(
+          saveEmail,
+          response.data["firstname"],
+          response.data["playAdvancedGame"]
+        );
+
+        // store number of images rating to user and nimumn number images to rate
         let numberOfImages;
         let params;
-        try{
-            numberOfImages = await this.axios.get(
-                this.$root.store.base_url +
-                    "/users/numberOfImages"
-            );
-           params = await this.axios.get(
-                this.$root.store.base_url +
-                    "/users/getAllParams"
-                ); 
-            this.$root.store.addNumberOfImagesRating(numberOfImages.data.length);
-            this.$root.store.addMinImagesRating(params.data[0].minimum_images_rating);
-            this.$root.store.addNumberOfImagesInDB(params.data[1].number_of_images_in_DB);
-            this.$root.store.addNumberOfImagesInGame(params.data[0].images_in_game);
-            this.$root.store.addNumberOfScreensInGame(params.data[0].screens_in_game);
-            this.$root.store.addLimitSelectInGame(params.data[0].images_selectes_in_game);
+        try {
+          numberOfImages = await this.axios.get(
+            this.$root.store.base_url + "/users/numberOfImages"
+          );
+          params = await this.axios.get(
+            this.$root.store.base_url + "/users/getAllParams"
+          );
+          this.$root.store.addNumberOfImagesRating(numberOfImages.data.length);
+          this.$root.store.addMinImagesRating(
+            params.data[0].minimum_images_rating
+          );
+          this.$root.store.addNumberOfImagesInDB(
+            params.data[1].number_of_images_in_DB
+          );
+          this.$root.store.addNumberOfImagesInGame(
+            params.data[0].images_in_game
+          );
+          this.$root.store.addNumberOfScreensInGame(
+            params.data[0].screens_in_game
+          );
+          this.$root.store.addLimitSelectInGame(
+            params.data[0].images_selectes_in_game
+          );
         } catch (error) {
-            console.log("error.numberOfImages.status", error.numberOfImages.status);
-            this.$router.replace("/NotFound");
-            return;
-          }
-        if(this.$root.store.numberOfImagesRating === this.$root.store.minImagesRating) 
+          console.log(
+            "error.numberOfImages.status",
+            error.numberOfImages.status
+          );
+          this.$router.replace("/NotFound");
+          return;
+        }
+        if (
+          this.$root.store.numberOfImagesRating ===
+          this.$root.store.minImagesRating
+        )
           this.$router.push("/afterLogin");
-        else if (this.$root.store.numberOfImagesRating > this.$root.store.minImagesRating)  
+        else if (
+          this.$root.store.numberOfImagesRating >
+          this.$root.store.minImagesRating
+        )
           this.$router.push("/afterLogin");
-        else
-          this.$router.push("/observation");
+        else this.$router.push("/observation");
       } catch (err) {
         console.log(err.response);
         if (err.response.status === 403) this.$router.replace("/maintenance");
@@ -181,7 +177,6 @@ export default {
 };
 </script>
 <style lang="scss">
-
 @import url(https://fonts.googleapis.com/css?family=Raleway);
 body,
 html {
@@ -311,8 +306,6 @@ button:focus {
   color: black;
 }
 
-
-
 .menu_login {
   background: rgba(0, 0, 0, 0.2);
   width: 100%;
@@ -333,7 +326,7 @@ button:focus {
   flex-flow: column;
   box-shadow: 0px 15px 50px 10px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
-  
+
   //height: 860px;
   // width: 500px;
   background: #fff;
@@ -359,12 +352,9 @@ button:focus {
   top: 0px;
   bottom: 0px;
   margin: auto;
-  //width: 100%;
   height: 100%;
   z-index: 1;
   opacity: 0.1;
-  // background: url("https://pexels.imgix.net/photos/27718/pexels-photo-27718.jpg?fit=crop&w=1280&h=823")
-  //   left no-repeat;
   background-size: cover;
 }
 

@@ -10,7 +10,6 @@ router.get('/images/getImages/amount/:num', (req, res) => {
     if (info_array.length == 0)
       res.status(205).send({ message: "No images found", success: true });
     else{
-      // console.log(info_array);
       res.send(info_array);
     } 
   })
@@ -19,6 +18,5 @@ router.get('/images/getImages/amount/:num', (req, res) => {
     res.sendStatus(500);
   });  
 });
-
 
 module.exports = router;

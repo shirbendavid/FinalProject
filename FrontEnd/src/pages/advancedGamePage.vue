@@ -199,9 +199,7 @@ export default {
   async created() {
     if (this.$root.store.email) {
       this.screens = this.$root.store.numberOfScreensInGame;
-      // const limit=this.$root.store.limitSelectInGame;
-      // this.maxSelectable = limit;
-      // this.$emit('maxSelectable', 3);
+
       let response;
       try {
         response = await this.axios.get(
@@ -318,7 +316,6 @@ pre code .line::before {
 .advanced-window {
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
   max-width: 80%;
-  //max-height: 1500px;
   margin-left: auto;
   margin-right: auto;
   flex-direction: column;
@@ -365,12 +362,5 @@ pre code .line::before {
   font-family: Arial, Helvetica, sans-serif;
   margin-top: 15px;
   margin-bottom: 20px;
-  //color: black;
 }
-// .title {
-//     text-align: center;
-//     font-family: "Merienda", Helvetica, Arial;
-//     font-size: x-large;
-//     max-width: 500%;
-// }
 </style>

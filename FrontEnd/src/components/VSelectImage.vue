@@ -85,9 +85,9 @@ export default {
 
 <style lang="scss">
 .v-select-image-items {
-  /* row justify-content-center */
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
+
 </style>

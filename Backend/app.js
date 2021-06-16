@@ -26,7 +26,6 @@ const port = "8110";
 
 const host = '0.0.0.0';
 
-
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
@@ -38,21 +37,22 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, "public")));
 
-
-//#setting cors
+// setting cors
 const corsConfig = {
   origin: true,
   credentials: true,
 };
 app.use(cors(corsConfig));
 app.options("*", cors(corsConfig));
-//#setting cookies configuration
+
+// setting cookies configuration
 app.use(
   session({
     cookieName: "session", // the cookie key name
     secret: "blargadeeblargblarg", // the encryption key
     duration: 30 * 60 * 1000, // expired after 30 sec
     activeDuration: 30, // if expiresIn < activeDuration,
+    
     //the session will be extended by activeDuration milliseconds
     cookie: {
       httpOnly: false,

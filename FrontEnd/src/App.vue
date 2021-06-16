@@ -1,7 +1,6 @@
 
 <template>
   <div :style="bgImg" class="img1">
-<!-- <div :style="{'background-image': 'url(' + require('./assets/main-b.jpg') + ')'} "> -->
   <div id="app">
     <NavBar  v-if="!isNotManageOrGames"/>
     <router-view />
@@ -15,7 +14,6 @@ import Vue from 'vue';
 import Carousel3d from 'vue-carousel-3d';
  
 Vue.use(Carousel3d);
-
 
 export default {
   data() {
@@ -56,7 +54,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   min-height: 100vh;
-  //  background-image: url("assets/main-b.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }

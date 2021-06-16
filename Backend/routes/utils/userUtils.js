@@ -26,9 +26,6 @@ async function getRandomImageToRate(email){
     }
     dataImage = await DButils.execQuery(`SElECT imageID, image FROM image WHERE imageID='${rand}'`)
     image = "data:image/jpeg;base64,"+dataImage[0].image.toString('base64');
-    // fileNameToSave = "../FrontEnd/src/assets/imageToRate.jpg";
-    // fs.writeFileSync(fileNameToSave, dataImage[0].image)
-    console.log(rand);
     return {imageID: rand, image: image}
 }
 

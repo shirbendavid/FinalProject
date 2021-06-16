@@ -278,22 +278,11 @@ th {
   
 }
 .sortedColumn {
-    cursor: pointer;
-    }
+  cursor: pointer;
+}
+
 table {
-    font-family: Raleway !important;
-
-
-//   th.sorted {
-//     &.asc::after {
-//       display: inline-block;
-//       content: '▼';
-//     }
-//     &.desc::after {
-//       display: inline-block;
-//       content: '▲';
-//     }
-//   }
+  font-family: Raleway !important;
 }
 
 .text-center {
@@ -330,6 +319,7 @@ table {
   height: 250px;
   overflow-y: auto;
 }
+
 </style>
 
 

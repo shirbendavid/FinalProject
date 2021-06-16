@@ -43,7 +43,7 @@
         <div class="scale">
           <b-row>
             <b-col class="foreword">
-               <div class="label1">Not at all</div>
+              <div class="label1">Not at all</div>
             </b-col>
 
             <b-col class="foreword">
@@ -167,15 +167,20 @@
               <br />
               <label for="inlineRadio10">10</label>
             </b-col>
-             <b-col class="foreword">
-               <div class="label2">Very much</div>
+            <b-col class="foreword">
+              <div class="label2">Very much</div>
             </b-col>
           </b-row>
         </div>
         <b-row>
           <b-col>
-            <div v-if="!lessThanMinimum" class="rating-status">Image {{ this.$root.store.numberOfImagesRating }} </div>
-            <div v-if="lessThanMinimum" class="rating-status">Image {{ this.$root.store.numberOfImagesRating }} / {{ this.$root.store.minImagesRating }} </div>
+            <div v-if="!lessThanMinimum" class="rating-status">
+              Image {{ this.$root.store.numberOfImagesRating }}
+            </div>
+            <div v-if="lessThanMinimum" class="rating-status">
+              Image {{ this.$root.store.numberOfImagesRating }} /
+              {{ this.$root.store.minImagesRating }}
+            </div>
           </b-col>
           <b-col lg="6" class="pb-2"
             ><b-button class="b-obs" block @click="saveImageRate()"
@@ -192,28 +197,29 @@
           <div class="rank-window" style="max-width: 900px;">
             <slot>
               <p class="textrat">
-                .יפה מאוד, נתת ציונים ל-{{ this.$root.store.minImagesRating }} תמונות, שזה המינימום הנדרש להשתתפות
-                במשחק
+                .יפה מאוד, נתת ציונים ל-{{
+                  this.$root.store.minImagesRating
+                }}
+                תמונות, שזה המינימום הנדרש להשתתפות במשחק
                 <br />
                 ככל שיהיו לנו יותר תמונות עם הציונים שלך, כך ישתפרו סיכוייך
                 להצליח במשחק
                 <br />
                 .אנא בחר את העדפתך
                 <br />
-             
               </p>
               <h3 class="titlerat">!בהצלחה</h3>
               <br />
               <b-row>
                 <b-col>
-                  <b-button  @click="close()">
-                   המשך בדירוג
+                  <b-button @click="close()">
+                    המשך בדירוג
                   </b-button>
                 </b-col>
                 <b-col></b-col>
                 <b-col>
                   <b-button @click="StartPlay()">
-                   התחל במשחק
+                    התחל במשחק
                   </b-button>
                 </b-col>
               </b-row>
@@ -262,10 +268,9 @@ export default {
             this.$root.store.minImagesRating
           )
             this.enoughImages = true;
-
           else {
             this.getNextImage();
-          } 
+          }
         }
       } catch (error) {
         console.log(error);
@@ -325,12 +330,12 @@ export default {
         this.$router.replace("/game");
       }
 
-      if (this.$root.store.numberOfImagesRating <=
-          this.$root.store.minImagesRating){
-              this.lessThanMinimum = true;
-      }
-      else
-        this.lessThanMinimum = false;
+      if (
+        this.$root.store.numberOfImagesRating <=
+        this.$root.store.minImagesRating
+      ) {
+        this.lessThanMinimum = true;
+      } else this.lessThanMinimum = false;
 
       let response;
       try {
@@ -353,7 +358,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 .rank-container {
   color: black;
   font-size: 16px;
@@ -519,8 +523,6 @@ b-col {
   margin-top: 8px;
 }
 
-
-
 .titlerat {
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -553,8 +555,7 @@ b-col {
   height: 5px;
 }
 
-.inlineRadioOptions{
+.inlineRadioOptions {
   margin-bottom: -5px;
 }
-
 </style>

@@ -25,7 +25,6 @@
         {{ numOfImages }}
       </b-col>
       <b-col sm="2">
-        <!-- <b-form-input id="numOfImages" type="text" v-model="form.numOfImages"></b-form-input> -->
         <b-form-select
           id="numOfImages"
           v-model="form.numOfImages"
@@ -247,17 +246,6 @@ export default {
   margin-left: 13%;
   margin-top: 10px;
   margin-bottom: 10px;
-  /* background: rgba(255, 255, 255, 0.233);
-  border: 1.4px solid black;
-  border-radius: 5px;
-  color: rgba(10, 10, 10, 0.65);
-  font-size: 19px;
-  line-height: 2em;
-  width: 14%;
-  font-family: Raleway !important;
-  margin-right: 30px;
-  margin-bottom: 30px;
-  margin-top: 5px; */
 }
 
 .update-btn:hover {
@@ -265,4 +253,5 @@ export default {
   font-weight: bold;
   transition: all 0.4s ease;
 }
+
 </style>
