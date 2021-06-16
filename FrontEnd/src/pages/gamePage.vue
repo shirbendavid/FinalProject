@@ -136,7 +136,6 @@ export default {
                 this.score
             );
             if (saveScoreGame.status !== 200) this.$router.replace("/NotFound");
-
           } catch (error) {
             console.log(
               "error.saveScoreGame.status",
@@ -146,18 +145,25 @@ export default {
             return;
           }
           this.$alert(
-            "Game Over! You earned " +
+            "Game Over! Your score in this round is: " +
+              scoreScreen +
+              "/" +
+              this.maxSelectable +
+              ". " +
+              "You earned " +
               this.score +
               " points today. See you tommorow!"
           ).then(() => {
             this.$router.push("/");
           });
-
         } else {
           this.$alert(
-          "Your score in this round: " + scoreScreen + "/" + this.maxSelectable)
-          .then(() => {           
-             this.screenNum++;
+            "Your score in this round: " +
+              scoreScreen +
+              "/" +
+              this.maxSelectable
+          ).then(() => {
+            this.screenNum++;
             // this.$root.$children[0].clear();
             this.$refs.VSelectImage.clear();
             this.items = [];
@@ -171,7 +177,8 @@ export default {
               };
               this.items.push(data);
             }
-            this.index++;});
+            this.index++;
+          });
           // }
         }
         // });

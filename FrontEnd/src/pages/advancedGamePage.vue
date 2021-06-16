@@ -1,37 +1,45 @@
 <template>
   <div class="d-flex flex-column justify-center align-center">
     <transition name="fade">
+      <div class="advanced-popup-modal" v-if="isVisible">
+        <div
+          class="advanced-window"
+          style=" max-height:450px; max-width: 680px;"
+        >
+          <slot>
+            <h2 class="title-advanced">משחק למתקדמים</h2>
+            <br />
+            <p class="text-advanced">
+              .כעת עליכם לנסות לזהות איזה תמונות משתמש אחר הכי אהב
+            </p>
+            <h4 class="title-advanced">!בהצלחה</h4>
+            <br />
+            <b-row>
+              <b-col></b-col>
+              <b-col lg="6" class="pb-2"
+                ><b-button class="b-advanced" block @click="close()"
+                  >התחל
+                </b-button></b-col
+              >
+              <b-col></b-col>
+            </b-row>
+          </slot>
+        </div>
+      </div>
+    </transition>
+    <br />
 
-        <div class="popup-modal" v-if="isVisible">
-            <div class="window" style=" max-height:450px; max-width: 680px;">
-                <slot>   
-                      <!-- <button class="btn-x"  tag="b-nav-item" @click="close()">
-                            X
-                        </button> -->
-                <h2 class="titlegame" >משחק למתקדמים</h2>
-               
-                <p class="textgame" >
-                כעת עליכם לנסות לזהות איזה תמונות משתמש אחר הכי אהב 
-                </p>
-                <h4 class="titlegame" >!בהצלחה</h4>
-                <b-row>
-                  <b-col ></b-col>
-                    <b-col lg="6" class="pb-2"><b-button class="b-game" block @click="close()" >התחל </b-button></b-col>
-                  <b-col></b-col>
-                </b-row>
-                </slot>
-                    </div>
-                </div>
-            </transition>
-            <br>
-
-             <router-link to="/" >
-          <b-button color="primary" class="btn-x">
-         HOME
-          </b-button>
-        </router-link> <h3> <b>Page {{ screenNum }} / {{ screens }}</b></h3>
+    <router-link to="/">
+      <b-button color="primary" class="btn-x">
+        HOME
+      </b-button>
+    </router-link>
+    <h3>
+      <b>Page {{ screenNum }} / {{ screens }}</b>
+    </h3>
     <div class="d-flex flex-row justify-center align-center">
-      <v-select-image ref="VSelectImage"
+      <v-select-image
+        ref="VSelectImage"
         class="w-1040"
         v-model="selectedItems"
         :items="items"
@@ -41,108 +49,141 @@
         @maxSelectionError="maxSelected()"
       />
     </div>
-    <br>
-    <b-button size="lg" class="btn"
-              v-on:click="save"
-              type="submit" >
-    NEXT
+    <br />
+    <b-button size="lg" class="btn-advanced" v-on:click="save" type="submit">
+      NEXT
     </b-button>
   </div>
 </template>
-
 
 <script>
 import VSelectImage from "../components/VSelectImage.vue";
 export default {
   name: "App",
-  components: {  'v-select-image': VSelectImage },
+  components: { "v-select-image": VSelectImage },
   methods: {
-        open() {
-            this.isVisible = true
-        },
-
-        close() {
-            this.isVisible = false
-        },
-    maxSelected() {
-      this.$alert("You can't select more than " + this.maxSelectable + " images." ,
-      "Error", "error");
+    open() {
+      this.isVisible = true;
     },
-    async save(){
-      if(this.selectedItems.length < this.maxSelectable)
-        this.$alert("You need to select " + this.maxSelectable + " images" ,
-      "Error", "error");
-      else{
+
+    close() {
+      this.isVisible = false;
+    },
+    maxSelected() {
+      this.$alert(
+        "You can't select more than " + this.maxSelectable + " images.",
+        "Error",
+        "error"
+      );
+    },
+    async save() {
+      if (this.selectedItems.length < this.maxSelectable)
+        this.$alert(
+          "You need to select " + this.maxSelectable + " images",
+          "Error",
+          "error"
+        );
+      else {
         let scoreScreen = 0;
-        let imagesSelect = '';
-        for(let index in this.selectedItems){
-          if(this.selectedItems[index].target == true)
-            scoreScreen++;
-          imagesSelect = imagesSelect + this.selectedItems[index].key + ','; 
+        let imagesSelect = "";
+        for (let index in this.selectedItems) {
+          if (this.selectedItems[index].target == true) scoreScreen++;
+          imagesSelect = imagesSelect + this.selectedItems[index].key + ",";
         }
         this.score = this.score + scoreScreen;
         let saveScore;
-        
+
         try {
           saveScore = await this.axios.get(
-          this.$root.store.base_url +
-              "/users/saveScoreScreenAdvanced/gameID/"+this.gameID+
-              "/numOfScreen/"+this.screenNum+"/imagesSelect/"+imagesSelect+
-              "/score/" + scoreScreen
+            this.$root.store.base_url +
+              "/users/saveScoreScreenAdvanced/gameID/" +
+              this.gameID +
+              "/numOfScreen/" +
+              this.screenNum +
+              "/imagesSelect/" +
+              imagesSelect +
+              "/score/" +
+              scoreScreen
           );
           if (saveScore.status !== 200) this.$router.replace("/NotFound");
-          } catch (error) {
-              console.log("error.saveScore.status", error.saveScore.status);
-              this.$router.replace("/NotFound");
-              return;
-          }
-          this.$alert('Your score in this round: ' +scoreScreen + '/' + this.maxSelectable);
-          if(this.screenNum == this.screens){
-            let saveScoreGame;
-            try {
+        } catch (error) {
+          console.log("error.saveScore.status", error.saveScore.status);
+          this.$router.replace("/NotFound");
+          return;
+        }
+
+        if (this.screenNum == this.screens) {
+          let saveScoreGame;
+
+          try {
             saveScoreGame = await this.axios.get(
-            this.$root.store.base_url +
-                "/users/saveScoreAdvancedGame/gameID/"+this.gameID+"/score/"+this.score
+              this.$root.store.base_url +
+                "/users/saveScoreAdvancedGame/gameID/" +
+                this.gameID +
+                "/score/" +
+                this.score
             );
             if (saveScoreGame.status !== 200) this.$router.replace("/NotFound");
-            } catch (error) {
-                console.log("error.saveScoreGame.status", error.saveScoreGame.status);
-                this.$router.replace("/NotFound");
-                return;
-            }
-              this.$alert('The game is over, your score: '+ this.score);
-              this.$router.push("/");
-
+          } catch (error) {
+            console.log(
+              "error.saveScoreGame.status",
+              error.saveScoreGame.status
+            );
+            this.$router.replace("/NotFound");
+            return;
           }
-          else{
+
+          this.$alert(
+            "The game is over, your score in this round is: " +
+              scoreScreen +
+              "/" +
+              this.maxSelectable +
+              ". " +
+              "You earned " +
+              this.score +
+              " points today. See you tommorow!"
+          ).then(() => {
+            this.$router.push("/");
+          });
+        } else {
+          this.$alert(
+            "Your score in this round: " +
+              scoreScreen +
+              "/" +
+              this.maxSelectable
+          ).then(() => {
             this.screenNum++;
             this.$refs.VSelectImage.clear();
-            this.items =[];
-            for(let num in this.allImages[this.index].imagesScreen){
-              const data = {key: this.allImages[this.index].imagesScreen[num].image_id,
-                            backgroundImage: this.allImages[this.index].imagesScreen[num].image,
-                            target: this.allImages[this.index].imagesScreen[num].target,
-                            selectable: true};
+            this.items = [];
+            for (let num in this.allImages[this.index].imagesScreen) {
+              const data = {
+                key: this.allImages[this.index].imagesScreen[num].image_id,
+                backgroundImage: this.allImages[this.index].imagesScreen[num]
+                  .image,
+                target: this.allImages[this.index].imagesScreen[num].target,
+                selectable: true,
+              };
               this.items.push(data);
             }
             this.index++;
-          }
+          });
+        }
       }
-    }
+    },
   },
   data() {
     return {
-      isVisible:true,
+      isVisible: true,
       maxSelectable: 2,
       selectedItems: [],
       items: [],
       colorSchema: "#00cc44",
       screenNum: 1,
-      screens: '',
-      score: 0, 
-      gameID: '',
+      screens: "",
+      score: 0,
+      gameID: "",
       allImages: [],
-      index: ''
+      index: "",
     };
   },
   watch: {
@@ -156,41 +197,42 @@ export default {
     },
   },
   async created() {
-    if(this.$root.store.email){
+    if (this.$root.store.email) {
       this.screens = this.$root.store.numberOfScreensInGame;
       // const limit=this.$root.store.limitSelectInGame;
       // this.maxSelectable = limit;
       // this.$emit('maxSelectable', 3);
       let response;
       try {
-          response = await this.axios.get(
-          this.$root.store.base_url +
-              "/users/getImagesForAdvancedGame"
-          );
-          if(response.status === 201) this.$router.replace("/");
-          else if (response.status !== 200) this.$router.replace("/NotFound");
+        response = await this.axios.get(
+          this.$root.store.base_url + "/users/getImagesForAdvancedGame"
+        );
+        if (response.status === 201) this.$router.replace("/");
+        else if (response.status !== 200) this.$router.replace("/NotFound");
       } catch (error) {
-          console.log("error.response.status", error.response.status);
-          this.$router.replace("/NotFound");
-          return;
+        console.log("error.response.status", error.response.status);
+        this.$router.replace("/NotFound");
+        return;
       }
 
       this.allImages = response.data;
       this.gameID = this.allImages[this.screens];
-      for(let num in this.allImages[this.screenNum-1].imagesScreen){
-        const data = {key: this.allImages[this.screenNum-1].imagesScreen[num].image_id,
-                      backgroundImage: this.allImages[this.screenNum-1].imagesScreen[num].image,
-                      target: this.allImages[this.screenNum-1].imagesScreen[num].target,
-                      selectable: true};
+      for (let num in this.allImages[this.screenNum - 1].imagesScreen) {
+        const data = {
+          key: this.allImages[this.screenNum - 1].imagesScreen[num].image_id,
+          backgroundImage: this.allImages[this.screenNum - 1].imagesScreen[num]
+            .image,
+          target: this.allImages[this.screenNum - 1].imagesScreen[num].target,
+          selectable: true,
+        };
         this.items.push(data);
       }
       this.index = this.screenNum;
-    }
-    else{
+    } else {
       this.$router.push("/login");
     }
   },
-  }
+};
 </script>
 
 <style lang="scss">
@@ -244,7 +286,7 @@ pre code .line::before {
   width: 250px !important;
 }
 .btn-x {
-  width:7%;
+  width: 7%;
   margin-top: 1%;
   margin-right: 2%;
   position: absolute;
@@ -253,86 +295,82 @@ pre code .line::before {
 }
 .fade-enter-active,
 .fade-leave-active {
-    transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 .fade-enter,
 .fade-leave-to {
-    opacity: 0;
+  opacity: 0;
 }
 
-.popup-modal {
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin-bottom: 0px;
-    display: flex;
-    align-items: center;
-    z-index: 1;
-
+.advanced-popup-modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 0px;
+  display: flex;
+  align-items: center;
+  z-index: 1;
 }
 
-.window {
-   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 80%;
-    //max-height: 1500px;
-    margin-left: auto;
-    margin-right: auto;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
-    text-align: right;
-    color: black;
-      margin: auto;
+.advanced-window {
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 80%;
+  //max-height: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+  color: black;
+  margin: auto;
   position: relative;
   border: 3px solid rgba(143, 241, 216, 0.87);
- border-radius: 2px;
+  border-radius: 2px;
   padding: 1.1rem;
   background-color: rgba(251, 241, 226, 0.897);
 }
-.b-game {
-    font-size: large;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: black;
-
+.b-advanced {
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: black;
 }
-.titlegame {
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: black;
+.title-advanced {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: black;
 }
 
-.textgame {
-
-    font-size: large;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: right;
-    color: black;
-
+.text-advanced {
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: right;
+  color: black;
 }
 .button {
-    border-radius: 5px;
-    font-size: 20px;
-    width: 160px;
-    margin-left: 100px
+  border-radius: 5px;
+  font-size: 20px;
+  width: 160px;
+  margin-left: 100px;
 }
 
-.btn {
+.btn-advanced {
   margin-top: 8px;
 }
 .text {
-    font-size: 20px !important;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: 15px;
-    margin-bottom: 20px;
-    //color: black;
+  font-size: 20px !important;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  //color: black;
 }
-.title {
-    text-align: center;
-    font-family: "Merienda", Helvetica, Arial;
-    font-size: x-large;
-    max-width: 500%;
-}
+// .title {
+//     text-align: center;
+//     font-family: "Merienda", Helvetica, Arial;
+//     font-size: x-large;
+//     max-width: 500%;
+// }
 </style>
