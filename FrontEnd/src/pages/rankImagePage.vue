@@ -189,32 +189,31 @@
     <div class="rank-container">
       <transition name="fade">
         <div class="popup-modal" v-if="enoughImages">
-          <div class="window" style="max-width: 900px;">
+          <div class="rank-window" style="max-width: 900px;">
             <slot>
               <p class="textrat">
-                .יפה מאוד, נתת ציונים ל-60 תמונות, שזה המינימום הנדרש להשתתפות
+                .יפה מאוד, נתת ציונים ל-{{ this.$root.store.minImagesRating }} תמונות, שזה המינימום הנדרש להשתתפות
                 במשחק
                 <br />
                 ככל שיהיו לנו יותר תמונות עם הציונים שלך, כך ישתפרו סיכוייך
-                להצליח
+                להצליח במשחק
                 <br />
-                .Continue Rating במשחק. במידה וברצונך לראות ולדרג תמונות נוספות,
-                נא לבחור
+                .אנא בחר את העדפתך
                 <br />
-                .Start Play במידה וברצונך להתחיל לשחק, יש לבחור במקש
+             
               </p>
               <h3 class="titlerat">!בהצלחה</h3>
               <br />
               <b-row>
                 <b-col>
-                  <b-button class="b-obs" @click="close()">
-                    Continue Rating
+                  <b-button  @click="close()">
+                   המשך בדירוג
                   </b-button>
                 </b-col>
                 <b-col></b-col>
                 <b-col>
-                  <b-button class="b-obs" @click="StartPlay()">
-                    Start Play!
+                  <b-button @click="StartPlay()">
+                   התחל במשחק
                   </b-button>
                 </b-col>
               </b-row>

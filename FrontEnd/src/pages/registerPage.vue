@@ -173,7 +173,7 @@
                 </p>
                 <p class="textregi" style=" text-align: right;">
                   <br/>
-                  בשלב הראשון, עליכם לצפות ב-60 תמונות לפחות ולתת להן ציון לפי סולם של 10 דרגות שמבטא עד
+                  בשלב הראשון, עליכם לצפות במספר תמונות ולתת להן ציון לפי סולם של 10 דרגות שמבטא עד
                   <br/>
                   כמה אתם אוהבים את התמונה. שלב זה נמשך כ-10 דקות. חשוב שתתנו ציונים המשקפים את העדפותיכם
                   <br/>
@@ -181,9 +181,9 @@
                   <br/><br/>
                   בשלב השני, לאחר דירוג התמונות אתם מוזמנים לשחק במשחק. בכל פעם שתיכנסו למערכת יוצגו בפניכם
                   <br/>
-                  ארבעה מסכים שבכל אחד מהם מספר תמונות מתוך אלו שראיתם בשלב הראשון. האתגר הוא לזהות  
+                   מסכים שבכל אחד מהם מספר תמונות מתוך אלו שראיתם בשלב הראשון. האתגר הוא לזהות  
                   <br/>
-                  .ולבחור בכל אחד מהמסכים את התמונות להן נתתן את הציונים הגבוהים ביותר בשלב הקודם
+                  .את התמונות להן נתתן את הציונים הגבוהים ביותר בשלב הקודם
                   <br/>
                   .על כל בחירה נכונה תזכו בנקודה
                   <br/>
@@ -211,7 +211,7 @@
                  </p>
             <div class="form-group form-check">
                 <input type="checkbox" v-model="user.accept" id="accept" class="form-check-input">
-                <label class="form-check-label" for="accept" style="float: right;">
+                <label class="form-check-label-regi" for="accept" style="float: right;">
                   .בלחיצה על כפתור "אישור" אני מסכים/ה להשתתף במשחק העדפת התמונות בהתאם לתנאים שפורטו לעיל
                 </label>
             </div>
@@ -627,7 +627,7 @@ button:focus {
     color: black;
 }
 
-.form-check-label {
+.form-check-label-regi {
   margin-right: 30px;
   font-size: 17px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
