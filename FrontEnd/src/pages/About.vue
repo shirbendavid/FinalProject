@@ -3,12 +3,7 @@
   <div class="about-container">
     <div class="about-center">
             <div class="my-2">
-          <b-button class="btn-close"
-                    variant="outline-secondary" 
-                    @click="close"
-                   >
-          X
-          </b-button>
+  
         </div>
     <img src='../assets/new logo.png' style="width:28%; height:28%;" />
     <br/>
