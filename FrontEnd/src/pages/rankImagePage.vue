@@ -183,7 +183,7 @@
             </div>
           </b-col>
           <b-col lg="6" class="pb-2"
-            ><b-button class="b-obs" block @click="saveImageRate()"
+            ><b-button class="b-obs next-btn" block @click="saveImageRate()"
               >NEXT</b-button
             ></b-col
           >
@@ -479,6 +479,11 @@ b-col {
 
 .buttons {
   padding-top: 4px;
+}
+
+.next-btn {
+  width: 60%;
+  margin-left: 50px;
 }
 
 .rank-popup-modal {
