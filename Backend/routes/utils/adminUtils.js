@@ -7,6 +7,9 @@ async function getUsersInSystem(){
         users[user].numOfRates= rates.length;
         games = await DButils.execQuery(`SElECT game_id FROM games where email='${users[user].email}'`);
         users[user].numOfGames= games.length;
+
+        score = await DButils.execQuery(`SElECT SUM(scoreGame) as score FROM games WHERE email='${users[user].email}'`);
+        users[user].score = score[0].score;
     }
     return users;
 }

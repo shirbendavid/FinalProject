@@ -42,6 +42,14 @@
             ▼</span>
           </th>
 
+           <th class="sortedColumn" @click="handleSort('score', !sortMethod.order)">
+                Score
+            <span v-if="sortMethod.name=='score' && sortMethod.isSorted && sortMethod.order">
+                 ▲</span>
+            <span v-if="sortMethod.name=='score' && sortMethod.isSorted && !sortMethod.order">
+            ▼</span>
+          </th>
+
            <th class="sortedColumn" @click="handleSort('gameTime', !sortMethod.order)">
                 Last time in the game
             <span v-if="sortMethod.name=='gameTime' && sortMethod.isSorted && sortMethod.order">
@@ -72,6 +80,7 @@
           <td>{{ format_date(user.lastLogin) }}</td>
           <td>{{ user.numOfRates }}</td>
           <td>{{ user.numOfGames }}</td>
+          <td>{{ user.score }}</td>
           <td>{{ format_date(user.gameTime) }}</td>
           <td v-if="user.playAdvancedGame">
             allowed
@@ -157,7 +166,8 @@ export default {
 
             // sorting numbers
             else if (this.sortMethod.name == 'numOfRates' ||
-                    this.sortMethod.name == 'numOfGames'){
+                    this.sortMethod.name == 'numOfGames' ||
+                    this.sortMethod.name == 'score'){
                  return this.users.sort((a, b) => {
 
                     if (this.sortMethod.order){
