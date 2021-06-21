@@ -176,34 +176,8 @@ router.get('/users/getTop10', (req, res) => {
   });
 });
 
-router.get('/users/getUserScore', sessionChecker, (req, res, next) => {
-  userUtils.getUserScore(req.email).then((info_array) => {
-    if (info_array.length < 0){
-      res.status(205).send({ message: "No Users found", success: true });
-    }
-    else res.send(info_array);
-  })
-  .catch((error) => {
-    console.log(error);
-    res.sendStatus(500);
-  });
-});
-
-router.get('/users/getTop10Advance', sessionChecker, (req, res, next) => {
-  userUtils.getTop10Advance().then((info_array) => {
-    if (info_array.length < 0){
-      res.status(205).send({ message: "No Users found", success: true });
-    }
-    else res.send(info_array);
-  })
-  .catch((error) => {
-    console.log(error);
-    res.sendStatus(500);
-  });
-});
-
-router.get('/users/getUserScoreAdvance', sessionChecker, (req, res, next) => {
-  userUtils.getUserScoreAdvance(req.email).then((info_array) => {
+router.get('/users/getUserScore/advanceGame/:advance', sessionChecker, (req, res, next) => {
+  userUtils.getUserScore(req.email, req.params).then((info_array) => {
     if (info_array.length < 0){
       res.status(205).send({ message: "No Users found", success: true });
     }

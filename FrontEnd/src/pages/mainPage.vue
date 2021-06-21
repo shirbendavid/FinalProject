@@ -3,18 +3,18 @@
     <img
       src="../assets/new logo.png"
       class="centerr"
-      style="width: 35%; height:35%;"
+      style="width: 30%; height:30%;"
     />
     <br />
     <div id="example">
       <br />
       <carousel-3d
-        :controls-visible="true"
-        :controls-prev-html="'❬ '"
+        :controls-visible="false"
+        :controls-prev-html="'❬'"
         :controls-next-html="'❭'"
-        :controls-width="30"
-        :height="200"
-        :controls-heigth="50"
+        :controls-width="25"
+        :height="180"
+        :controls-heigth="40"
         :clickable="false"
       >
         <slide v-for="(slide, i) in slides" :index="i" v-bind:key="i">
@@ -109,8 +109,8 @@ body {
   // padding: 0;
 }
 .centerr {
-  margin-left: 30%;
-  padding-top: 6px;
+  margin-left: 35%;
+  padding-top: 5%;
 }
 .fade-enter-active,
 .fade-leave-active {

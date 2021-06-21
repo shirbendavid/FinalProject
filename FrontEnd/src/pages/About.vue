@@ -40,7 +40,7 @@
           </p>
         </b-col>
       </b-row>
-      <p class="textAbout2">
+      <!-- <p class="textAbout2">
         <b>:הטכנולוגיות בהן עשינו שימוש </b>
       </p>
 
@@ -49,7 +49,7 @@
       <img class="img-tech" src="../assets/Vue.png" style="width: 6%;" />
       <img class="img-tech" src="../assets/html logo.jpg" style="width: 7%;" />
       <img class="img-tech" src="../assets/csslogo.png" style="width: 7%;" />
-      <img class="img-tech" src="../assets/javascript.png" style="width: 6%;" />
+      <img class="img-tech" src="../assets/javascript.png" style="width: 6%;" /> -->
     </div>
   </div>
 </template>
@@ -78,7 +78,7 @@ export default {
   border-radius: 5px;
   text-align: center;
   background-color: rgba(251, 241, 226, 0.555);
-  margin-top: 10px;
+  margin-top: 6%;
 }
 .titleAbout {
   font-family: Verdana, Geneva, Tahoma, sans-serif;

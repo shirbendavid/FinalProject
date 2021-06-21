@@ -10,12 +10,30 @@
           <b-icon icon="info-circle" aria-hidden="true"></b-icon>
           About
         </router-link>
+</b-navbar-nav>
 
-        <b-nav-text v-if="$root.store.email && this.$cookies.get('session')">
+        <b-navbar-nav class="navbar" v-if="$root.store.email && this.$cookies.get('session')">
+        <b-icon icon="person" scale="1.4" aria-hidden="true"></b-icon>
+        <!-- <b-nav-text>Welcome</b-nav-text> -->
+          <b-nav-item-dropdown right >
+
+                 <template v-slot:button-content>
+            <em>Welcome {{ $root.store.firstname }} </em>
+          </template>
+        <button  class="btn" tag="b-nav-item" @click="Logout()">
+          <b-icon icon="power" aria-hidden="true"></b-icon>
+          Logout
+        </button>          
+
+          </b-nav-item-dropdown>
+ 
+  </b-navbar-nav>
+
+        <!-- <b-nav-text v-if="$root.store.email && this.$cookies.get('session')">
           <b-icon icon="person" scale="1.4" aria-hidden="true"></b-icon>
           Welcome <b>{{ $root.store.firstname }}</b>
         </b-nav-text>
-      </b-navbar-nav>
+      </b-navbar-nav> -->
 
       <b-navbar-nav
         class="ml-auto"
@@ -90,10 +108,10 @@
             </router-link>
           </b-nav-item-dropdown>
         </b-navbar-nav>
-        <button class="btn" tag="b-nav-item" @click="Logout()">
+        <!-- <button class="btn" tag="b-nav-item" @click="Logout()">
           <b-icon icon="power" aria-hidden="true"></b-icon>
           Logout
-        </button>
+        </button> -->
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>

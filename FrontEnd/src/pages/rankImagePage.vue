@@ -358,6 +358,21 @@ export default {
 </script>
 
 <style lang="scss">
+.flex-container-rate {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-around;
+}
+
+.flex-item-rate {
+  padding: 1px;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
 .rank-container {
   color: black;
   font-size: 16px;
@@ -453,21 +468,7 @@ b-col {
   color: #7a5699e8;
 }
 
-.flex-container-rate {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  justify-content: space-around;
-}
 
-.flex-item-rate {
-  padding: 1px;
-  font-weight: bold;
-  font-size: 20px;
-  text-align: center;
-}
 
 .wrapper {
   display: flex;

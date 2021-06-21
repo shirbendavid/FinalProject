@@ -12,18 +12,14 @@
 
       <br /><br /><br />
       <div class="my-2">
-        <router-link to="/ranking">
-          <b-button size="lg" class="btn-after" color="primary">
+          <b-button size="lg" class="btn-after" color="primary" to="/ranking">
             Images Rating
           </b-button>
-        </router-link>
       </div>
       <div class="my-2">
-        <router-link to="/game">
-          <b-button size="lg" class="btn-after" color="primary">
+          <b-button size="lg" class="btn-after" color="primary" to="/game">
             Play Game
           </b-button>
-        </router-link>
       </div>
     </div>
   </div>
@@ -42,6 +38,7 @@
   display: flex;
   flex-direction: column;
   margin: auto;
+  width: 50%;
 }
 
 .button {

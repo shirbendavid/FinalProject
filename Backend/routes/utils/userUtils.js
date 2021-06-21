@@ -269,6 +269,25 @@ async function getTop10Advance(){
   return usersTop;
 }
 
+async function getUserScore(email, params){
+  let usersScore =[];
+  if(params.advance=='false')
+    usersScore = await DButils.execQuery(`SElECT email, SUM(scoreGame) as score FROM games WHERE scoreGame IS NOT NULL GROUP BY email ORDER BY score DESC`);
+  else
+    usersScore = await DButils.execQuery(`SElECT email, SUM(scoreGame) as score FROM advancedGames WHERE scoreGame IS NOT NULL GROUP BY email ORDER BY score DESC`);
+  let i=1;
+  console.log(usersScore);
+  for(user in usersScore){
+    if(usersScore[user].email == email){
+      details = await DButils.execQuery(`SElECT firstname, lastname FROM users where email='${email}'`);
+      usersScore[user].place=i;
+      usersScore[user].name= details[0].firstname + " " + details[0].lastname;
+      return usersScore[user];
+    }
+    i++;
+  }
+}
+
 exports.getRandomImageToRate=getRandomImageToRate;
 exports.saveRate = saveRate;
 exports.getGameImages= getGameImages;
@@ -284,3 +303,4 @@ exports.saveScoreAdvancedGame = saveScoreAdvancedGame;
 exports.getScoreScreens = getScoreScreens;
 exports.getTop10 = getTop10;
 exports.getTop10Advance= getTop10Advance;
+exports.getUserScore = getUserScore;
