@@ -189,7 +189,7 @@
               NEXT
             </b-button>
           </b-col>
-          <b-col class="pb-8" v-if="enoughImages">
+          <b-col class="pb-8" v-if="!lessThanMinimum">
             <b-button class="game-btn" href="#">Game</b-button>
           </b-col>
           <b-col></b-col>
