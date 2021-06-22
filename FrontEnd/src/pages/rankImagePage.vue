@@ -35,8 +35,10 @@
       <div class="flex-item-rate">
         <div class="my_space"></div>
         <b-row>
-          <b-col class="forewordimage-rate">
-            <b-img v-bind="mainProps" :src="image" class="center-rate" />
+          <b-col>
+            <div class="image-container">
+              <b-img v-bind="mainProps" :src="image" class="center-rate" />
+            </div>
           </b-col>
         </b-row>
 
@@ -182,11 +184,14 @@
               {{ this.$root.store.minImagesRating }}
             </div>
           </b-col>
-          <b-col lg="6" class="pb-2"
-            ><b-button class="b-obs next-btn" block @click="saveImageRate()"
-              >NEXT</b-button
-            ></b-col
-          >
+          <b-col lg="6" class="pb-2">
+            <b-button class="b-obs next-btn" block @click="saveImageRate()">
+              NEXT
+            </b-button>
+          </b-col>
+          <b-col class="pb-8" v-if="enoughImages">
+            <b-button class="game-btn" href="#">Game</b-button>
+          </b-col>
           <b-col></b-col>
         </b-row>
       </div>
@@ -358,14 +363,14 @@ export default {
 </script>
 
 <style lang="scss">
-.flex-container-rate {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  justify-content: space-around;
-}
+// .flex-container-rate {
+//   display: -webkit-box;
+//   display: -moz-box;
+//   display: -ms-flexbox;
+//   display: -webkit-flex;
+//   display: flex;
+//   justify-content: space-around;
+// }
 
 .flex-item-rate {
   padding: 1px;
@@ -376,9 +381,9 @@ export default {
 .rank-container {
   color: black;
   font-size: 16px;
-  width: 50%;
-  padding-left: 5%;
-  padding-right: 5%;
+  width: 70%;
+  padding-left: 10%;
+  padding-right: 10%;
   overflow: hidden;
   margin: auto;
   align-content: center;
@@ -415,7 +420,7 @@ label {
 .rating-status {
   font-size: medium;
   color: rgba(136, 136, 136, 0.877);
-  margin-left: -8px;
+  margin-left: -88px;
   margin-top: 16px;
 }
 
@@ -431,9 +436,13 @@ label {
 }
 
 .center-rate {
-  border: 2px;
-  width: 218%;
-  height: 100%;
+  // border: 2px;
+  // width: 218%;
+  // height: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 115%;
+  max-height: 1150%;
   border-radius: 5px;
 }
 
@@ -457,18 +466,16 @@ b-col {
 }
 
 .forewordimage-rate {
-  column-count: 2;
-  margin: 0 auto;
-  -moz-column-count: 2;
-  -webkit-column-count: 2;
+  // column-count: -1;
+  // margin: 0 auto;
+  // -moz-column-count: 2;
+  // -webkit-column-count: 2;
 }
 
 .subtitle {
   font-size: 25px;
   color: #7a5699e8;
 }
-
-
 
 .wrapper {
   display: flex;
@@ -483,8 +490,23 @@ b-col {
 }
 
 .next-btn {
-  width: 60%;
-  margin-left: 50px;
+  width: 75%;
+  height: 80%;
+  margin-left: 25px;
+  padding: 0px !important;
+}
+
+.game-btn {
+  width: 55%;
+  height: 65%;
+  margin-left: 20px;
+  margin-right: 0 !important;
+  background-color: rgba(163, 163, 163, 0.911);
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  padding-bottom: 15px !important;
+  // padding: 0px !important;
 }
 
 .rank-popup-modal {
@@ -564,4 +586,15 @@ b-col {
 .inlineRadioOptions {
   margin-bottom: -5px;
 }
+
+.image-container {
+  width: 500px !important;
+  height: 430px !important;
+  // align-content: center;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-left: 80px
+}
+
 </style>
