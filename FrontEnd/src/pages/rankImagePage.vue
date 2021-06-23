@@ -189,10 +189,10 @@
               NEXT
             </b-button>
           </b-col>
-          <b-col class="pb-8" v-if="!lessThanMinimum">
-            <b-button class="game-btn" href="#">Game</b-button>
-          </b-col>
           <b-col></b-col>
+          <b-col class="pb-8" v-if="!lessThanMinimum">
+            <b-button class="b-obs game-btn" @click="StartPlay()">Game</b-button>
+          </b-col>
         </b-row>
       </div>
     </div>
@@ -246,7 +246,7 @@ export default {
       enoughImages: false,
       isVisible: true,
       rate: false,
-      lessThanMinimum: false,
+      lessThanMinimum: true,
     };
   },
   methods: {
@@ -277,6 +277,14 @@ export default {
             this.getNextImage();
           }
         }
+
+        if (
+        this.$root.store.numberOfImagesRating >=
+        this.$root.store.minImagesRating
+      ) {
+        this.lessThanMinimum = false;
+      } else this.lessThanMinimum = true;
+
       } catch (error) {
         console.log(error);
       }
@@ -336,11 +344,11 @@ export default {
       }
 
       if (
-        this.$root.store.numberOfImagesRating <=
+        this.$root.store.numberOfImagesRating >=
         this.$root.store.minImagesRating
       ) {
-        this.lessThanMinimum = true;
-      } else this.lessThanMinimum = false;
+        this.lessThanMinimum = false;
+      } else this.lessThanMinimum = true;
 
       let response;
       try {
@@ -363,14 +371,6 @@ export default {
 </script>
 
 <style lang="scss">
-// .flex-container-rate {
-//   display: -webkit-box;
-//   display: -moz-box;
-//   display: -ms-flexbox;
-//   display: -webkit-flex;
-//   display: flex;
-//   justify-content: space-around;
-// }
 
 .flex-item-rate {
   padding: 1px;
@@ -420,7 +420,7 @@ label {
 .rating-status {
   font-size: medium;
   color: rgba(136, 136, 136, 0.877);
-  margin-left: -88px;
+  margin-left: -6px;
   margin-top: 16px;
 }
 
@@ -436,13 +436,11 @@ label {
 }
 
 .center-rate {
-  // border: 2px;
-  // width: 218%;
-  // height: 100%;
+  margin-left: 30%;
   margin-top: 0;
   margin-bottom: 0;
   max-width: 115%;
-  max-height: 1150%;
+  max-height: 100%;
   border-radius: 5px;
 }
 
@@ -490,23 +488,22 @@ b-col {
 }
 
 .next-btn {
-  width: 75%;
+  width: 50%;
   height: 80%;
-  margin-left: 25px;
+  margin-left: 32%;
   padding: 0px !important;
 }
 
 .game-btn {
-  width: 55%;
+  width: 90%;
   height: 65%;
-  margin-left: 20px;
+  margin-left: 40% !important;
   margin-right: 0 !important;
   background-color: rgba(163, 163, 163, 0.911);
   color: white;
   font-weight: bold;
   border-radius: 5px;
   padding-bottom: 15px !important;
-  // padding: 0px !important;
 }
 
 .rank-popup-modal {
@@ -589,12 +586,12 @@ b-col {
 
 .image-container {
   width: 500px !important;
-  height: 430px !important;
+  height: 380px !important;
   // align-content: center;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  margin-left: 80px
+  margin-left: 2% !important;
 }
 
 </style>
