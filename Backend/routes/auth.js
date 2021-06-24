@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const DButils = require("./utils/DButils");
+const mailUtils = require("./utils/mailUtils");
 const bcrypt = require("bcrypt");
 
 router.post("/Registration", async (req, res, next) => {
@@ -25,6 +26,14 @@ router.post("/Registration", async (req, res, next) => {
       `INSERT INTO users VALUES ('${email}', '${req.body.firstname}', '${req.body.lastname}', 
       '${req.body.age}', '${req.body.gender}', default, default, default, default, default)`
     );
+
+    var mailOptions = {
+      from: 'images.preferences@gmail.com',
+      to: email,
+      subject: 'הרשמה למשחק העדפת תמונות',
+      text: 'שלום'
+    };
+    mailUtils.sendMail(mailOptions);
     res.status(201).send({ message: "user created", success: true });
   } catch (error) {
     next(error);
