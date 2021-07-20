@@ -198,7 +198,7 @@
     </div>
     <div class="rank-container">
       <transition name="fade">
-        <div class="popup-modal" v-if="enoughImages">
+        <div class="rank-popup-modal" v-if="enoughImages">
           <div class="rank-window" style="max-width: 900px;">
             <slot>
               <p class="textrat">
@@ -217,13 +217,13 @@
               <br />
               <b-row>
                 <b-col>
-                  <b-button @click="close()">
+                  <b-button class="end-rate-btn" @click="close()">
                     המשך בדירוג
                   </b-button>
                 </b-col>
                 <b-col></b-col>
                 <b-col>
-                  <b-button @click="StartPlay()">
+                  <b-button class="end-rate-btn" @click="StartPlay()">
                     התחל במשחק
                   </b-button>
                 </b-col>
@@ -592,6 +592,12 @@ b-col {
   justify-content: center !important;
   align-items: center !important;
   margin-left: 2% !important;
+}
+
+.end-rate-btn {
+  font-size: large;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: black;
 }
 
 </style>
