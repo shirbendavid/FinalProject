@@ -184,14 +184,14 @@
               {{ this.$root.store.minImagesRating }}
             </div>
           </b-col>
-          <b-col lg="6" class="pb-2">
+          <b-col lg="4" class="pb-3">
             <b-button class="b-obs next-btn" block @click="saveImageRate()">
               NEXT
             </b-button>
           </b-col>
           <b-col></b-col>
           <b-col class="pb-8" v-if="!lessThanMinimum">
-            <b-button class="b-obs game-btn" @click="StartPlay()">Game</b-button>
+            <b-button class="b-obs game-btn" @click="StartPlay()">To the game</b-button>
           </b-col>
         </b-row>
       </div>
@@ -420,7 +420,7 @@ label {
 .rating-status {
   font-size: medium;
   color: rgba(136, 136, 136, 0.877);
-  margin-left: -6px;
+  margin-left: -46px;
   margin-top: 16px;
 }
 
@@ -488,16 +488,19 @@ b-col {
 }
 
 .next-btn {
-  width: 50%;
-  height: 80%;
-  margin-left: 32%;
+  width: 95%;
+  height: 90%;
+  margin-left: 45%;
   padding: 0px !important;
+  color: black !important;
+  margin-right: 0 !important;
+  font-weight: bold;
 }
 
 .game-btn {
-  width: 90%;
+  width: 100%;
   height: 65%;
-  margin-left: 40% !important;
+  margin-left: 30% !important;
   margin-right: 0 !important;
   background-color: rgba(163, 163, 163, 0.911);
   color: white;
