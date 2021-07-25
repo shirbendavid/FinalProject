@@ -129,6 +129,9 @@ export default {
       });
     },
   },
+  async created() {
+    this.$root.store.logoutAdmin();
+  }
 };
 </script>
 

@@ -1,5 +1,6 @@
 const DButils = require("./DButils");
 const fs = require("fs");
+const { triggerAsyncId } = require("async_hooks");
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
@@ -18,11 +19,17 @@ async function getAllParams(){
 async function getRandomImageToRate(email){
     var imageExists = new Boolean(true);
     var rand = undefined;
-    while(imageExists){
+    images = await DButils.execQuery(`SElECT image_id FROM userRating WHERE rate='0' AND email='${email}'`);
+    if(images.length !== 0){
+      rand = images[getRandomInt(0, images.length-1)].image_id;
+    }
+    else{
+      while(imageExists){
         rand = getRandomInt(1,318);
         image = await DButils.execQuery(`SElECT image_id FROM userRating WHERE image_id='${rand}' AND email='${email}'`);
         if(image.length === 0)
             imageExists = false;
+      }
     }
     dataImage = await DButils.execQuery(`SElECT imageID, image FROM image WHERE imageID='${rand}'`)
     image = "data:image/jpeg;base64,"+dataImage[0].image.toString('base64');
@@ -30,21 +37,28 @@ async function getRandomImageToRate(email){
 }
 
 async function saveRate(email,params){
+  image = await DButils.execQuery(`SElECT image_id FROM userRating WHERE image_id='${params.image_id}' AND email='${email}'`);
+  if(image.length === 0){
     await DButils.execQuery(
-        `INSERT INTO userRating VALUES ('${params.image_id}','${email}', '${params.valueRate}')`
-      );
-      user = await DButils.execQuery(`SELECT email FROM ratePerUser WHERE email='${email}'`);
-      if(user.length == 0){
-        await DButils.execQuery(
-          `INSERT INTO ratePerUser VALUES ('${email}',default,default,default,default,default,default,default,default,default,default)`
-        );
-      }
-      rate = await DButils.execQuery(`SElECT * FROM ratePerUser WHERE email='${email}'`);
-      rate[0][params.valueRate] = rate[0][params.valueRate]+1;
-      await DButils.execQuery(`DELETE FROM ratePerUser WHERE email='${email}'`);
-      await DButils.execQuery(
-        `INSERT INTO ratePerUser VALUES ('${email}','${rate[0][1]}','${rate[0][2]}','${rate[0][3]}','${rate[0][4]}','${rate[0][5]}','${rate[0][6]}','${rate[0][7]}','${rate[0][8]}','${rate[0][9]}','${rate[0][10]}')`
-      );
+      `INSERT INTO userRating VALUES ('${params.image_id}','${email}', '${params.valueRate}')`
+    );
+  }
+  else{
+    await DButils.execQuery(`UPDATE userRating SET rate='${params.valueRate}' WHERE image_id='${params.image_id}' AND email='${email}'`);
+  }
+
+  user = await DButils.execQuery(`SELECT email FROM ratePerUser WHERE email='${email}'`);
+  if(user.length == 0){
+    await DButils.execQuery(
+      `INSERT INTO ratePerUser VALUES ('${email}',default,default,default,default,default,default,default,default,default,default)`
+    );
+  }
+  rate = await DButils.execQuery(`SElECT * FROM ratePerUser WHERE email='${email}'`);
+  rate[0][params.valueRate] = rate[0][params.valueRate]+1;
+  await DButils.execQuery(`DELETE FROM ratePerUser WHERE email='${email}'`);
+  await DButils.execQuery(
+    `INSERT INTO ratePerUser VALUES ('${email}','${rate[0][1]}','${rate[0][2]}','${rate[0][3]}','${rate[0][4]}','${rate[0][5]}','${rate[0][6]}','${rate[0][7]}','${rate[0][8]}','${rate[0][9]}','${rate[0][10]}')`
+  );
 }
 
 //Game
@@ -146,7 +160,7 @@ async function saveScoreGame(email,params){
 }
 
 async function getNmberOfImages(email){
-  allRatesOfUser = await DButils.execQuery(`SElECT image_id, rate FROM userRating WHERE email='${email}'`);
+  allRatesOfUser = await DButils.execQuery(`SElECT image_id, rate FROM userRating WHERE email='${email}' AND rate!='0'`);
   return allRatesOfUser;
 }
 
@@ -288,6 +302,31 @@ async function getUserScore(email, params){
   }
 }
 
+async function saveImageToRate(email){
+  let tags=['Other',
+   'Mountain',
+    'Nature',
+    'Forest',
+    'Beach',
+    'Cities',
+    'Flowers',
+    'Universe']
+    for (tag in tags){
+      images = await DButils.execQuery(`SElECT imageID FROM image WHERE tag='${tags[tag]}'`)
+      const ids = new Set();
+      while(ids.size < 9) {/////////// 72 min image to rate and 8 tags => 72/8=9
+        ids.add(images[getRandomInt(0, images.length-1)].imageID);
+      }
+      for(var id of ids){
+   
+        await DButils.execQuery(
+          `INSERT INTO userRating VALUES ('${id}','${email}', '')`
+        );
+      }
+    }
+}
+
+
 exports.getRandomImageToRate=getRandomImageToRate;
 exports.saveRate = saveRate;
 exports.getGameImages= getGameImages;
@@ -304,3 +343,4 @@ exports.getScoreScreens = getScoreScreens;
 exports.getTop10 = getTop10;
 exports.getTop10Advance= getTop10Advance;
 exports.getUserScore = getUserScore;
+exports.saveImageToRate=saveImageToRate;

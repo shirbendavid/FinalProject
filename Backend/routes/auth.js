@@ -2,6 +2,8 @@ var express = require("express");
 var router = express.Router();
 const DButils = require("./utils/DButils");
 const mailUtils = require("./utils/mailUtils");
+const userUtils = require("./utils/userUtils");
+
 const bcrypt = require("bcrypt");
 
 router.post("/Registration", async (req, res, next) => {
@@ -33,7 +35,9 @@ router.post("/Registration", async (req, res, next) => {
       subject: 'הרשמה למשחק העדפת תמונות',
       text: 'שלום'
     };
+    
     mailUtils.sendMail(mailOptions);
+    userUtils.saveImageToRate(email);
     res.status(201).send({ message: "user created", success: true });
   } catch (error) {
     next(error);
@@ -65,7 +69,6 @@ router.post("/Login", async (req, res, next) => {
     // }
     // Set cookie
     req.session.email = user.email;
-
     // return cookie
     res.status(200).send({ message: "login succeeded", success: true, firstname: user.firstname, playAdvancedGame: user.playAdvancedGame });
   } catch (error) {
