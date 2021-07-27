@@ -197,19 +197,16 @@
                   <br/>
 
                  </p>
-            <div class="form-group form-check">
-                <input type="checkbox" v-model="user.accept" id="accept" class="form-check-input">
-                <label class="form-check-label-regi" for="accept" style="float: right;">
+                 <p class="textregi" style=" text-align: center;">
                   .בלחיצה על כפתור "אישור" אני מסכים/ה להשתתף במשחק העדפת התמונות בהתאם לתנאים שפורטו לעיל
-                </label>
-            </div>
+                </p>
             <br/>   
             <br/>
             <b-row>
               <b-col></b-col>
 
               <b-col lg="6" class="pb-2">
-                <b-button :disabled="!user.accept" block @click="close()">אישור</b-button>
+                <b-button block @click="close()">אישור</b-button>
               </b-col>
 
               <b-col></b-col>
@@ -237,9 +234,6 @@ export default {
     return {
       isVisible: true,
       regis: false,
-       user: {
-          accept: false
-      },
       form: {
         firstName: "",
         lastName: "",

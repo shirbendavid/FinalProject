@@ -179,13 +179,14 @@
             <div v-if="!lessThanMinimum" class="rating-status">
               Image {{ this.$root.store.numberOfImagesRating }}
             </div>
-            <div v-if="lessThanMinimum" class="rating-status">
+            <div :style="[lessThanMinimum ? {'margin-left': '-100px'} : {}]" v-if="lessThanMinimum" class="rating-status">
               Image {{ this.$root.store.numberOfImagesRating }} /
               {{ this.$root.store.minImagesRating }}
             </div>
           </b-col>
           <b-col lg="4" class="pb-3">
-            <b-button class="b-obs next-btn" block @click="saveImageRate()">
+            <b-button class="b-obs ranking-next-btn" block
+            :style="[lessThanMinimum ? {'margin-left': '10px'} : {}]" @click="saveImageRate()">
               NEXT
             </b-button>
           </b-col>
@@ -487,26 +488,26 @@ b-col {
   padding-top: 4px;
 }
 
-.next-btn {
+.ranking-next-btn {
   width: 95%;
   height: 90%;
   margin-left: 45%;
   padding: 0px !important;
   color: black !important;
   margin-right: 0 !important;
-  font-weight: bold;
+  font-weight: bold !important;
 }
 
 .game-btn {
-  width: 100%;
+  width: 120%;
   height: 65%;
   margin-left: 30% !important;
   margin-right: 0 !important;
   background-color: rgba(163, 163, 163, 0.911);
   color: white;
-  font-weight: bold;
   border-radius: 5px;
   padding-bottom: 15px !important;
+  font-weight: bold !important;
 }
 
 .rank-popup-modal {
