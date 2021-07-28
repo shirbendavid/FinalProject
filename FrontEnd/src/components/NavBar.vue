@@ -130,7 +130,9 @@ export default {
     },
   },
   async created() {
-    this.$root.store.logoutAdmin();
+    if( this.$root.store.emailAdmin!==undefined){
+      this.$root.store.logoutAdmin();
+    }
   }
 };
 </script>

@@ -464,12 +464,12 @@ b-col {
   column-width: 1%;
 }
 
-.forewordimage-rate {
-  // column-count: -1;
-  // margin: 0 auto;
-  // -moz-column-count: 2;
-  // -webkit-column-count: 2;
-}
+// .forewordimage-rate {
+//   column-count: -1;
+//   margin: 0 auto;
+//   -moz-column-count: 2;
+//   -webkit-column-count: 2;
+// }
 
 .subtitle {
   font-size: 25px;

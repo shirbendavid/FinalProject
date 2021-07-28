@@ -19,7 +19,7 @@
       >
         <slide v-for="(slide, i) in slides" :index="i" v-bind:key="i">
           <figure>
-            <img :src="slide.src" />
+            <img :src="require('../assets/images/'+slide.src+'.jpg')" />
           </figure>
         </slide>
       </carousel-3d>
@@ -56,27 +56,41 @@ export default {
   },
 
   async created() {
-    let response;
-    try {
-      response = await this.axios.get(
-        //"/coil/images/getImages/amount/"+8);
-        this.$root.store.base_url + "/images/getImages/amount/" + 8
-      );
-      if (response.status !== 200) this.$router.replace("/NotFound");
-    } catch (error) {
-      console.log("error.response.status", error.response.status);
-      this.$router.replace("/NotFound");
-      return;
+    // let response;
+    // try {
+    //   response = await this.axios.get(
+    //     //"/coil/images/getImages/amount/"+8);
+    //     this.$root.store.base_url + "/images/getImages/amount/" + 8
+    //   );
+    //   if (response.status !== 200) this.$router.replace("/NotFound");
+    // } catch (error) {
+    //   console.log("error.response.status", error.response.status);
+    //   this.$router.replace("/NotFound");
+    //   return;
+    // }
+    // const images = response.data;
+    // this.slides[0].src = this.images[0];  
+    // this.slides[1].src = this.images[1];
+    // this.slides[2].src = this.images[2];
+    // this.slides[3].src = this.images[3];
+    // this.slides[4].src = this.images[4];
+    // this.slides[5].src = this.images[5];
+    // this.slides[6].src = this.images[6];
+    // this.slides[7].src = this.images[7];
+
+    //With local photos
+    const ids = new Set();
+    while(ids.size < 8) {
+      let min = Math.ceil(1);
+      let max = Math.floor(29);
+      ids.add(Math.floor(Math.random() * (max - min) + min));
     }
-    const images = response.data;
-    this.slides[0].src = images[0];
-    this.slides[1].src = images[1];
-    this.slides[2].src = images[2];
-    this.slides[3].src = images[3];
-    this.slides[4].src = images[4];
-    this.slides[5].src = images[5];
-    this.slides[6].src = images[6];
-    this.slides[7].src = images[7];
+
+    let index =0;
+    for(let i of ids.values()){
+      this.slides[index].src = i;
+      index++;
+    }
   },
 };
 </script>

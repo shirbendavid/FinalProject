@@ -15,10 +15,9 @@
               אתם אוהבים אותן. כאן, יש לכם אפשרות לצפות בחלק מהתמונות כשהן
               מוקטנות, כדי
               <br />
-              שתוכלו להתרשם מרמת היופי הכללית של התמונות. אתם יכולים להשתמש בפס
-              הגלילה כדי
+              .שתוכלו להתרשם מרמת היופי הכללית של התמונות
               <br />
-              .start rating לראות את כל התמונות. כשתסיימו להתרשם מאוסף התמונות,
+              .start rating כשתסיימו להתרשם מאוסף התמונות
               עליכם ללחוץ על כפתור
               <br /><br />
               כפתור זה יעביר אתכם למצב של הצגת תמונה בודדת בגודל גדול יותר.
@@ -58,7 +57,7 @@
       <b-row>
         <b-col class="pa-3">
           <b-img
-            :src="image1"
+            :src="require('../assets/images/'+images[0].src+'.jpg')"
             style="width: 90%; height:90%;"
             aspect-ratio="1.4"
             contain
@@ -66,7 +65,7 @@
         </b-col>
         <b-col class="pa-3">
           <b-img
-            :src="image2"
+            :src="require('../assets/images/'+images[1].src+'.jpg')"
             style="width: 90%; height:90%;"
             aspect-ratio="1.4"
             contain
@@ -74,7 +73,7 @@
         </b-col>
         <b-col class="pa-3">
           <b-img
-            :src="image3"
+            :src="require('../assets/images/'+images[2].src+'.jpg')"
             style="width: 90%; height:90%;"
             aspect-ratio="1.4"
             contain
@@ -82,7 +81,7 @@
         </b-col>
         <b-col class="pa-3">
           <b-img
-            :src="image4"
+            :src="require('../assets/images/'+images[3].src+'.jpg')"
             style="width: 90%; height:90%;"
             aspect-ratio="1.4"
             contain
@@ -92,46 +91,58 @@
       <br />
       <b-row>
         <b-col class="pa-3">
-          <img :src="image5" style="width: 90%; height:90%;" />
+          <img :src="require('../assets/images/'+images[4].src+'.jpg')" 
+          style="width: 90%; height:90%;" />
         </b-col>
         <b-col class="pa-3">
-          <img :src="image6" style="width: 90%; height:90%;" />
+          <img :src="require('../assets/images/'+images[5].src+'.jpg')" 
+          style="width: 90%; height:90%;" />
         </b-col>
         <b-col class="pa-3">
-          <img :src="image7" style="width: 90%; height:90%;" />
+          <img :src="require('../assets/images/'+images[6].src+'.jpg')" 
+          style="width: 90%; height:90%;" />
         </b-col>
         <b-col class="pa-3">
-          <img :src="image8" style="width: 90%; height:90%;" />
-        </b-col>
-      </b-row>
-      <br />
-      <b-row>
-        <b-col class="pa-3">
-          <img :src="image9" style="width: 90%; height:90%;" />
-        </b-col>
-        <b-col class="pa-3">
-          <img :src="image10" style="width: 90%; height:90%;" />
-        </b-col>
-        <b-col class="pa-3">
-          <img :src="image11" style="width: 90%; height:90%;" />
-        </b-col>
-        <b-col class="pa-3">
-          <img :src="image12" style="width: 90%; height:90%;" />
+          <img :src="require('../assets/images/'+images[7].src+'.jpg')" 
+          style="width: 90%; height:90%;" />
         </b-col>
       </b-row>
       <br />
       <b-row>
         <b-col class="pa-3">
-          <img :src="image13" style="width: 90%; height:90%;" />
+          <img :src="require('../assets/images/'+images[8].src+'.jpg')" 
+          style="width: 90%; height:90%;" />
         </b-col>
         <b-col class="pa-3">
-          <img :src="image14" style="width: 90%; height:90%;" />
+          <img :src="require('../assets/images/'+images[9].src+'.jpg')" 
+          style="width: 90%; height:90%;" />
         </b-col>
         <b-col class="pa-3">
-          <img :src="image15" style="width: 90%; height:90%;" />
+          <img :src="require('../assets/images/'+images[10].src+'.jpg')" 
+          style="width: 90%; height:90%;" />
         </b-col>
         <b-col class="pa-3">
-          <img :src="image16" style="width: 90%; height:90%;" />
+          <img :src="require('../assets/images/'+images[11].src+'.jpg')" 
+          style="width: 90%; height:90%;" />
+        </b-col>
+      </b-row>
+      <br />
+      <b-row>
+        <b-col class="pa-3">
+          <img :src="require('../assets/images/'+images[12].src+'.jpg')" 
+          style="width: 90%; height:90%;" />
+        </b-col>
+        <b-col class="pa-3">
+          <img :src="require('../assets/images/'+images[13].src+'.jpg')" 
+          style="width: 90%; height:90%;" />
+        </b-col>
+        <b-col class="pa-3">
+          <img :src="require('../assets/images/'+images[14].src+'.jpg')" 
+          style="width: 90%; height:90%;" />
+        </b-col>
+        <b-col class="pa-3">
+          <img :src="require('../assets/images/'+images[15].src+'.jpg')" 
+          style="width: 90%; height:90%;" />
         </b-col>
       </b-row>
       <!-- <br/> -->
@@ -167,6 +178,24 @@ export default {
       image15: "",
       image16: "",
       isVisible: true,
+      images: [
+        { id: 1, src: "" },
+        { id: 2, src: "" },
+        { id: 3, src: "" },
+        { id: 4, src: "" },
+        { id: 5, src: "" },
+        { id: 6, src: "" },
+        { id: 7, src: "" },
+        { id: 8, src: "" },
+        { id: 9, src: "" },
+        { id: 10, src: "" },
+        { id: 11, src: "" },
+        { id: 12, src: "" },
+        { id: 13, src: "" },
+        { id: 14, src: "" },
+        { id: 15, src: "" },
+        { id: 16, src: "" },
+      ],
     };
   },
 
@@ -181,35 +210,49 @@ export default {
   },
   async created() {
     if (this.$root.store.email) {
-      let response;
-      try {
-        response = await this.axios.get(
-          this.$root.store.base_url + "/images/getImages/amount/" + 16
-        );
-        if (response.status !== 200) this.$router.replace("/NotFound");
-      } catch (error) {
-        console.log("error.response.status", error.response.status);
-        this.$router.replace("/NotFound");
-        return;
-      }
+      // let response;
+      // try {
+      //   response = await this.axios.get(
+      //     this.$root.store.base_url + "/images/getImages/amount/" + 16
+      //   );
+      //   if (response.status !== 200) this.$router.replace("/NotFound");
+      // } catch (error) {
+      //   console.log("error.response.status", error.response.status);
+      //   this.$router.replace("/NotFound");
+      //   return;
+      // }
 
-      const images = response.data;
-      this.image1 = images[0];
-      this.image2 = images[1];
-      this.image3 = images[2];
-      this.image4 = images[3];
-      this.image5 = images[4];
-      this.image6 = images[5];
-      this.image7 = images[6];
-      this.image8 = images[7];
-      this.image9 = images[8];
-      this.image10 = images[9];
-      this.image11 = images[10];
-      this.image12 = images[11];
-      this.image13 = images[12];
-      this.image14 = images[13];
-      this.image15 = images[14];
-      this.image16 = images[15];
+      // const images = response.data;
+      // this.image1 = images[0];
+      // this.image2 = images[1];
+      // this.image3 = images[2];
+      // this.image4 = images[3];
+      // this.image5 = images[4];
+      // this.image6 = images[5];
+      // this.image7 = images[6];
+      // this.image8 = images[7];
+      // this.image9 = images[8];
+      // this.image10 = images[9];
+      // this.image11 = images[10];
+      // this.image12 = images[11];
+      // this.image13 = images[12];
+      // this.image14 = images[13];
+      // this.image15 = images[14];
+      // this.image16 = images[15];
+
+    //With local photos
+    const ids = new Set();
+    while(ids.size < 16) {
+      let min = Math.ceil(1);
+      let max = Math.floor(29);
+      ids.add(Math.floor(Math.random() * (max - min) + min));
+    }
+
+    let index =0;
+    for(let i of ids.values()){
+      this.images[index].src = i;
+      index++;
+    }
     } else {
       this.$router.push("/login");
     }

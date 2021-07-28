@@ -141,7 +141,7 @@ export default {
               ". " +
               "You earned " +
               this.score +
-              " points today. See you tommorow!"
+              " points for this game. See you next time!"
           ).then(() => {
             this.$router.push("/");
           });
