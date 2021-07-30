@@ -36,7 +36,7 @@
         <div class="my_space"></div>
         <b-row>
           <b-col>
-            <div class="image-container">
+            <div class="rank-image-container">
               <b-img v-bind="mainProps" :src="image" class="center-rate" />
             </div>
           </b-col>
@@ -432,12 +432,13 @@ label {
 }
 
 .scale {
+  margin-top: -6% !important;
   width: 100%;
-  margin-left: 14px;
+  // margin-left: -5% !important;
 }
 
 .center-rate {
-  margin-left: 30%;
+  // margin-left: 30%;
   margin-top: 0;
   margin-bottom: 0;
   max-width: 115%;
@@ -588,14 +589,14 @@ b-col {
   margin-bottom: -5px;
 }
 
-.image-container {
-  width: 500px !important;
-  height: 380px !important;
+.rank-image-container {
+  width: 88% !important;
+  height: 91% !important;
   // align-content: center;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  margin-left: 2% !important;
+  margin-left: 8% !important;
 }
 
 .end-rate-btn {
