@@ -24,21 +24,4 @@ pnpm-debug.log*
 *.sw?
 
 #images
-src/assets/image1.jpg
-src/assets/image2.jpg
-src/assets/image3.jpg
-src/assets/image4.jpg
-src/assets/image5.jpg
-src/assets/image6.jpg
-src/assets/image7.jpg
-src/assets/image8.jpg
-src/assets/image9.jpg
-src/assets/image10.jpg
-src/assets/image10.jpg
-src/assets/image11.jpg
-src/assets/image12.jpg
-src/assets/image13.jpg
-src/assets/image14.jpg
-src/assets/image15.jpg
-src/assets/image16.jpg
-src/assets/imageToRate.jpg
+src/assets/images

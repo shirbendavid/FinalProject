@@ -136,6 +136,8 @@ export default {
     },
   },
   created() {
+    if(localStorage.getItem("email"))
+      this.$root.store.logout();
     if(localStorage.getItem("emailAdmin") && this.$cookies.get('session'))
       this.$router.push("/management");
   },

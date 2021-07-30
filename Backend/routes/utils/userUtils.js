@@ -100,6 +100,8 @@ async function getGameImages(email, params){
   i=0;
   index1=0;
   index3=0;
+  const ids1Arr = Array.from(ids1)
+  const ids3Arr = Array.from(ids3)
   while(i < params.screens){
     j=0;
     k=0;
@@ -108,20 +110,20 @@ async function getGameImages(email, params){
     target_id.push('');
     while(j < params.num-params.selected){
       while(k < params.selected){
-        dataImage = await DButils.execQuery(`SElECT image FROM image WHERE imageID='${level1[index1].image_id}'`)
+        dataImage = await DButils.execQuery(`SElECT image FROM image WHERE imageID='${ids1Arr[index1].image_id}'`)
         image = "data:image/jpeg;base64,"+dataImage[0].image.toString('base64');
-        data = {image_id: level1[index1].image_id , image: image, target: true}
+        data = {image_id: ids1Arr[index1].image_id , image: image, target: true}
         images[i].imagesScreen.push(data);
-        images_id[i] = images_id[i] + level1[index1].image_id + ',';
-        target_id[i] = target_id[i] + level1[index1].image_id + ',';
+        images_id[i] = images_id[i] + ids1Arr[index1].image_id + ',';
+        target_id[i] = target_id[i] + ids1Arr[index1].image_id + ',';
         k++;
         index1++;
       }
-      dataImage = await DButils.execQuery(`SElECT image FROM image WHERE imageID='${level3[index3].image_id}'`)
+      dataImage = await DButils.execQuery(`SElECT image FROM image WHERE imageID='${ids3Arr[index3].image_id}'`)
       image = "data:image/jpeg;base64,"+dataImage[0].image.toString('base64');
-      data = {image_id: level3[index3].image_id , image: image, target: false}
+      data = {image_id: ids3Arr[index3].image_id , image: image, target: false}
       images[i].imagesScreen.push(data);
-      images_id[i] = images_id[i] + level3[index3].image_id + ',';
+      images_id[i] = images_id[i] + ids3Arr[index3].image_id + ',';
       j++;
       index3++;
     }

@@ -61,30 +61,6 @@ router.get('/admins/getImagesId', adminSessionChecker, (req, res, next) => {
     });
   });
 
-router.get('/admins/getImagesId', adminSessionChecker, (req, res, next) => {
-    adminUtils.getImagesId().then((info_array) => {
-      if (info_array.length == 0)
-        res.status(205).send({ message: "No Images found", success: true });
-      else res.send(info_array);
-    })
-    .catch((error) => {
-      console.log(error);
-      res.sendStatus(500);
-    });
-  });
-
-router.get('/admins/getImagesId', adminSessionChecker, (req, res, next) => {
-    adminUtils.getImagesId().then((info_array) => {
-      if (info_array.length == 0)
-        res.status(205).send({ message: "No Images found", success: true });
-      else res.send(info_array);
-    })
-    .catch((error) => {
-      console.log(error);
-      res.sendStatus(500);
-    });
-  });
-
 router.get('/admins/getImagesRatedByUsers', adminSessionChecker, (req, res, next) => {
   adminUtils.getImagesRatedByUsers().then((info_array) => {
     if (info_array.length == 0)

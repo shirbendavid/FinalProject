@@ -37,7 +37,7 @@ async function getImagesId(){
 async function getImagesRatedByUsers(){
     users = await DButils.execQuery(`SElECT distinct email FROM userRating`);
     for(user in users){
-        imagesRatedByUser = await DButils.execQuery(`SElECT image_id, rate FROM userRating where email='${users[user].email}'`);
+        imagesRatedByUser = await DButils.execQuery(`SElECT image_id, rate FROM userRating where email='${users[user].email}' AND rate!=0`);
         for(image in imagesRatedByUser){
             users[user][imagesRatedByUser[image].image_id]= imagesRatedByUser[image].rate; 
         }
