@@ -13,7 +13,7 @@
       <br /><br /><br />
       <div class="my-2">
           <b-button size="lg" class="btn-after" color="primary" to="/ranking">
-            Images Rating
+            Rate Images
           </b-button>
       </div>
       <div class="my-2">

@@ -8,16 +8,16 @@
             <h2 class="titlegame">הגענו לשלב המשחק</h2>
 
             <p class="textgame" style="color: black; direction: RTL; ">
-              כעת נציג לפניכם
-              {{ this.$root.store.numberOfScreensInGame }} מסכים. בכל מסך יהיו
-              {{ this.$root.store.numberOfImagesInGame }} תמונות מוקטנות אשר
-              לקוחות מהתמונות שראיתם בשלב הקודם. מתוך
-              {{ this.$root.store.numberOfImagesInGame }} התמונות עליכם יהיה
-              לבחור את {{ this.$root.store.limitSelectInGame }} התמונות שאתם הכי
-              אוהבים. המטרה בכל מסך היא לבחור את
-              {{ this.$root.store.limitSelectInGame }} התמונות שקיבלו את הציונים
-              הגבוהים ביותר בשלב דירוג התמונות. <br /><br />
-              עבור כל תמונה שבחרתם נכון תקבלו נקודה. כמו כן, ניתן לבטל בחירה של
+              המשחק מורכב מ-
+              {{ this.$root.store.numberOfScreensInGame }} מסכים. בכל מסך יוצגו
+              {{ this.$root.store.numberOfImagesInGame }} תמונות מוקטנות 
+              שלקוחות מהתמונות אותן ראיתם בשלב הקודם. מתוך
+              {{ this.$root.store.numberOfImagesInGame }} התמונות יש
+              לבחור את {{ this.$root.store.limitSelectInGame }} התמונות האהובות עליכם
+              ביותר. המטרה בכל מסך היא לבחור את
+              {{ this.$root.store.limitSelectInGame }} התמונות שבשלב הקודם קיבלו את הציונים
+              הגבוהים ביותר מבין התמונות המוצגות. <br /><br />
+              עבור כל תמונה שבחרתם נכון תקבלו נקודה. ניתן לבטל בחירה של
               תמונה מסוימת על ידי לחיצה נוספת עליה.
             </p>
             <h3 class="titlegame">!בהצלחה</h3>

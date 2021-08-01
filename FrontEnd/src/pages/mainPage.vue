@@ -19,6 +19,7 @@
       >
         <slide v-for="(slide, i) in slides" :index="i" v-bind:key="i">
           <figure>
+            <!-- <img :src="slide.src" /> -->
             <img :src="require('../assets/images/'+slide.src+'.jpg')" />
           </figure>
         </slide>
