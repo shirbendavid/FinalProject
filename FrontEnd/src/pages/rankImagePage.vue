@@ -179,14 +179,14 @@
             <div v-if="!lessThanMinimum" class="rating-status">
               Image {{ this.$root.store.numberOfImagesRating }}
             </div>
-            <div :style="[lessThanMinimum ? {'margin-left': '-100px'} : {}]" v-if="lessThanMinimum" class="rating-status">
+            <div :style="[lessThanMinimum ? {'margin-left': '-65%'} : {}]" v-if="lessThanMinimum" class="rating-status">
               Image {{ this.$root.store.numberOfImagesRating }} /
               {{ this.$root.store.minImagesRating }}
             </div>
           </b-col>
           <b-col lg="4" class="pb-3">
             <b-button class="b-obs ranking-next-btn" block
-            :style="[lessThanMinimum ? {'margin-left': '10px'} : {}]" @click="saveImageRate()">
+            :style="[lessThanMinimum ? {'margin-left': '0%', 'font-weight': '400'} : {}]" @click="saveImageRate()">
               NEXT
             </b-button>
           </b-col>
@@ -275,7 +275,18 @@ export default {
           )
             this.enoughImages = true;
           else {
-            this.getNextImage();
+             if ( this.$root.store.numberOfImagesRating === 24 || this.$root.store.numberOfImagesRating === 48){
+                this.$alert(`יפה מאוד ! סיימת לתת ציונים ל-  
+                ${this.$root.store.numberOfImagesRating}
+                תמונות  `, '' ,
+                "info")
+                .then(() => {
+                      this.getNextImage();
+                    });
+              }
+              else {
+                this.getNextImage();
+              }
           }
         }
 
@@ -301,6 +312,9 @@ export default {
         this.$router.replace("/game");
       }
       let response;
+
+   
+
       try {
         response = await this.axios.get(
           this.$root.store.base_url + "/users/getImageToRate"
@@ -421,7 +435,7 @@ label {
 .rating-status {
   font-size: medium;
   color: rgba(136, 136, 136, 0.877);
-  margin-left: -46px;
+  margin-left: -60%;
   margin-top: 16px;
 }
 
@@ -492,7 +506,7 @@ b-col {
 .ranking-next-btn {
   width: 95%;
   height: 90%;
-  margin-left: 45%;
+  margin-left: 38%;
   padding: 0px !important;
   color: black !important;
   margin-right: 0 !important;
