@@ -138,6 +138,10 @@ export default {
                 this.score
             );
             if (saveScoreGame.status !== 200) this.$router.replace("/NotFound");
+            if (saveScoreGame.status === 302){
+            this.$root.store.logout();
+            this.$router.push("/Login");
+          }
           } catch (error) {
             console.log(
               "error.saveScoreGame.status",
