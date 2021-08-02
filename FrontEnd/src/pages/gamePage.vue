@@ -116,6 +116,10 @@ export default {
               scoreScreen
           );
           if (saveScore.status !== 200) this.$router.replace("/NotFound");
+          if (saveScore.status === 302){
+            this.$root.store.logout();
+            this.$router.push("/Login");
+          }
         } catch (error) {
           console.log("error.saveScore.status", error.saveScore.status);
           this.$router.replace("/NotFound");
