@@ -277,7 +277,7 @@ export default {
              if ( this.$root.store.numberOfImagesRating === 24 || this.$root.store.numberOfImagesRating === 48){
                 this.$alert(`יפה מאוד ! סיימת לתת ציונים ל-  
                 ${this.$root.store.numberOfImagesRating}
-                תמונות  `, '' ,
+                מתוך ${this.$root.store.minImagesRating} תמונות  `, '' ,
                 "info")
                 .then(() => {
                       this.getNextImage();
