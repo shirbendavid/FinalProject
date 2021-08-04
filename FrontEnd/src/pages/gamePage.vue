@@ -1,8 +1,8 @@
 <template>
   <div class="d-flex flex-column justify-center align-center">
     <transition name="fade">
-      <div class="popup-modal" v-if="isVisible">
-        <div class="window" style=" height:450px; max-width: 680px;">
+      <div class="game-popup-modal" v-if="isVisible">
+        <div class="game-window" style=" height:500px; max-width: 720px;">
           <slot>
 
             <h2 class="titlegame">הגענו לשלב המשחק</h2>
@@ -25,7 +25,7 @@
               אנא המתינו בסבלנות לעליית התמונות!
             </p>
             <h3 class="titlegame">!בהצלחה</h3>
-            <br />
+          
             <b-row>
               <b-col></b-col>
               <b-col
@@ -427,7 +427,7 @@ pre code .line::before {
   opacity: 0;
 }
 
-.popup-modal {
+.game-popup-modal {
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
@@ -440,7 +440,7 @@ pre code .line::before {
   z-index: 1;
 }
 
-.window {
+.game-window {
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
   max-width: 80%;
   margin-left: auto;
