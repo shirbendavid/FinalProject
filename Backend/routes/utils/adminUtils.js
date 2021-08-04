@@ -3,7 +3,7 @@ const DButils = require("./DButils");
 async function getUsersInSystem(){
     users = await DButils.execQuery(`SElECT email, firstname, lastname, dateOfRegistration, status, lastLogin, gameTime, playAdvancedGame FROM users`);
     for(user in users){
-        rates = await DButils.execQuery(`SElECT image_id FROM userRating where email='${users[user].email}'`);
+        rates = await DButils.execQuery(`SElECT image_id FROM userRating where email='${users[user].email}' AND rate!='0'`);
         users[user].numOfRates= rates.length;
         games = await DButils.execQuery(`SElECT game_id FROM games where email='${users[user].email}'`);
         users[user].numOfGames= games.length;
@@ -37,7 +37,7 @@ async function getImagesId(){
 async function getImagesRatedByUsers(){
     users = await DButils.execQuery(`SElECT distinct email FROM userRating`);
     for(user in users){
-        imagesRatedByUser = await DButils.execQuery(`SElECT image_id, rate FROM userRating where email='${users[user].email}' AND rate!=0`);
+        imagesRatedByUser = await DButils.execQuery(`SElECT image_id, rate FROM userRating where email='${users[user].email}' AND rate!='0'`);
         for(image in imagesRatedByUser){
             users[user][imagesRatedByUser[image].image_id]= imagesRatedByUser[image].rate; 
         }
@@ -48,7 +48,7 @@ async function getImagesRatedByUsers(){
 async function getImagesRated(){
     images = await DButils.execQuery(`SElECT imageID FROM image`);
     for(image in images){
-        imagesRatedByUser = await DButils.execQuery(`SElECT rate FROM userRating where image_id='${images[image].imageID}'`);
+        imagesRatedByUser = await DButils.execQuery(`SElECT rate FROM userRating where image_id='${images[image].imageID}' AND rate!='0'`);
         for(rate in imagesRatedByUser){
             if(images[image][imagesRatedByUser[rate].rate] > 0)
                 images[image][imagesRatedByUser[rate].rate]++ ;
