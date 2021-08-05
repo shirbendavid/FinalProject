@@ -90,7 +90,7 @@
             </router-link>
           </b-nav-item-dropdown>
           <b-nav-item-dropdown
-            v-if="$root.store.playAdvancedGame"
+            v-if="this.$root.store.playAdvancedGame===true"
             text="AdvancedGame"
             right
           >
