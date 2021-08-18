@@ -90,6 +90,7 @@ export default {
                 return;
             }
             console.log(userData.data);
+            userData = userData.data;
             this.users.push({
                     _rowVariant: 'light', 
                     rank: userData.place, 
